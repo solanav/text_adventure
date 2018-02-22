@@ -17,7 +17,7 @@ Player * player_create(char * name, Id location_id, Id object_id, Id id)
 	 *
 	**/
 	Player * new_player;
-	new_player = (Player *) malloc(sizeof(Player));
+	new_player = (Player *) calloc(1, sizeof(Player));
 
 	if (!name) return NULL;
 
