@@ -13,6 +13,9 @@ Object* obj_create(char* name, Id id)
   obj = malloc(sizeof(Object));
   if(!obj){return NULL;}
 
+  obj->id = id;
+  strcpy(obj->name, name);
+
   return obj;
 }
 
