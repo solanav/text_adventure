@@ -10,7 +10,7 @@ Object* obj_create(char* name, Id id)
 {
   Object *obj;
 
-  obj = malloc(sizeof(Object));
+  obj = calloc(1, sizeof(Object));
   if(!obj){return NULL;}
 
   obj->id = id;

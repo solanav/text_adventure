@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-Wall -g
 
-game_exec: game_loop.o command.o game_reader.o graphic_engine.o screen.o space.o object.o game.o player.o
+game_exec: game_loop.o command.o game_reader.o graphic_engine.o screen.o space.o object.o game.o player.o die.o
 	$(CC) $(CFLAGS) -o $@ $^
 
 die_test: die_test.o die.o
