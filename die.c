@@ -10,7 +10,7 @@ Die* die_ini(Id id)
 {
   Die* die;
 
-  die = malloc(sizeof(Die));
+  die = calloc(1, sizeof(Die));
   if(!die) return NULL;
 
   die->id = id;
