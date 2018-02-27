@@ -16,10 +16,10 @@ Player * player_destroy(Player * player);
 /*
  * Changing each singular value of the Player
  */
-Player * player_setName(Player * player, char * newName);
-Player * player_setLocId(Player * player, Id new_locId);
-Player * player_setObjId(Player * player, Id new_objId);
-Player * player_setId(Player * player, Id new_id);
+STATUS player_setName(Player * player, char * newName);
+STATUS player_setLocId(Player * player, Id new_locId);
+STATUS player_setObjId(Player * player, Id new_objId);
+STATUS player_setId(Player * player, Id new_id);
 
 /*
  * Access the Player's values

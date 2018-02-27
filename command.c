@@ -13,10 +13,10 @@
 #include "command.h"
 
 #define CMD_LENGHT 30
-#define N_CMD 7
+#define N_CMD 8
 
-char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous", "Pick Up", "Drop"};
-char *short_cmd_to_str[N_CMD] = {"","","e","f","p", "u", "d"};
+char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous", "Pick Up", "Drop", "Roll"};
+char *short_cmd_to_str[N_CMD] = {"","","e","f","p", "u", "d", "r"};
 
 
 T_Command get_user_input()

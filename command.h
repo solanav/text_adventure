@@ -19,7 +19,8 @@ typedef enum enum_Command
   FOLLOWING,
   PREVIOUS,
   PICK_UP,
-  DROP
+  DROP,
+  ROLL
 } T_Command;
 
 T_Command get_user_input();

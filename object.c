@@ -10,8 +10,11 @@ Object* obj_create(char* name, Id id)
 {
   Object *obj;
 
-  obj = malloc(sizeof(Object));
+  obj = calloc(1, sizeof(Object));
   if(!obj){return NULL;}
+
+  obj->id = id;
+  strcpy(obj->name, name);
 
   return obj;
 }
@@ -21,25 +24,24 @@ void obj_destroy(Object* obj)
   if(!obj){return;}
 
   free(obj);
-  return;
 }
 
-Object* obj_setName(Object* obj, char* name)
+STATUS obj_setName(Object* obj, char* name)
 {
-  if(!obj||!name){return NULL;}
+  if(!obj||!name) return ERROR;
 
-  strcpy(obj->name, name);
+  if(!strcpy(obj->name, name)) return ERROR;
 
-  return obj;
+  return OK;
 }
 
-Object* obj_setId(Object* obj, Id id)
+STATUS obj_setId(Object* obj, Id id)
 {
-  if(!obj){return NULL;}
+  if(!obj){return ERROR;}
 
   obj->id = id;
 
-  return obj;
+  return OK;
 }
 
 char* obj_getName(Object* obj)

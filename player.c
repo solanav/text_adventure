@@ -17,7 +17,7 @@ Player * player_create(char * name, Id location_id, Id object_id, Id id)
 	 *
 	**/
 	Player * new_player;
-	new_player = (Player *) malloc(sizeof(Player));
+	new_player = (Player *) calloc(1, sizeof(Player));
 
 	if (!name) return NULL;
 
@@ -30,40 +30,40 @@ Player * player_create(char * name, Id location_id, Id object_id, Id id)
 }
 
 
-Player * player_setName(Player * player, char * newName)
+STATUS player_setName(Player * player, char * newName)
 {
-	if(!player||!newName) return NULL;
+	if(!player||!newName) return ERROR;
 
-	strcpy(player->name, newName);
+	if(!strcpy(player->name, newName)) return ERROR;
 
-	return player;
+	return OK;
 }
 
-Player * player_setLocId(Player * player, Id new_locId)
+STATUS player_setLocId(Player * player, Id new_locId)
 {
-	if(!player) return NULL;
+	if(!player) return ERROR;
 
-	player->location_id = new_locId;
+  player->location_id = new_locId;
 
-	return player;
+	return OK;
 }
 
-Player * player_setObjId(Player * player, Id new_objId)
+STATUS player_setObjId(Player * player, Id new_objId)
 {
-	if(!player) return NULL;
+	if(!player) return ERROR;
 
 	player->object_id = new_objId;
 
-	return player;
+	return OK;
 }
 
-Player * player_setId(Player * player, Id new_id)
+STATUS player_setId(Player * player, Id new_id)
 {
-	if(!player) return NULL;
+	if(!player) return ERROR;
 
-	player->id = new_id;
+  player->id = new_id;
 
-	return player;
+	return OK;
 }
 
 char * player_getName(Player * player)

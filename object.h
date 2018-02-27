@@ -17,8 +17,8 @@ void obj_destroy(Object* obj);
 /*
  * Changing the values of the Object
  */
-Object* obj_setName(Object* obj, char* name);
-Object* obj_setId(Object* obj, Id id);
+STATUS obj_setName(Object* obj, char* name);
+STATUS obj_setId(Object* obj, Id id);
 
 /*
  * For accesing the object's name and Id

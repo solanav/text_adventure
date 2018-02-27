@@ -32,6 +32,7 @@ void game_callback_following(Game* game);
 void game_callback_previous(Game* game);
 void game_callback_pickup(Game* game);
 void game_callback_drop(Game* game);
+void game_callback_roll(Game* game);
 
 static callback_fn game_callback_fn_list[N_CALLBACK]=
 {
@@ -40,7 +41,8 @@ static callback_fn game_callback_fn_list[N_CALLBACK]=
   game_callback_following,
   game_callback_previous,
   game_callback_pickup,
-  game_callback_drop
+  game_callback_drop,
+  game_callback_roll
 };
 
 /**
@@ -270,6 +272,10 @@ void game_callback_drop(Game* game)
 
   space_set_object_id(game_get_space(game, playerloc_id), obj_id);
   player_setObjId(game->player, NO_ID);
+}
+
+void game_callback_roll(Game* game)
+{
 }
 
 STATUS game_add_space(Game* game, Space* space)

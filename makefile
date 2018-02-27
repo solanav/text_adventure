@@ -1,10 +1,13 @@
 CC=gcc
 CFLAGS=-Wall -g
 
-game_exec: game_loop.o command.o game_reader.o graphic_engine.o screen.o space.o object.o game.o player.o
-	$(CC) $(CFLAGS) -o$@ $^
+game_exec: game_loop.o command.o game_reader.o graphic_engine.o screen.o space.o object.o game.o player.o die.o
+	$(CC) $(CFLAGS) -o $@ $^
 
-player.o: player.c types.h player.h 
+die_test: die_test.o die.o
+	$(CC) $(CFLAGS) -o $@ $^
+
+player.o: player.c types.h player.h
 	$(CC) $(CFLAGS) -c player.c
 
 game_loop.o: game_loop.c graphic_engine.h
@@ -30,6 +33,12 @@ command.o: command.c command.h
 
 game.o: game.c game.h game_reader.h object.h player.h space.h
 	$(CC) $(CFLAGS) -c game.c
+
+die_test.o: die_test.c die.h types.h
+	$(CC) $(CFLAGS) -c die_test.c
+
+die.o: die.c die.h types.h
+	$(CC) $(CFLAGS) -c die.c
 
 clean:
 	rm -rf *.o game_exec

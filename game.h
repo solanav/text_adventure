@@ -16,6 +16,7 @@
 #include "space.h"
 #include "object.h"
 #include "player.h"
+#include "die.h"
 
 typedef struct _Game{
   Player * player;
