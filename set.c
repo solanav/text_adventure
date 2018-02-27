@@ -76,6 +76,13 @@ STATUS set_del(Set * set, Id id)
 	return OK;
 }
 
+Id set_get_id(Set * set, int num)
+{
+	if (!set) return NO_ID;
+
+	return set->id_list[num-1];
+}
+
 STATUS set_print(FILE * f, Set * set)
 {
 	int i;
