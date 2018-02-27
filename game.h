@@ -37,7 +37,7 @@ void   game_print_screen(Game* game);
 void   game_print_data(Game* game);
 
 Space* game_get_space(Game* game, Id id);
-Id     game_get_player_location(Game* game);
-Id     game_get_object_location(Game* game);
+Id  game_get_player_location(Game* game);
+Id  game_get_object_location(Game* game);
 T_Command game_get_last_command(Game* game);
 #endif

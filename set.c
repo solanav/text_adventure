@@ -1,25 +1,24 @@
-#include <stdio.h>
-#include <stdlib.>
 
-#include "types.h"
+#include "set.h"
 
 #define INV_SIZE 1024
 
-typedef struct _Set
+struct _Set
 {
 	/* Cambiar a macro */
 	Id id_list[INV_SIZE];
 	int id_total;
-} Set;
+};
 
 Set * set_create()
 {
 	int i;
+	Set* set;
 
 	/* Borrar set pasado si ya existe? */
 	set = (Set *) calloc(1, sizeof(Set));
-	if (!set) return ERROR;
-	
+	if (!set) return NULL;
+
 	for (i=0; i<INV_SIZE; i++)
 	{
 		set->id_list[i] = -1;
@@ -27,7 +26,7 @@ Set * set_create()
 
 	set->id_total = 0;
 
-	return OK;
+	return set;
 }
 
 void set_destroy(Set * set)
@@ -44,7 +43,7 @@ STATUS set_add(Set * set, Id id)
 
 	if (!set) return ERROR;
 
-	for (i=0, checker=0; i<INV_SIZE && checker=0; i++)
+	for (i=0, checker=0; i<INV_SIZE && checker==0; i++)
 	{
 		if (set->id_list[i] == -1)
 		{
@@ -53,7 +52,7 @@ STATUS set_add(Set * set, Id id)
 			checker = 1;
 		}
 	}
-
+	set->id_total++;
 	return OK;
 }
 
@@ -72,20 +71,25 @@ STATUS set_del(Set * set, Id id)
 			set->id_list[i] = -1;
 		}
 	}
+
+	set->id_total--;
+	return OK;
 }
 
-STATUS set_print(Set * set)
+STATUS set_print(FILE * f, Set * set)
 {
 	int i;
-	
-	if (!set) return ERROR;
-	
-	for (i=0; i<INV_SIZE; i++)
-	{
-		obj_p 	 = game_get_object
-		obj_id 	 = obj_getId(set->id_list[i]);
-		obj_name = obj_getName(set->id_list[i]);
 
-		printf("%d -> %ld [%s]", i, obj_id, obj_name);
+	if (!set) return ERROR;
+
+	for (i=0; i<=set->id_total; i++)
+	{
+		if(set->id_list[i]!=-1)
+		{
+			fprintf(f, "%d -> id: %ld\n", i+1, set->id_list[i]);
+		}
 	}
+	fprintf(f, "Total items in set: %d\n", set->id_total);
+
+	return OK;
 }
