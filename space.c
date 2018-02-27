@@ -3,6 +3,7 @@
 #include <string.h>
 #include "types.h"
 #include "space.h"
+#include "set.h"
 
 struct _Space {
   Id id;
@@ -11,7 +12,7 @@ struct _Space {
   Id south;
   Id east;
   Id west;
-  Id obj_id;
+  Set * objects;
 };
 
 Space* space_create(Id id)
@@ -38,7 +39,7 @@ Space* space_create(Id id)
   newSpace->east = NO_ID;
   newSpace->west = NO_ID;
 
-  newSpace->obj_id = NO_ID;
+  newSpace->objects = set_create();
 
   return newSpace;
 }
@@ -49,6 +50,8 @@ STATUS space_destroy(Space* space)
   {
     return ERROR;
   }
+
+  set_destroy(space->objects);
 
   free(space);
   space = NULL;
@@ -115,18 +118,14 @@ STATUS space_set_object_id(Space* space, Id obj_id)
 {
   if (!space) return ERROR;
 
-  space->obj_id = obj_id;
-
-  return OK;
+  return set_add(space->objects, obj_id);
 }
 
-STATUS space_remove_object(Space* space)
+STATUS space_remove_object(Space* space, Id obj_id)
 {
   if (!space) return ERROR;
 
-  space->obj_id = NO_ID;
-
-  return OK;
+  return set_del(space->objects, obj_id);
 }
 
 const char * space_get_name(Space* space)
@@ -173,11 +172,11 @@ Id space_get_west(Space* space)
 
 
 
-Id space_get_object_id(Space* space)
+Set * space_get_objects(Space* space)
 {
   if (!space) return FALSE;
 
-  return space->obj_id;
+  return space->objects;
 }
 
 STATUS space_print(Space* space)
