@@ -40,8 +40,8 @@ STATUS space_set_west(Space* space, Id id);
 Id space_get_west(Space* space);
 
 STATUS space_set_object_id(Space* space, Id obj_id);
-STATUS space_remove_object(Space* space);
-Set * space_get_objects(Space* space);
+STATUS space_remove_object(Space* space, Id obj_id);
+Id space_get_object_id(Space* space, int num);
 
 STATUS space_print(Space* space);
 

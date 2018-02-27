@@ -172,16 +172,17 @@ Id space_get_west(Space* space)
 
 
 
-Set * space_get_objects(Space* space)
+Id space_get_object_id(Space* space, int num)
 {
   if (!space) return FALSE;
 
-  return space->objects;
+  return set_get_id(space->objects, num);
 }
 
 STATUS space_print(Space* space)
 {
   Id idaux = NO_ID;
+  int num;
 
   if (!space) return ERROR;
 
@@ -211,10 +212,17 @@ STATUS space_print(Space* space)
   else
     fprintf(stdout, "---> No west link.\n");
 
-  if (space_get_object_id(space))
-    fprintf(stdout, "---> Object in the space.\n");
-  else
-    fprintf(stdout, "---> No object in the space.\n");
+  for(num=1; ; num++)
+  {
+    if (space_get_object_id(space, num))
+      fprintf(stdout, "---> Object in the space.\n");
+    else
+    {
+      //TODO: Clean break
+      fprintf(stdout, "---> No object in the space.\n");
+      break;
+    }
+  }
 
   return OK;
 }
