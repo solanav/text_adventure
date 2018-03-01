@@ -1,3 +1,5 @@
+EXEC=game_exec die_test set_test
+
 CC=gcc
 CFLAGS=-Wall -g
 
@@ -50,4 +52,4 @@ set.o: set.c set.h types.h game.h
 	$(CC) $(CFLAGS) -c set.c
 
 clean:
-	rm -rf *.o game_exec
+	rm -rf *.o $(EXEC)
