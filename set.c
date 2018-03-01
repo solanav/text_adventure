@@ -5,26 +5,25 @@
 
 struct _Set
 {
-	/* Cambiar a macro */
+	/* "top" points to next empty space */
 	Id id_list[INV_SIZE];
-	int id_total;
+	int top;
 };
 
 Set * set_create()
 {
 	int i;
-	Set* set;
+	Set * set;
 
-	/* Borrar set pasado si ya existe? */
 	set = (Set *) calloc(1, sizeof(Set));
 	if (!set) return NULL;
 
 	for (i=0; i<INV_SIZE; i++)
 	{
-		set->id_list[i] = -1;
+		set->id_list[i] = NO_ID;
 	}
 
-	set->id_total = 0;
+	set->top = 0;
 
 	return set;
 }
@@ -39,64 +38,36 @@ void set_destroy(Set * set)
 
 STATUS set_add(Set * set, Id id)
 {
-	int i, checker;
+	set->id_list[set->top] = id;
+	set->top++;
 
-	if (!set) return ERROR;
-
-	for (i=0, checker=0; i<INV_SIZE && checker==0; i++)
-	{
-		if (set->id_list[i] == -1)
-		{
-			/* When found id without value append new id */
-			set->id_list[i] = id;
-			checker = 1;
-		}
-	}
-	set->id_total++;
 	return OK;
 }
 
-STATUS set_del(Set * set, Id id)
+Id set_pick(Set * set)
 {
-	/* Replaces the looked for id with a zero */
+	set->top--;
+	Id id_picked = set->id_list[set->top];
+	set->id_list[set->top] = NO_ID;
 
-	int i;
-
-	if (!set || id == -1) return ERROR;
-
-	for (i=0; i<INV_SIZE; i++)
-	{
-		if (set->id_list[i] == id)
-		{
-			set->id_list[i] = -1;
-		}
-	}
-
-	set->id_total--;
-	return OK;
+	return id_picked;
 }
 
-Id set_get_id(Set * set, int num)
+Id set_get_id(Set * set, int i)
 {
-	if (!set) return NO_ID;
-
-	return set->id_list[num-1];
+	return set->id_list[i];	
 }
 
-STATUS set_print(FILE * f, Set * set)
+STATUS set_print_debug(FILE * f, Set * set)
 {
 	int i;
 
 	if (!set) return ERROR;
-
-	for (i=0; i<=set->id_total; i++)
+	
+	for (i=(set->top)-1; i>=0; i--)
 	{
-		if(set->id_list[i]!=-1)
-		{
-			fprintf(f, "%d -> id: %ld\n", i+1, set->id_list[i]);
-		}
+		fprintf(f, "POSITION > %d || ID > %ld\n", i, set_get_id(set, i));
 	}
-	fprintf(f, "Total items in set: %d\n", set->id_total);
 
 	return OK;
 }
