@@ -19,10 +19,15 @@ int main()
 	}
 
 	j = 4;
+	
+	if(set_print_debug(stdout, test_set)==ERROR) goto error1;
+	
+	printf("\n_________________\n");
 
-	if(set_del(test_set, j)==ERROR) goto error1;
+	if(set_pick(test_set)==ERROR) goto error1;
 
-	if(set_print(stdout, test_set)==ERROR) goto error1;
+	if(set_print_debug(stdout, test_set)==ERROR) goto error1;
+	
 	return 0;
 
 	error1:
