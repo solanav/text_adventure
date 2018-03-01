@@ -121,11 +121,11 @@ STATUS space_set_object_id(Space* space, Id obj_id)
   return set_add(space->objects, obj_id);
 }
 
-STATUS space_remove_object(Space* space, Id obj_id)
+STATUS space_remove_object(Space* space)
 {
   if (!space) return ERROR;
 
-  return set_del(space->objects, obj_id);
+  return set_pick(space->objects);
 }
 
 const char * space_get_name(Space* space)
@@ -172,17 +172,27 @@ Id space_get_west(Space* space)
 
 
 
-Id space_get_object_id(Space* space, int num)
+Set * space_get_objects_id(Space* space)
 {
+  Set * set;
+  int n;
+
   if (!space) return FALSE;
 
-  return set_get_id(space->objects, num);
+  set = set_create();
+  if(!set) return NULL;
+
+  for(n=0; set_get_id(space->objects, n) != NO_ID; n++)
+  {
+    if(set_add(set, set_get_id(space->objects, n)) == ERROR) return NULL;
+  }
+
+  return set;
 }
 
 STATUS space_print(Space* space)
 {
   Id idaux = NO_ID;
-  int num;
 
   if (!space) return ERROR;
 
@@ -212,16 +222,11 @@ STATUS space_print(Space* space)
   else
     fprintf(stdout, "---> No west link.\n");
 
-  for(num=1; ; num++)
+  if (space_get_objects_id(space))
+    set_print_debug(space->objects);
+  else
   {
-    if (space_get_object_id(space, num))
-      fprintf(stdout, "---> Object in the space.\n");
-    else
-    {
-      //TODO: Clean break
-      fprintf(stdout, "---> No object in the space.\n");
-      break;
-    }
+    fprintf(stdout, "---> No objects in the space.\n");
   }
 
   return OK;

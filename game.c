@@ -128,23 +128,28 @@ Id game_get_player_location(Game* game)
   return player_getLocId(game->player);
 }
 
-Id game_get_object_location(Game* game) // error here
+Set * game_get_object_location(Game* game)
 {
   int i;
+  Set* set;
 
-  if (!game) return NO_ID;
+  if (!game) return NULL;
 
+  set = set_create();
+  if(!set) return NULL;
   // Itera por los espacios comprobando si esta el objeto que buscas
   for (i = 0; i < MAX_SPACES; i++)
   {
-    if (space_get_object_id(game->spaces[i]) == obj_getId(game->object))
+    for(n = 0; set_get_id(space_get_objects_id(game->spaces[i]), n) != NO_ID; n++)
     {
-      return space_get_id(game->spaces[i]);
+      if (set_get_id(space_get_objects_id(game->spaces[i]), n) == obj_getId(game->object))
+      {
+        if(set_add(set, space_get_id(game->spaces[i])) == ERROR) return NULL;
+      }
     }
   }
 
-  // Si no lo encuentra
-  return NO_ID;
+  return set;
 }
 
 STATUS game_update(Game* game, T_Command cmd)
