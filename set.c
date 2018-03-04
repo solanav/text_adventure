@@ -42,7 +42,7 @@ STATUS set_add(Set * set, Id id)
 
 	for (i=0, done=0; i<set->id_total && done==0; i++)
 	{
-		if (set->id_list[i] == -1)
+		if (set->id_list[i] == NO_ID)
 		{
 			set->id_list[i] = id;
 			done++;
@@ -81,7 +81,7 @@ STATUS set_rm_all(Set * set)
 	
 	for (i=0; i<set->id_total; i++)
 	{
-		set->id_list[i] = -1;
+		set->id_list[i] = NO_ID;
 	}
 
 	return OK;
@@ -89,18 +89,46 @@ STATUS set_rm_all(Set * set)
 
 Set * set_cp_all(Set * set)
 {
+	int i;
 	Set * set_copy = set_create(set->id_total);
-
 	
-
 	if (!set) return NULL;
-	return NULL;
+	
+	for (i=0; i<set->id_total; i++)
+	{
+		set_copy->id_list[i] = set->id_list[i];
+	}
+	
+	return set_copy;
 }
 
 STATUS set_rearrange(Set * set)
 {
+	/* Moves all ids to fill empty spaces */
+
+	int i, j, removed_count=0;
+
 	if (!set) return ERROR;
-	return ERROR;
+
+	for (i=0, j=0; i<set->id_total; i++)
+	{
+		if (set->id_list[i] != NO_ID)
+		{
+			set->id_list[j] = set->id_list[i];
+			j++;
+		}
+		else
+		{
+			removed_count++;
+		}
+	}
+	
+	for (i=(set->id_total)-1, j=0; j<removed_count; j++, i--)
+	{
+		set->id_list[i] = NO_ID;
+	}
+
+	return OK;
 }
 
 STATUS set_print_debug(FILE * f, Set * set)

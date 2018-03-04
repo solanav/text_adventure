@@ -5,11 +5,12 @@
 
 int main()
 {
-	Set * test_set;
+	Set * test_set, * test_set_copy;
 	int i, inv_size=15;
 	Id j=2;
 
-	test_set = set_create(inv_size);
+	test_set = set_create(inv_size); 
+
 	if(!test_set) goto error0;
 
 	for(i=0; i<inv_size; i++)
@@ -20,9 +21,20 @@ int main()
 	
 	if(set_print_debug(stdout, test_set)==ERROR) goto error1;
 	
-	printf("\n################ Now we remove last item\n\n");
+	test_set_copy = set_cp_all(test_set);
+
+	printf("\n################ Now we remove a couple of items\n\n");
 
 	if(set_pick(test_set, 3)==ERROR) goto error1;
+	if(set_pick(test_set, 7)==ERROR) goto error1;
+	if(set_pick(test_set, 1)==ERROR) goto error1;
+	if(set_pick(test_set, 8)==ERROR) goto error1;
+	
+	if(set_print_debug(stdout, test_set)==ERROR) goto error1;
+
+	printf("\n################ Now we rearrange\n\n");
+
+	if(set_rearrange(test_set)==ERROR) goto error1;
 
 	if(set_print_debug(stdout, test_set)==ERROR) goto error1;
 
@@ -31,9 +43,11 @@ int main()
 	if(set_rm_all(test_set)==ERROR) goto error1;
 
 	if(set_print_debug(stdout, test_set)==ERROR) goto error1;
+	
+	printf("\n################ Now we print test copy\n\n");
 
-	/*if(set_print_debug(stdout, test_set)==ERROR) goto error1;
-	*/	
+	if(set_print_debug(stdout, test_set_copy)==ERROR) goto error1;
+	
 	return 0;
 
 	error1:
