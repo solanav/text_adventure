@@ -13,6 +13,7 @@
 
 #include "types.h"
 #include "object.h"
+#include "set.h"
 
 typedef struct _Space Space;
 

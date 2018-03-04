@@ -1,7 +1,8 @@
 EXEC=game_exec die_test set_test
-
 CC=gcc
 CFLAGS=-Wall -g
+
+################ EXEC CREATION
 
 game_exec: game_loop.o command.o game_reader.o graphic_engine.o screen.o space.o object.o game.o player.o die.o
 	$(CC) $(CFLAGS) -o $@ $^
@@ -11,6 +12,8 @@ die_test: die_test.o die.o
 
 set_test: set_test.o set.o object.o
 	$(CC) $(CFLAGS) -o $@ $^
+
+################ FILE COMPILATION 
 
 player.o: player.c types.h player.h
 	$(CC) $(CFLAGS) -c player.c
@@ -27,7 +30,7 @@ graphic_engine.o: graphic_engine.c graphic_engine.h screen.h
 screen.o: screen.c screen.h
 	$(CC) $(CFLAGS) -c screen.c
 
-space.o: space.c space.h types.h
+space.o: space.c space.h types.h set.h
 	$(CC) $(CFLAGS) -c space.c
 
 object.o: object.c object.h types.h
@@ -36,7 +39,7 @@ object.o: object.c object.h types.h
 command.o: command.c command.h
 	$(CC) $(CFLAGS) -c command.c
 
-game.o: game.c game.h game_reader.h object.h player.h space.h
+game.o: game.c game.h game_reader.h object.h player.h space.h set.h
 	$(CC) $(CFLAGS) -c game.c
 
 die_test.o: die_test.c die.h types.h
@@ -50,6 +53,8 @@ set_test.o: set_test.c set.h object.h
 
 set.o: set.c set.h types.h game.h
 	$(CC) $(CFLAGS) -c set.c
+
+################ OTHER COMMANDS
 
 clean:
 	rm -rf *.o $(EXEC)
