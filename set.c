@@ -1,7 +1,4 @@
-
 #include "set.h"
-
-#define MAX_INV_SIZE 1024
 
 struct _Set
 {
