@@ -114,7 +114,7 @@ STATUS space_set_west(Space* space, Id id)
   return OK;
 }
 
-STATUS space_set_object_id(Space* space, Id obj_id)
+STATUS space_add_object(Space* space, Id obj_id)
 {
   if (!space) return ERROR;
 
