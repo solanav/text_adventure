@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include "types.h"
 
+#define MAX_INV_SIZE 1024
+
 typedef struct _Set Set;
 
 Set * set_create(int);
