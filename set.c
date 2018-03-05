@@ -52,17 +52,23 @@ STATUS set_add(Set * set, Id id)
 	return OK;
 }
 
-Id set_pick(Set * set, int num)
+STATUS set_del(Set * set, Id id)
 {
-	Id id_picked;
-	
-	if (!set) return NO_ID;
-	if (num > set->id_total) return NO_ID;
-	
-	id_picked = set->id_list[num];
-	set->id_list[num] = NO_ID;
+	int i;
 
-	return id_picked;
+	if (!set) return ERROR;
+
+	for(i=0; i<set->id_total; i++)
+	{
+		if(set->id_list[i] == id)
+		{
+			set->id_list[i] = NO_ID;
+			if (set_rearrange(set) == ERROR) return ERROR;
+			return OK;
+		}
+	}
+
+	return ERROR;
 }
 
 Id set_get_id(Set * set, int num)
@@ -78,7 +84,7 @@ STATUS set_rm_all(Set * set)
 	int i=0;
 
 	if (!set) return ERROR;
-	
+
 	for (i=0; i<set->id_total; i++)
 	{
 		set->id_list[i] = NO_ID;
@@ -91,14 +97,14 @@ Set * set_cp_all(Set * set)
 {
 	int i;
 	Set * set_copy = set_create(set->id_total);
-	
+
 	if (!set) return NULL;
-	
+
 	for (i=0; i<set->id_total; i++)
 	{
 		set_copy->id_list[i] = set->id_list[i];
 	}
-	
+
 	return set_copy;
 }
 
@@ -122,7 +128,7 @@ STATUS set_rearrange(Set * set)
 			removed_count++;
 		}
 	}
-	
+
 	for (i=(set->id_total)-1, j=0; j<removed_count; j++, i--)
 	{
 		set->id_list[i] = NO_ID;
@@ -136,7 +142,7 @@ STATUS set_print_debug(FILE * f, Set * set)
 	int i;
 
 	if (!set) return ERROR;
-	
+
 	printf("INV SIZE IS -> %d\n\n", set->id_total);
 
 	for (i=0; i<set->id_total; i++)

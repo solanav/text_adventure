@@ -39,7 +39,7 @@ Space* space_create(Id id)
   newSpace->east = NO_ID;
   newSpace->west = NO_ID;
 
-  newSpace->objects = set_create();
+  newSpace->objects = set_create(5);
 
   return newSpace;
 }
@@ -121,11 +121,11 @@ STATUS space_set_object_id(Space* space, Id obj_id)
   return set_add(space->objects, obj_id);
 }
 
-STATUS space_remove_object(Space* space)
+STATUS space_remove_object(Space* space, Id id)
 {
   if (!space) return ERROR;
 
-  return set_pick(space->objects);
+  return set_del(space->objects, id);
 }
 
 const char * space_get_name(Space* space)
@@ -179,7 +179,7 @@ Set * space_get_objects_id(Space* space)
 
   if (!space) return FALSE;
 
-  set = set_create();
+  set = set_create(5);
   if(!set) return NULL;
 
   for(n=0; set_get_id(space->objects, n) != NO_ID; n++)
@@ -223,7 +223,7 @@ STATUS space_print(Space* space)
     fprintf(stdout, "---> No west link.\n");
 
   if (space_get_objects_id(space))
-    set_print_debug(space->objects);
+    set_print_debug(stdout, space->objects);
   else
   {
     fprintf(stdout, "---> No objects in the space.\n");

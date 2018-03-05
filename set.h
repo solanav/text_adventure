@@ -11,7 +11,7 @@ Set * set_create(int);
 void set_destroy(Set *);
 
 STATUS set_add(Set *, Id);
-Id set_pick(Set *, int);
+STATUS set_del(Set *, Id);
 Id set_get_id(Set *, int);
 
 STATUS set_rm_all(Set *);
