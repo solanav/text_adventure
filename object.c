@@ -21,7 +21,7 @@ Object* object_create(char* name, Id id)
 
 void object_destroy(Object* obj)
 {
-  if(!obj){return;}
+  if(!obj) return;
 
   free(obj);
 }
@@ -37,7 +37,7 @@ STATUS object_setName(Object* obj, char* name)
 
 STATUS object_setId(Object* obj, Id id)
 {
-  if(!obj){return ERROR;}
+  if(!obj) return ERROR;
 
   obj->id = id;
 
@@ -46,14 +46,14 @@ STATUS object_setId(Object* obj, Id id)
 
 char* object_getName(Object* obj)
 {
-  if(!obj){return NULL;}
+  if(!obj) return NULL;
 
   return obj->name;
 }
 
 Id object_getId(Object* obj)
 {
-  if(!obj){return -1;}
+  if(!obj) return -1;
 
   return obj->id;
 }
