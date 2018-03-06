@@ -6,7 +6,7 @@ struct _Object{
   Id id;
 };
 
-Object* obj_create(char* name, Id id)
+Object* object_create(char* name, Id id)
 {
   Object *obj;
 
@@ -19,14 +19,14 @@ Object* obj_create(char* name, Id id)
   return obj;
 }
 
-void obj_destroy(Object* obj)
+void object_destroy(Object* obj)
 {
   if(!obj){return;}
 
   free(obj);
 }
 
-STATUS obj_setName(Object* obj, char* name)
+STATUS object_setName(Object* obj, char* name)
 {
   if(!obj||!name) return ERROR;
 
@@ -35,7 +35,7 @@ STATUS obj_setName(Object* obj, char* name)
   return OK;
 }
 
-STATUS obj_setId(Object* obj, Id id)
+STATUS object_setId(Object* obj, Id id)
 {
   if(!obj){return ERROR;}
 
@@ -44,14 +44,14 @@ STATUS obj_setId(Object* obj, Id id)
   return OK;
 }
 
-char* obj_getName(Object* obj)
+char* object_getName(Object* obj)
 {
   if(!obj){return NULL;}
 
   return obj->name;
 }
 
-Id obj_getId(Object* obj)
+Id object_getId(Object* obj)
 {
   if(!obj){return -1;}
 

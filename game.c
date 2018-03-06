@@ -65,7 +65,7 @@ STATUS game_create(Game* game)
   }
 
   game->player = player_create("player1", NO_ID, NO_ID, 1);
-  game->object = obj_create("head", 1);
+  game->object = object_create("head", 1);
 
   game_set_player_location(game, NO_ID);
   game_set_object_location(game, NO_ID);
@@ -142,7 +142,7 @@ Set * game_get_object_location(Game* game)
   {
     for(n = 0; set_get_id(space_get_objects_id(game->spaces[i]), n) != NO_ID; n++)
     {
-      if (set_get_id(space_get_objects_id(game->spaces[i]), n) == obj_getId(game->object))
+      if (set_get_id(space_get_objects_id(game->spaces[i]), n) == object_getId(game->object))
       {
         if(set_add(set, space_get_id(game->spaces[i])) == ERROR) return NULL;
       }
@@ -262,7 +262,7 @@ void game_callback_pickup(Game* game)
 
   if (playerloc_id == objectloc_id)
   {
-    player_setObjId(game->player, obj_getId(game->object));
+    player_setObjId(game->player, object_getId(game->object));
     space_set_object_id(game_get_space(game, playerloc_id), NO_ID);
     return;
   }
@@ -346,7 +346,7 @@ STATUS game_set_object_location(Game* game, Id id)
   {
     if (space_get_id(game->spaces[i]) == id)
     {
-      space_set_object_id(game->spaces[i], obj_getId(game->object));
+      space_set_object_id(game->spaces[i], object_getId(game->object));
       printf("%p - %p\n", game->object, game->object);
       printf("-> %ld\n", game_get_object_location(game));
       return OK;

@@ -62,7 +62,7 @@ set.o: set.c set.h types.h game.h
 ################ OTHER COMMANDS
 
 clean:
-	rm -rf *.o $i(EXEC)
+	rm -rf *.o $(EXEC)
 
 tar:
 	tar -czf PPROG_2163_I2_P11.tar.gz *
