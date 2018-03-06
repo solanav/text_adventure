@@ -23,6 +23,8 @@ typedef enum enum_Command
   ROLL
 } T_Command;
 
+typedef struct _F_Command F_Command;
+
 T_Command get_user_input();
 
 #endif

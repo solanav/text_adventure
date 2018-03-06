@@ -15,17 +15,22 @@
 #define CMD_LENGHT 30
 #define N_CMD 8
 
-char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous", "Pick Up", "Drop", "Roll"};
-char *short_cmd_to_str[N_CMD] = {"","","e","f","p", "u", "d", "r"};
-
-
-T_Command get_user_input()
+struct _F_Command
 {
-  T_Command cmd = NO_CMD;
+  T_Command text;
+  Id id;
+};
+
+char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous", "Pickup %ld", "Drop %ld", "Roll"};
+char *short_cmd_to_str[N_CMD] = {"","","e","f","p", "u %ld", "d %ld", "r"};
+
+F_Command get_user_input()
+{
+  F_Command cmd = NO_CMD;
   char input[CMD_LENGHT] = "";
   int i=UNKNOWN - NO_CMD + 1;
 
-  if (scanf("%s", input) > 0)
+  if ((input = fgets(stdout)) > 0)
   {
     cmd = UNKNOWN;
     while(cmd == UNKNOWN && i < N_CMD)
@@ -41,4 +46,28 @@ T_Command get_user_input()
     }
   }
   return cmd;
+}
+
+F_Command command_create(T_Command cmd, Id id)
+{
+  F_Command command;
+
+  command.text = cmd;
+  command.id = id;
+
+  return command;
+}
+
+F_Command input_read(char* input)
+{
+  int i;
+  char string[CMD_LENGHT];
+  Id id;
+  F_Command command=command_create(NO_CMD, NO_ID);
+
+  if(!sscanf(input, "%s", string)) return command;
+  while(i < N_CMD)
+  {
+    if()
+  }
 }
