@@ -1,6 +1,11 @@
 EXEC=game_exec die_test set_test
 CC=gcc
-CFLAGS=-Wall -g
+CFLAGS=-Wall -g -pedantic
+
+################ ALL
+
+all: clean game_exec
+
 
 ################ EXEC CREATION
 
@@ -57,4 +62,7 @@ set.o: set.c set.h types.h game.h
 ################ OTHER COMMANDS
 
 clean:
-	rm -rf *.o $(EXEC)
+	rm -rf *.o $i(EXEC)
+
+tar:
+	tar -czf PPROG_2163_I2_P11.tar.gz *
