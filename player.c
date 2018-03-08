@@ -25,9 +25,17 @@ Player * player_create(char * name, Id location_id, Id object_id, Id id)
 	new_player->location_id = location_id;
 	new_player->id = id;
 
-	new_player->inventory = set_create(4); 
+	new_player->inventory = set_create(4);
 
 	return new_player;
+}
+
+void player_destroy(Player *player)
+{
+  if(!player) return;
+
+  set_del(player->inventory);
+  free(player);
 }
 
 
