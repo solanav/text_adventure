@@ -9,6 +9,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <strings.h>
 #include "command.h"
 
@@ -56,9 +57,9 @@ F_Command * get_user_input()
   int i = UNKNOWN - NO_CMD + 1;
   char string[CMD_LENGHT], input[CMD_LENGHT];
   Id id;
-  F_Command command=command_create(NO_CMD, NO_ID);
+  F_Command * command = command_create(NO_CMD, NO_ID);
 
-  if(input = fgets(sdout) <= 0) return command;
+  if(fgets(input, CMD_LENGHT, stdout) != NULL) return command;
 
   if(!sscanf(input, "%s", string)) return command;
   while(i < (N_CMD - 2))
@@ -73,7 +74,7 @@ F_Command * get_user_input()
       i++;
     }
   }
-  if(!sscanf(input, "%s %ld", string, id)
+  if(!sscanf(input, "%s %ld", string, &id))
   {
     if(i == PICK_UP || i== DROP)
     {
@@ -84,17 +85,15 @@ F_Command * get_user_input()
     else
       return command;
   }
-  else
-  {
-    return commmand;
-  }
+
+  return command;
 }
 
 F_Command * command_create(T_Command cmd, Id id)
 {
-  F_Command command;
+  F_Command * command;
 
-  command = (F_Command *)calloc(1, sizeof(F_Command));
+  command = calloc(1, sizeof(F_Command));
 
   command->text = cmd;
   command->id = id;

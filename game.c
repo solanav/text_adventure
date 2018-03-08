@@ -148,7 +148,7 @@ Id game_get_object_location(Game* game, Id id)
 
 }
 
-STATUS game_update(Game* game, F_Command cmd)
+STATUS game_update(Game* game, F_Command * cmd)
 {
   game->last_cmd = cmd;
   (*game_callback_fn_list[command_getCmd(cmd)])(game);
