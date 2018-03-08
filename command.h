@@ -31,10 +31,14 @@ F_Command * get_user_input();
 
 F_Command * command_create(T_Command, Id);
 
-STATUS command_setCmd(F_Command,T_Command);
+STATUS command_setCmd(F_Command *,T_Command);
 
-STATUS command_setId(F_Command, Id);
+T_Command command_getCmd(F_Command * );
 
-void command_free(F_Command);
+Id command_getId(F_Command *);
+
+STATUS command_setId(F_Command *, Id);
+
+void command_free(F_Command *);
 
 #endif

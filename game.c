@@ -128,38 +128,34 @@ Id game_get_player_location(Game* game)
   return player_getLocId(game->player);
 }
 
-Set * game_get_object_location(Game* game)
+Id game_get_object_location(Game* game, Id id)
 {
   int i;
-  Set* set;
 
-  if (!game) return NULL;
+  if (!game) return NO_ID;
 
-  set = set_create();
-  if(!set) return NULL;
   // Itera por los espacios comprobando si esta el objeto que buscas
   for (i = 0; i < MAX_SPACES; i++)
   {
     for(n = 0; set_get_id(space_get_objects_id(game->spaces[i]), n) != NO_ID; n++)
     {
-      if (set_get_id(space_get_objects_id(game->spaces[i]), n) == object_getId(game->object))
+      if (set_get_id(space_get_objects_id(game->spaces[i]), n) == id)
       {
-        if(set_add(set, space_get_id(game->spaces[i])) == ERROR) return NULL;
+        return space_get_id(game->spaces[i]);
       }
     }
   }
 
-  return set;
 }
 
-STATUS game_update(Game* game, T_Command cmd)
+STATUS game_update(Game* game, F_Command cmd)
 {
   game->last_cmd = cmd;
-  (*game_callback_fn_list[cmd])(game);
+  (*game_callback_fn_list[command_getCmd(cmd)])(game);
   return OK;
 }
 
-T_Command game_get_last_command(Game* game)
+F_Command * game_get_last_command(Game* game)
 {
   return game->last_cmd;
 }
@@ -255,28 +251,37 @@ void game_callback_previous(Game* game)
 
 void game_callback_pickup(Game* game)
 {
+  Id objectpickup_id = command_getId(game->last_cmd);
   Id playerloc_id = game_get_player_location(game);
-  Id objectloc_id = game_get_object_location(game);
+  Id objectloc_id = game_get_object_location(game, objectpickup_id);
 
   if(objectloc_id == NO_ID)return;
 
   if (playerloc_id == objectloc_id)
   {
-    player_setObjId(game->player, object_getId(game->object));
-    space_set_object_id(game_get_space(game, playerloc_id), NO_ID);
+    player_setObjId(game->player, objectpickup_id);
+    space_remove_object(game_get_space(game, playerloc_id), objectpickup_id);
     return;
   }
 }
 
 void game_callback_drop(Game* game)
 {
+  int n;
   Id playerloc_id = game_get_player_location(game);
-  Id obj_id = player_getObjId(game->player);
+  Id obj_id = command_getId(game->last_cmd);
 
   if(obj_id == NO_ID) return;
 
-  space_set_object_id(game_get_space(game, playerloc_id), obj_id);
-  player_setObjId(game->player, NO_ID);
+  for(n=0; player_getObjId(game->player, n) != NO_ID; n++)
+  {
+    if(player_getObjId(game->player, n) == obj_id)
+    {
+      if(space_add_object(game_get_space(game, playerloc_id), obj_id) == ERROR) return;
+      player_removeObjId(game->player, obj_id);
+      return;
+    }
+  }
 }
 
 void game_callback_roll(Game* game)

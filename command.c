@@ -51,7 +51,7 @@ F_Command get_user_input()
 }
 */
 
-F_Command get_user_input()
+F_Command * get_user_input()
 {
   int i = UNKNOWN - NO_CMD + 1;
   char string[CMD_LENGHT], input[CMD_LENGHT];
@@ -108,6 +108,20 @@ STATUS command_setCmd(F_Command * cmd, T_Command command)
 
   cmd->text = command;
   return OK;
+}
+
+T_Command command_getCmd(F_Command * cmd)
+{
+  if(!cmd) return NO_CMD;
+
+  return cmd->text;
+}
+
+Id command_getId(F_Command * cmd)
+{
+  if(!cmd) return NO_ID;
+
+  return cmd->id;
 }
 
 STATUS command_setId(F_Command * cmd, Id id)
