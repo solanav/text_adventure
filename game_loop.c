@@ -24,14 +24,14 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	
-	// load
+	/* load */
 	if (game_create_from_file(&game, argv[1]) == ERROR)
 	{
 		fprintf(stderr, "Error while initializing game.\n");
 		return 1;
 	}
 	
-	// start graphic engine
+	/* start graphic engine */
 	if ((gengine = graphic_engine_create()) == NULL)
 	{
 		fprintf(stderr, "Error while initializing graphic engine.\n");
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	
-	// main loop
+	/* main loop */
 	while ((command != EXIT) && !game_is_over(&game))
 	{
 		graphic_engine_paint_game(gengine, &game);

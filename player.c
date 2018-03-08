@@ -5,7 +5,7 @@
 struct _Player {
   char name[STDSIZE];
   Id location_id;
-  Id object_id;
+  Set * inventory;
   Id id;
 };
 
@@ -23,8 +23,9 @@ Player * player_create(char * name, Id location_id, Id object_id, Id id)
 
 	strcpy(new_player->name, name);
 	new_player->location_id = location_id;
-	new_player->object_id = object_id;
 	new_player->id = id;
+
+	new_player->inventory = set_create(4); 
 
 	return new_player;
 }
@@ -43,7 +44,7 @@ STATUS player_setLocId(Player * player, Id new_locId)
 {
 	if(!player) return ERROR;
 
-  player->location_id = new_locId;
+	player->location_id = new_locId;
 
 	return OK;
 }
@@ -52,7 +53,7 @@ STATUS player_setObjId(Player * player, Id new_objId)
 {
 	if(!player) return ERROR;
 
-	player->object_id = new_objId;
+	player->inventory = set_add(player, new_objId);
 
 	return OK;
 }
@@ -60,8 +61,7 @@ STATUS player_setObjId(Player * player, Id new_objId)
 STATUS player_setId(Player * player, Id new_id)
 {
 	if(!player) return ERROR;
-
-  player->id = new_id;
+ 	player->id = new_id;
 
 	return OK;
 }
@@ -80,11 +80,11 @@ Id player_getLocId(Player * player)
 	return player->location_id;
 }
 
-Id player_getObjId(Player * player)
+Id player_getObjId(Player * player, int num)
 {
 	if(!player) return -1;
 
-	return player->object_id;
+	return set_get_id(player->inventory, num);
 }
 
 Id player_getId(Player * player)
@@ -92,4 +92,13 @@ Id player_getId(Player * player)
 	if(!player) return -1;
 
 	return player->id;
+}
+
+STATUS player_removeObjId(Player * player, Id id)
+{
+	if (!player) return ERROR;
+
+	set_del(player->inventory, id);
+
+	return OK;
 }
