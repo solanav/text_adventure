@@ -19,7 +19,7 @@
 struct _F_Command
 {
   T_Command text;
-  Id id;
+  char name[20];
 };
 
 char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous", "Pickup %ld", "Drop %ld", "Roll"};
@@ -55,9 +55,8 @@ F_Command get_user_input()
 F_Command * get_user_input()
 {
   int i = UNKNOWN - NO_CMD + 1;
-  char string[CMD_LENGHT], input[CMD_LENGHT];
-  Id id;
-  F_Command * command = command_create(NO_CMD, NO_ID);
+  char string[CMD_LENGHT], input[CMD_LENGHT], str[20];
+  F_Command * command = command_create(NO_CMD, "\0");
 
   if(fgets(input, CMD_LENGHT, stdout) != NULL) return command;
 
@@ -74,12 +73,12 @@ F_Command * get_user_input()
       i++;
     }
   }
-  if(!sscanf(input, "%s %ld", string, &id))
+  if(!sscanf(input, "%s %s", string, str))
   {
     if(i == PICK_UP || i== DROP)
     {
       command_setCmd(command, i);
-      command_setId(command, id);
+      command_setName(command, str);
       return command;
     }
     else
@@ -89,19 +88,19 @@ F_Command * get_user_input()
   return command;
 }
 
-F_Command * command_create(T_Command cmd, Id id)
+F_Command * command_create(T_Command cmd, char * name)
 {
   F_Command * command;
 
   command = calloc(1, sizeof(F_Command));
 
   command->text = cmd;
-  command->id = id;
+  strcpy(command->name, name);
 
   return command;
 }
 
-STATUS command_setCmd(F_Command * cmd, T_Command command)
+STATUS command_setCmd(F_Command * cmd, char * str)
 {
   if(!cmd) return ERROR;
 
@@ -116,18 +115,18 @@ T_Command command_getCmd(F_Command * cmd)
   return cmd->text;
 }
 
-Id command_getId(F_Command * cmd)
+char * command_getName(F_Command * cmd)
 {
   if(!cmd) return NO_ID;
 
-  return cmd->id;
+  return cmd->name;
 }
 
-STATUS command_setId(F_Command * cmd, Id id)
+STATUS command_setName(F_Command * cmd, char * str)
 {
   if(!cmd) return ERROR;
 
-  cmd->id = id;
+  strcpy(cmd->name, str);
   return OK;
 }
 
