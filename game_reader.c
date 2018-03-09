@@ -42,15 +42,15 @@ STATUS game_load_spaces(Game* game, char* filename)
   {
     if (strncmp("#s:", line, 3) == 0)
     {
-      // Read ID
+      /* Read ID */
       toks = strtok(line + 3, "|");
       id = atol(toks);
 
-      // Read NAME
+      /* Read NAME */
       toks = strtok(NULL, "|");
       strcpy(name, toks);
 
-      // Read North/East/South/West
+      /* Read North/East/South/West */
       toks = strtok(NULL, "|");
       north = atol(toks);
 
@@ -63,15 +63,15 @@ STATUS game_load_spaces(Game* game, char* filename)
       toks = strtok(NULL, "|");
       west = atol(toks);
 
-      // Debug info
+      /* Debug info */
       #ifdef DEBUG
         printf("Leido: %ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
       #endif
 
-      // Create space (only assigns id for now)
+      /* Create space (only assigns id for now) */
       space = space_create(id);
 
-      // Save what we just read
+      /* Save what we just read */
       if (space != NULL)
       {
         space_set_name(space, name);
