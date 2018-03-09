@@ -59,18 +59,23 @@ STATUS game_create(Game* game)
    * returns: ERROR or OK
    */
   int i;
+  char name[20];
 
   for (i = 0; i < MAX_SPACES; i++) {
     game->spaces[i] = NULL;
   }
 
   game->player = player_create("player1", NO_ID, NO_ID, 1);
-  game->object = object_create("head", 1);
+  for(i = 0; i < 4; i++)
+  {
+    sprintf(name, "o%d", i+1);
+    game->objects[i] = object_create(name, i+1);
+  }
 
   game_set_player_location(game, NO_ID);
-  game_set_object_location(game, NO_ID);
+  game_set_object_location(game, NO_ID, NO_ID);
 
-  game->last_cmd = NO_CMD;
+  game->last_cmd = command_create(NO_CMD, "\0");
 
   return OK;
 }
@@ -83,13 +88,11 @@ STATUS game_create_from_file(Game* game, char* filename)
   // Load provided file
   if (game_load_spaces(game, filename) == ERROR) return ERROR;
 
-  printf("[DEBUG] SET OBJECT AT -> %ld\n", game_get_space_id_at(game, 4));
-
   game_set_player_location(game, game_get_space_id_at(game, 0));
-  game_set_object_location(game, game_get_space_id_at(game, 4));
-
-  printf("[DEBUG] PLAYER LOC    -> %ld\n", game_get_player_location(game));
-  printf("[DEBUG] OBJECT LOC    -> %ld\n", game_get_object_location(game));
+  for (i = 0; game->objects[i] != NULL; i++)
+  {
+    game_set_object_location(game, game_get_space_id_at(game, 4), object_getId(game->objects[i]));
+  }
 
   return OK;
 }
@@ -101,6 +104,13 @@ STATUS game_destroy(Game* game)
   for (i = 0; (i < MAX_SPACES) && (game->spaces[i] != NULL); i++) {
     space_destroy(game->spaces[i]);
   }
+
+  player_destroy(game->player);
+  for(i = 0; game->objects[i] != NULL; i++)
+  {
+    object_destroy(game->objects[i]);
+  }
+  command_free(game->last_cmd);
 
   return OK;
 }
@@ -332,7 +342,7 @@ STATUS game_set_player_location(Game* game, Id id)
   return OK;
 }
 
-STATUS game_set_object_location(Game* game, Id id)
+STATUS game_set_object_location(Game* game, Id id, Id obj_id)
 {
   /*
    * Sets object location to "id"
@@ -351,9 +361,7 @@ STATUS game_set_object_location(Game* game, Id id)
   {
     if (space_get_id(game->spaces[i]) == id)
     {
-      space_set_object_id(game->spaces[i], object_getId(game->object));
-      printf("%p - %p\n", game->object, game->object);
-      printf("-> %ld\n", game_get_object_location(game));
+      space_set_object_id(game->spaces[i], obj_id);
       return OK;
     }
   }

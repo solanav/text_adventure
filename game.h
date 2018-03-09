@@ -21,7 +21,7 @@
 
 typedef struct _Game{
   Player * player;
-  Set * objects;
+  Object * objects[4];
   Space* spaces[MAX_SPACES + 1];
   F_Command * last_cmd;
 } Game;
