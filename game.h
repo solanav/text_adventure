@@ -17,7 +17,6 @@
 #include "object.h"
 #include "player.h"
 #include "die.h"
-#include "set.h"
 
 typedef struct _Game{
   Player * player;
@@ -26,19 +25,29 @@ typedef struct _Game{
   F_Command * last_cmd;
 } Game;
 
-STATUS game_create(Game* game);
-STATUS game_create_from_file(Game* game, char* filename);
+STATUS 	game_create(Game *);
+STATUS 	game_create_from_file(Game *, char *);
 
-STATUS game_update(Game* game, F_Command * cmd);
-STATUS game_destroy(Game* game);
+STATUS 	game_update(Game *, F_Command *);
+STATUS	game_destroy(Game *);
 
-BOOL   game_is_over(Game* game);
+BOOL   	game_is_over(Game *);
 
-void   game_print_screen(Game* game);
-void   game_print_data(Game* game);
+void   	game_print_screen(Game *);
+void   	game_print_data(Game *);
 
-Space* game_get_space(Game* game, Id id);
-Id  game_get_player_location(Game* game);
-Set *  game_get_object_location(Game* game);
-F_Command * game_get_last_command(Game* game);
+Space * game_get_space(Game *, Id);
+Id 		game_get_player_location(Game *);
+Id	 	game_get_object_location(Game *, Id);
+Id		game_get_space_id_at(Game *, int);
+
+STATUS	game_add_space(Game *, Space *);
+STATUS 	game_set_player_location(Game *, Id);
+STATUS 	game_set_object_location(Game *, Id, Id);
+
+STATUS	game_load_spaces(Game *, char *);
+
+F_Command * game_get_last_command(Game *);
+T_Command 	game_get_last_command_text(Game *);
+
 #endif

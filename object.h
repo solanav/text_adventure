@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "types.h"
 
 typedef struct _Object Object;
@@ -11,19 +12,19 @@ typedef struct _Object Object;
  * Functions that, respectively iniciate and free the memory necessary
  * for an Object
  */
-Object* obj_create(char* name, Id id);
-void obj_destroy(Object* obj);
+Object* object_create(char* name, Id id);
+void object_destroy(Object* obj);
 
 /*
  * Changing the values of the Object
  */
-STATUS obj_setName(Object* obj, char* name);
-STATUS obj_setId(Object* obj, Id id);
+STATUS object_setName(Object* obj, char* name);
+STATUS object_setId(Object* obj, Id id);
 
 /*
  * For accesing the object's name and Id
  */
-char* obj_getName(Object* obj);
-Id obj_getId(Object* obj);
+char * object_getName(Object* obj);
+Id object_getId(Object* obj);
 
 #endif

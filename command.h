@@ -11,6 +11,8 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
+#include <string.h>
+#include <stdlib.h>
 #include "types.h"
 
 typedef enum enum_Command
@@ -29,15 +31,14 @@ typedef struct _F_Command F_Command;
 
 F_Command * get_user_input();
 
-F_Command * command_create(T_Command, Id);
+F_Command * command_create(T_Command, char *);
+void command_free(F_Command *);
 
-STATUS command_setCmd(F_Command *,T_Command);
-
+STATUS command_setCmd(F_Command *, T_Command);
 T_Command command_getCmd(F_Command * );
 
-Id command_getId(F_Command *);
-
-STATUS command_setId(F_Command *, Id);
+STATUS command_setName(F_Command *, char *);
+char * command_getName(F_Command *);
 
 void command_free(F_Command *);
 

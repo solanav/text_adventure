@@ -9,8 +9,6 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <strings.h>
 #include "command.h"
 
 #define CMD_LENGHT 30
@@ -19,7 +17,7 @@
 struct _F_Command
 {
   T_Command text;
-  char name[20];
+  char name[1024];
 };
 
 char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous", "Pickup %ld", "Drop %ld", "Roll"};
@@ -56,7 +54,7 @@ F_Command * get_user_input()
 {
   int i = UNKNOWN - NO_CMD + 1;
   char string[CMD_LENGHT], input[CMD_LENGHT], str[20];
-  F_Command * command = command_create(NO_CMD, "\0");
+  F_Command * command = command_create(NO_CMD, "no_name");
 
   if(fgets(input, CMD_LENGHT, stdout) != NULL) return command;
 
@@ -93,14 +91,14 @@ F_Command * command_create(T_Command cmd, char * name)
   F_Command * command;
 
   command = calloc(1, sizeof(F_Command));
-
   command->text = cmd;
+
   strcpy(command->name, name);
 
   return command;
 }
 
-STATUS command_setCmd(F_Command * cmd, char * str)
+STATUS command_setCmd(F_Command * cmd, T_Command command)
 {
   if(!cmd) return ERROR;
 
@@ -117,7 +115,7 @@ T_Command command_getCmd(F_Command * cmd)
 
 char * command_getName(F_Command * cmd)
 {
-  if(!cmd) return NO_ID;
+  if(!cmd) return NULL;
 
   return cmd->name;
 }

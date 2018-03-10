@@ -1,6 +1,8 @@
 #include <string.h>
+
 #include "player.h"
 #include "object.h"
+#include "set.h"
 
 struct _Player {
   char name[STDSIZE];
@@ -34,7 +36,7 @@ void player_destroy(Player *player)
 {
   if(!player) return;
 
-  set_del(player->inventory);
+  set_destroy(player->inventory);
   free(player);
 }
 
@@ -61,7 +63,7 @@ STATUS player_setObjId(Player * player, Id new_objId)
 {
 	if(!player) return ERROR;
 
-	player->inventory = set_add(player, new_objId);
+	set_add(player->inventory, new_objId);
 
 	return OK;
 }

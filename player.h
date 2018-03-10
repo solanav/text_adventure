@@ -10,24 +10,25 @@ typedef struct _Player Player;
 /*
  * Inicialize and free the Player module
  */
-Player * player_create(char * name, Id location_id, Id object_id, Id id);
-Player * player_destroy(Player * player);
+Player * player_create(char *, Id, Id, Id);
+void player_destroy(Player *);
 
 /*
  * Changing each singular value of the Player
  */
-STATUS player_setName(Player * player, char * newName);
-STATUS player_setLocId(Player * player, Id new_locId);
-STATUS player_setObjId(Player * player, Id new_objId);
-STATUS player_setId(Player * player, Id new_id);
+STATUS player_setName(Player *, char *);
+STATUS player_setLocId(Player *, Id);
+STATUS player_setObjId(Player *, Id);
+STATUS player_setId(Player *, Id);
 
 /*
  * Access the Player's values
  */
-char * player_getName(Player * player);
-Id player_getLocId(Player * player);
-Id player_getObjId(Player * player);
-Id player_getId(Player * player);
+char * player_getName(Player *);
+Id player_getLocId(Player *);
+Id player_getObjId(Player *, int);
+Id player_getId(Player *);
 
+STATUS player_removeObjId(Player *, Id);
 
 #endif

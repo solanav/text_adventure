@@ -1,7 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
+
 #include "screen.h"
 #include "graphic_engine.h"
+#include "set.h"
 
 /*This is the definition of graphic engine for the object functions*/
 struct _Graphic_engine
@@ -68,8 +70,9 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     space_act = game_get_space(game, id_act);
     id_back = space_get_north(space_act);
     id_next = space_get_south(space_act);
-
-    if (game_get_object_location(game) == id_back)
+	
+	/* TODO : Aqui hay que hacer un for que dibuje mas de un objeto, esto es un test para que compile*/
+    if (game_get_object_location(game, 1) == id_back)
       obj='*';
     else
       obj=' ';
@@ -86,7 +89,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
       screen_area_puts(ge->map, str);
     }
 
-    if (game_get_object_location(game) == id_act)
+    if (game_get_object_location(game, 1) == id_act)
       obj='*';
     else
       obj=' ';
@@ -103,7 +106,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
       screen_area_puts(ge->map, str);
     }
 
-    if (game_get_object_location(game) == id_next)
+    if (game_get_object_location(game, 1) == id_next)
       obj='*';
     else
       obj=' ';
@@ -123,7 +126,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
   /* Paint the in the description area */
   screen_area_clear(ge->descript);
-  if ((obj_loc = game_get_object_location(game)) != NO_ID)
+  if ((obj_loc = game_get_object_location(game, 1)) != NO_ID)
   {
     sprintf(str, "  Object location:%d", (int)obj_loc);
     screen_area_puts(ge->descript, str);
@@ -140,7 +143,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
   screen_area_puts(ge->help, str);
 
   /* Paint the in the feedback area */
-  last_cmd = game_get_last_command(game);
+  last_cmd = game_get_last_command_text(game);
   sprintf(str, " %s", cmd_to_str[last_cmd-NO_CMD]);
   screen_area_puts(ge->feedback, str);
 

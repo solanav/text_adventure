@@ -16,7 +16,7 @@
 #include "game.h"
 #include "game_reader.h"
 
-#define N_CALLBACK 6
+#define N_CALLBACK 7
 
 /**
    Define the function type for the callbacks
@@ -82,6 +82,8 @@ STATUS game_create(Game* game)
 
 STATUS game_create_from_file(Game* game, char* filename)
 {
+  int i;
+
   // Create game
   if (game_create(game) == ERROR) return ERROR;
 
@@ -140,7 +142,7 @@ Id game_get_player_location(Game* game)
 
 Id game_get_object_location(Game* game, Id id)
 {
-  int i;
+  int i, n;
 
   if (!game) return NO_ID;
 
@@ -155,7 +157,7 @@ Id game_get_object_location(Game* game, Id id)
       }
     }
   }
-
+  return NO_ID;
 }
 
 STATUS game_update(Game* game, F_Command * cmd)
@@ -170,6 +172,11 @@ F_Command * game_get_last_command(Game* game)
   return game->last_cmd;
 }
 
+T_Command game_get_last_command_text(Game * game)
+{
+  return command_getCmd(game->last_cmd);
+}
+
 void game_print_data(Game* game)
 {
   int i = 0;
@@ -181,8 +188,9 @@ void game_print_data(Game* game)
   {
     space_print(game->spaces[i]);
   }
-
-  printf("=> Object location: %d\n", (int) game_get_object_location(game));
+  
+  /* TODO : lo mismo de graphic engine, hay que hacer print de mas de un ID de objeto ahora uso 1*/
+  printf("=> Object location: %d\n", (int) game_get_object_location(game, 1));
   printf("=> Player location: %d\n", (int) game_get_player_location(game));
   printf("prompt:> ");
 }
@@ -261,6 +269,7 @@ void game_callback_previous(Game* game)
 
 void game_callback_pickup(Game* game)
 {
+ /*
   Id objectpickup_id = command_getId(game->last_cmd);
   Id playerloc_id = game_get_player_location(game);
   Id objectloc_id = game_get_object_location(game, objectpickup_id);
@@ -272,11 +281,13 @@ void game_callback_pickup(Game* game)
     player_setObjId(game->player, objectpickup_id);
     space_remove_object(game_get_space(game, playerloc_id), objectpickup_id);
     return;
-  }
+  }*/
+  return;
 }
 
 void game_callback_drop(Game* game)
 {
+/*
   int n;
   Id playerloc_id = game_get_player_location(game);
   Id obj_id = command_getId(game->last_cmd);
@@ -292,6 +303,8 @@ void game_callback_drop(Game* game)
       return;
     }
   }
+  */
+  return;
 }
 
 void game_callback_roll(Game* game)
@@ -361,7 +374,7 @@ STATUS game_set_object_location(Game* game, Id id, Id obj_id)
   {
     if (space_get_id(game->spaces[i]) == id)
     {
-      space_set_object_id(game->spaces[i], obj_id);
+      space_add_object(game->spaces[i], obj_id);
       return OK;
     }
   }

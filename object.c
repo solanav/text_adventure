@@ -1,5 +1,6 @@
-#include "object.h"
 #include <string.h>
+
+#include "object.h"
 
 struct _Object{
   char name [STDSIZE];

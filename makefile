@@ -2,14 +2,15 @@ EXEC=game_exec die_test set_test
 CC=gcc
 CFLAGS=-Wall -g -pedantic
 
+ALL_FILES=game_loop.o game.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o
+
 ################ ALL
 
 all: clean game_exec
 
-
 ################ EXEC CREATION
 
-game_exec: game_loop.o command.o game_reader.o graphic_engine.o screen.o space.o object.o game.o player.o die.o
+game_exec: $(ALL_FILES)
 	$(CC) $(CFLAGS) -o $@ $^
 
 die_test: die_test.o die.o
@@ -20,7 +21,7 @@ set_test: set_test.o set.o object.o
 
 ################ FILE COMPILATION 
 
-player.o: player.c types.h player.h
+player.o: player.c types.h player.h set.h
 	$(CC) $(CFLAGS) -c player.c
 
 game_loop.o: game_loop.c graphic_engine.h
@@ -29,7 +30,7 @@ game_loop.o: game_loop.c graphic_engine.h
 game_reader.o: game_reader.c game.h types.h
 	$(CC) $(CFLAGS) -c game_reader.c
 
-graphic_engine.o: graphic_engine.c graphic_engine.h screen.h
+graphic_engine.o: graphic_engine.c graphic_engine.h screen.h game.h
 	$(CC) $(CFLAGS) -c graphic_engine.c
 
 screen.o: screen.c screen.h
@@ -41,10 +42,10 @@ space.o: space.c space.h types.h set.h
 object.o: object.c object.h types.h
 	$(CC) $(CFLAGS) -c object.c
 
-command.o: command.c command.h
+command.o: command.c command.h types.h
 	$(CC) $(CFLAGS) -c command.c
 
-game.o: game.c game.h game_reader.h object.h player.h space.h set.h
+game.o: game.c game.h game_reader.h object.h player.h space.h command.h
 	$(CC) $(CFLAGS) -c game.c
 
 die_test.o: die_test.c die.h types.h
