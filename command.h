@@ -18,13 +18,13 @@
 typedef enum enum_Command
 {
   NO_CMD = -1,
-  UNKNOWN,
+  UNKNOWN, 
   EXIT,
   FOLLOWING,
   PREVIOUS,
-  ROLL,
   PICK_UP,
-  DROP
+  DROP,
+  ROLL
 } T_Command;
 
 typedef struct _F_Command F_Command;

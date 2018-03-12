@@ -93,6 +93,7 @@ STATUS game_create_from_file(Game* game, char* filename)
   game_set_player_location(game, game_get_space_id_at(game, 0));
   for (i = 0; game->objects[i] != NULL; i++)
   {
+		/* Set the only object to its position */
     game_set_object_location(game, game_get_space_id_at(game, 4), object_getId(game->objects[i]));
   }
 
@@ -281,25 +282,31 @@ void game_callback_previous(Game* game)
 
 void game_callback_pickup(Game* game)
 {
- /*
-  Id objectpickup_id = command_getId(game->last_cmd);
-  Id playerloc_id = game_get_player_location(game);
-  Id objectloc_id = game_get_object_location(game, objectpickup_id);
+	/* TODO : check if the object exists (same for drop) */
+  int i = 0;
+	Id debug = 0;
 
-  if(objectloc_id == NO_ID)return;
+	Id player_locId = game_get_player_location(game);
+  Space * space_pointer = game_get_space(game, player_locId);
+  Id object_id = command_getId(game->last_cmd);
 
-  if (playerloc_id == objectloc_id)
-  {
-    player_setObjId(game->player, objectpickup_id);
-    space_remove_object(game_get_space(game, playerloc_id), objectpickup_id);
-    return;
-  }*/
+	player_setObjId(game->player, object_id);
+  space_remove_object(space_pointer, object_id);
+	
+	/* DEBUG : this is to check if it works (spoiler alert: it does)*/ 
+	printf("ThiS niBBa has the following objects:\n");
+	for (i=1; debug != NO_ID && i<10; i++)
+	{
+		debug = player_getObjId(game->player, i);
+		printf("\tTHIS ONE -> %ld [%d]\n", debug, i);
+	}
+
   return;
 }
 
 void game_callback_drop(Game* game)
 {
-/*
+  /*
   int n;
   Id playerloc_id = game_get_player_location(game);
   Id obj_id = command_getId(game->last_cmd);
@@ -316,7 +323,14 @@ void game_callback_drop(Game* game)
     }
   }
   */
-  return;
+ 	Id player_locId = game_get_player_location(game);
+  Space * space_pointer = game_get_space(game, player_locId);
+  Id object_id = command_getId(game->last_cmd);
+
+	space_add_object(space_pointer, object_id);
+	player_removeObjId(game->player, object_id);
+
+  return;  
 }
 
 void game_callback_roll(Game* game)

@@ -85,21 +85,21 @@ char * player_getName(Player * player)
 
 Id player_getLocId(Player * player)
 {
-	if(!player) return -1;
+	if(!player) return NO_ID;
 
 	return player->location_id;
 }
 
 Id player_getObjId(Player * player, int num)
 {
-	if(!player) return -1;
+	if(!player) return NO_ID;
 
 	return set_get_id(player->inventory, num);
 }
 
 Id player_getId(Player * player)
 {
-	if(!player) return -1;
+	if(!player) return NO_ID;
 
 	return player->id;
 }

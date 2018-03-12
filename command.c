@@ -60,10 +60,10 @@ STATUS get_user_input(F_Command * command)
   {
     if(sscanf(input, "%s", string))
     {
-      for(i = 0; i < N_CMD; i++)
+      for(i = 0; i < N_CMD && command_found == 0; i++)
       {
 	  	printf("Comparing %s to %s or %s\n", string, short_cmd_to_str[i], cmd_to_str[i]);
-        if((strcasecmp(string, short_cmd_to_str[i]) == 0 || strcasecmp(string, cmd_to_str[i]) == 0) && command_found == 0)
+        if((strcasecmp(string, short_cmd_to_str[i]) == 0 || strcasecmp(string, cmd_to_str[i]) == 0))
         {
 		  printf("\tSetting parameter CMD of command to -> %d\n", i+NO_CMD);
           command_setCmd(command, i + NO_CMD);
@@ -76,11 +76,16 @@ STATUS get_user_input(F_Command * command)
 	  	command_setCmd(command, UNKNOWN);
       }
 	}
+	
+	printf("\nCommand -> %d\n", command_getCmd(command));
+	printf("\tPICK_UP -> %d\n", PICK_UP);
+	printf("\tDROP    -> %d\n", DROP);
+	printf("\tROLL    -> %d\n", ROLL);
 
     if(command_getCmd(command) == PICK_UP || command_getCmd(command) == DROP)
     {
+	  printf("Looks like your command was either PICKUP or DROP? or not\n");
       sscanf(input, "%s %ld", string, &id);
-      command_setCmd(command, i + NO_CMD);
       command_setId(command, id);
     }
   }
@@ -102,7 +107,7 @@ F_Command * command_create(T_Command cmd, Id id)
 STATUS command_setCmd(F_Command * cmd, T_Command command)
 {
   if(!cmd) return ERROR;
-
+  printf("Someone is setting a command to %d\n", command);
   cmd->text = command;
   return OK;
 }
@@ -110,7 +115,7 @@ STATUS command_setCmd(F_Command * cmd, T_Command command)
 T_Command command_getCmd(F_Command * cmd)
 {
   if(!cmd) return NO_CMD;
-  printf("%d\n", cmd->text);
+  printf("Trying to get command -> %d\n", cmd->text);
   return cmd->text;
 }
 
