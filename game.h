@@ -18,9 +18,12 @@
 #include "player.h"
 #include "die.h"
 
-typedef struct _Game{
+#define MAX_OBJECTS 4
+
+typedef struct _Game
+{
   Player * player;
-  Object * objects[4];
+  Object * objects[MAX_OBJECTS];
   Space* spaces[MAX_SPACES + 1];
   F_Command * last_cmd;
 } Game;
