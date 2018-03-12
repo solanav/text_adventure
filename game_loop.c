@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
 	Game game;
 
-	F_Command * command;
+	F_Command * command  = command_create(NO_CMD, "no_name");
 	Graphic_engine *gengine;
 
 	if (argc < 2)
@@ -44,15 +44,13 @@ int main(int argc, char *argv[])
 	while ((command_getCmd(command) != EXIT) && !game_is_over(&game))
 	{
 		graphic_engine_paint_game(gengine, &game);
-		command = get_user_input();
-		if(command)
-		{
-			game_update(&game, command);
-		}
+		get_user_input(command);
+		game_update(&game, command);
 	}
 
 	game_destroy(&game);
 	graphic_engine_destroy(gengine);
+	command_free(command);
 
 	return 0;
 }

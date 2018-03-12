@@ -29,7 +29,7 @@ typedef enum enum_Command
 
 typedef struct _F_Command F_Command;
 
-F_Command * get_user_input();
+STATUS get_user_input(F_Command *);
 
 F_Command * command_create(T_Command, char *);
 void command_free(F_Command *);
