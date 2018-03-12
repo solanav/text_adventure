@@ -69,7 +69,7 @@ STATUS game_create(Game* game)
   for(i = 0; i < 4; i++)
   {
     sprintf(name, "o%d", i+1);
-    game->objects[i] = object_create(name, i+1);
+    game->objects[i] = object_create(name, (long int) i+1);
   }
   game->die = die_ini(42);
   game_set_player_location(game, NO_ID);
@@ -102,17 +102,24 @@ STATUS game_create_from_file(Game* game, char* filename)
 STATUS game_destroy(Game* game)
 {
   int i = 0;
+  printf("\nMAX_SPACES -> %d\n", MAX_SPACES);
 
-  for (i = 0; (i < MAX_SPACES) && (game->spaces[i] != NULL); i++) {
-    space_destroy(game->spaces[i]);
+  for (i = 0; (i <= 13) && (game->spaces[i]); i++) {
+	printf("Iteration now on -> %d  \n", i);
+	printf("Going with space -> %p  \n", (void *) game->spaces[i]);
+	printf("Space ID is      -> %ld \n\n", space_get_id(game->spaces[i]));
+	space_destroy(game->spaces[i]);
   }
 
   player_destroy(game->player);
-  for(i = 0; i < 4; i++)
+
+  for(i = 0; i<MAX_OBJECTS-1; i++)
   {
+  	printf("Destroying %p with i %d\n", game->objects[i], i);
+	printf("\tObject has id %ld\n", object_getId(game->objects[i]));
     object_destroy(game->objects[i]);
   }
-  die_die_die(game->die);
+
   command_free(game->last_cmd);
 
   return OK;

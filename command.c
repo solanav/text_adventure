@@ -53,7 +53,7 @@ F_Command get_user_input()
 STATUS get_user_input(F_Command * command)
 {
   Id id;
-  int i = UNKNOWN - NO_CMD + 1;
+  int i = UNKNOWN, command_found = 0;
   char string[CMD_LENGHT], input[CMD_LENGHT];
 
   if(fgets(input, CMD_LENGHT, stdin) != NULL)
@@ -63,13 +63,20 @@ STATUS get_user_input(F_Command * command)
       for(i = 0; i < N_CMD; i++)
       {
 	  	printf("Comparing %s to %s or %s\n", string, short_cmd_to_str[i], cmd_to_str[i]);
-        if(strcasecmp(string, short_cmd_to_str[i]) == 0 || strcasecmp(string, cmd_to_str[i]) == 0)
+        if((strcasecmp(string, short_cmd_to_str[i]) == 0 || strcasecmp(string, cmd_to_str[i]) == 0) && command_found == 0)
         {
 		  printf("\tSetting parameter CMD of command to -> %d\n", i+NO_CMD);
           command_setCmd(command, i + NO_CMD);
+		  command_found = 1;
         }
       }
-    }
+	  if (command_found == 0)
+	  {
+	  	printf("\tNot found the command, returning unknown");
+	  	command_setCmd(command, UNKNOWN);
+      }
+	}
+
     if(command_getCmd(command) == PICK_UP || command_getCmd(command) == DROP)
     {
       sscanf(input, "%s %ld", string, &id);
