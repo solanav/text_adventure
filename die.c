@@ -44,3 +44,10 @@ STATUS die_print(FILE* f, Die* die)
 
   return OK;
 }
+
+short int die_get_last_roll(Die * die)
+{
+  if(!die) return -1;
+
+  return die->result;
+}

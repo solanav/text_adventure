@@ -108,7 +108,7 @@ STATUS game_destroy(Game* game)
   }
 
   player_destroy(game->player);
-  for(i = 0; game->objects[i] != NULL; i++)
+  for(i = 0; i < 4; i++)
   {
     object_destroy(game->objects[i]);
   }
@@ -314,6 +314,8 @@ void game_callback_drop(Game* game)
 void game_callback_roll(Game* game)
 {
   die_roll(game->die);
+  die_print(stdout, game->die);
+  return;
 }
 
 STATUS game_add_space(Game* game, Space* space)

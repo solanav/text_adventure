@@ -19,7 +19,7 @@ die_test: die_test.o die.o
 set_test: set_test.o set.o object.o
 	$(CC) $(CFLAGS) -o $@ $^
 
-################ FILE COMPILATION 
+################ FILE COMPILATION
 
 player.o: player.c types.h player.h set.h
 	$(CC) $(CFLAGS) -c player.c
@@ -45,7 +45,7 @@ object.o: object.c object.h types.h
 command.o: command.c command.h types.h
 	$(CC) $(CFLAGS) -c command.c
 
-game.o: game.c game.h game_reader.h object.h player.h space.h command.h
+game.o: game.c game.h game_reader.h object.h player.h space.h command.h die.h
 	$(CC) $(CFLAGS) -c game.c
 
 die_test.o: die_test.c die.h types.h

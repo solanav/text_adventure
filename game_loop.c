@@ -50,7 +50,6 @@ int main(int argc, char *argv[])
 
 	game_destroy(&game);
 	graphic_engine_destroy(gengine);
-	command_free(command);
 
 	return 0;
 }

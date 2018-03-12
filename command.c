@@ -103,7 +103,7 @@ STATUS command_setCmd(F_Command * cmd, T_Command command)
 T_Command command_getCmd(F_Command * cmd)
 {
   if(!cmd) return NO_CMD;
-  printf("%d", cmd->text);
+  printf("%d\n", cmd->text);
   return cmd->text;
 }
 

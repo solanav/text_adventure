@@ -146,11 +146,11 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
   last_cmd = game_get_last_command_text(game);
   sprintf(str, " %s", cmd_to_str[last_cmd-NO_CMD]);
   screen_area_puts(ge->feedback, str);
-  if(last_cmd == ROLL)
+  /*if(last_cmd == ROLL)
   {
     sprintf(str, "You rolled %d", game_get_last_roll(game));
     screen_area_puts(ge->feedback, str);
-  }
+  }*/
 
 
   /* Dump to the terminal */

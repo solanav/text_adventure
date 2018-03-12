@@ -14,7 +14,7 @@ void die_die_die(Die* );
 
 /*Rolls the dice and returns the result*/
 STATUS die_roll(Die* );
-int die_get_last_roll(Die*);
+short int die_get_last_roll(Die*);
 
 /*Prints  Dice Id and result*/
 STATUS die_print(FILE* , Die* );
