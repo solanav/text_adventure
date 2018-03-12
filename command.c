@@ -17,7 +17,7 @@
 struct _F_Command
 {
   T_Command text;
-  char name[1024];
+  Id id;
 };
 
 char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous", "Pickup %ld", "Drop %ld", "Roll"};
@@ -52,8 +52,9 @@ F_Command get_user_input()
 
 STATUS get_user_input(F_Command * command)
 {
+  Id id;
   int i = UNKNOWN - NO_CMD + 1;
-  char string[CMD_LENGHT], input[CMD_LENGHT], str[20];
+  char string[CMD_LENGHT], input[CMD_LENGHT];
 
   if(fgets(input, CMD_LENGHT, stdin) != NULL)
   {
@@ -61,32 +62,32 @@ STATUS get_user_input(F_Command * command)
     {
       for(i = 0; i < N_CMD; i++)
       {
-        if(strcasecmp(string, short_cmd_to_str[i]) || strcasecmp(string, cmd_to_str[i]))
+	  	printf("Comparing %s to %s or %s\n", string, short_cmd_to_str[i], cmd_to_str[i]);
+        if(strcasecmp(string, short_cmd_to_str[i]) == 0 || strcasecmp(string, cmd_to_str[i]) == 0)
         {
+		  printf("\tSetting parameter CMD of command to -> %d\n", i+NO_CMD);
           command_setCmd(command, i + NO_CMD);
         }
       }
     }
     if(command_getCmd(command) == PICK_UP || command_getCmd(command) == DROP)
     {
-      sscanf(input, "%s %s", string, str);
-      if(strcmp(str, "\0")) return ERROR;
+      sscanf(input, "%s %ld", string, &id);
       command_setCmd(command, i + NO_CMD);
-      command_setName(command, str);
+      command_setId(command, id);
     }
   }
 
   return OK;
 }
 
-F_Command * command_create(T_Command cmd, char * name)
+F_Command * command_create(T_Command cmd, Id id)
 {
   F_Command * command;
 
   command = calloc(1, sizeof(F_Command));
   command->text = cmd;
-
-  strcpy(command->name, name);
+  command->id = id;
 
   return command;
 }
@@ -102,22 +103,22 @@ STATUS command_setCmd(F_Command * cmd, T_Command command)
 T_Command command_getCmd(F_Command * cmd)
 {
   if(!cmd) return NO_CMD;
-
+  printf("%d", cmd->text);
   return cmd->text;
 }
 
-char * command_getName(F_Command * cmd)
+Id command_getId(F_Command * cmd)
 {
-  if(!cmd) return NULL;
+  if(!cmd) return NO_ID;
 
-  return cmd->name;
+  return cmd->id;
 }
 
-STATUS command_setName(F_Command * cmd, char * str)
+STATUS command_setId(F_Command * cmd, Id id)
 {
   if(!cmd) return ERROR;
 
-  strcpy(cmd->name, str);
+  cmd->id = id;
   return OK;
 }
 

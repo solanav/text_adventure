@@ -31,14 +31,15 @@ typedef struct _F_Command F_Command;
 
 STATUS get_user_input(F_Command *);
 
-F_Command * command_create(T_Command, char *);
+F_Command * command_create(T_Command, Id);
 void command_free(F_Command *);
 
 STATUS command_setCmd(F_Command *, T_Command);
 T_Command command_getCmd(F_Command * );
 
 STATUS command_setName(F_Command *, char *);
-char * command_getName(F_Command *);
+Id command_getId(F_Command *);
+STATUS command_setId(F_Command *, Id);
 
 void command_free(F_Command *);
 

@@ -75,7 +75,7 @@ STATUS game_create(Game* game)
   game_set_player_location(game, NO_ID);
   game_set_object_location(game, NO_ID, NO_ID);
 
-  game->last_cmd = command_create(NO_CMD, "\0");
+  game->last_cmd = command_create(NO_CMD, NO_ID);
 
   return OK;
 }
