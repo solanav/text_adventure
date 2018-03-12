@@ -25,13 +25,14 @@ void die_die_die(Die* die)
   free(die);
 }
 
-int die_roll(Die* die)
+STATUS die_roll(Die* die)
 {
+  if(!die) return ERROR;
   srand(time(NULL));
 
   die->result = (rand()%6)+1;
 
-  return die->result;
+  return OK;
 }
 
 STATUS die_print(FILE* f, Die* die)

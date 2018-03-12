@@ -22,6 +22,7 @@ typedef struct _Game{
   Player * player;
   Object * objects[4];
   Space* spaces[MAX_SPACES + 1];
+  Die* die;
   F_Command * last_cmd;
 } Game;
 
@@ -40,6 +41,7 @@ Space * game_get_space(Game *, Id);
 Id 		game_get_player_location(Game *);
 Id	 	game_get_object_location(Game *, Id);
 Id		game_get_space_id_at(Game *, int);
+int   game_get_last_roll(Game *);
 
 STATUS	game_add_space(Game *, Space *);
 STATUS 	game_set_player_location(Game *, Id);

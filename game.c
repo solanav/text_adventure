@@ -71,7 +71,7 @@ STATUS game_create(Game* game)
     sprintf(name, "o%d", i+1);
     game->objects[i] = object_create(name, i+1);
   }
-
+  game->die = die_ini(42);
   game_set_player_location(game, NO_ID);
   game_set_object_location(game, NO_ID, NO_ID);
 
@@ -112,6 +112,7 @@ STATUS game_destroy(Game* game)
   {
     object_destroy(game->objects[i]);
   }
+  die_die_die(game->die);
   command_free(game->last_cmd);
 
   return OK;
@@ -312,6 +313,7 @@ void game_callback_drop(Game* game)
 
 void game_callback_roll(Game* game)
 {
+  die_roll(game->die);
 }
 
 STATUS game_add_space(Game* game, Space* space)
@@ -383,4 +385,11 @@ STATUS game_set_object_location(Game* game, Id id, Id obj_id)
   }
 
   return ERROR;
+}
+
+int game_get_last_roll(Game * game)
+{
+  if(!game) return -1;
+
+  return die_get_last_roll(game->die);
 }

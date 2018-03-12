@@ -70,7 +70,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     space_act = game_get_space(game, id_act);
     id_back = space_get_north(space_act);
     id_next = space_get_south(space_act);
-	
+
 	/* TODO : Aqui hay que hacer un for que dibuje mas de un objeto, esto es un test para que compile*/
     if (game_get_object_location(game, 1) == id_back)
       obj='*';
@@ -146,6 +146,12 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
   last_cmd = game_get_last_command_text(game);
   sprintf(str, " %s", cmd_to_str[last_cmd-NO_CMD]);
   screen_area_puts(ge->feedback, str);
+  if(last_cmd == ROLL)
+  {
+    sprintf(str, "You rolled %d", game_get_last_roll(game));
+    screen_area_puts(ge->feedback, str);
+  }
+
 
   /* Dump to the terminal */
   screen_paint();
