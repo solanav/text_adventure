@@ -56,31 +56,25 @@ F_Command * get_user_input()
   char string[CMD_LENGHT], input[CMD_LENGHT], str[20];
   F_Command * command = command_create(NO_CMD, "no_name");
 
-  if(fgets(input, CMD_LENGHT, stdout) != NULL) return command;
-
-  if(!sscanf(input, "%s", string)) return command;
-  while(i < (N_CMD - 2))
+  if(fgets(input, CMD_LENGHT, stdin) != NULL)
   {
-    if(strcasecmp(string, short_cmd_to_str[i]) || strcasecmp(string, cmd_to_str[i]))
+    if(sscanf(input, "%s", string))
     {
-      command_setCmd(command, i);
-      return command;
+      for(i = 0; i < N_CMD; i++)
+      {
+        if(strcasecmp(string, short_cmd_to_str[i]) || strcasecmp(string, cmd_to_str[i]))
+        {
+          command_setCmd(command, i);
+        }
+      }
     }
-    else
+    if(command_getCmd(command) == PICK_UP || command_getCmd(command) == DROP)
     {
-      i++;
-    }
-  }
-  if(!sscanf(input, "%s %s", string, str))
-  {
-    if(i == PICK_UP || i== DROP)
-    {
+      sscanf(input, "%s %s", string, str);
       command_setCmd(command, i);
       command_setName(command, str);
-      return command;
     }
-    else
-      return command;
+    return command;
   }
 
   return command;

@@ -162,7 +162,10 @@ Id game_get_object_location(Game* game, Id id)
 
 STATUS game_update(Game* game, F_Command * cmd)
 {
+  if(!game || !cmd) return ERROR;
+
   game->last_cmd = cmd;
+
   (*game_callback_fn_list[command_getCmd(cmd)])(game);
   return OK;
 }
@@ -188,7 +191,7 @@ void game_print_data(Game* game)
   {
     space_print(game->spaces[i]);
   }
-  
+
   /* TODO : lo mismo de graphic engine, hay que hacer print de mas de un ID de objeto ahora uso 1*/
   printf("=> Object location: %d\n", (int) game_get_object_location(game, 1));
   printf("=> Player location: %d\n", (int) game_get_player_location(game));
