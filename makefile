@@ -1,6 +1,7 @@
 EXEC=game_exec die_test set_test
 CC=gcc
 CFLAGS=-Wall -g -pedantic
+COMMIT="Base commit, no flavor"
 
 ALL_FILES=game_loop.o game.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o
 
@@ -73,5 +74,5 @@ tar:
 
 git:
 	git add -A
-	read commit
-	git commit -m "$commit"
+	read COMMIT
+	git commit -m $(COMMIT)
