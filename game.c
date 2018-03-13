@@ -93,8 +93,7 @@ STATUS game_create_from_file(Game* game, char* filename)
   game_set_player_location(game, game_get_space_id_at(game, 0));
   for (i = 0; game->objects[i] != NULL; i++)
   {
-		/* Set the only object to its position */
-    game_set_object_location(game, game_get_space_id_at(game, 4), object_getId(game->objects[i]));
+    game_set_object_location(game, game_get_space_id_at(game, i+2), object_getId(game->objects[i]));
   }
 
   return OK;
@@ -292,8 +291,8 @@ void game_callback_pickup(Game* game)
 
 	player_setObjId(game->player, object_id);
   space_remove_object(space_pointer, object_id);
-	
-	/* DEBUG : this is to check if it works (spoiler alert: it does)*/ 
+
+	/* DEBUG : this is to check if it works (spoiler alert: it does)*/
 	printf("ThiS niBBa has the following objects:\n");
 	for (i=1; debug != NO_ID && i<10; i++)
 	{
@@ -330,7 +329,7 @@ void game_callback_drop(Game* game)
 	space_add_object(space_pointer, object_id);
 	player_removeObjId(game->player, object_id);
 
-  return;  
+  return;
 }
 
 void game_callback_roll(Game* game)
