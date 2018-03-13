@@ -41,6 +41,7 @@ void   	game_print_screen(Game *);
 void   	game_print_data(Game *);
 
 Space * game_get_space(Game *, Id);
+Player* game_get_player(Game * game);
 Id 		game_get_player_location(Game *);
 Id	 	game_get_object_location(Game *, Id);
 Id		game_get_space_id_at(Game *, int);

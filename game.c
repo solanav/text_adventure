@@ -85,12 +85,11 @@ STATUS game_create(Game* game)
 
 STATUS game_create_from_file(Game* game, char* filename)
 {
-  int i;
 
-  // Create game
+  /* Create game */
   if (game_create(game) == ERROR) return ERROR;
 
-  // Load provided file
+  /* Load provided file */
   if (game_load_spaces(game, filename) == ERROR) return ERROR;
 
   game_set_player_location(game, game_get_space_id_at(game, 0));
@@ -141,6 +140,13 @@ Space* game_get_space(Game* game, Id id)
   }
 
   return NULL;
+}
+
+Player* game_get_player(Game * game)
+{
+  if(!game) return NULL;
+
+  return game->player;
 }
 
 Id game_get_player_location(Game* game)
