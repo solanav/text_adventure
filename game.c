@@ -113,13 +113,12 @@ STATUS game_destroy(Game* game)
 
   for(i = 0; i<MAX_OBJECTS; i++)
   {
-  	printf("Destroying %p with i %d\n", game->objects[i], i);
+  	printf("Destroying %p with i %d\n", (void *)game->objects[i], i);
 	  printf("\tObject has id %ld\n", object_getId(game->objects[i]));
     object_destroy(game->objects[i]);
   }
 
   die_die_die(game->die);
-  command_free(game->last_cmd);
 
   return OK;
 }
@@ -157,15 +156,17 @@ Id game_get_player_location(Game* game)
 Id game_get_object_location(Game* game, Id id)
 {
   int i, n;
+  Set* objects;
 
   if (!game) return NO_ID;
 
-  // Itera por los espacios comprobando si esta el objeto que buscas
+  /* Itera por los espacios comprobando si esta el objeto que buscas*/
   for (i = 0; i < MAX_SPACES; i++)
   {
-    for(n = 0; set_get_id(space_get_objects_id(game->spaces[i]), n) != NO_ID; n++)
+    objects = space_get_objects_id(game->spaces[i]);
+    for(n = 0; set_get_id(objects, n) != NO_ID; n++)
     {
-      if (set_get_id(space_get_objects_id(game->spaces[i]), n) == id)
+      if (set_get_id(objects, n) == id)
       {
         return space_get_id(game->spaces[i]);
       }

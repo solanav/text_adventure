@@ -48,6 +48,7 @@ int main(int argc, char *argv[])
 		game_update(&game, command);
 	}
 
+	command_free(command);
 	game_destroy(&game);
 	graphic_engine_destroy(gengine);
 
