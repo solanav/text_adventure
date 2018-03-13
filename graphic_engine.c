@@ -206,7 +206,10 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
       screen_area_puts(ge->descript, str);
     }
   }
-
+  sprintf(str, " ");
+  screen_area_puts(ge->descript, str);
+  sprintf(str, "  Last roll stored value: %d", game_get_last_roll(game));
+  screen_area_puts(ge->descript, str);
   /* Paint the in the banner area */
   screen_area_puts(ge->banner, " The game of the Goose ");
 
