@@ -70,3 +70,8 @@ clean:
 
 tar:
 	tar -czf PPROG_2163_I2_P11.tar.gz *
+
+git:
+	git add -A
+	read commit
+	git commit -m "$commit"
