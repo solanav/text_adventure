@@ -29,10 +29,10 @@ Graphic_engine *graphic_engine_create()
 
 /*Default values*/
   ge->map      = screen_area_init( 1, 1, 48, 20);
-  ge->descript = screen_area_init(50, 1, 29, 20);
+  ge->descript = screen_area_init(50, 1, 34, 20);
   ge->banner   = screen_area_init(28,22, 23,  1);
-  ge->help     = screen_area_init( 1,23, 78,  3);
-  ge->feedback = screen_area_init( 1,27, 78,  5);
+  ge->help     = screen_area_init( 1,23, 83,  3);
+  ge->feedback = screen_area_init( 1,27, 83,  5);
 
   return ge;
 }
@@ -56,8 +56,9 @@ void graphic_engine_destroy(Graphic_engine *ge)
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 {
   int i, j;
+  char * gdesc[3];
   Id id_act = NO_ID, id_back = NO_ID, id_next = NO_ID, obj_loc = NO_ID, id_left = NO_ID, id_right = NO_ID;
-  Space* space_act = NULL;
+  Space* space_act = NULL, * last_space=NULL, *next_space=NULL;
   char obj[20]="\0", ply[20]="\0";
   char str[255];
   T_Command last_cmd = UNKNOWN;
@@ -92,15 +93,20 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
   }
     if (id_back != NO_ID)
     {
-      sprintf(str, "  |           %2d|",(int) id_back);
+      last_space = game_get_space(game, id_back);
+      gdesc[0] = space_get_gdesc_0(last_space);
+      gdesc[1] = space_get_gdesc_1(last_space);
+      gdesc[2] = space_get_gdesc_2(last_space);
+
+      sprintf(str, "  |%s%2d|",gdesc[0], (int) id_back);
       screen_area_puts(ge->map, str);
-      sprintf(str, "  |             |");
+      sprintf(str, "  | %s |", gdesc[1]);
       screen_area_puts(ge->map, str);
-      sprintf(str, "  |             |");
+      sprintf(str, "  | %s |", gdesc[2]);
       screen_area_puts(ge->map, str);
-      sprintf(str, "  |     %s|", obj);
+      sprintf(str, "  |           %s|", obj);
       screen_area_puts(ge->map, str);
-      sprintf(str, "  +-------------+");
+      sprintf(str, "  +-------------------+");
       screen_area_puts(ge->map, str);
       sprintf(str, "        ^");
       screen_area_puts(ge->map, str);
@@ -130,71 +136,91 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     {
       if(id_left != NO_ID && id_right != NO_ID)
       {
-          sprintf(str, "  +-------------+");
+     	    space_act = game_get_space(game, id_act);
+	        gdesc[0] = space_get_gdesc_0(space_act);
+      	  gdesc[1] = space_get_gdesc_1(space_act);
+      	  gdesc[2] = space_get_gdesc_2(space_act);
+
+          sprintf(str, "  +-------------------+");
+      	  screen_area_puts(ge->map, str);
+          sprintf(str, "  | 8D                | >");
+      	  screen_area_puts(ge->map, str);
+      	  sprintf(str, "  |%s%2d|",gdesc[0], (int) id_act);
+      	  screen_area_puts(ge->map, str);
+          sprintf(str, "  | %s |", gdesc[1]);
+      	  screen_area_puts(ge->map, str);
+      	  sprintf(str, "  | %s |", gdesc[2]);
+      	  screen_area_puts(ge->map, str);
+          sprintf(str, "< |           %s|", obj);
           screen_area_puts(ge->map, str);
-          sprintf(str, "  | 8D        %2d| >",(int) id_act);
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |             |");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |             |");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |             |");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "< |     %s|", obj);
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  +-------------+");
+          sprintf(str, "  +-------------------+");
           screen_area_puts(ge->map, str);
       }
       else if(id_left != NO_ID)
       {
-          sprintf(str, "  +-------------+");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  | 8D        %2d|",(int) id_act);
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |             |");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |             |");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |             |");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "< |     %s|", obj);
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  +-------------+");
-          screen_area_puts(ge->map, str);
+        space_act = game_get_space(game, id_act);
+        gdesc[0] = space_get_gdesc_0(space_act);
+        gdesc[1] = space_get_gdesc_1(space_act);
+        gdesc[2] = space_get_gdesc_2(space_act);
+
+        sprintf(str, "  +-------------------+");
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  | 8D                |");
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  |%s%2d|",gdesc[0], (int) id_act);
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  | %s |", gdesc[1]);
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  | %s |", gdesc[2]);
+        screen_area_puts(ge->map, str);
+        sprintf(str, "< |           %s|", obj);
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  +-------------------+");
+        screen_area_puts(ge->map, str);
       }
       else if(id_right != NO_ID)
       {
-          sprintf(str, "  +-------------+");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  | 8D        %2d| >",(int) id_act);
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |             |");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |             |");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |             |");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |     %s|", obj);
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  +-------------+");
-          screen_area_puts(ge->map, str);
+        space_act = game_get_space(game, id_act);
+        gdesc[0] = space_get_gdesc_0(space_act);
+        gdesc[1] = space_get_gdesc_1(space_act);
+        gdesc[2] = space_get_gdesc_2(space_act);
+
+        sprintf(str, "  +-------------------+");
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  | 8D                | >");
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  |%s%2d|",gdesc[0], (int) id_act);
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  | %s |", gdesc[1]);
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  | %s |", gdesc[2]);
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  |           %s|", obj);
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  +-------------------+");
+        screen_area_puts(ge->map, str);
       }
       else
       {
-          sprintf(str, "  +-------------+");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  | 8D        %2d|",(int) id_act);
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |             |");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |             |");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |             |");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |     %s|", obj);
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  +-------------+");
-          screen_area_puts(ge->map, str);
+        space_act = game_get_space(game, id_act);
+        gdesc[0] = space_get_gdesc_0(space_act);
+        gdesc[1] = space_get_gdesc_1(space_act);
+        gdesc[2] = space_get_gdesc_2(space_act);
+
+        sprintf(str, "  +-------------------+");
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  | 8D                |");
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  |%s%2d|",gdesc[0], (int) id_act);
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  | %s |", gdesc[1]);
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  | %s |", gdesc[2]);
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  |           %s|", obj);
+        screen_area_puts(ge->map, str);
+        sprintf(str, "  +-------------------+");
+        screen_area_puts(ge->map, str);
       }
     }
 
@@ -216,26 +242,34 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
     if (id_next != NO_ID)
     {
-      sprintf(str, "        v");
+      next_space = game_get_space(game, id_next);
+      gdesc[0] = space_get_gdesc_0(next_space);
+      gdesc[1] = space_get_gdesc_1(next_space);
+      gdesc[2] = space_get_gdesc_2(next_space);
+      sprintf(str, "            ^");
       screen_area_puts(ge->map, str);
-      sprintf(str, "  +-------------+");
+      sprintf(str, "  +-------------------+");
       screen_area_puts(ge->map, str);
-      sprintf(str, "  |           %2d|",(int) id_next);
+      sprintf(str, "  |                   |");
       screen_area_puts(ge->map, str);
-      sprintf(str, "  |             |");
+      sprintf(str, "  |%s%2d|",gdesc[0], (int) id_next);
       screen_area_puts(ge->map, str);
-      sprintf(str, "  |             |");
+      sprintf(str, "  | %s |", gdesc[1]);
       screen_area_puts(ge->map, str);
-      sprintf(str, "  |             |");
+      sprintf(str, "  | %s |", gdesc[2]);
       screen_area_puts(ge->map, str);
-      sprintf(str, "  |     %s|",obj);
+      sprintf(str, "< |           %s|", obj);
       screen_area_puts(ge->map, str);
     }
   }
 
   /* Paint the in the description area */
   screen_area_clear(ge->descript);
-  sprintf(str, "Game objects:");
+  sprintf(str, " ");
+  screen_area_puts(ge->descript, str);
+  sprintf(str, " Game objects:");
+  screen_area_puts(ge->descript, str);
+  sprintf(str, " ");
   screen_area_puts(ge->descript, str);
   for(i=1; i<5; i++)
   {
@@ -263,11 +297,13 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
       obj[j+1]=' ';
     }
   }
-  sprintf(str, "Player objects: %s", ply);
+  sprintf(str, " ");
+  screen_area_puts(ge->descript, str);
+  sprintf(str, " Player objects: %s", ply);
   screen_area_puts(ge->descript, str);
   sprintf(str, " ");
   screen_area_puts(ge->descript, str);
-  sprintf(str, "  Last roll stored value: %d", game_get_last_roll(game));
+  sprintf(str, " Last roll stored value: %d", game_get_last_roll(game));
   screen_area_puts(ge->descript, str);
   /* Paint the in the banner area */
   screen_area_puts(ge->banner, " The game of the Goose ");

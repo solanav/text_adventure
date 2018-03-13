@@ -44,6 +44,14 @@ STATUS 		space_add_object(Space* space, Id obj_id);
 STATUS 		space_remove_object(Space* space, Id obj_id);
 Set * 		space_get_objects_id(Space* space);
 
+STATUS		space_set_gdesc_0(Space *, char *);
+STATUS		space_set_gdesc_1(Space *, char *);
+STATUS		space_set_gdesc_2(Space *, char *);
+
+char *		space_get_gdesc_0(Space *);
+char *		space_get_gdesc_1(Space *);
+char *		space_get_gdesc_2(Space *);
+
 STATUS space_print(Space* space);
 
 #endif

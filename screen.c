@@ -7,7 +7,7 @@
 #pragma GCC diagnostic ignored "-Wpedantic"
 
 #define ROWS 33
-#define COLUMNS 80
+#define COLUMNS 85
 #define TOTAL_DATA (ROWS * COLUMNS) + 1
 
 #define BG_CHAR '~'
@@ -57,10 +57,10 @@ void screen_paint(){
   int i=0;
 
   memset(dest, 0, COLUMNS + 1);
-  
+
   if (__data)
   {
-    /* puts(__data); 
+    /* puts(__data);
      * Dump data directly to the terminal
      * It works fine if the terminal window has the right size
      */
@@ -116,7 +116,7 @@ void screen_area_clear(Area* area){
 
   if (area){
     screen_area_reset_cursor(area);
-    
+
     for (i=0; i < area->height; i++)
       memset(ACCESS(area->cursor, 0, i), (int) FG_CHAR, (size_t) area->width);
   }
@@ -133,7 +133,7 @@ void screen_area_puts(Area* area, char *str){
 
   if (screen_area_cursor_is_out_of_bounds(area))
     screen_area_scroll_up(area);
-  
+
   screen_utils_replaces_special_chars(str);
 
   for (ptr = str; ptr < (str + strlen(str)); ptr+=area->width){

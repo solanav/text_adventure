@@ -17,10 +17,11 @@ STATUS game_load_spaces(Game* game, char* filename)
 
   FILE* file = NULL;
 
+  char * gdesc0=NULL, * gdesc1=NULL, * gdesc2=NULL,* toks = NULL;
+
   char line[WORD_SIZE] = "";
   char name[WORD_SIZE] = "";
-
-  char* toks = NULL;
+  char no_string[20] = "                 ";
 
   Id id = NO_ID, north = NO_ID, east = NO_ID, south = NO_ID, west = NO_ID, place = NO_ID;
 
@@ -63,6 +64,10 @@ STATUS game_load_spaces(Game* game, char* filename)
       toks = strtok(NULL, "|");
       west = atol(toks);
 
+      gdesc0 = strtok(NULL, "|");
+      gdesc1 = strtok(NULL, "|");
+      gdesc2 = strtok(NULL, "|");
+
       /* Debug info */
       #ifdef DEBUG
         printf("Leido: %ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
@@ -80,7 +85,22 @@ STATUS game_load_spaces(Game* game, char* filename)
         space_set_south(space, south);
         space_set_west(space, west);
 
-        game_add_space(game, space);
+	if (gdesc0 == NULL)
+          space_set_gdesc_0(space, no_string);
+        else
+          space_set_gdesc_0(space, gdesc0);
+
+        if (gdesc1 == NULL)
+          space_set_gdesc_1(space, no_string);
+        else
+          space_set_gdesc_1(space, gdesc1);
+
+        if (gdesc2 == NULL)
+          space_set_gdesc_2(space, no_string);
+        else
+          space_set_gdesc_2(space, gdesc2);
+        
+   	game_add_space(game, space);
       }
     }
     if (strncmp("#o:", line, 3) == 0)

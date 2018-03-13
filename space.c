@@ -12,6 +12,7 @@ struct _Space {
   Id south;
   Id east;
   Id west;
+  char gdesc[3][21];
   Set * objects;
 };
 
@@ -230,4 +231,53 @@ STATUS space_print(Space* space)
   }
 
   return OK;
+}
+
+STATUS space_set_gdesc_0(Space* space, char* cadena)
+{
+  if (!space || !cadena) return ERROR;
+
+  if (!strcpy(space->gdesc[0], cadena))return ERROR;
+  return OK;
+}
+
+STATUS space_set_gdesc_1(Space* space, char* cadena)
+{
+  if (!space || !cadena) return ERROR;
+
+  if (!strcpy(space->gdesc[1], cadena)) return ERROR; 
+  return OK;
+}
+
+STATUS space_set_gdesc_2(Space* space, char* cadena)
+{
+  if (!space || !cadena) return ERROR;
+
+  if (!strcpy(space->gdesc[2], cadena)) return ERROR;
+
+  return OK;
+}
+
+char* space_get_gdesc_0(Space* space)
+{
+  if (space == NULL)
+    return NULL;
+
+  return space->gdesc[0];
+}
+
+char* space_get_gdesc_1(Space* space)
+{
+  if (space == NULL)
+    return NULL;
+
+  return space->gdesc[1];
+}
+
+char* space_get_gdesc_2(Space* space)
+{
+  if (space == NULL)
+    return NULL;
+
+  return space->gdesc[2];
 }
