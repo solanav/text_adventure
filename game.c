@@ -168,8 +168,10 @@ Id game_get_object_location(Game* game, Id id)
     {
       if (set_get_id(objects, n) == id)
       {
+        set_destroy(objects);
         return space_get_id(game->spaces[i]);
       }
+      set_destroy(objects);
     }
   }
   return NO_ID;
