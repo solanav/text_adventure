@@ -4,10 +4,6 @@ CFLAGS=-Wall -g -pedantic
 
 ALL_FILES=game_loop.o game.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o
 
-################ ALL
-
-all: clean game_exec
-
 ################ EXEC CREATION
 
 game_exec: $(ALL_FILES)
@@ -59,6 +55,11 @@ set_test.o: set_test.c set.h object.h
 
 set.o: set.c set.h types.h game.h
 	$(CC) $(CFLAGS) -c set.c
+
+################ ALL
+
+all: clean game_exec die_test set_test
+
 
 ################ OTHER COMMANDS
 

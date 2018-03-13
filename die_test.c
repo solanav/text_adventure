@@ -13,7 +13,8 @@ int main() {
     goto error0;
   }
 
-  printf("%d\n", die_roll(die));
+  if(die_roll(die) == ERROR) goto error1;
+
 
   check = die_print(stdout, die);
   if(check == ERROR)
