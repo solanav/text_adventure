@@ -258,7 +258,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
       screen_area_puts(ge->map, str);
       sprintf(str, "  | %s |", gdesc[2]);
       screen_area_puts(ge->map, str);
-      sprintf(str, "< |           %s|", obj);
+      sprintf(str, "  |           %s|", obj);
       screen_area_puts(ge->map, str);
     }
   }

@@ -56,7 +56,7 @@ STATUS get_user_input(F_Command * command)
   int i = UNKNOWN, command_found = 0;
   char string[CMD_LENGHT], input[CMD_LENGHT];
 
-  if(fgets(input, CMD_LENGHT, stdin) != NULL)
+  if(fgets(input, CMD_LENGHT, stdin) != NULL && input[0] != '\n')
   {
     if(sscanf(input, "%s", string))
     {
@@ -70,12 +70,14 @@ STATUS get_user_input(F_Command * command)
 		  command_found = 1;
         }
       }
+    }
 	  if (command_found == 0)
 	  {
 	  	printf("\tNot found the command, returning unknown");
 	  	command_setCmd(command, UNKNOWN);
-      }
-	}
+    }
+
+
 
 	printf("\nCommand -> %d\n", command_getCmd(command));
 	printf("\tPICK_UP -> %d\n", PICK_UP);
@@ -88,6 +90,11 @@ STATUS get_user_input(F_Command * command)
       sscanf(input, "%s %ld", string, &id);
       command_setId(command, id);
     }
+  }
+  else
+  {
+    /*Invalid fgets setting cmd to UNKNOWN*/
+    command_setCmd(command, UNKNOWN);
   }
 
   return OK;

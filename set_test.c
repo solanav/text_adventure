@@ -49,11 +49,12 @@ int main()
 	if(set_print_debug(stdout, test_set_copy)==ERROR) goto error1;
 
 
-	printf("\nEverything works as intended, lets go!\n\n");
+	set_destroy(test_set);
+	set_destroy(test_set_copy);
 	return 0;
 
 	error1:
-		free(test_set);
+		set_destroy(test_set);
 	error0:
 		return -1;
 }

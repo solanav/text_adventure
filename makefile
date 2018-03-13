@@ -66,6 +66,12 @@ all: clean game_exec die_test set_test
 val:
 	valgrind --leak-check=full ./game_exec data.dat
 
+val_die:
+	valgrind --leak-check=full ./die_test
+
+val_set:
+	valgrind --leak-check=full ./set_test
+
 clean:
 	rm -rf *.o $(EXEC)
 
