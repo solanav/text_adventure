@@ -113,9 +113,9 @@ STATUS game_destroy(Game* game)
 
   for(i = 0; i<MAX_OBJECTS; i++)
   {
-  	printf("Destroying %p with i %d\n", game->objects[i], i);
-	  printf("\tObject has id %ld\n", object_getId(game->objects[i]));
-    object_destroy(game->objects[i]);
+  	printf("Destroying %p with i %d\n",(void *)  game->objects[i], i);
+	printf("\tObject has id %ld\n", object_getId(game->objects[i]));
+	object_destroy(game->objects[i]);
   }
 
   die_die_die(game->die);
