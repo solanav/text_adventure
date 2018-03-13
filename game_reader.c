@@ -22,7 +22,7 @@ STATUS game_load_spaces(Game* game, char* filename)
 
   char* toks = NULL;
 
-  Id id = NO_ID, north = NO_ID, east = NO_ID, south = NO_ID, west = NO_ID;
+  Id id = NO_ID, north = NO_ID, east = NO_ID, south = NO_ID, west = NO_ID, place = NO_ID;
 
   Space* space = NULL;
   STATUS status = OK;
@@ -82,6 +82,19 @@ STATUS game_load_spaces(Game* game, char* filename)
 
         game_add_space(game, space);
       }
+    }
+    if (strncmp("#o:", line, 3) == 0)
+    {
+      toks = strtok(line + 3, "|");
+      id = atol(toks);
+
+      toks = strtok(NULL, "|");
+      strcpy(name, toks);
+
+      toks = strtok(NULL, "|");
+      place = atol(toks);
+
+      game_set_object_location(game, place, id);
     }
   }
 

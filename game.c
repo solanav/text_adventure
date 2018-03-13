@@ -73,7 +73,6 @@ STATUS game_create(Game* game)
   }
   game->die = die_ini(42);
   game_set_player_location(game, NO_ID);
-  game_set_object_location(game, NO_ID, NO_ID);
 
   game->last_cmd = command_create(NO_CMD, NO_ID);
 
@@ -91,10 +90,6 @@ STATUS game_create_from_file(Game* game, char* filename)
   if (game_load_spaces(game, filename) == ERROR) return ERROR;
 
   game_set_player_location(game, game_get_space_id_at(game, 0));
-  for (i = 0; game->objects[i] != NULL; i++)
-  {
-    game_set_object_location(game, game_get_space_id_at(game, i+2), object_getId(game->objects[i]));
-  }
 
   return OK;
 }
@@ -116,7 +111,7 @@ STATUS game_destroy(Game* game)
   for(i = 0; i<MAX_OBJECTS; i++)
   {
   	printf("Destroying %p with i %d\n", game->objects[i], i);
-	printf("\tObject has id %ld\n", object_getId(game->objects[i]));
+	  printf("\tObject has id %ld\n", object_getId(game->objects[i]));
     object_destroy(game->objects[i]);
   }
 
