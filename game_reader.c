@@ -85,7 +85,7 @@ STATUS game_load_spaces(Game* game, char* filename)
         space_set_south(space, south);
         space_set_west(space, west);
 
-	if (gdesc0 == NULL)
+	      if (gdesc0 == NULL)
           space_set_gdesc_0(space, no_string);
         else
           space_set_gdesc_0(space, gdesc0);
@@ -99,8 +99,8 @@ STATUS game_load_spaces(Game* game, char* filename)
           space_set_gdesc_2(space, no_string);
         else
           space_set_gdesc_2(space, gdesc2);
-        
-   	game_add_space(game, space);
+
+   	    game_add_space(game, space);
       }
     }
     if (strncmp("#o:", line, 3) == 0)
