@@ -12,7 +12,7 @@
 #include "command.h"
 
 #define CMD_LENGHT 30
-#define N_CMD 8
+#define N_CMD 10
 
 struct _F_Command
 {
@@ -20,8 +20,8 @@ struct _F_Command
   Id id;
 };
 
-char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous", "Pickup", "Drop", "Roll"};
-char *short_cmd_to_str[N_CMD] = {"","","e","f","p", "u", "d", "r"};
+char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous", "Pickup", "Drop", "Roll", "Left", "Right"};
+char *short_cmd_to_str[N_CMD] = {"","","e","f","p", "u", "d", "r", "<", ">"};
 
 
 /* LAST get_user_input FUCTION; NOW OBSOLETE, TODO: DELETE WHEN SURE
@@ -76,7 +76,7 @@ STATUS get_user_input(F_Command * command)
 	  	command_setCmd(command, UNKNOWN);
       }
 	}
-	
+
 	printf("\nCommand -> %d\n", command_getCmd(command));
 	printf("\tPICK_UP -> %d\n", PICK_UP);
 	printf("\tDROP    -> %d\n", DROP);
