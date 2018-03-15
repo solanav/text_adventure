@@ -76,9 +76,8 @@ clean:
 	rm -rf *.o $(EXEC)
 
 tar:
-	tar -czf PPROG_2163_I2_P11.tar.gz *
+	tar -czf PPROG_2163_I3_P11.tar.gz *
 
 git:
 	git add -A
 	git commit -m "$m"
-	git push origin master
