@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "graphic_engine.h"
+#include "client.h"
 
 int main(int argc, char *argv[])
 {
@@ -18,6 +19,8 @@ int main(int argc, char *argv[])
 
 	F_Command * command  = command_create(NO_CMD, NO_ID);
 	Graphic_engine *gengine;
+
+	int socket;
 
 	if (argc < 2)
 	{
@@ -39,6 +42,12 @@ int main(int argc, char *argv[])
 		game_destroy(&game);
 		return 1;
 	}
+	
+	/* check connection to server */
+	if (connect_to_server("192.168.1.37", 9090, &socket))
+	{
+		fprintf(stderr, "Error connecting to server");
+	}
 
 	/* main loop */
 	while ((command_getCmd(command) != EXIT) && !game_is_over(&game))
@@ -46,6 +55,8 @@ int main(int argc, char *argv[])
 		graphic_engine_paint_game(gengine, &game);
 		get_user_input(command);
 		game_update(&game, command);
+		/* Update your position with server TODO: do it with a pthread shithead*/
+		custom_request(&socket, (int) game_get_player_location(&game));
 	}
 
 	command_free(command);

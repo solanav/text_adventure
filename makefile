@@ -1,9 +1,9 @@
-EXEC=game_exec die_test set_test
+EXEC=game_exec die_test set_test server
 CC=gcc
 CFLAGS=-Wall -g -pedantic
 m="Automatic Commit"
 
-ALL_FILES=game_loop.o game.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o
+ALL_FILES=game_loop.o game.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o client.o
 
 ################ EXEC CREATION
 
@@ -16,12 +16,15 @@ die_test: die_test.o die.o
 set_test: set_test.o set.o object.o
 	$(CC) $(CFLAGS) -o $@ $^
 
+server: server_launcher.o server.o
+	$(CC) $(CFLAGS) -pthread -o $@ $^
+
 ################ FILE COMPILATION
 
 player.o: player.c types.h player.h set.h
 	$(CC) $(CFLAGS) -c player.c
 
-game_loop.o: game_loop.c graphic_engine.h
+game_loop.o: game_loop.c graphic_engine.h client.h
 	$(CC) $(CFLAGS) -c game_loop.c
 
 game_reader.o: game_reader.c game.h types.h
@@ -57,9 +60,18 @@ set_test.o: set_test.c set.h object.h
 set.o: set.c set.h types.h game.h
 	$(CC) $(CFLAGS) -c set.c
 
+client.o: client.c client.h
+	$(CC) $(CFLAGS) -c client.c
+
+server.o: server.c server.h
+	$(CC) $(CFLAGS) -c server.c
+
+server_launcher.o: server_launcher.c server.h
+	$(CC) $(CFLAGS) -c server_launcher.c
+
 ################ ALL
 
-all: clean game_exec die_test set_test
+all: clean game_exec die_test set_test server
 
 
 ################ OTHER COMMANDS
