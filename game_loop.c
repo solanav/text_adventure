@@ -21,10 +21,11 @@ int main(int argc, char *argv[])
 	Graphic_engine *gengine;
 
 	int socket;
+	char * str_to_int = NULL;
 
-	if (argc < 2)
+	if (argc < 4)
 	{
-		fprintf(stderr, "Use: %s <game_data_file>\n", argv[0]);
+		fprintf(stderr, "Use: %s <game_data_file> <server_ip> <server_port>\n", argv[0]);
 		return 1;
 	}
 
@@ -44,7 +45,7 @@ int main(int argc, char *argv[])
 	}
 	
 	/* check connection to server */
-	if (connect_to_server("192.168.1.37", 9090, &socket))
+	if (connect_to_server((char *) argv[2], strtol(argv[3], &str_to_int, 10), &socket))
 	{
 		fprintf(stderr, "Error connecting to server");
 	}
