@@ -23,5 +23,6 @@ int connect_to_server(char *, int, int *);
 int custom_request(int *, int);
 
 int get_response(int *);
+int disconnect(int *);
 
 #endif // CLIENT_H_

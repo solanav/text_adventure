@@ -59,7 +59,9 @@ int main(int argc, char *argv[])
 		/* Update your position with server TODO: do it with a pthread shithead*/
 		custom_request(&socket, (int) game_get_player_location(&game));
 	}
-
+	
+	/* Tell the server you are disconnecting */
+	disconnect(&socket);
 	command_free(command);
 	game_destroy(&game);
 	graphic_engine_destroy(gengine);

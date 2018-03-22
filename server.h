@@ -14,6 +14,7 @@
 #include <netinet/in.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <arpa/inet.h>
 
 	// Threads
 #include <pthread.h>
@@ -22,8 +23,8 @@
 #define STDSIZE 1024
 
 // Functions
-void clean(int);
 void * start_listen();
+char * get_ip_addr(struct sockaddr_storage);
 int start_server(int, int *);
 void respond_with_code(int *, int);
 

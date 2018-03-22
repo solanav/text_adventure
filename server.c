@@ -2,21 +2,38 @@
 
 void * start_listen(int *server_socket)
 {
-	int client_socket;
-	int code;
-		
+	socklen_t len;
+	struct sockaddr_storage addr;
+	int client_socket, code;
+
+	len = sizeof addr;
+
+	restart:
+
 	listen(*server_socket, 50);
-	client_socket = accept(*server_socket, NULL, NULL);
+	client_socket = accept(*server_socket, (struct sockaddr*)&addr, &len);
 	
-	/* Main loop */
+	printf("[%s] connected to the server...\n", get_ip_addr(addr));
+
 	while (1)
 	{
 		recv(client_socket, &code, sizeof(code), MSG_WAITALL);
 		
-		printf("\nCode [%d] received\n", code);
+		printf("[%s] sent code [%d]\n", get_ip_addr(addr), code);
+		
+		if (code == 404) break;
 	}
-
+	
+	goto restart;
+	
 	return NULL;
+}
+
+char *get_ip_addr(struct sockaddr_storage addr)
+{
+	struct sockaddr_in *s;
+	s = (struct sockaddr_in *) &addr;
+	return inet_ntoa(s->sin_addr);
 }
 
 int start_server(int port, int *server_socket)

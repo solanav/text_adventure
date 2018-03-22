@@ -49,6 +49,15 @@ int custom_request(int *socket, int request)
 	return 0;
 }
 
+int disconnect(int *socket)
+{	
+	if(!socket) return -1;
+
+	custom_request(socket, 404);
+
+	return 0;
+}
+
 int get_response(int *socket)
 {
 	int response;
