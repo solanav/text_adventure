@@ -1,4 +1,4 @@
-EXEC=game_exec die_test set_test
+EXEC=game_exec die_test set_test link_test
 CC=gcc
 CFLAGS=-Wall -g -pedantic
 m="Automatic Commit"
