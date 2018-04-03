@@ -20,16 +20,9 @@
 
 #define MAX_OBJECTS 4
 
-typedef struct _Game
-{
-  Player * player;
-  Object * objects[MAX_OBJECTS];
-  Space * spaces[MAX_SPACES + 1];
-  Die * die;
-  F_Command * last_cmd;
-} Game;
+typedef struct _Game Game;
 
-STATUS 	game_create(Game *);
+Game * game_create();
 STATUS 	game_create_from_file(Game *, char *);
 
 STATUS 	game_update(Game *, F_Command *);

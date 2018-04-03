@@ -19,6 +19,18 @@
 #define N_CALLBACK 9
 
 /**
+  Game's struct
+  */
+
+struct _Game
+{
+  Player * player;
+  Object * objects[MAX_OBJECTS];
+  Space * spaces[MAX_SPACES + 1];
+  Die * die;
+  F_Command * last_cmd;
+} ;
+/**
    Define the function type for the callbacks
 */
 typedef void (*callback_fn)(Game* game);
@@ -53,7 +65,7 @@ static callback_fn game_callback_fn_list[N_CALLBACK]=
    Game interface implementation
 */
 
-STATUS game_create(Game* game)
+Game * game_create()
 {
   /*
    * Fill game structure with empty values
@@ -64,7 +76,11 @@ STATUS game_create(Game* game)
    */
   int i;
   char name[20];
+  Game *game;
 
+  game=(Game *)malloc(sizeof(Game));
+  if(!game) return NULL;
+ 
   for (i = 0; i < MAX_SPACES; i++) {
     game->spaces[i] = NULL;
   }
@@ -80,14 +96,14 @@ STATUS game_create(Game* game)
 
   game->last_cmd = command_create(NO_CMD, NO_ID);
 
-  return OK;
+  return game;
 }
 
 STATUS game_create_from_file(Game* game, char* filename)
 {
 
   /* Create game */
-  if (game_create(game) == ERROR) return ERROR;
+  if (!game) return ERROR;
 
   /* Load provided file */
   if (game_load_spaces(game, filename) == ERROR) return ERROR;
