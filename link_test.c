@@ -3,7 +3,7 @@
 #include "game.h"
 #include "types.h"
 
-int main(int argc, char const *argv[])
+int main(int argc, char *argv[])
 {
 	Game game;
 	Link * link_test;

@@ -69,6 +69,11 @@ STATUS game_create(Game* game)
     game->spaces[i] = NULL;
   }
 
+  for (i = 0; i < MAX_LINK; i++)
+  {
+	  game->links[i] = NULL;
+  }
+
   game->player = player_create("player1", NO_ID, NO_ID, 1);
   for(i = 0; i < 4; i++)
   {

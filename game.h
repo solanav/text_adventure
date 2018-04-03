@@ -17,6 +17,7 @@
 #include "object.h"
 #include "player.h"
 #include "die.h"
+#include "link.h"
 
 #define MAX_OBJECTS 4
 
@@ -25,6 +26,7 @@ typedef struct _Game
   Player * player;
   Object * objects[MAX_OBJECTS];
   Space * spaces[MAX_SPACES + 1];
+  Link * links[MAX_LINK];
   Die * die;
   F_Command * last_cmd;
 } Game;
