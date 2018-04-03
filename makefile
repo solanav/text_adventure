@@ -1,19 +1,22 @@
-EXEC=game_exec die_test set_test
+EXEC=game_exec die_test set_test link_test
 CC=gcc
 CFLAGS=-Wall -g -pedantic
 m="Automatic Commit"
 
-ALL_FILES=game_loop.o game.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o
+ALL_FILES=game.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o
 
 ################ EXEC CREATION
 
-game_exec: $(ALL_FILES)
+game_exec: game_loop.o $(ALL_FILES)
 	$(CC) $(CFLAGS) -o $@ $^
 
 die_test: die_test.o die.o
 	$(CC) $(CFLAGS) -o $@ $^
 
 set_test: set_test.o set.o object.o
+	$(CC) $(CFLAGS) -o $@ $^
+
+link_test: link_test.o $(ALL_FILES)
 	$(CC) $(CFLAGS) -o $@ $^
 
 ################ FILE COMPILATION
@@ -56,6 +59,12 @@ set_test.o: set_test.c set.h object.h
 
 set.o: set.c set.h types.h game.h
 	$(CC) $(CFLAGS) -c set.c
+
+link_test.o: link_test.c link.h types.h game.h
+	$(CC) $(CFLAGS) -c link_test.c
+
+link.o: link.c link.h types.h game.h
+	$(CC) $(CFLAGS) -c link.c
 
 ################ ALL
 

@@ -481,3 +481,20 @@ int game_get_last_roll(Game * game)
 
   return die_get_last_roll(game->die);
 }
+
+BOOL game_areSpacesAdjacent(Game * g, Id space1, Id space2)
+{
+	if(!g || space1 == NO_ID || space2 == NO_ID) return FALSE;
+
+
+	if(space_get_north(game_get_space(g, space2)) == space1)
+		return TRUE;
+	else if(space_get_east(game_get_space(g, space2)) == space1)
+		return TRUE;
+	else if(space_get_south(game_get_space(g, space2)) == space1)
+		return TRUE;
+	else if(space_get_west(game_get_space(g, space2)) == space1)
+		return TRUE;
+	else
+		return FALSE;
+}

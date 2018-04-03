@@ -29,4 +29,9 @@ typedef enum {
   N, S, E, W
 } DIRECTION;
 
+typedef enum
+{
+	OPEN, CLOSED, NO_LINK
+}LinkStatus;
+
 #endif
