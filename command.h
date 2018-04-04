@@ -20,11 +20,10 @@ typedef enum enum_Command
   NO_CMD = -1,
   UNKNOWN, 
   EXIT,
-  FOLLOWING,
-  PREVIOUS,
   PICK_UP,
   DROP,
-  ROLL
+  ROLL,
+  MOVE
 } T_Command;
 
 typedef struct _F_Command F_Command;

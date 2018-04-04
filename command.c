@@ -12,7 +12,7 @@
 #include "command.h"
 
 #define CMD_LENGHT 30
-#define N_CMD 10
+#define N_CMD 7
 
 struct _F_Command
 {
@@ -20,84 +20,71 @@ struct _F_Command
   Id id;
 };
 
-char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous", "Pickup", "Drop", "Roll", "Left", "Right"};
-char *short_cmd_to_str[N_CMD] = {"","","e","f","p", "u", "d", "r", "<", ">"};
-
-
-/* LAST get_user_input FUCTION; NOW OBSOLETE, TODO: DELETE WHEN SURE
-F_Command get_user_input()
-{
-  F_Command cmd = command_create(NO_CMD, NO_ID);
-  char input[CMD_LENGHT] = "";
-  int i=UNKNOWN - NO_CMD + 1;
-
-  if ((input = fgets(stdout)) > 0)
-  {
-    cmd = UNKNOWN;
-    while(cmd == UNKNOWN && i < N_CMD)
-    {
-      if (!strcasecmp(input,short_cmd_to_str[i]) || !strcasecmp(input,cmd_to_str[i]))
-      {
-        cmd = i + NO_CMD;
-      }
-      else
-      {
-        i++;
-      }
-    }
-  }
-  return cmd;
-}
-*/
+char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move"};
+char *short_cmd_to_str[N_CMD] = {"", "", "e", "u", "d", "r", "m"};
 
 STATUS get_user_input(F_Command * command)
 {
-  Id id;
-  int i = UNKNOWN, command_found = 0;
-  char string[CMD_LENGHT], input[CMD_LENGHT];
+	Id id;
+	T_Command aux_command;
+	int i = UNKNOWN, command_found = 0;
+	char string0[CMD_LENGHT], string1[CMD_LENGHT], input[CMD_LENGHT];
 
-  if(fgets(input, CMD_LENGHT, stdin) != NULL && input[0] != '\n')
-  {
-    if(sscanf(input, "%s", string))
-    {
-      for(i = 0; i < N_CMD && command_found == 0; i++)
-      {
-	  	printf("Comparing %s to %s or %s\n", string, short_cmd_to_str[i], cmd_to_str[i]);
-        if((strcasecmp(string, short_cmd_to_str[i]) == 0 || strcasecmp(string, cmd_to_str[i]) == 0))
-        {
-		  printf("\tSetting parameter CMD of command to -> %d\n", i+NO_CMD);
-          command_setCmd(command, i + NO_CMD);
-		  command_found = 1;
-        }
-      }
-    }
-	  if (command_found == 0)
-	  {
-	  	printf("\tNot found the command, returning unknown");
-	  	command_setCmd(command, UNKNOWN);
-    }
+	if(fgets(input, CMD_LENGHT, stdin) != NULL && input[0] != '\n')
+	{
+		/* Check what command the user is giving */
+		sscanf(input, "%s", string0);
+		
+		for(i = 0; i < N_CMD && command_found == 0; i++)
+		{
+			if((strcasecmp(string0, short_cmd_to_str[i]) == 0 || strcasecmp(string0, cmd_to_str[i]) == 0))
+			{
+				printf("Setting parameter CMD of command to -> %d\n", i+NO_CMD);
+				command_setCmd(command, i + NO_CMD);
+				command_found = 1;
+			}
+		}
 
+		/* No command given */
+		if (command_found == 0)
+		{
+			printf("\tNot found the command, returning unknown\n");
+			command_setCmd(command, UNKNOWN);
+		}
+		
+		/* Command requires an id */
+		aux_command = command_getCmd(command);
+		sscanf(input, "%s %ld", string0, &id);
+		if(aux_command == PICK_UP || aux_command == DROP)
+		{
+			printf("\tCommand is either pick or drop. Setting id.\n");
+			command_setId(command, id);
+		}
 
+		/* Command requires a string */
+		sscanf(input, "%s %s", string0, string1);
+		if(aux_command == MOVE)
+		{
+			printf("\tCommand is move. Setting id.\n");
+			if (strcasecmp(string1, "n")==0 || strcasecmp(string1, "north")==0)
+				command_setId(command, (long) 0);
+			else if (strcasecmp(string1, "e")==0 || strcasecmp(string1, "east")==0)
+				command_setId(command, (long) 1);
+			else if (strcasecmp(string1, "s")==0 || strcasecmp(string1, "south")==0)
+				command_setId(command, (long) 2);
+			else if (strcasecmp(string1, "w")==0 || strcasecmp(string1, "west")==0)
+				command_setId(command, (long) 3);
+			else 
+				command_setId(command, (long) -1);
+		}
+	}
+	else
+	{
+		/*Invalid fgets setting cmd to UNKNOWN*/
+		command_setCmd(command, UNKNOWN);
+	}
 
-	printf("\nCommand -> %d\n", command_getCmd(command));
-	printf("\tPICK_UP -> %d\n", PICK_UP);
-	printf("\tDROP    -> %d\n", DROP);
-	printf("\tROLL    -> %d\n", ROLL);
-
-    if(command_getCmd(command) == PICK_UP || command_getCmd(command) == DROP)
-    {
-	  printf("Looks like your command was either PICKUP or DROP? or not\n");
-      sscanf(input, "%s %ld", string, &id);
-      command_setId(command, id);
-    }
-  }
-  else
-  {
-    /*Invalid fgets setting cmd to UNKNOWN*/
-    command_setCmd(command, UNKNOWN);
-  }
-
-  return OK;
+	return OK;
 }
 
 F_Command * command_create(T_Command cmd, Id id)

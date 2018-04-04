@@ -16,6 +16,9 @@ int main(int argc, char *argv[])
 {
 	Game * game = game_create();
 
+	int log_option = 0;
+	FILE * log_file;
+
 	F_Command * command  = command_create(NO_CMD, NO_ID);
 	Graphic_engine *gengine;
 
@@ -23,6 +26,16 @@ int main(int argc, char *argv[])
 	{
 		fprintf(stderr, "Use: %s <game_data_file>\n", argv[0]);
 		return 1;
+	}
+	
+	if (argc == 3)
+	{
+		/* TODO: Need to add the complement to this on main loop */
+		if (strcmp(argv[2], "-l") == 0)
+		{
+			log_option = 1;
+			log_file = fopen("oca.log", "w+");
+		}
 	}
 
 	/* load */
