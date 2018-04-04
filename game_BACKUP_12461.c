@@ -19,6 +19,18 @@
 #define N_CALLBACK 10
 
 /**
+  Game's struct
+  */
+
+struct _Game
+{
+  Player * player;
+  Object * objects[MAX_OBJECTS];
+  Space * spaces[MAX_SPACES + 1];
+  Die * die;
+  F_Command * last_cmd;
+} ;
+/**
    Define the function type for the callbacks
 */
 typedef void (*callback_fn)(Game* game);
@@ -47,8 +59,27 @@ static callback_fn game_callback_fn_list[N_CALLBACK]=
    Game interface implementation
 */
 
-STATUS game_create(Game* game)
+Game * game_create()
 {
+<<<<<<< HEAD
+  /*
+   * Fill game structure with empty values
+   *
+   * game: the main game structure
+   *
+   * returns: ERROR or OK
+   */
+  int i;
+  char name[20];
+  Game *game;
+
+  game=(Game *)malloc(sizeof(Game));
+  if(!game) return NULL;
+ 
+  for (i = 0; i < MAX_SPACES; i++) {
+    game->spaces[i] = NULL;
+  }
+=======
 	/*
 	* Fill game structure with empty values
 	*
@@ -62,6 +93,7 @@ STATUS game_create(Game* game)
 	for (i = 0; i < MAX_SPACES; i++) {
 	game->spaces[i] = NULL;
 	}
+>>>>>>> sov
 
 	game->player = player_create("player1", NO_ID, NO_ID, 1);
 	for(i = 0; i < 4; i++)
@@ -74,7 +106,11 @@ STATUS game_create(Game* game)
 
 	game->last_cmd = command_create(NO_CMD, NO_ID);
 
+<<<<<<< HEAD
+  return game;
+=======
 	return OK;
+>>>>>>> sov
 }
 
 STATUS game_create_from_file(Game* game, char* filename)
@@ -82,8 +118,13 @@ STATUS game_create_from_file(Game* game, char* filename)
 	/* Create game */
 	if (game_create(game) == ERROR) return ERROR;
 
+<<<<<<< HEAD
+  /* Create game */
+  if (!game) return ERROR;
+=======
 	/* Load provided file */
 	if (game_load_spaces(game, filename) == ERROR) return ERROR;
+>>>>>>> sov
 
 	game_set_player_location(game, game_get_space_id_at(game, 0));
 
