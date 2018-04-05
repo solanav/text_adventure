@@ -72,7 +72,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
 	/* Paint the in the description area */
 	screen_area_clear(ge->descript);
-	
+
 	print_new_line(ge->descript, 1);
 	sprintf(str, " Game objects:");
 	screen_area_puts(ge->descript, str);
@@ -104,7 +104,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 			ply[j+1]=' ';
 		}
 	}
-	
+
 	print_new_line(ge->descript, 1);
 	sprintf(str, " Player objects: %s", ply);
 	screen_area_puts(ge->descript, str);
@@ -176,12 +176,12 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 
 	space_last = game_get_space(game, id_back);
 	space_next = game_get_space(game, id_next);
-	
+
 	/* Check gdesc and put it to spaces if there is none */
 	if (position_of_space == 0) space_to_use = space_last;
 	if (position_of_space == 1) space_to_use = space_act;
 	if (position_of_space == 2) space_to_use = space_next;
-	
+
 	gdesc[0] = space_get_gdesc_0(space_to_use);
 	gdesc[1] = space_get_gdesc_1(space_to_use);
 	gdesc[2] = space_get_gdesc_2(space_to_use);
@@ -194,14 +194,14 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 	obj_string_back = create_objects_string(game, id_back);
 	obj_string_act = create_objects_string(game, id_act);
 	obj_string_next = create_objects_string(game, id_next);
-	
+
 	if (position_of_space == 0) obj = obj_string_back;
 	else if (position_of_space == 1) obj = obj_string_act;
 	else if (position_of_space == 2) obj = obj_string_next;
-	
+
 	/* Set hero to spaces or to the hero string */
 	if (position_of_space != 1) strcpy(hero, "  ");
-	
+
 	/* Select what id you have to print */
 	if (position_of_space == 0) id_to_print = id_back;
 	if (position_of_space == 1) id_to_print = id_act;
@@ -225,7 +225,7 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 			sprintf(str, "  | %s                |  ", hero);
 			screen_area_puts(ge->map, str);
 		}
-	
+
 		sprintf(str, "  |%s%2d|              ", gdesc[0], (int) id_to_print);
 		screen_area_puts(ge->map, str);
 		sprintf(str, "  %c %s %c               ", link_left, gdesc[1], link_right);
@@ -234,7 +234,7 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 		screen_area_puts(ge->map, str);
 		sprintf(str, "  |           %s|      ", obj);
 		screen_area_puts(ge->map, str);
-	
+
 		if (position_of_space != 2)
 		{
 			sprintf(str, "  +-------------------+");
@@ -246,6 +246,10 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 		if (position_of_space == 0) print_new_line(ge->map, 5);
 		if (position_of_space == 2) print_new_line(ge->map, 6);
 	}
+
+	free(obj_string_back);
+	free(obj_string_act);
+	free(obj_string_next);
 }
 
 char * create_objects_string(Game * game, Id id)
@@ -276,7 +280,7 @@ void print_new_line(Area * area, int number)
 {
 	int i;
 	char str[255] = "\0";
-	
+
 	for (i = 0; i < number; i++)
 	{
 		sprintf(str, " ");
