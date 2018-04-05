@@ -27,6 +27,7 @@ STATUS player_setId(Player *, Id);
 char * player_getName(Player *);
 Id player_getLocId(Player *);
 Id player_getObjId(Player *, int);
+Id player_get_inventory_object_id(Player*);
 Id player_getId(Player *);
 
 STATUS player_removeObjId(Player *, Id);
