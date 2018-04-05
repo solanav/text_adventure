@@ -23,6 +23,7 @@ struct _Game
   Player * player;
   Object * objects[MAX_OBJECTS];
   Space * spaces[MAX_SPACES + 1];
+  Link* links[MAX_LINK];
   Die * die;
   F_Command * last_cmd;
 };
@@ -73,7 +74,7 @@ STATUS game_create(Game* game)
 	}
 
 	game->player = player_create("player1", NO_ID, NO_ID, 1);
-	
+
 	for(i = 0; i < 4; i++)
 	{
 		sprintf(name, "o%d", i+1);
@@ -150,6 +151,21 @@ Player* game_get_player(Game * game)
 	if(!game) return NULL;
 
 	return game->player;
+}
+
+Link * game_get_link(Game * game, Id id)
+{
+	int i;
+
+	if(!game || id == NO_ID) return NULL;
+
+	for(i=0; i < MAX_LINK && game->links[i]; i++)
+	{
+		if (id == link_getId(game->links[i]))
+			return game->links[i];
+	}
+
+	return NULL;
 }
 
 Id game_get_player_location(Game* game)
@@ -288,7 +304,7 @@ void game_callback_roll(Game* game)
 
 void game_callback_move(Game* game)
 {
-	int i = 0;
+	Id link_id = NO_ID;
 	Id current_id = NO_ID;
 	Id space_id = NO_ID;
 	Id movement_id = NO_ID;
@@ -300,53 +316,34 @@ void game_callback_move(Game* game)
 
 	if (NO_ID == space_id) return;
 
-	for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
+	switch (movement_id)
 	{
-		current_id = space_get_id(game->spaces[i]);
-		if (current_id == space_id)
-		{
-			if (movement_id == 0)
-			{
-				current_id = space_get_north(game->spaces[i]);
-				
-				if (current_id != NO_ID)
-					game_set_player_location(game, current_id);
-
-				return;
-			}
-			else if (movement_id == 1)
-			{
-				current_id = space_get_east(game->spaces[i]);
-				
-				if (current_id != NO_ID)
-					game_set_player_location(game, current_id);
-
-				return;
-			}
-			else if (movement_id == 2)
-			{
-				current_id = space_get_south(game->spaces[i]);
-				
-				if (current_id != NO_ID)
-					game_set_player_location(game, current_id);
-
-				return;
-			}
-			else if (movement_id == 3)
-			{
-				current_id = space_get_west(game->spaces[i]);
-				
-				if (current_id != NO_ID)
-					game_set_player_location(game, current_id);
-
-				return;
-			}
-			else
-			{
-				printf("Error when trying to get link id of command move\n");
-				exit(1);
-			}
-		}
+		case 0:
+			link_id = space_get_north(game_get_space(game, space_id));
+			current_id = link_getDestination(game_get_link(game, link_id), space_id);
+			if(current_id != NO_ID)
+				game_set_player_location(game, current_id);
+			break;
+		case 1:
+			link_id = space_get_east(game_get_space(game,space_id));
+			current_id = link_getDestination(game_get_link(game, link_id), space_id);
+			if(current_id != NO_ID)
+				game_set_player_location(game, current_id);
+			break;
+		case 2:
+			link_id = space_get_south(game_get_space(game, space_id));
+			current_id = link_getDestination(game_get_link(game, link_id), space_id);
+			if(current_id != NO_ID)
+				game_set_player_location(game, current_id);
+			break;
+		case 3:
+			link_id = space_get_west(game_get_space(game, space_id));
+			current_id = link_getDestination(game_get_link(game, link_id), space_id);
+			if(current_id != NO_ID)
+				game_set_player_location(game, current_id);
+			break;
+		default:
+			return;
 	}
 }
 
@@ -426,4 +423,21 @@ int game_get_last_roll(Game * game)
   if(!game) return -1;
 
   return die_get_last_roll(game->die);
+}
+
+BOOL game_areSpacesAdjacent(Game * g, Id space1, Id space2)
+{
+	if(!g || space1 == NO_ID || space2 == NO_ID) return FALSE;
+
+
+	if(space_get_north(game_get_space(g, space2)) == space1)
+		return TRUE;
+	else if(space_get_east(game_get_space(g, space2)) == space1)
+		return TRUE;
+	else if(space_get_south(game_get_space(g, space2)) == space1)
+		return TRUE;
+	else if(space_get_west(game_get_space(g, space2)) == space1)
+		return TRUE;
+
+	return FALSE;
 }

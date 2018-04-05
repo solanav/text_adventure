@@ -17,6 +17,7 @@
 #include "object.h"
 #include "player.h"
 #include "die.h"
+#include "link.h"
 
 #define MAX_OBJECTS 4
 
@@ -48,5 +49,7 @@ STATUS	game_load_spaces(Game *, char *);
 
 F_Command * game_get_last_command(Game *);
 T_Command 	game_get_last_command_text(Game *);
+
+BOOL game_areSpacesAdjacent(Game *, Id, Id);
 
 #endif
