@@ -45,7 +45,7 @@ object.o: object.c object.h types.h
 command.o: command.c command.h types.h
 	$(CC) $(CFLAGS) -c command.c
 
-game.o: game.c game.h game_reader.h object.h player.h space.h command.h die.h
+game.o: game.c game.h game_reader.h object.h player.h space.h command.h die.h link.h
 	$(CC) $(CFLAGS) -c game.c
 
 die_test.o: die_test.c die.h types.h

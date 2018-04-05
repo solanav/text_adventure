@@ -3,7 +3,9 @@
 
 #include "game.h"
 
-typedef struct _Link Link;
+#define MAX_LINK 100
+
+typedef struct _link Link;
 
 Link * link_create(Id);
 void link_destroy(Link *);
