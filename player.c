@@ -112,3 +112,14 @@ STATUS player_removeObjId(Player * player, Id id)
 
 	return OK;
 }
+Id player_get_inventory_object_id(Player*player){
+	Id*id=NO_ID;
+	int i=0;
+	do{
+		id=player_getObjId(player, i);
+		return id;
+		i++;
+	}
+	while(id!=NO_ID);
+	
+}
