@@ -12,7 +12,7 @@
 #include "command.h"
 
 #define CMD_LENGHT 30
-#define N_CMD 7
+#define N_CMD 8
 
 struct _F_Command
 {
@@ -20,8 +20,8 @@ struct _F_Command
   Id id;
 };
 
-char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move"};
-char *short_cmd_to_str[N_CMD] = {"", "", "e", "u", "d", "r", "m"};
+char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check"};
+char *short_cmd_to_str[N_CMD] = {"", "", "e", "u", "d", "r", "m", "c"};
 
 STATUS get_user_input(F_Command * command)
 {
@@ -34,7 +34,7 @@ STATUS get_user_input(F_Command * command)
 	{
 		/* Check what command the user is giving */
 		sscanf(input, "%s", string0);
-		
+
 		for(i = 0; i < N_CMD && command_found == 0; i++)
 		{
 			if((strcasecmp(string0, short_cmd_to_str[i]) == 0 || strcasecmp(string0, cmd_to_str[i]) == 0))
@@ -51,7 +51,7 @@ STATUS get_user_input(F_Command * command)
 			printf("\tNot found the command, returning unknown\n");
 			command_setCmd(command, UNKNOWN);
 		}
-		
+
 		/* Command requires an id */
 		aux_command = command_getCmd(command);
 		sscanf(input, "%s %ld", string0, &id);
@@ -74,8 +74,16 @@ STATUS get_user_input(F_Command * command)
 				command_setId(command, (long) 2);
 			else if (strcasecmp(string1, "w")==0 || strcasecmp(string1, "west")==0)
 				command_setId(command, (long) 3);
-			else 
+			else
 				command_setId(command, UNKNOWN);
+		}
+		if(aux_command == CHECK)
+		{
+			printf("\tCommand is move. Setting id.\n");
+			if (strcasecmp(string1, "space") || strcasecmp(string1, "s"))
+			{
+				command_setId(command, (long)17);
+			}
 		}
 	}
 	else
