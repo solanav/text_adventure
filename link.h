@@ -17,6 +17,8 @@ Id get_linkspace1(Link *);
 Id get_linkspace2(Link *);
 LinkStatus get_linkStatus(Link *);
 
+Id get_linkDestination(Link *, Id );
+
 STATUS print_link(Link *);
 
 #endif

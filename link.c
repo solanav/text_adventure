@@ -107,3 +107,15 @@ STATUS print_link(Link * link)
 
 	return OK;
 }
+
+Id get_linkDestination(Link * l, Id originId)
+{
+	if(!l) return NO_ID;
+
+	if(originId == l->linkspace1)
+		return l->linkspace2;
+	else if(originId == l->linkspace2)
+		return l->linkspace1;
+	else
+		return NO_ID;
+}
