@@ -16,7 +16,7 @@ die_test: die_test.o die.o
 set_test: set_test.o set.o object.o
 	$(CC) $(CFLAGS) -o $@ $^
 
-link_test: link_test.o $(ALL_FILES)
+link_test: link_test.o link.o
 	$(CC) $(CFLAGS) -o $@ $^
 
 ################ FILE COMPILATION
