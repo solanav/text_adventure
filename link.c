@@ -40,25 +40,21 @@ STATUS set_linkId(Link * l, Id id)
 	return OK;
 }
 
-STATUS set_spacesId(Game* g, Link * l, Id space1, Id space2)
-{
-	if(!g || !l || space1 == NO_ID || space2 == NO_ID) return ERROR;
-
-	if(game_areSpacesAdjacent(g, space1, space2) == TRUE)
-	{
-		l->linkspace1 = space1;
-		l->linkspace2 = space2;
-		return OK;
-	}
-
-	return ERROR;
-}
-
 STATUS set_linkStatus(Link * l, LinkStatus door)
 {
 	if(!l) return ERROR;
 
 	l->door = door;
+
+	return OK;
+}
+
+STATUS set_linkSpaces(Link * l, Id space1, Id space2)
+{
+	if(!l || space1 == NO_ID || space2 == NO_ID) return ERROR;
+
+	l->linkspace1 = space1;
+	l->linkspace2 = space2;
 
 	return OK;
 }

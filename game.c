@@ -69,11 +69,6 @@ STATUS game_create(Game* game)
     game->spaces[i] = NULL;
   }
 
-  for (i = 0; i < MAX_LINK; i++)
-  {
-	  game->links[i] = NULL;
-  }
-
   game->player = player_create("player1", NO_ID, NO_ID, 1);
   for(i = 0; i < 4; i++)
   {
@@ -152,6 +147,21 @@ Player* game_get_player(Game * game)
   if(!game) return NULL;
 
   return game->player;
+}
+
+Link * game_get_link(Game * game, Id id)
+{
+	int i;
+
+	if(!game || id == NO_ID) return NULL;
+
+	for(i=0; i < MAX_LINK && game->links[i]; i++)
+	{
+		if (id == get_linkId(game->links[i]))
+			return game->links[i];
+	}
+
+	return NULL;
 }
 
 Id game_get_player_location(Game* game)
@@ -500,6 +510,6 @@ BOOL game_areSpacesAdjacent(Game * g, Id space1, Id space2)
 		return TRUE;
 	else if(space_get_west(game_get_space(g, space2)) == space1)
 		return TRUE;
-	else
-		return FALSE;
+
+	return FALSE;
 }

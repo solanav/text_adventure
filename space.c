@@ -8,10 +8,10 @@
 struct _Space {
   Id id;
   char name[WORD_SIZE + 1];
-  Id north;
-  Id south;
-  Id east;
-  Id west;
+  Id linkNorth;
+  Id linkSouth;
+  Id linkEast;
+  Id linkWest;
   char gdesc[3][21];
   Set * objects;
 };
@@ -35,10 +35,10 @@ Space* space_create(Id id)
 
   newSpace->name[0] = '\0';
 
-  newSpace->north = NO_ID;
-  newSpace->south = NO_ID;
-  newSpace->east = NO_ID;
-  newSpace->west = NO_ID;
+  newSpace->linkNorth = NO_ID;
+  newSpace->linkSouth = NO_ID;
+  newSpace->linkEast = NO_ID;
+  newSpace->linkWest = NO_ID;
 
   newSpace->objects = set_create(5);
 
@@ -81,7 +81,7 @@ STATUS space_set_north(Space* space, Id id)
   {
     return ERROR;
   }
-  space->north = id;
+  space->linkNorth = id;
   return OK;
 }
 
@@ -91,7 +91,7 @@ STATUS space_set_south(Space* space, Id id)
   {
     return ERROR;
   }
-  space->south = id;
+  space->linkSouth = id;
   return OK;
 }
 
@@ -101,7 +101,7 @@ STATUS space_set_east(Space* space, Id id)
   {
     return ERROR;
   }
-  space->east = id;
+  space->linkEast = id;
   return OK;
 }
 
@@ -111,7 +111,7 @@ STATUS space_set_west(Space* space, Id id)
   {
     return ERROR;
   }
-  space->west = id;
+  space->linkWest = id;
   return OK;
 }
 
@@ -147,28 +147,28 @@ Id space_get_north(Space* space)
 {
   if (!space) return NO_ID;
 
-  return space->north;
+  return space->linkNorth;
 }
 
 Id space_get_south(Space* space)
 {
   if (!space) return NO_ID;
 
-  return space->south;
+  return space->linkSouth;
 }
 
 Id space_get_east(Space* space)
 {
   if (!space) return NO_ID;
 
-  return space->east;
+  return space->linkEast;
 }
 
 Id space_get_west(Space* space)
 {
   if (!space) return NO_ID;
 
-  return space->west;
+  return space->linkWest;
 }
 
 
@@ -245,7 +245,7 @@ STATUS space_set_gdesc_1(Space* space, char* cadena)
 {
   if (!space || !cadena) return ERROR;
 
-  if (!strcpy(space->gdesc[1], cadena)) return ERROR; 
+  if (!strcpy(space->gdesc[1], cadena)) return ERROR;
   return OK;
 }
 
@@ -281,3 +281,5 @@ char* space_get_gdesc_2(Space* space)
 
   return space->gdesc[2];
 }
+
+/*BOOL space_isLinked(Space*)*/

@@ -63,7 +63,7 @@ set.o: set.c set.h types.h game.h
 link_test.o: link_test.c link.h types.h game.h
 	$(CC) $(CFLAGS) -c link_test.c
 
-link.o: link.c link.h types.h game.h
+link.o: link.c link.h types.h
 	$(CC) $(CFLAGS) -c link.c
 
 ################ ALL
