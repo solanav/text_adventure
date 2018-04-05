@@ -23,6 +23,7 @@ struct _Game
   Player * player;
   Object * objects[MAX_OBJECTS];
   Space * spaces[MAX_SPACES + 1];
+  Link* links[MAX_LINK];
   Die * die;
   F_Command * last_cmd;
 };
@@ -73,7 +74,7 @@ STATUS game_create(Game* game)
 	}
 
 	game->player = player_create("player1", NO_ID, NO_ID, 1);
-	
+
 	for(i = 0; i < 4; i++)
 	{
 		sprintf(name, "o%d", i+1);
@@ -316,7 +317,7 @@ void game_callback_move(Game* game)
 			if (movement_id == 0)
 			{
 				current_id = space_get_north(game->spaces[i]);
-				
+
 				if (current_id != NO_ID)
 					game_set_player_location(game, current_id);
 
@@ -325,7 +326,7 @@ void game_callback_move(Game* game)
 			else if (movement_id == 1)
 			{
 				current_id = space_get_east(game->spaces[i]);
-				
+
 				if (current_id != NO_ID)
 					game_set_player_location(game, current_id);
 
@@ -334,7 +335,7 @@ void game_callback_move(Game* game)
 			else if (movement_id == 2)
 			{
 				current_id = space_get_south(game->spaces[i]);
-				
+
 				if (current_id != NO_ID)
 					game_set_player_location(game, current_id);
 
@@ -343,7 +344,7 @@ void game_callback_move(Game* game)
 			else if (movement_id == 3)
 			{
 				current_id = space_get_west(game->spaces[i]);
-				
+
 				if (current_id != NO_ID)
 					game_set_player_location(game, current_id);
 
