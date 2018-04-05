@@ -10,17 +10,17 @@ typedef struct _link Link;
 Link * link_create(Id);
 void link_destroy(Link *);
 
-STATUS set_linkId(Link *, Id);
-STATUS set_linkStatus(Link *, LinkStatus);
-STATUS set_linkSpaces(Link *, Id, Id);
+STATUS link_setId(Link *, Id);
+STATUS link_setStatus(Link *, LinkStatus);
+STATUS link_setSpaces(Link *, Id, Id);
 
-Id get_linkId(Link *);
-Id get_linkspace1(Link *);
-Id get_linkspace2(Link *);
-LinkStatus get_linkStatus(Link *);
+Id link_getId(Link *);
+Id link_getSpace1(Link *);
+Id link_getSpace2(Link *);
+LinkStatus link_getStatus(Link *);
 
-Id get_linkDestination(Link *, Id );
+Id link_getDestination(Link *, Id );
 
-STATUS print_link(Link *);
+STATUS link_print(Link *);
 
 #endif

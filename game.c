@@ -157,7 +157,7 @@ Link * game_get_link(Game * game, Id id)
 
 	for(i=0; i < MAX_LINK && game->links[i]; i++)
 	{
-		if (id == get_linkId(game->links[i]))
+		if (id == link_getId(game->links[i]))
 			return game->links[i];
 	}
 

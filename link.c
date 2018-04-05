@@ -31,7 +31,7 @@ void link_destroy(Link * l)
 	free(l);
 }
 
-STATUS set_linkId(Link * l, Id id)
+STATUS link_setId(Link * l, Id id)
 {
 	if(!l) return ERROR;
 
@@ -40,7 +40,7 @@ STATUS set_linkId(Link * l, Id id)
 	return OK;
 }
 
-STATUS set_linkStatus(Link * l, LinkStatus door)
+STATUS link_setStatus(Link * l, LinkStatus door)
 {
 	if(!l) return ERROR;
 
@@ -49,7 +49,7 @@ STATUS set_linkStatus(Link * l, LinkStatus door)
 	return OK;
 }
 
-STATUS set_linkSpaces(Link * l, Id space1, Id space2)
+STATUS link_setSpaces(Link * l, Id space1, Id space2)
 {
 	if(!l || space1 == NO_ID || space2 == NO_ID) return ERROR;
 
@@ -59,28 +59,28 @@ STATUS set_linkSpaces(Link * l, Id space1, Id space2)
 	return OK;
 }
 
-Id get_linkId(Link * l)
+Id link_getId(Link * l)
 {
 	if(!l) return NO_ID;
 
 	return l->linkId;
 }
 
-Id get_linkspace1(Link * l)
+Id link_getSpace1(Link * l)
 {
 	if(!l) return NO_ID;
 
 	return l->linkspace1;
 }
 
-Id get_linkspace2(Link * l)
+Id link_getSpace2(Link * l)
 {
 	if(!l) return NO_ID;
 
 	return l->linkspace2;
 }
 
-LinkStatus get_linkStatus(Link * l)
+LinkStatus link_getStatus(Link * l)
 {
 	if(!l) return NO_LINK;
 
@@ -89,7 +89,7 @@ LinkStatus get_linkStatus(Link * l)
 
 /*ONLY FOR DEBUGGING*/
 
-STATUS print_link(Link * link)
+STATUS link_print(Link * link)
 {
 	if(!link) return ERROR;
 
@@ -104,7 +104,7 @@ STATUS print_link(Link * link)
 	return OK;
 }
 
-Id get_linkDestination(Link * l, Id originId)
+Id link_getDestination(Link * l, Id originId)
 {
 	if(!l) return NO_ID;
 
