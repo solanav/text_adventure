@@ -5,6 +5,7 @@
 struct _Object{
   char name [STDSIZE];
   Id id;
+  descripton[MAX_OBJECT];
 };
 
 Object* object_create(char* name, Id id)
