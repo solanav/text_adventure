@@ -20,8 +20,8 @@ struct _F_Command
   Id id;
 };
 
-char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous", "Pickup", "Drop", "Roll", "Left", "Right"};
-char *short_cmd_to_str[N_CMD] = {"","","e","f","p", "u", "d", "r", "<", ">"};
+char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous", "Pickup", "Drop", "Roll", "Left", "Right", "Check Space"};
+char *short_cmd_to_str[N_CMD] = {"","","e","f","p", "u", "d", "r", "<", ">","cs"};
 
 
 /* LAST get_user_input FUCTION; NOW OBSOLETE, TODO: DELETE WHEN SURE
