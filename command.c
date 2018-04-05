@@ -75,7 +75,7 @@ STATUS get_user_input(F_Command * command)
 			else if (strcasecmp(string1, "w")==0 || strcasecmp(string1, "west")==0)
 				command_setId(command, (long) 3);
 			else 
-				command_setId(command, (long) -1);
+				command_setId(command, UNKNOWN);
 		}
 	}
 	else

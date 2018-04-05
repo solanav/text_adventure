@@ -14,7 +14,7 @@
 
 int main(int argc, char *argv[])
 {
-	Game * game = game_create();
+	Game * game;
 
 	int log_option = 0;
 	FILE * log_file;
