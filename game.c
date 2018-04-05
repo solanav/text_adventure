@@ -18,6 +18,15 @@
 
 #define N_CALLBACK 10
 
+typedef struct _Game
+{
+  Player * player;
+  Object * objects[MAX_OBJECTS];
+  Space * spaces[MAX_SPACES + 1];
+  Die * die;
+  F_Command * last_cmd;
+} Game;
+
 /**
    Define the function type for the callbacks
 */
@@ -60,15 +69,17 @@ STATUS game_create(Game* game)
 	char name[20];
 
 	for (i = 0; i < MAX_SPACES; i++) {
-	game->spaces[i] = NULL;
+		game->spaces[i] = NULL;
 	}
 
 	game->player = player_create("player1", NO_ID, NO_ID, 1);
+	
 	for(i = 0; i < 4; i++)
 	{
-	sprintf(name, "o%d", i+1);
-	game->objects[i] = object_create(name, (long int) i+1);
+		sprintf(name, "o%d", i+1);
+		game->objects[i] = object_create(name, (long int) i+1);
 	}
+
 	game->die = die_ini(666);
 	game_set_player_location(game, NO_ID);
 

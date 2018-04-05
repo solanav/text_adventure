@@ -22,7 +22,7 @@
 
 typedef struct _Game Game;
 
-Game * game_create();
+STATUS	game_create(Game *);
 STATUS 	game_create_from_file(Game *, char *);
 
 STATUS 	game_update(Game *, F_Command *);
