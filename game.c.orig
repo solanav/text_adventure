@@ -18,6 +18,10 @@
 
 #define N_CALLBACK 10
 
+/**
+  Game's struct
+  */
+
 struct _Game
 {
   Player * player;
@@ -25,8 +29,7 @@ struct _Game
   Space * spaces[MAX_SPACES + 1];
   Die * die;
   F_Command * last_cmd;
-};
-
+} ;
 /**
    Define the function type for the callbacks
 */
@@ -56,8 +59,27 @@ static callback_fn game_callback_fn_list[N_CALLBACK]=
    Game interface implementation
 */
 
-STATUS game_create(Game* game)
+Game * game_create()
 {
+<<<<<<< HEAD
+  /*
+   * Fill game structure with empty values
+   *
+   * game: the main game structure
+   *
+   * returns: ERROR or OK
+   */
+  int i;
+  char name[20];
+  Game *game;
+
+  game=(Game *)malloc(sizeof(Game));
+  if(!game) return NULL;
+ 
+  for (i = 0; i < MAX_SPACES; i++) {
+    game->spaces[i] = NULL;
+  }
+=======
 	/*
 	* Fill game structure with empty values
 	*
@@ -69,23 +91,26 @@ STATUS game_create(Game* game)
 	char name[20];
 
 	for (i = 0; i < MAX_SPACES; i++) {
-		game->spaces[i] = NULL;
+	game->spaces[i] = NULL;
 	}
+>>>>>>> sov
 
 	game->player = player_create("player1", NO_ID, NO_ID, 1);
-	
 	for(i = 0; i < 4; i++)
 	{
-		sprintf(name, "o%d", i+1);
-		game->objects[i] = object_create(name, (long int) i+1);
+	sprintf(name, "o%d", i+1);
+	game->objects[i] = object_create(name, (long int) i+1);
 	}
-
 	game->die = die_ini(666);
 	game_set_player_location(game, NO_ID);
 
 	game->last_cmd = command_create(NO_CMD, NO_ID);
 
+<<<<<<< HEAD
+  return game;
+=======
 	return OK;
+>>>>>>> sov
 }
 
 STATUS game_create_from_file(Game* game, char* filename)
@@ -93,8 +118,13 @@ STATUS game_create_from_file(Game* game, char* filename)
 	/* Create game */
 	if (game_create(game) == ERROR) return ERROR;
 
+<<<<<<< HEAD
+  /* Create game */
+  if (!game) return ERROR;
+=======
 	/* Load provided file */
 	if (game_load_spaces(game, filename) == ERROR) return ERROR;
+>>>>>>> sov
 
 	game_set_player_location(game, game_get_space_id_at(game, 0));
 
@@ -150,21 +180,6 @@ Player* game_get_player(Game * game)
 	if(!game) return NULL;
 
 	return game->player;
-}
-
-Link * game_get_link(Game * game, Id id)
-{
-	int i;
-
-	if(!game || id == NO_ID) return NULL;
-
-	for(i=0; i < MAX_LINK && game->links[i]; i++)
-	{
-		if (id == link_getId(game->links[i]))
-			return game->links[i];
-	}
-
-	return NULL;
 }
 
 Id game_get_player_location(Game* game)
@@ -434,21 +449,4 @@ int game_get_last_roll(Game * game)
   if(!game) return -1;
 
   return die_get_last_roll(game->die);
-}
-
-BOOL game_areSpacesAdjacent(Game * g, Id space1, Id space2)
-{
-	if(!g || space1 == NO_ID || space2 == NO_ID) return FALSE;
-
-
-	if(space_get_north(game_get_space(g, space2)) == space1)
-		return TRUE;
-	else if(space_get_east(game_get_space(g, space2)) == space1)
-		return TRUE;
-	else if(space_get_south(game_get_space(g, space2)) == space1)
-		return TRUE;
-	else if(space_get_west(game_get_space(g, space2)) == space1)
-		return TRUE;
-
-	return FALSE;
 }
