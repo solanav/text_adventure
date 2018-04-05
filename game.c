@@ -261,14 +261,14 @@ void game_callback_pickup(Game* game)
 	Id player_locId = game_get_player_location(game);
 	Space * space_pointer = game_get_space(game, player_locId);
 	Id object_id = command_getId(game->last_cmd);
-	
+
 	if (!game) return;
 	if (game_get_object_location(game, object_id) == game_get_player_location(game))
 	{
 		player_setObjId(game->player, object_id);
 		space_remove_object(space_pointer, object_id);
 	}
-	
+
 	/* DEBUG : this is to check if it works (spoiler alert: it does)*/
 	printf("ThiS niBBa has the following objects:\n");
 	for (i=1; debug != NO_ID && i<10; i++)
@@ -281,18 +281,18 @@ void game_callback_pickup(Game* game)
 }
 
 void game_callback_drop(Game* game)
-{	
+{
 	Id player_locId = game_get_player_location(game);
 	Space * space_pointer = game_get_space(game, player_locId);
 	Id object_id = command_getId(game->last_cmd);
-	
+
 	if (!game) return;
 
 	if (object_id > MAX_OBJECTS) return;
 
 	space_add_object(space_pointer, object_id);
 	player_removeObjId(game->player, object_id);
-	return;	
+	return;
 }
 
 void game_callback_roll(Game* game)
@@ -314,7 +314,7 @@ void game_callback_move(Game* game)
 	movement_id = command_getId(game->last_cmd);
 	printf("MOVEMENT_ID -> %ld\n", movement_id);
 
-	if (NO_ID == space_id) return;
+	if (NO_ID == space_id || link_id == NO_ID) return;
 
 	switch (movement_id)
 	{
