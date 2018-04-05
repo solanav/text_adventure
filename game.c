@@ -18,14 +18,14 @@
 
 #define N_CALLBACK 10
 
-typedef struct _Game
+struct _Game
 {
   Player * player;
   Object * objects[MAX_OBJECTS];
   Space * spaces[MAX_SPACES + 1];
   Die * die;
   F_Command * last_cmd;
-} Game;
+};
 
 /**
    Define the function type for the callbacks
