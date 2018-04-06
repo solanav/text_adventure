@@ -27,7 +27,7 @@ void object_destroy(Object* obj)
   free(obj);
 }
 
-STATUS object_setName(Object* obj, char* name)
+STATUS object_set_name(Object* obj, char* name)
 {
   if(!obj||!name) return ERROR;
 
@@ -36,7 +36,7 @@ STATUS object_setName(Object* obj, char* name)
   return OK;
 }
 
-STATUS object_setId(Object* obj, Id id)
+STATUS object_set_id(Object* obj, Id id)
 {
   if(!obj) return ERROR;
 
@@ -45,14 +45,14 @@ STATUS object_setId(Object* obj, Id id)
   return OK;
 }
 
-char* object_getName(Object* obj)
+char* object_get_name(Object* obj)
 {
   if(!obj) return NULL;
 
   return obj->name;
 }
 
-Id object_getId(Object* obj)
+Id object_get_id(Object* obj)
 {
   if(!obj) return -1;
 

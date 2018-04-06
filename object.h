@@ -18,13 +18,13 @@ void object_destroy(Object* obj);
 /*
  * Changing the values of the Object
  */
-STATUS object_setName(Object* obj, char* name);
-STATUS object_setId(Object* obj, Id id);
+STATUS object_set_name(Object* obj, char* name);
+STATUS object_set_id(Object* obj, Id id);
 
 /*
  * For accesing the object's name and Id
  */
-char * object_getName(Object* obj);
-Id object_getId(Object* obj);
+char * object_get_name(Object* obj);
+Id object_get_id(Object* obj);
 
 #endif

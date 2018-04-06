@@ -120,7 +120,7 @@ STATUS game_destroy(Game* game)
 	for(i = 0; i<MAX_OBJECTS; i++)
 	{
 		printf("Destroying %p with i %d\n",(void *)  game->objects[i], i);
-		printf("\tObject has id %ld\n", object_getId(game->objects[i]));
+		printf("\tObject has id %ld\n", object_get_id(game->objects[i]));
 		object_destroy(game->objects[i]);
 	}
 
@@ -151,6 +151,22 @@ Player* game_get_player(Game * game)
 	if(!game) return NULL;
 
 	return game->player;
+}
+
+Object * game_get_object(Game * game, char * object_name)
+{
+	int i;
+
+	if(!game || object_name == NULL) return NULL;
+
+	for(i=0; i < MAX_LINK && game->links[i]; i++)
+	{
+		/* Si quieres que tenga en cuenta mayus cambiar por strcmp*/
+		if (strcasecmp(object_name, object_get_name(game->objects[i])) ==  0)
+			return game->objects[i];
+	}
+
+	return NULL;
 }
 
 Link * game_get_link(Game * game, Id id)

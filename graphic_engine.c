@@ -177,8 +177,6 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 	char str[255];
 	char hero[3] = "8D";
 	char no_string[20] = "                 ";
-	char link_left_char = '\0';
-	char link_right_char = '\0';
 
 	Id id_act = NO_ID;
 	Id id_back = NO_ID;
