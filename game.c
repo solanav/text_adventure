@@ -259,8 +259,12 @@ void game_callback_pickup(Game* game)
 	Id debug = 0;
 
 	Id player_locId = game_get_player_location(game);
+	Id object_id;
 	Space * space_pointer = game_get_space(game, player_locId);
-	Id object_id = command_getId(game->last_cmd);
+	char object[20];
+
+	strcpy(object, command_getId(game->last_cmd));
+	object_id = object_getId(game_get_object(game, object));
 
 	player_setObjId(game->player, object_id);
 	space_remove_object(space_pointer, object_id);
@@ -279,8 +283,12 @@ void game_callback_pickup(Game* game)
 void game_callback_drop(Game* game)
 {
 	Id player_locId = game_get_player_location(game);
+	Id object_id;
 	Space * space_pointer = game_get_space(game, player_locId);
-	Id object_id = command_getId(game->last_cmd);
+	Id object[20];
+
+	strcpy(object, command_getId(game->last_cmd));
+	object_id = object_getId(game_get_object(game, object));
 
 	space_add_object(space_pointer, object_id);
 	player_removeObjId(game->player, object_id);
@@ -301,13 +309,16 @@ void game_callback_move(Game* game)
 	Id current_id = NO_ID;
 	Id space_id = NO_ID;
 	Id movement_id = NO_ID;
+	char movement[20];
 
 	space_id = game_get_player_location(game);
 	/* Movement id can be 0, 1, 2, 3 as in Up, Right, Down, Left */
-	movement_id = command_getId(game->last_cmd);
+	strcpy(movement, command_getId(game->last_cmd));
 	printf("MOVEMENT_ID -> %ld\n", movement_id);
 
 	if (NO_ID == space_id) return;
+
+	sscanf(movement, "%ld", &movement_id);
 
 	switch (movement_id)
 	{

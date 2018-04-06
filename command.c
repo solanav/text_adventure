@@ -17,7 +17,7 @@
 struct _F_Command
 {
   T_Command text;
-  Id id;
+  char id[CMD_LENGHT];
 };
 
 char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check"};
@@ -25,7 +25,6 @@ char *short_cmd_to_str[N_CMD] = {"", "", "e", "u", "d", "r", "m", "c"};
 
 STATUS get_user_input(F_Command * command)
 {
-	Id id;
 	T_Command aux_command;
 	int i = UNKNOWN, command_found = 0;
 	char string0[CMD_LENGHT], string1[CMD_LENGHT], input[CMD_LENGHT];
@@ -52,28 +51,27 @@ STATUS get_user_input(F_Command * command)
 			command_setCmd(command, UNKNOWN);
 		}
 
-		/* Command requires an id */
+		sscanf(input, "%s %s", string0, string1);
+		/* Command requires an string */
 		aux_command = command_getCmd(command);
-		sscanf(input, "%s %ld", string0, &id);
 		if(aux_command == PICK_UP || aux_command == DROP)
 		{
 			printf("\tCommand is either pick or drop. Setting id.\n");
-			command_setId(command, id);
+			command_setId(command, string1);
 		}
 
 		/* Command requires a string */
-		sscanf(input, "%s %s", string0, string1);
 		if(aux_command == MOVE)
 		{
 			printf("\tCommand is move. Setting id.\n");
 			if (strcasecmp(string1, "n")==0 || strcasecmp(string1, "north")==0)
-				command_setId(command, (long) 0);
+				command_setId(command, "0");
 			else if (strcasecmp(string1, "e")==0 || strcasecmp(string1, "east")==0)
-				command_setId(command, (long) 1);
+				command_setId(command, "1");
 			else if (strcasecmp(string1, "s")==0 || strcasecmp(string1, "south")==0)
-				command_setId(command, (long) 2);
+				command_setId(command, "2");
 			else if (strcasecmp(string1, "w")==0 || strcasecmp(string1, "west")==0)
-				command_setId(command, (long) 3);
+				command_setId(command, "3");
 			else
 				command_setId(command, UNKNOWN);
 		}
@@ -81,9 +79,9 @@ STATUS get_user_input(F_Command * command)
 		{
 			printf("\tCommand is move. Setting id.\n");
 			if (strcasecmp(string1, "space") || strcasecmp(string1, "s"))
-			{
-				command_setId(command, (long)17);
-			}
+				command_setId(command, "17");
+		 	else
+				command_setId(command, string1);
 		}
 	}
 	else
@@ -95,13 +93,12 @@ STATUS get_user_input(F_Command * command)
 	return OK;
 }
 
-F_Command * command_create(T_Command cmd, Id id)
+F_Command * command_create()
 {
   F_Command * command;
 
   command = calloc(1, sizeof(F_Command));
-  command->text = cmd;
-  command->id = id;
+  command->text = UNKNOWN;
 
   return command;
 }
@@ -121,18 +118,18 @@ T_Command command_getCmd(F_Command * cmd)
   return cmd->text;
 }
 
-Id command_getId(F_Command * cmd)
+char * command_getId(F_Command * cmd)
 {
-  if(!cmd) return NO_ID;
+  if(!cmd) return NULL;
 
   return cmd->id;
 }
 
-STATUS command_setId(F_Command * cmd, Id id)
+STATUS command_setId(F_Command * cmd, char * string)
 {
   if(!cmd) return ERROR;
 
-  cmd->id = id;
+  strcpy(cmd->id, string);
   return OK;
 }
 

@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
 	Game * game;
 
-	F_Command * command  = command_create(NO_CMD, NO_ID);
+	F_Command * command  = command_create();
 	Graphic_engine *gengine;
 
 	if (argc < 2)
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Use: %s <game_data_file>\n", argv[0]);
 		return 1;
 	}
-	
+
 	/* load */
 	if (game_create_from_file(game, argv[1]) == ERROR)
 	{

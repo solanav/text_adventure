@@ -42,7 +42,7 @@ space.o: space.c space.h types.h set.h
 object.o: object.c object.h types.h
 	$(CC) $(CFLAGS) -c object.c
 
-command.o: command.c command.h types.h
+command.o: command.c command.h types.h game.h
 	$(CC) $(CFLAGS) -c command.c
 
 game.o: game.c game.h game_reader.h object.h player.h space.h command.h die.h link.h
