@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "link.h"
 
-struct _link
+		struct _Link
 {
 	Id linkId;
 	Id linkspace1, linkspace2;
