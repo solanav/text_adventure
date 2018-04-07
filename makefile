@@ -3,7 +3,7 @@ CC=gcc
 CFLAGS=-Wall -g -pedantic
 m="Automatic Commit"
 
-ALL_FILES=game.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o
+ALL_FILES=game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o game.o
 
 ################ EXEC CREATION
 
