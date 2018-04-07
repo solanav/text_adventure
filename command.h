@@ -37,8 +37,8 @@ void command_free(F_Command *);
 STATUS command_setCmd(F_Command *, T_Command);
 T_Command command_getCmd(F_Command * );
 
-STATUS command_setId(F_Command *, char *);
-char * command_getId(F_Command *);
+STATUS command_set_id(F_Command *, char *);
+char * command_get_id(F_Command *);
 
 void command_free(F_Command *);
 

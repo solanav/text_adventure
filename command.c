@@ -56,8 +56,8 @@ STATUS get_user_input(F_Command * command)
 		aux_command = command_getCmd(command);
 		if(aux_command == PICK_UP || aux_command == DROP)
 		{
-			printf("\tCommand is either pick or drop. Setting id.\n");
-			command_setId(command, string1);
+			command_set_id(command, string1);
+			printf("\tCommand is either pick or drop. Setting id to %s.\n", command_get_id(command));
 		}
 
 		/* Command requires a string */
@@ -65,23 +65,23 @@ STATUS get_user_input(F_Command * command)
 		{
 			printf("\tCommand is move. Setting id.\n");
 			if (strcasecmp(string1, "n")==0 || strcasecmp(string1, "north")==0)
-				command_setId(command, "0");
+				command_set_id(command, "north");
 			else if (strcasecmp(string1, "e")==0 || strcasecmp(string1, "east")==0)
-				command_setId(command, "1");
+				command_set_id(command, "east");
 			else if (strcasecmp(string1, "s")==0 || strcasecmp(string1, "south")==0)
-				command_setId(command, "2");
+				command_set_id(command, "south");
 			else if (strcasecmp(string1, "w")==0 || strcasecmp(string1, "west")==0)
-				command_setId(command, "3");
+				command_set_id(command, "west");
 			else
-				command_setId(command, UNKNOWN);
+				command_set_id(command, NULL);
 		}
 		if(aux_command == CHECK)
 		{
 			printf("\tCommand is move. Setting id.\n");
 			if (strcasecmp(string1, "space") || strcasecmp(string1, "s"))
-				command_setId(command, "17");
+				command_set_id(command, "17");
 		 	else
-				command_setId(command, string1);
+				command_set_id(command, string1);
 		}
 	}
 	else
@@ -118,14 +118,14 @@ T_Command command_getCmd(F_Command * cmd)
   return cmd->text;
 }
 
-char * command_getId(F_Command * cmd)
+char * command_get_id(F_Command * cmd)
 {
   if(!cmd) return NULL;
 
   return cmd->id;
 }
 
-STATUS command_setId(F_Command * cmd, char * string)
+STATUS command_set_id(F_Command * cmd, char * string)
 {
   if(!cmd) return ERROR;
 

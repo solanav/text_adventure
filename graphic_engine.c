@@ -129,32 +129,8 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 	/* Command History */
 	last_cmd_text = game_get_last_command_text(game);
 	last_cmd = game_get_last_command(game);
-	sprintf(str, " %s", cmd_to_str[last_cmd_text-NO_CMD]);
+	sprintf(str, " %s %s", cmd_to_str[last_cmd_text-NO_CMD], command_get_id(last_cmd));
 	screen_area_puts(ge->feedback, str);
-	
-	if(last_cmd_text == MOVE)
-	{
-		if (command_getId(last_cmd) == 0)
-		{
-			sprintf(str, "   North");
-			screen_area_puts(ge->feedback, str);
-		}
-		else if (command_getId(last_cmd) == 1)
-		{
-			sprintf(str, "   East");
-			screen_area_puts(ge->feedback, str);
-		}
-		else if (command_getId(last_cmd) == 2)
-		{
-			sprintf(str, "   South");
-			screen_area_puts(ge->feedback, str);
-		}
-		else if (command_getId(last_cmd) == 3)
-		{
-			sprintf(str, "   West");
-			screen_area_puts(ge->feedback, str);
-		}
-	}
 	
 	if(last_cmd_text == ROLL)
 	{

@@ -279,8 +279,8 @@ void game_callback_pickup(Game* game)
 	Space * space_pointer = game_get_space(game, player_locId);
 	char object[20];
 
-	strcpy(object, command_getId(game->last_cmd));
-	object_id = object_getId(game_get_object(game, object));
+	strcpy(object, command_get_id(game->last_cmd));
+	object_id = object_get_id(game_get_object(game, object));
 
 	if (!game) return;
 	if (game_get_object_location(game, object_id) == game_get_player_location(game))
@@ -305,10 +305,10 @@ void game_callback_drop(Game* game)
 	Id player_locId = game_get_player_location(game);
 	Id object_id;
 	Space * space_pointer = game_get_space(game, player_locId);
-	Id object[20];
+	char object[20];
 
-	strcpy(object, command_getId(game->last_cmd));
-	object_id = object_getId(game_get_object(game, object));
+	strcpy(object, command_get_id(game->last_cmd));
+	object_id = object_get_id(game_get_object(game, object));
 
 	if (!game) return;
 
@@ -335,42 +335,49 @@ void game_callback_move(Game* game)
 	char movement[20];
 
 	space_id = game_get_player_location(game);
-	/* Movement id can be 0, 1, 2, 3 as in Up, Right, Down, Left */
-	strcpy(movement, command_getId(game->last_cmd));
+	strcpy(movement, command_get_id(game->last_cmd));
 	printf("MOVEMENT_ID -> %ld\n", movement_id);
 
 	if (NO_ID == space_id || link_id == NO_ID) return;
 
-	sscanf(movement, "%ld", &movement_id);
-
 	switch (movement_id)
 	{
-		case 0:
+		if (strcmp(movement, "north") == 0)
+		{
 			link_id = space_get_north(game_get_space(game, space_id));
 			current_id = link_getDestination(game_get_link(game, link_id), space_id);
 			if(current_id != NO_ID)
 				game_set_player_location(game, current_id);
 			break;
-		case 1:
-			link_id = space_get_east(game_get_space(game,space_id));
+		}
+		else if (strcmp(movement, "east") == 0)
+		{
+			link_id = space_get_east(game_get_space(game, space_id));
 			current_id = link_getDestination(game_get_link(game, link_id), space_id);
 			if(current_id != NO_ID)
 				game_set_player_location(game, current_id);
 			break;
-		case 2:
+		}
+		else if (strcmp(movement, "south") == 0)
+		{
 			link_id = space_get_south(game_get_space(game, space_id));
 			current_id = link_getDestination(game_get_link(game, link_id), space_id);
 			if(current_id != NO_ID)
 				game_set_player_location(game, current_id);
 			break;
-		case 3:
+		}
+		else if (strcmp(movement, "west") == 0)
+		{
 			link_id = space_get_west(game_get_space(game, space_id));
 			current_id = link_getDestination(game_get_link(game, link_id), space_id);
 			if(current_id != NO_ID)
 				game_set_player_location(game, current_id);
 			break;
-		default:
+		}
+		else
+		{
 			return;
+		}
 	}
 }
 
