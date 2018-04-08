@@ -5,8 +5,8 @@
 #include "graphic_engine.h"
 #include "set.h"
 
-#define STD_SPACE "            "
-#define STD_SPACE1 "          "
+#define STD_SPACE "             "
+#define STD_SPACE1 "         "
 
 /*This is the definition of graphic engine for the object functions*/
 struct _Graphic_engine
@@ -156,6 +156,8 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 	char str[255];
 	char hero[3] = "8D";
 	char no_string[20] = "                 ";
+	char link_left[3] = {0};
+	char link_right[3] = {0};
 
 	Id id_act = NO_ID;
 	Id id_back = NO_ID;
@@ -163,8 +165,7 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 	Id id_left = NO_ID;
 	Id id_right = NO_ID;
 	Id id_to_print = NO_ID;
-	Id link_left = NO_ID;
-	Id link_right = NO_ID;
+	Id link_id_back, link_id_next, link_id_left, link_id_right;
 
 	Space * space_act = NULL;
 	Space * space_last = NULL;
@@ -173,12 +174,18 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 
 	/* Get useful data */
 	id_act = game_get_player_location(game);
+
 	space_act = game_get_space(game, id_act);
 
-	id_back = space_get_north(space_act);
-	id_next = space_get_south(space_act);
-	id_left = space_get_west(space_act);
-	id_right = space_get_east(space_act);
+	link_id_back = space_get_north(space_act);
+	link_id_next = space_get_south(space_act);
+	link_id_left = space_get_west(space_act);
+	link_id_right = space_get_east(space_act);
+
+	id_back = link_getSpace1(game_get_link(game, link_id_back));
+	id_next = link_getSpace2(game_get_link(game, link_id_next));
+	id_left = link_getSpace1(game_get_link(game, link_id_left));
+	id_right = link_getSpace2(game_get_link(game, link_id_right));
 
 	space_last = game_get_space(game, id_back);
 	space_next = game_get_space(game, id_next);
@@ -213,14 +220,18 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 	if (position_of_space == 1) id_to_print = id_act;
 	if (position_of_space == 2) id_to_print = id_next;
 
-	/* Check your surroundings boy */
-	link_left = link_getSpace2(game_get_link(game, id_act));
-	link_right = link_getSpace2(game_get_link(game, id_act));
+	/* Links to left and right */
+	if(id_left > 10) sprintf(link_left, "%ld<", id_left);
+	else if(id_left == -1) sprintf(link_left, "   ");
+	else sprintf(link_left, "%ld <", id_left);
+
+	if(id_right > 10) sprintf(link_right, ">%ld", id_right);
+	else if(id_right == -1) sprintf(link_right, "   ");
+	else sprintf(link_right, "> %ld", id_right);
 
 	/* Print space */
 	if (id_to_print != -1)
 	{
-		printf("[%s]\n", hero);
 		if (position_of_space != 0)
 		{
 			sprintf(str, "%s+-------------------+", STD_SPACE);
@@ -234,26 +245,13 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 
 		if (position_of_space == 1)
 		{
-			if (link_left == -1 && link_right == -1)
-			{	
-				sprintf(str, "%s| %s |", STD_SPACE, gdesc[1]);
-				screen_area_puts(ge->map, str);
-			}
-			else if (link_left == -1 && link_right != -1)
-			{	
-				sprintf(str, "%s| %s |>%ld", STD_SPACE, gdesc[1], link_right);
-				screen_area_puts(ge->map, str);
-			}
-			else if (link_right == -1 && link_left != -1)
-			{	
-				sprintf(str, "%s%ld<| %s |", STD_SPACE1, link_left, gdesc[1]);
-				screen_area_puts(ge->map, str);
-			}
-			else 
-			{
-				sprintf(str, "%s%ld<| %s |>%ld", STD_SPACE1, link_left, gdesc[1], link_right);
-				screen_area_puts(ge->map, str);
-			}
+			sprintf(str, "%s%s | %s | %s", STD_SPACE1, link_left, gdesc[1], link_right);
+			screen_area_puts(ge->map, str);
+		}
+		else
+		{
+			sprintf(str, "%s| %s |", STD_SPACE, gdesc[1]);
+			screen_area_puts(ge->map, str);
 		}
 
 		sprintf(str, "%s| %s |", STD_SPACE, gdesc[2]);

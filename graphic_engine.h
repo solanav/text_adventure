@@ -21,9 +21,9 @@ void graphic_engine_destroy(Graphic_engine *);
 void graphic_engine_paint_game(Graphic_engine *, Game *);
 
 /* 	
-	int = 0 -> up
-	int = 1 -> middle
-	int = 2 -> down
+	int = 0 -> top space
+	int = 1 -> middle space
+	int = 2 -> bottom space
 */
 void graphic_engine_paint_space(Graphic_engine *, Game *, int);
 

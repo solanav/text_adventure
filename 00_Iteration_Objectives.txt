@@ -1,0 +1,24 @@
+R01 - OK
+R02 - OK
+R03 - NI
+R04 - OK
+R05 - OK
+R06 - OK
+R07 - HD
+R08 - OK
+R09 - OK
+R10 - NI
+R11 - NI
+R12 - NI
+R13 - OK
+R14 - PR
+R15 - HD
+R16 - ND
+R17 - ND
+R18 - HD
+
+OK - Finished
+NI - No info
+PR - Pending revision
+HD - Half done
+ND - Not done

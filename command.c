@@ -63,7 +63,8 @@ STATUS get_user_input(F_Command * command)
 		/* Command requires a string */
 		if(aux_command == MOVE)
 		{
-			printf("\tCommand is move. Setting id.\n");
+			printf("\tCommand is move. Setting id. [%s %s]\n", string0, string1);
+			
 			if (strcasecmp(string1, "n")==0 || strcasecmp(string1, "north")==0)
 				command_set_id(command, "north");
 			else if (strcasecmp(string1, "e")==0 || strcasecmp(string1, "east")==0)
@@ -77,7 +78,7 @@ STATUS get_user_input(F_Command * command)
 		}
 		if(aux_command == CHECK)
 		{
-			printf("\tCommand is move. Setting id.\n");
+			printf("\tCommand is check. Setting id.\n");
 			if (strcasecmp(string1, "space") || strcasecmp(string1, "s"))
 				command_set_id(command, "17");
 		 	else
@@ -97,6 +98,8 @@ F_Command * command_create()
 {
   F_Command * command;
 
+  printf("COMMAND");
+
   command = calloc(1, sizeof(F_Command));
   command->text = UNKNOWN;
 
@@ -106,7 +109,6 @@ F_Command * command_create()
 STATUS command_setCmd(F_Command * cmd, T_Command command)
 {
   if(!cmd) return ERROR;
-  printf("Someone is setting a command to %d\n", command);
   cmd->text = command;
   return OK;
 }
@@ -114,7 +116,6 @@ STATUS command_setCmd(F_Command * cmd, T_Command command)
 T_Command command_getCmd(F_Command * cmd)
 {
   if(!cmd) return NO_CMD;
-  printf("Trying to get command -> %d\n", cmd->text);
   return cmd->text;
 }
 
@@ -127,8 +128,9 @@ char * command_get_id(F_Command * cmd)
 
 STATUS command_set_id(F_Command * cmd, char * string)
 {
-  if(!cmd) return ERROR;
-
+  printf("Trying to set command id to -> %s\n", string);
+  if(!cmd || !string) return ERROR;
+  printf("Done\n");
   strcpy(cmd->id, string);
   return OK;
 }

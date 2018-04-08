@@ -3,11 +3,13 @@
 #include "player.h"
 #include "object.h"
 #include "set.h"
+#include "inventory.h"
 
 struct _Player {
   char name[STDSIZE];
   Id location_id;
   Set * inventory;
+  Inventory * inv;
   Id id;
 };
 
@@ -27,7 +29,7 @@ Player * player_create(char * name, Id location_id, Id object_id, Id id)
 	new_player->location_id = location_id;
 	new_player->id = id;
 
-	new_player->inventory = set_create(4);
+	new_player->inv = inventory_create(4);
 
 	return new_player;
 }
@@ -36,7 +38,7 @@ void player_destroy(Player *player)
 {
   if(!player) return;
 
-  set_destroy(player->inventory);
+  inventory_destroy(player->inv);
   free(player);
 }
 
@@ -63,7 +65,7 @@ STATUS player_setObjId(Player * player, Id new_objId)
 {
 	if(!player) return ERROR;
 
-	set_add(player->inventory, new_objId);
+	inventory_add_id(player->inv, new_objId);
 
 	return OK;
 }
@@ -94,7 +96,7 @@ Id player_getObjId(Player * player, int num)
 {
 	if(!player) return NO_ID;
 
-	return set_get_id(player->inventory, num);
+	return inventory_get_id_at(player->inv, num);
 }
 
 Id player_getId(Player * player)
@@ -108,7 +110,7 @@ STATUS player_removeObjId(Player * player, Id id)
 {
 	if (!player) return ERROR;
 
-	set_del(player->inventory, id);
+	inventory_del_id(player->inv, id);
 
 	return OK;
 }

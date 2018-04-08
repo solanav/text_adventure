@@ -171,14 +171,12 @@ Id space_get_west(Space* space)
   return space->linkWest;
 }
 
-
-
 Set * space_get_objects_id(Space* space)
 {
   Set * set;
   int n;
 
-  if (!space) return FALSE;
+  if (!space) return NULL;
 
   set = set_create(5);
   if(!set) return NULL;
@@ -194,10 +192,11 @@ Set * space_get_objects_id(Space* space)
 STATUS space_print(Space* space)
 {
   Id idaux = NO_ID;
+  Set * aux;
 
   if (!space) return ERROR;
 
-  fprintf(stdout, "--> Space (Id: %ld; Name: %s)\n", space->id, space->name);
+  fprintf(stdout, "\n\n--> Space (Id: %ld; Name: %s)\n", space->id, space->name);
 
   idaux = space_get_north(space);
   if (NO_ID != idaux)
@@ -223,8 +222,11 @@ STATUS space_print(Space* space)
   else
     fprintf(stdout, "---> No west link.\n");
 
-  if (space_get_objects_id(space))
+  if ((aux = space_get_objects_id(space)))
+  {
     set_print_debug(stdout, space->objects);
+	set_destroy(aux);
+  }
   else
   {
     fprintf(stdout, "---> No objects in the space.\n");

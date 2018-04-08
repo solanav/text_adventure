@@ -18,12 +18,13 @@
 #include "player.h"
 #include "die.h"
 #include "link.h"
+#include "inventory.h"
 
 #define MAX_OBJECTS 4
 
 typedef struct _Game Game;
 
-STATUS	game_create(Game *);
+Game*	game_create();
 STATUS 	game_create_from_file(Game *, char *);
 
 STATUS 	game_update(Game *, F_Command *);

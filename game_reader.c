@@ -29,7 +29,7 @@ STATUS game_load_spaces(Game* game, char* filename)
 	Space* space = NULL;
 	STATUS status = OK;
 
-	if (!filename) return ERROR;
+	if (!filename || !game) return ERROR;
 
 	file = fopen(filename, "r");
 	if (file == NULL) return ERROR;
@@ -94,6 +94,8 @@ STATUS game_load_spaces(Game* game, char* filename)
 					space_set_gdesc_2(space, no_string);
 				else
 					space_set_gdesc_2(space, gdesc2);
+
+				printf("Leido: %ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
 
 				game_add_space(game, space);
 			}

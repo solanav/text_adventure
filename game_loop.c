@@ -14,10 +14,18 @@
 
 int main(int argc, char *argv[])
 {
-	Game * game;
+	Game * game = NULL;
 
 	F_Command * command  = command_create();
 	Graphic_engine *gengine;
+
+	/* Create game */
+	game = game_create();
+	if (!game)
+	{
+		printf("Couldn't create game\n");
+		return 1;
+	}
 
 	if (argc < 2)
 	{

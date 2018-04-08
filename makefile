@@ -3,7 +3,7 @@ CC=gcc
 CFLAGS=-Wall -g -pedantic
 m="Automatic Commit"
 
-ALL_FILES=game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o game.o
+ALL_FILES=game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o game.o inventory.o
 
 ################ EXEC CREATION
 
@@ -21,7 +21,7 @@ link_test: link_test.o link.o
 
 ################ FILE COMPILATION
 
-player.o: player.c types.h player.h set.h
+player.o: player.c types.h player.h set.h inventory.h
 	$(CC) $(CFLAGS) -c player.c
 
 game_loop.o: game_loop.c graphic_engine.h
@@ -45,7 +45,7 @@ object.o: object.c object.h types.h
 command.o: command.c command.h types.h game.h
 	$(CC) $(CFLAGS) -c command.c
 
-game.o: game.c game.h game_reader.h object.h player.h space.h command.h die.h link.h
+game.o: game.c game.h game_reader.h object.h player.h space.h command.h die.h link.h inventory.h
 	$(CC) $(CFLAGS) -c game.c
 
 die_test.o: die_test.c die.h types.h
@@ -65,6 +65,9 @@ link_test.o: link_test.c link.h types.h game.h
 
 link.o: link.c link.h types.h
 	$(CC) $(CFLAGS) -c link.c
+
+inventory.o: inventory.c set.h types.h
+	$(CC) $(CFLAGS) -c inventory.c
 
 ################ ALL
 
