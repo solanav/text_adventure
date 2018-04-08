@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "link.h"
 
-		struct _Link
+struct _Link
 {
 	Id linkId;
 	Id linkspace1, linkspace2;
@@ -86,8 +86,6 @@ LinkStatus link_getStatus(Link * l)
 
 	return l->door;
 }
-
-/*ONLY FOR DEBUGGING*/
 
 STATUS link_print(Link * link)
 {
