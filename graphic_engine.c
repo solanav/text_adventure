@@ -5,6 +5,9 @@
 #include "graphic_engine.h"
 #include "set.h"
 
+#define STD_SPACE "            "
+#define STD_SPACE1 "          "
+
 /*This is the definition of graphic engine for the object functions*/
 struct _Graphic_engine
 {
@@ -211,8 +214,8 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 	if (position_of_space == 2) id_to_print = id_next;
 
 	/* Check your surroundings boy */
-	link_left = link_getSpace2(game_get_link(game, id_left));
-	link_right = link_getSpace2(game_get_link(game, id_right));
+	link_left = link_getSpace2(game_get_link(game, id_act));
+	link_right = link_getSpace2(game_get_link(game, id_act));
 
 	/* Print space */
 	if (id_to_print != -1)
@@ -220,44 +223,47 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 		printf("[%s]\n", hero);
 		if (position_of_space != 0)
 		{
-			sprintf(str, "   +-------------------+");
+			sprintf(str, "%s+-------------------+", STD_SPACE);
 			screen_area_puts(ge->map, str);
-			sprintf(str, "   | %s                |", hero);
+			sprintf(str, "%s| %s                |", STD_SPACE, hero);
 			screen_area_puts(ge->map, str);
 		}
 
-		sprintf(str, "   |%s%2d|", gdesc[0], (int) id_to_print);
+		sprintf(str, "%s|%s%2d|", STD_SPACE, gdesc[0], (int) id_to_print);
 		screen_area_puts(ge->map, str);
 
-		if (link_left == -1 && link_right == -1)
-		{	
-			sprintf(str, "   | %s |", gdesc[1]);
-			screen_area_puts(ge->map, str);
-		}
-		else if (link_left == -1 && link_right != -1)
-		{	
-			sprintf(str, "   | %s | %ld", gdesc[1], link_right);
-			screen_area_puts(ge->map, str);
-		}
-		else if (link_right == -1 && link_left != -1)
-		{	
-			sprintf(str, " %ld | %s |", link_left, gdesc[1]);
-			screen_area_puts(ge->map, str);
-		}
-		else 
+		if (position_of_space == 1)
 		{
-			sprintf(str, " %ld | %s | %ld", link_left, gdesc[1], link_right);
-			screen_area_puts(ge->map, str);
+			if (link_left == -1 && link_right == -1)
+			{	
+				sprintf(str, "%s| %s |", STD_SPACE, gdesc[1]);
+				screen_area_puts(ge->map, str);
+			}
+			else if (link_left == -1 && link_right != -1)
+			{	
+				sprintf(str, "%s| %s |>%ld", STD_SPACE, gdesc[1], link_right);
+				screen_area_puts(ge->map, str);
+			}
+			else if (link_right == -1 && link_left != -1)
+			{	
+				sprintf(str, "%s%ld<| %s |", STD_SPACE1, link_left, gdesc[1]);
+				screen_area_puts(ge->map, str);
+			}
+			else 
+			{
+				sprintf(str, "%s%ld<| %s |>%ld", STD_SPACE1, link_left, gdesc[1], link_right);
+				screen_area_puts(ge->map, str);
+			}
 		}
-		
-		sprintf(str, "   | %s |", gdesc[2]);
+
+		sprintf(str, "%s| %s |", STD_SPACE, gdesc[2]);
 		screen_area_puts(ge->map, str);
-		sprintf(str, "   |           %s|", obj);
+		sprintf(str, "%s|           %s|", STD_SPACE, obj);
 		screen_area_puts(ge->map, str);
 
 		if (position_of_space != 2)
 		{
-			sprintf(str, "   +-------------------+");
+			sprintf(str, "%s+-------------------+", STD_SPACE);
 			screen_area_puts(ge->map, str);
 		}
 	}

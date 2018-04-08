@@ -23,7 +23,7 @@ struct _Game
 	Player * player;
 	Object * objects[MAX_OBJECTS];
 	Space * spaces[MAX_SPACES + 1];
-	Link* links[MAX_LINK];
+	Link * links[MAX_LINK];
 	Die * die;
 	F_Command * last_cmd;
 };
@@ -71,6 +71,10 @@ STATUS game_create(Game* game)
 
 	for (i = 0; i < MAX_SPACES; i++) {
 		game->spaces[i] = NULL;
+	}
+
+	for (i = 0; i < MAX_LINK; i++) {
+		game->links[i] = NULL;
 	}
 
 	game->player = player_create("player1", NO_ID, NO_ID, 1);
@@ -129,8 +133,6 @@ STATUS game_destroy(Game* game)
 	return OK;
 }
 
-
-
 Space* game_get_space(Game* game, Id id)
 {
 	int i = 0;
@@ -182,6 +184,13 @@ Link * game_get_link(Game * game, Id id)
 	}
 
 	return NULL;
+}
+
+Id game_get_link_id_at(Game * game, int pos)
+{
+	if(!game || pos == -1) return NO_ID;
+
+	return link_getId(game->links[pos]);
 }
 
 Id game_get_player_location(Game* game)
@@ -331,54 +340,49 @@ void game_callback_move(Game* game)
 	Id link_id = NO_ID;
 	Id current_id = NO_ID;
 	Id space_id = NO_ID;
-	Id movement_id = NO_ID;
 	char movement[20];
 
 	space_id = game_get_player_location(game);
 	strcpy(movement, command_get_id(game->last_cmd));
-	printf("MOVEMENT_ID -> %ld\n", movement_id);
 
-	if (NO_ID == space_id || link_id == NO_ID) return;
+	printf("Trying to move to %s\n", movement);
+	if (NO_ID == space_id) return;
 
-	switch (movement_id)
+	link_id = space_get_id(game_get_space(game, space_id));
+
+	if (strcmp(movement, "north") == 0)
 	{
-		if (strcmp(movement, "north") == 0)
-		{
-			link_id = space_get_north(game_get_space(game, space_id));
-			current_id = link_getDestination(game_get_link(game, link_id), space_id);
-			if(current_id != NO_ID)
-				game_set_player_location(game, current_id);
-			break;
-		}
-		else if (strcmp(movement, "east") == 0)
-		{
-			link_id = space_get_east(game_get_space(game, space_id));
-			current_id = link_getDestination(game_get_link(game, link_id), space_id);
-			if(current_id != NO_ID)
-				game_set_player_location(game, current_id);
-			break;
-		}
-		else if (strcmp(movement, "south") == 0)
-		{
-			link_id = space_get_south(game_get_space(game, space_id));
-			current_id = link_getDestination(game_get_link(game, link_id), space_id);
-			if(current_id != NO_ID)
-				game_set_player_location(game, current_id);
-			break;
-		}
-		else if (strcmp(movement, "west") == 0)
-		{
-			link_id = space_get_west(game_get_space(game, space_id));
-			current_id = link_getDestination(game_get_link(game, link_id), space_id);
-			if(current_id != NO_ID)
-				game_set_player_location(game, current_id);
-			break;
-		}
-		else
-		{
-			return;
-		}
+		current_id = link_getSpace2(game_get_link(game, link_id));
+		printf("Moving from %ld to %ld\n", link_getSpace1(game_get_link(game, link_id)), link_getSpace2(game_get_link(game, link_id)));
+		if(current_id != NO_ID)
+			game_set_player_location(game, current_id);
 	}
+	else if (strcmp(movement, "east") == 0)
+	{
+		current_id = link_getSpace2(game_get_link(game, link_id));
+		printf("Moving from %ld to %ld\n", link_getSpace1(game_get_link(game, link_id)), link_getSpace2(game_get_link(game, link_id)));
+		if(current_id != NO_ID)
+			game_set_player_location(game, current_id);
+	}
+	else if (strcmp(movement, "south") == 0)
+	{
+		current_id = link_getSpace2(game_get_link(game, link_id));
+		printf("Moving from %ld to %ld\n", link_getSpace1(game_get_link(game, link_id)), link_getSpace2(game_get_link(game, link_id)));
+		if(current_id != NO_ID)
+			game_set_player_location(game, current_id);
+	}
+	else if (strcmp(movement, "west") == 0)
+	{
+		current_id = link_getSpace2(game_get_link(game, link_id));
+		printf("Moving from %ld to %ld\n", link_getSpace1(game_get_link(game, link_id)), link_getSpace2(game_get_link(game, link_id)));
+		if(current_id != NO_ID)
+			game_set_player_location(game, current_id);
+	}
+	else
+	{
+		return;
+	}
+
 }
 
 STATUS game_add_space(Game* game, Space* space)
@@ -420,6 +424,26 @@ STATUS game_set_player_location(Game* game, Id id)
 	player_setLocId(game->player, id);
 
 	return OK;
+}
+
+STATUS game_set_link(Game * game, Id link_id, Id space_id0, Id space_id1)
+{
+	int i;
+	
+	if (link_id == NO_ID || space_id0 == NO_ID || space_id1 == NO_ID || !game ) return ERROR;
+	
+	for (i = 0; i < MAX_LINK; i++)
+	{
+		if (game_get_link_id_at(game, i) == NO_ID)
+		{
+			game->links[i] = link_create(link_id);
+			link_setSpaces(game->links[i], space_id0, space_id1);
+			printf("Good, we got that id and now is -> %ld\n", game_get_link_id_at(game, i));
+			return OK;
+		}
+	}
+
+	return ERROR;
 }
 
 STATUS game_set_object_location(Game* game, Id id, Id obj_id)
