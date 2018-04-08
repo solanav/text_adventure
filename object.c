@@ -10,52 +10,52 @@ struct _Object{
 
 Object* object_create(char* name, Id id)
 {
-  Object *obj;
+	Object *obj;
 
-  obj = calloc(1, sizeof(Object));
-  if(!obj){return NULL;}
+	obj = calloc(1, sizeof(Object));
+	if(!obj){return NULL;}
 
-  obj->id = id;
-  strcpy(obj->name, name);
+	obj->id = id;
+	strcpy(obj->name, name);
 
-  return obj;
+	return obj;
 }
 
 void object_destroy(Object* obj)
 {
-  if(!obj) return;
+	if(!obj) return;
 
-  free(obj);
+	free(obj);
 }
 
-STATUS object_setName(Object* obj, char* name)
+STATUS object_set_name(Object* obj, char* name)
 {
-  if(!obj||!name) return ERROR;
+	if(!obj||!name) return ERROR;
 
-  if(!strcpy(obj->name, name)) return ERROR;
+	if(!strcpy(obj->name, name)) return ERROR;
 
-  return OK;
+	return OK;
 }
 
-STATUS object_setId(Object* obj, Id id)
+STATUS object_set_id(Object* obj, Id id)
 {
-  if(!obj) return ERROR;
+	if(!obj) return ERROR;
 
-  obj->id = id;
+	obj->id = id;
 
-  return OK;
+	return OK;
 }
 
-char* object_getName(Object* obj)
+char* object_get_name(Object* obj)
 {
-  if(!obj) return NULL;
+	if(!obj) return NULL;
 
-  return obj->name;
+	return obj->name;
 }
 
-Id object_getId(Object* obj)
+Id object_get_id(Object* obj)
 {
-  if(!obj) return -1;
+	if(!obj) return -1;
 
-  return obj->id;
+	return obj->id;
 }
