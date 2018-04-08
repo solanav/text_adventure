@@ -14,6 +14,7 @@
 #define WORD_SIZE 1000
 #define NO_ID -1
 #define STDSIZE 1024
+#define STDLONGSIZE 4096
 
 typedef long Id;
 

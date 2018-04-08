@@ -20,11 +20,13 @@ void object_destroy(Object* obj);
  */
 STATUS object_set_name(Object* obj, char* name);
 STATUS object_set_id(Object* obj, Id id);
+STATUS object_set_description(Object * obj, char * descript);
 
 /*
  * For accesing the object's name and Id
  */
 char * object_get_name(Object* obj);
 Id object_get_id(Object* obj);
+char * object_get_descripton(Object * obj);
 
 #endif

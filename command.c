@@ -20,40 +20,8 @@ struct _F_Command
   char id[CMD_LENGHT];
 };
 
-<<<<<<< HEAD
-char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous", "Pickup", "Drop", "Roll", "Left", "Right", "Check Space"};
-char *short_cmd_to_str[N_CMD] = {"","","e","f","p", "u", "d", "r", "<", ">","cs"};
-
-
-/* LAST get_user_input FUCTION; NOW OBSOLETE, TODO: DELETE WHEN SURE
-F_Command get_user_input()
-{
-  F_Command cmd = command_create(NO_CMD, NO_ID);
-  char input[CMD_LENGHT] = "";
-  int i=UNKNOWN - NO_CMD + 1;
-
-  if ((input = fgets(stdout)) > 0)
-  {
-    cmd = UNKNOWN;
-    while(cmd == UNKNOWN && i < N_CMD)
-    {
-      if (!strcasecmp(input,short_cmd_to_str[i]) || !strcasecmp(input,cmd_to_str[i]))
-      {
-        cmd = i + NO_CMD;
-      }
-      else
-      {
-        i++;
-      }
-    }
-  }
-  return cmd;
-}
-*/
-=======
 char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check"};
 char *short_cmd_to_str[N_CMD] = {"", "", "e", "u", "d", "r", "m", "c"};
->>>>>>> 54649b83e6b6350477d8aacbd32b8b211f618b81
 
 STATUS get_user_input(F_Command * command)
 {

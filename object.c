@@ -2,10 +2,11 @@
 
 #include "object.h"
 
+
 struct _Object{
   char name [STDSIZE];
   Id id;
-  descripton[MAX_OBJECT];
+  char descripton[STDLONGSIZE];
 };
 
 Object* object_create(char* name, Id id)
@@ -46,6 +47,15 @@ STATUS object_set_id(Object* obj, Id id)
 	return OK;
 }
 
+STATUS object_set_description(Object * obj, char * descript)
+{
+	if(!obj || !descript) return ERROR;
+
+	if (!strcpy(obj->descripton, descript)) return ERROR;
+
+	return OK;
+}
+
 char* object_get_name(Object* obj)
 {
 	if(!obj) return NULL;
@@ -58,4 +68,11 @@ Id object_get_id(Object* obj)
 	if(!obj) return -1;
 
 	return obj->id;
+}
+
+char * object_get_descripton(Object * obj)
+{
+	if(!obj) return "\0";
+
+	return obj->descripton;
 }
