@@ -70,7 +70,7 @@ Id object_get_id(Object* obj)
 	return obj->id;
 }
 
-char * object_get_descripton(Object * obj)
+char * object_get_description(Object * obj)
 {
 	if(!obj) return "\0";
 

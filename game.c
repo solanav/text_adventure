@@ -16,7 +16,7 @@
 #include "game.h"
 #include "game_reader.h"
 
-#define N_CALLBACK 10
+#define N_CALLBACK 8
 
 struct _Game
 {
@@ -42,6 +42,7 @@ void game_callback_pickup(Game * game);
 void game_callback_drop(Game * game);
 void game_callback_roll(Game * game);
 void game_callback_move(Game * game);
+void game_callback_check(Game * game);
 
 static callback_fn game_callback_fn_list[N_CALLBACK]=
 {
@@ -50,7 +51,8 @@ static callback_fn game_callback_fn_list[N_CALLBACK]=
 	game_callback_pickup,
 	game_callback_drop,
 	game_callback_roll,
-	game_callback_move
+	game_callback_move,
+	game_callback_check
 };
 
 /**
@@ -379,6 +381,10 @@ void game_callback_move(Game* game)
 			return;
 		}
 	}
+}
+
+void game_callback_check(Game* game)
+{
 }
 
 STATUS game_add_space(Game* game, Space* space)

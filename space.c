@@ -14,6 +14,7 @@ struct _Space {
   Id linkWest;
   char gdesc[3][21];
   Set * objects;
+  char description[STDLONGSIZE];
 };
 
 Space* space_create(Id id)
@@ -41,6 +42,8 @@ Space* space_create(Id id)
   newSpace->linkWest = NO_ID;
 
   newSpace->objects = set_create(5);
+
+  strcpy(newSpace->description, "\0");
 
   return newSpace;
 }
@@ -113,6 +116,15 @@ STATUS space_set_west(Space* space, Id id)
   }
   space->linkWest = id;
   return OK;
+}
+
+STATUS space_set_description(Space* space, char*  des)
+{
+	if(!space || !des) return ERROR;
+
+	if (!strcpy(space->description, des)) return ERROR;
+
+	return OK;
 }
 
 STATUS space_add_object(Space* space, Id obj_id)
@@ -280,6 +292,13 @@ char* space_get_gdesc_2(Space* space)
     return NULL;
 
   return space->gdesc[2];
+}
+
+char* space_get_description(Space* space)
+{
+	if(!space) return "\0";
+
+	return space->description;
 }
 
 /*BOOL space_isLinked(Space*)*/

@@ -40,6 +40,9 @@ Id 			space_get_east(Space* space);
 STATUS 		space_set_west(Space* space, Id id);
 Id 			space_get_west(Space* space);
 
+STATUS		space_set_description(Space* space, char* des);
+char*		space_get_description(Space* space);
+
 STATUS 		space_add_object(Space* space, Id obj_id);
 STATUS 		space_remove_object(Space* space, Id obj_id);
 Set * 		space_get_objects_id(Space* space);

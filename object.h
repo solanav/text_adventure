@@ -27,6 +27,6 @@ STATUS object_set_description(Object * obj, char * descript);
  */
 char * object_get_name(Object* obj);
 Id object_get_id(Object* obj);
-char * object_get_descripton(Object * obj);
+char * object_get_description(Object * obj);
 
 #endif

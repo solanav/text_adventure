@@ -18,6 +18,7 @@
 #include "player.h"
 #include "die.h"
 #include "link.h"
+#include "inventory.h" 
 
 #define MAX_OBJECTS 4
 

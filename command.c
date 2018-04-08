@@ -77,10 +77,7 @@ STATUS get_user_input(F_Command * command)
 		}
 		if(aux_command == CHECK)
 		{
-			printf("\tCommand is move. Setting id.\n");
-			if (strcasecmp(string1, "space") || strcasecmp(string1, "s"))
-				command_set_id(command, "17");
-		 	else
+			printf("\tCommand is check. Setting id.\n");
 				command_set_id(command, string1);
 		}
 	}
