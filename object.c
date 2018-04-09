@@ -4,6 +4,7 @@
 
 struct _Object{
 	char name [STDSIZE];
+	char description[STDSIZE];
 	Id id;
 };
 
@@ -36,6 +37,15 @@ STATUS object_set_name(Object* obj, char* name)
 	return OK;
 }
 
+STATUS object_set_description(Object* obj, char* description)
+{
+	if(!obj||!description) return ERROR;
+
+	if(!strcpy(obj->description, description)) return ERROR;
+
+	return OK;
+}
+
 STATUS object_set_id(Object* obj, Id id)
 {
 	if(!obj) return ERROR;
@@ -45,11 +55,18 @@ STATUS object_set_id(Object* obj, Id id)
 	return OK;
 }
 
-char* object_get_name(Object* obj)
+char * object_get_name(Object* obj)
 {
 	if(!obj) return NULL;
 
 	return obj->name;
+}
+
+char * object_get_description(Object* obj)
+{
+	if(!obj) return NULL;
+
+	return obj->description;
 }
 
 Id object_get_id(Object* obj)

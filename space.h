@@ -28,6 +28,9 @@ Id 			space_get_id(Space* space);
 STATUS 		space_set_name(Space* space, char* name);
 const char* space_get_name(Space* space);
 
+STATUS		space_set_description(Space* space, char* description);
+const char* space_get_description(Space* space);
+
 STATUS 		space_set_north(Space* space, Id id);
 Id 			space_get_north(Space* space);
 

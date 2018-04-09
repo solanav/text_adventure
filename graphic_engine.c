@@ -6,16 +6,16 @@
 #include "set.h"
 
 #define STD_SPACE "             "
-#define STD_SPACE1 "         "
+#define STD_SPACE1 "    "
 
 /*This is the definition of graphic engine for the object functions*/
 struct _Graphic_engine
 {
-	Area *map,
-	*descript,
-	*banner,
-	*help,
-	*feedback;
+	Area * map;
+	Area * descript;
+	Area * banner;
+	Area * help;
+	Area * feedback;
 };
 
 Graphic_engine *graphic_engine_create()
@@ -132,7 +132,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 	/* Command History */
 	last_cmd_text = game_get_last_command_text(game);
 	last_cmd = game_get_last_command(game);
-	sprintf(str, " %s %s", cmd_to_str[last_cmd_text-NO_CMD], command_get_id(last_cmd));
+	sprintf(str, " %s > %s", cmd_to_str[last_cmd_text-NO_CMD], command_get_id(last_cmd));
 	screen_area_puts(ge->feedback, str);
 	
 	if(last_cmd_text == ROLL)
@@ -158,6 +158,8 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 	char no_string[20] = "                 ";
 	char link_left[3] = {0};
 	char link_right[3] = {0};
+	char link_id_left_char[4] = {0};
+	char link_id_right_char[4] = {0};
 
 	Id id_act = NO_ID;
 	Id id_back = NO_ID;
@@ -229,6 +231,14 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 	else if(id_right == -1) sprintf(link_right, "   ");
 	else sprintf(link_right, "> %ld", id_right);
 
+	if(link_id_left > 10) sprintf(link_id_left_char, "[%ld]", link_id_left);
+	else if(link_id_left == -1) sprintf(link_id_left_char, "    ");
+	else sprintf(link_id_left_char, "[%ld ]", link_id_left);
+
+	if(link_id_right > 10) sprintf(link_id_right_char, "[%ld]", link_id_right);
+	else if(link_id_right == -1) sprintf(link_id_right_char, "    ");
+	else sprintf(link_id_right_char, "[ %ld]", link_id_right);
+
 	/* Print space */
 	if (id_to_print != -1)
 	{
@@ -245,7 +255,7 @@ void graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_
 
 		if (position_of_space == 1)
 		{
-			sprintf(str, "%s%s | %s | %s", STD_SPACE1, link_left, gdesc[1], link_right);
+			sprintf(str, "%s%s %s | %s | %s %s", STD_SPACE1, link_id_left_char, link_left, gdesc[1], link_right, link_id_right_char);
 			screen_area_puts(ge->map, str);
 		}
 		else

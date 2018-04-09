@@ -1,24 +1,32 @@
 R01 - OK
 R02 - OK
-R03 - NI
+R03 - OK
 R04 - OK
 R05 - OK
 R06 - OK
-R07 - HD
+R07 - OK
 R08 - OK
 R09 - OK
-R10 - NI
-R11 - NI
-R12 - NI
+R10 - OK
+R11 - OK
+R12 - ND - Need to change test modules
 R13 - OK
-R14 - PR
-R15 - HD
-R16 - ND
-R17 - ND
-R18 - HD
+R14 - ND - Ez pz 5 min
+R15 - NI - lemme check
+R16 - ND - Cata be doin it
+R17 - ND - Ez pz i think
+R18 - OK - We don't loose memory
 
 OK - Finished
 NI - No info
 PR - Pending revision
 HD - Half done
 ND - Not done
+
+================================================
+
+- Hace falta crear test de todos los modulos
+- Revisar la rubrica hasta que tengamos todo lo mejor posible
+- Revisar las actas de reunion para que encajen con doxygen o alreves
+- Arreglar el estilo del codigo para seguir las "Linux coding conventions"
+- Arreglar un bug por el cual no se resetea el string1 (ver get_user_input)

@@ -27,7 +27,7 @@ STATUS get_user_input(F_Command * command)
 {
 	T_Command aux_command;
 	int i = UNKNOWN, command_found = 0;
-	char string0[CMD_LENGHT], string1[CMD_LENGHT], input[CMD_LENGHT];
+	char string0[CMD_LENGHT] = {0}, string1[CMD_LENGHT] = {0}, input[CMD_LENGHT] = {0};
 
 	if(fgets(input, CMD_LENGHT, stdin) != NULL && input[0] != '\n')
 	{
@@ -76,11 +76,13 @@ STATUS get_user_input(F_Command * command)
 			else
 				command_set_id(command, NULL);
 		}
+
+		/* Command requires a string */
 		if(aux_command == CHECK)
 		{
-			printf("\tCommand is check. Setting id.\n");
-			if (strcasecmp(string1, "space") || strcasecmp(string1, "s"))
-				command_set_id(command, "17");
+			printf("\tCommand is check. Setting id. [%s %s]\n", string0, string1);
+			if (strcasecmp(string1, "space")==0 || strcasecmp(string1, "s")==0)
+				command_set_id(command, "space");
 		 	else
 				command_set_id(command, string1);
 		}

@@ -6,73 +6,73 @@
 #include "set.h"
 
 struct _Space {
-  Id id;
-  char name[WORD_SIZE + 1];
-  Id linkNorth;
-  Id linkSouth;
-  Id linkEast;
-  Id linkWest;
-  char gdesc[3][21];
-  Set * objects;
+	Id id;
+	char name[WORD_SIZE];
+	char description[WORD_SIZE];
+	Id linkNorth;
+	Id linkSouth;
+	Id linkEast;
+	Id linkWest;
+	char gdesc[3][21];
+	Set * objects;
 };
 
-Space* space_create(Id id)
+Space * space_create(Id id)
 {
+	Space * newSpace = NULL;
 
-  Space *newSpace = NULL;
+	if (id == NO_ID) return NULL;
 
-  if (id == NO_ID)
-    return NULL;
+	newSpace = (Space *) malloc(sizeof (Space));
 
-  newSpace = (Space *) malloc(sizeof (Space));
+	if (newSpace == NULL) return NULL;
 
-  if (newSpace == NULL)
-  {
-    return NULL;
-  }
+	newSpace->id = id;
 
-  newSpace->id = id;
+	newSpace->name[0] = '\0';
+	newSpace->description[0] = '\0';
+	
+	newSpace->linkNorth = NO_ID;
+	newSpace->linkSouth = NO_ID;
+	newSpace->linkEast = NO_ID;
+	newSpace->linkWest = NO_ID;
 
-  newSpace->name[0] = '\0';
+	newSpace->objects = set_create(5);
 
-  newSpace->linkNorth = NO_ID;
-  newSpace->linkSouth = NO_ID;
-  newSpace->linkEast = NO_ID;
-  newSpace->linkWest = NO_ID;
-
-  newSpace->objects = set_create(5);
-
-  return newSpace;
+	return newSpace;
 }
 
 STATUS space_destroy(Space* space)
 {
-  if (!space)
-  {
-    return ERROR;
-  }
+	if (!space)
+	{
+	return ERROR;
+	}
 
-  set_destroy(space->objects);
+	set_destroy(space->objects);
 
-  free(space);
-  space = NULL;
+	free(space);
+	space = NULL;
 
-  return OK;
+	return OK;
 }
 
 STATUS space_set_name(Space* space, char* name)
 {
-  if (!space || !name)
-  {
-    return ERROR;
-  }
+	if (!space || !name) return ERROR;
 
-  if (!strcpy(space->name, name))
-  {
-    return ERROR;
-  }
+	if (!strcpy(space->name, name)) return ERROR;
 
-  return OK;
+	return OK;
+}
+
+STATUS space_set_description(Space* space, char* description)
+{
+	if (!space || !description) return ERROR;
+
+	if (!strcpy(space->description, description)) return ERROR;
+
+	return OK;
 }
 
 STATUS space_set_north(Space* space, Id id)
@@ -134,6 +134,13 @@ const char * space_get_name(Space* space)
   if (!space) return NULL;
 
   return space->name;
+}
+
+const char * space_get_description(Space* space)
+{
+  if (!space) return NULL;
+
+  return space->description;
 }
 
 Id space_get_id(Space* space)
