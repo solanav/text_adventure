@@ -12,7 +12,7 @@ R11 - OK
 R12 - ND - Need to change test modules
 R13 - OK
 R14 - OK
-R15 - NI - Cata lo tiene creo
+R15 - OK
 R16 - ND - This is going to take a while i think
 R17 - OK
 R18 - OK
@@ -26,8 +26,6 @@ ND - Not done
 ================================================
 
 - Hace falta crear test de todos los modulos
-- Hace falta crear un log y guardar ahi cosillas
 - Revisar la rubrica hasta que tengamos todo lo mejor posible
-- Revisar las actas de reunion para que encajen con doxygen o alreves
 - Arreglar el estilo del codigo para seguir las "Linux coding conventions"
 - Arreglar un bug por el cual no se resetea el string1 (ver get_user_input)

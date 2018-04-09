@@ -7,6 +7,9 @@ int main(int argc, char *argv[])
 {
 	Game * game = NULL;
 
+	FILE * log;
+	char log_dir[1024] = "./log/";
+
 	F_Command * command  = command_create();
 	Graphic_engine *gengine;
 
@@ -18,10 +21,16 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	if (argc < 2)
+	if (argc < 2 || argc == 3)
 	{
-		fprintf(stderr, "Use: %s <game_data_file>\n", argv[0]);
+		fprintf(stderr, "Use: %s\t<game_data_file>\n\t\t\t-l <log_file_name>\n\n", argv[0]);
 		return 1;
+	}
+
+	if (argc == 4 && strcmp(argv[2], "-l")==0)
+	{
+		printf("Saving session on log\n");
+		log = fopen(strcat(log_dir,argv[3]), "w+");
 	}
 
 	/* load */
@@ -43,10 +52,19 @@ int main(int argc, char *argv[])
 	while ((command_getCmd(command) != EXIT) && !game_is_over(game))
 	{
 		graphic_engine_paint_game(gengine, game);
+		
 		if(get_user_input(command)== OK)
 			game_update(game, command);
+	
+		if (argc == 4 && strcmp(argv[2], "-l")==0)
+		{
+/* Falta que ponga OK o no y que ponga el nombre del propio cmmand */
+			
+			fprintf(log, "%d %s\n", command_getCmd(command), command_get_id(command)); 
+		}
 	}
 
+	fclose(log);
 	command_free(command);
 	game_destroy(game);
 	graphic_engine_destroy(gengine);
