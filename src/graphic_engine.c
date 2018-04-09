@@ -141,6 +141,8 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 		screen_area_puts(ge->feedback, str);
 	}
 
+	command_set_id(game_get_last_command(game), "");
+
 	/* Input */
 	screen_paint();
 	printf("prompt:> ");

@@ -391,6 +391,7 @@ void game_callback_drop(Game * game)
 
 	space_add_object(space_pointer, object_id);
 	player_removeObjId(game->player, object_id);
+	
 	return;
 }
 

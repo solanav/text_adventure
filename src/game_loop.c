@@ -9,6 +9,8 @@ int main(int argc, char *argv[])
 
 	FILE * log;
 	char log_dir[1024] = "./log/";
+	char *cmd_to_str[8] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check"};
+
 
 	F_Command * command  = command_create();
 	Graphic_engine *gengine;
@@ -58,9 +60,7 @@ int main(int argc, char *argv[])
 	
 		if (argc == 4 && strcmp(argv[2], "-l")==0)
 		{
-/* Falta que ponga OK o no y que ponga el nombre del propio cmmand */
-			
-			fprintf(log, "%d %s\n", command_getCmd(command), command_get_id(command)); 
+			fprintf(log, "%s %s\n", cmd_to_str[game_get_last_command_text(game)+1], command_get_id(game_get_last_command(game))); 
 		}
 	}
 

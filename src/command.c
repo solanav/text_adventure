@@ -34,7 +34,7 @@ STATUS get_user_input(F_Command * command)
 	if(fgets(input, CMD_LENGHT, stdin) != NULL && input[0] != '\n')
 	{
 		/* Check what command the user is giving */
-		if(sscanf(input, "%s", string0) != 1)
+		if(sscanf(input, "%s\n", string0) != 1)
 		{
 			printf("Invalid input");
 			command_setCmd(command, UNKNOWN);
@@ -58,7 +58,7 @@ STATUS get_user_input(F_Command * command)
 			command_setCmd(command, UNKNOWN);
 		}
 
-		sscanf(input, "%s %s", string0, string1);
+		sscanf(input, "%s %s\n", string0, string1);
 		/* Command requires an string */
 		aux_command = command_getCmd(command);
 		if(aux_command == PICK_UP || aux_command == DROP)
