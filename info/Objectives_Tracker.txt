@@ -12,9 +12,9 @@ R11 - OK
 R12 - ND - Need to change test modules
 R13 - OK
 R14 - ND - Ez pz 5 min
-R15 - NI - lemme check
-R16 - ND - Cata be doin it
-R17 - ND - Ez pz i think
+R15 - NI - Cata lo tiene creo
+R16 - ND - This is going to take a while i think
+R17 - ND - Cambiar el nombre del fichero hdr a include en todas partes :)
 R18 - OK
 
 OK - Finished
@@ -26,6 +26,7 @@ ND - Not done
 ================================================
 
 - Hace falta crear test de todos los modulos
+- Hace falta crear un log y guardar ahi cosillas
 - Revisar la rubrica hasta que tengamos todo lo mejor posible
 - Revisar las actas de reunion para que encajen con doxygen o alreves
 - Arreglar el estilo del codigo para seguir las "Linux coding conventions"
