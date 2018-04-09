@@ -2,7 +2,6 @@
  * @brief It tests space module
  *
  * @file space_test.c
- * @author Profesores Pprog
  * @version 2.0
  * @date 16-01-2015
  * @updated 19-01-2016
@@ -38,8 +37,8 @@ int main(int argc, char** argv) {
         test = atoi(argv[1]);
         all = 0;
         printf("Running test %d:\t", test);
-	if (test < 1 && test > MAX_TESTS) {
-	  printf("Error: unknown test %d\t", test);
+	if (test < 1 || test > MAX_TESTS) {
+	  printf("Error: unknown test %d\n", test);
 	  exit(EXIT_SUCCESS);
         }
     }
@@ -179,15 +178,15 @@ void test2_space_get_name() {
 void test1_space_get_object() {
     Space *s;
     s = space_create(1);
-    PRINT_TEST_RESULT(space_get_objects_id(s) == NULL);
+    PRINT_TEST_RESULT(space_get_objects_id(s) != NULL);
 
 }
 
 void test2_space_get_object() {
     Space *s;
     s = space_create(1);
-    space_set_object(s,TRUE);
-    PRINT_TEST_RESULT(space_get_objects_id(s));
+    space_add_object(s,TRUE);
+    PRINT_TEST_RESULT(space_get_objects_id(s) != NULL);
 
 }
 

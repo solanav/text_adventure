@@ -27,8 +27,14 @@ game_exec: game_loop.o game_reader.o graphic_engine.o screen.o command.o space.o
 
 ################ TESTS
 
-space_test: space.o space_test.o test.h
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)space.o $(TESTOBJPATH)space_test
+space_test: space.o set.o space_test.o
+	$(CC) $(CFLAGS) -o $@ $(OBJPATH)space.o $(OBJPATH)set.o $(TESTOBJPATH)space_test.o
+
+object_test: object.o object_test.o
+	$(CC) $(CFLAGS) -o $@ $(OBJPATH)object.o $(TESTOBJPATH)object_test.o
+
+link_test: link.o link_test.o
+	$(CC) $(CFLAGS) -o $@ $(OBJPATH)link.o $(TESTOBJPATH)link_test.o
 
 ################ OBJECT CREATION
 
@@ -76,11 +82,14 @@ inventory.o: $(SRCPATH)inventory.c $(HDRPATH)set.h $(HDRPATH)types.h
 space_test.o: $(TESTPATH)space_test.c $(HDRPATH)space_test.h $(HDRPATH)space.h $(HDRPATH)test.h
 	$(CC) $(CFLAGS) -c $(TESTPATH)space_test.c -o $(TESTOBJPATH)space_test.o
 
+object_test.o: $(TESTPATH)object_test.c $(HDRPATH)object_test.h $(HDRPATH)object.h $(HDRPATH)test.h
+	$(CC) $(CFLAGS) -c $(TESTPATH)object_test.c -o $(TESTOBJPATH)object_test.o
+
 die_test.o: $(TESTPATH)die_test.c $(HDRPATH)die.h $(HDRPATH)types.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)die_test.c -o $(TESTOBJPATH)die_test.o
 
-link_test.o: $(SRCPATH)link_test.c $(HDRPATH)link.h $(HDRPATH)types.h $(HDRPATH)game.h
-	$(CC) $(CFLAGS) -c $(SRCPATH)link_test.c -o $(TESTOBJPATH)link_test.o
+link_test.o: $(TESTPATH)link_test.c $(HDRPATH)link.h $(HDRPATH)test.h $(HDRPATH)link_test.h
+	$(CC) $(CFLAGS) -c $(TESTPATH)link_test.c -o $(TESTOBJPATH)link_test.o
 
 set_test.o: $(SRCPATH)set_test.c $(HDRPATH)set.h $(HDRPATH)object.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)set_test.c -o $(TESTOBJPATH)set_test.o
@@ -104,7 +113,7 @@ val_set:
 	valgrind --leak-check=full ./set_test
 
 clean:
-	rm -rf $(OBJPATH)*.o $(ALL_EXEC)
+	rm -rf $(OBJPATH)*.o $(TESTOBJPATH)*.o $(ALL_EXEC)
 
 tar:
 	tar -czf PPROG_2163_I3_P11.tar.gz *
