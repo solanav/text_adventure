@@ -16,6 +16,8 @@ ALL_EXEC=game_exec die_test set_test link_test
 SRCPATH = ./src/
 HDRPATH = ./include/
 OBJPATH = ./obj/
+TESTPATH  = ./test/
+TESTOBJPATH = ./testobj/
 DOCPATH = ./doc/
 
 ################ EXEC CREATION
@@ -23,14 +25,10 @@ DOCPATH = ./doc/
 game_exec: game_loop.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o game.o inventory.o
 	$(CC) $(CFLAGS) -o $@ $(OBJPATH)game_loop.o $(OBJPATH)game_reader.o $(OBJPATH)graphic_engine.o $(OBJPATH)screen.o $(OBJPATH)command.o $(OBJPATH)space.o $(OBJPATH)object.o $(OBJPATH)player.o $(OBJPATH)set.o $(OBJPATH)die.o $(OBJPATH)link.o $(OBJPATH)game.o $(OBJPATH)inventory.o
 
-die_test: die_test.o die.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)die_test.o $(OBJPATH)die.o
+################ TESTS
 
-set_test: set_test.o set.o object.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)set_test.o $(OBJPATH)set.o $(OBJPATH)object.o
-
-link_test: link_test.o link.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)link_test.o $(OBJPATH)link.o
+space_test: space.o space_test.o test.h
+	$(CC) $(CFLAGS) -o $@ $(OBJPATH)space.o $(TESTOBJPATH)space_test
 
 ################ OBJECT CREATION
 
@@ -75,14 +73,17 @@ inventory.o: $(SRCPATH)inventory.c $(HDRPATH)set.h $(HDRPATH)types.h
 
 ################ OBJECTS FOR TESTS
 
-die_test.o: $(SRCPATH)die_test.c $(HDRPATH)die.h $(HDRPATH)types.h
-	$(CC) $(CFLAGS) -c $(SRCPATH)die_test.c -o $(OBJPATH)die_test.o
+space_test.o: $(TESTPATH)space_test.c $(HDRPATH)space_test.h $(HDRPATH)space.h $(HDRPATH)test.h
+	$(CC) $(CFLAGS) -c $(TESTPATH)space_test.c -o $(TESTOBJPATH)space_test.o
+
+die_test.o: $(TESTPATH)die_test.c $(HDRPATH)die.h $(HDRPATH)types.h
+	$(CC) $(CFLAGS) -c $(SRCPATH)die_test.c -o $(TESTOBJPATH)die_test.o
 
 link_test.o: $(SRCPATH)link_test.c $(HDRPATH)link.h $(HDRPATH)types.h $(HDRPATH)game.h
-	$(CC) $(CFLAGS) -c $(SRCPATH)link_test.c -o $(OBJPATH)link_test.o
+	$(CC) $(CFLAGS) -c $(SRCPATH)link_test.c -o $(TESTOBJPATH)link_test.o
 
 set_test.o: $(SRCPATH)set_test.c $(HDRPATH)set.h $(HDRPATH)object.h
-	$(CC) $(CFLAGS) -c $(SRCPATH)set_test.c -o $(OBJPATH)set_test.o
+	$(CC) $(CFLAGS) -c $(SRCPATH)set_test.c -o $(TESTOBJPATH)set_test.o
 
 ################ ALL
 
@@ -103,7 +104,7 @@ val_set:
 	valgrind --leak-check=full ./set_test
 
 clean:
-	rm -rf *.o $(ALL_EXEC)
+	rm -rf $(OBJPATH)*.o $(ALL_EXEC)
 
 tar:
 	tar -czf PPROG_2163_I3_P11.tar.gz *

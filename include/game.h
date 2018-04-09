@@ -36,6 +36,7 @@ void   	game_print_data(Game *);
 Space*	game_get_space(Game *, Id);
 Player*	game_get_player(Game *);
 Object* game_get_object(Game *, char *);
+Object * game_get_object_from_id(Game * game, Id id);
 Link*	game_get_link(Game *, Id);
 Id		game_get_link_id_at(Game *, int);
 

@@ -58,7 +58,6 @@ static callback_fn game_callback_fn_list[N_CALLBACK]=
 Game * game_create()
 {
 	int i;
-	char name[20] = {0};
 	Game * game = NULL;
 
 	game = (Game *) calloc(1, sizeof(Game));
@@ -75,12 +74,10 @@ Game * game_create()
 
 	game->player = player_create("player1", NO_ID, NO_ID, 1);
 
-	for(i = 0; i < MAX_OBJECTS; i++)
-	{
-		/* This is not ok - Solanav*/
-		sprintf(name, "o%d", i+1);
-		game->objects[i] = object_create(name, (long int) i+1);
-	}
+	game->objects[0] = object_create("linterna", (long int) 1);
+	game->objects[1] = object_create("libro", (long int) 2);
+	game->objects[2] = object_create("pocion", (long int) 3);
+	game->objects[3] = object_create("llave", (long int) 4);
 
 	for (i = 0; i < MAX_LINK; i++)
 	{
@@ -225,6 +222,21 @@ Object * game_get_object(Game * game, char * object_name)
 	{
 		printf("Comparing [%s] with [%s]\n", object_name, object_get_name(game->objects[i]));
 		if (strcasecmp(object_name, object_get_name(game->objects[i])) ==  0)
+			return game->objects[i];
+	}
+
+	return NULL;
+}
+
+Object * game_get_object_from_id(Game * game, Id id)
+{
+	int i;
+
+	if (id == NO_ID) return NULL;
+
+	for (i = 0; i < MAX_OBJECTS && game->objects[i] != NULL; i++)
+	{
+		if (id == object_get_id(game->objects[i]))
 			return game->objects[i];
 	}
 

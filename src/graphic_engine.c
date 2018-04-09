@@ -86,7 +86,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 	{
 		if ((obj_loc = game_get_object_location(game, i)) != NO_ID)
 		{
-			sprintf(str, "  Object o%d location:%d", i, (int)obj_loc);
+			sprintf(str, "  Object o%d [%s] location:%d", i, object_get_name(game_get_object_from_id(game, i)), (int)obj_loc);
 			screen_area_puts(ge->descript, str);
 		}
 	}
