@@ -36,6 +36,9 @@ object_test: object.o object_test.o
 link_test: link.o link_test.o
 	$(CC) $(CFLAGS) -o $@ $(OBJPATH)link.o $(TESTOBJPATH)link_test.o
 
+die_test: die_test.o die.o
+	$(CC) $(CFLAGS) -o $@ $(OBJPATH)die.o $(TESTOBJPATH)die_test.o
+
 ################ OBJECT CREATION
 
 player.o: $(SRCPATH)player.c $(HDRPATH)types.h $(HDRPATH)player.h $(HDRPATH)set.h $(HDRPATH)inventory.h
@@ -85,8 +88,8 @@ space_test.o: $(TESTPATH)space_test.c $(HDRPATH)space_test.h $(HDRPATH)space.h $
 object_test.o: $(TESTPATH)object_test.c $(HDRPATH)object_test.h $(HDRPATH)object.h $(HDRPATH)test.h
 	$(CC) $(CFLAGS) -c $(TESTPATH)object_test.c -o $(TESTOBJPATH)object_test.o
 
-die_test.o: $(TESTPATH)die_test.c $(HDRPATH)die.h $(HDRPATH)types.h
-	$(CC) $(CFLAGS) -c $(SRCPATH)die_test.c -o $(TESTOBJPATH)die_test.o
+die_test.o: $(TESTPATH)die_test.c $(HDRPATH)die.h $(HDRPATH)test.h $(HDRPATH)die_test.h
+	$(CC) $(CFLAGS) -c $(TESTPATH)die_test.c -o $(TESTOBJPATH)die_test.o
 
 link_test.o: $(TESTPATH)link_test.c $(HDRPATH)link.h $(HDRPATH)test.h $(HDRPATH)link_test.h
 	$(CC) $(CFLAGS) -c $(TESTPATH)link_test.c -o $(TESTOBJPATH)link_test.o
