@@ -2,7 +2,7 @@
  * @brief Commands and user input
  *
  * @file command.h
- * @author NONAME
+ * @author Pablo Sánchez
  * @date 2018-04-09
  * @copyright GNU Public License
  */

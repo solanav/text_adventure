@@ -5,7 +5,7 @@
 #include "../include/link_test.h"
 #include "../include/test.h"
 
-#define MAX_TESTS 28
+#define MAX_TESTS 14
 
 /**
  * @brief Funcion principal de pruebas para el modulo Space.
