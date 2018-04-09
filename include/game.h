@@ -1,6 +1,6 @@
 /**
  * @brief Commands and user input
- * 
+ *
  * @file command.h
  * @author NONAME
  * @date 2018-04-09
@@ -10,13 +10,13 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "../hdr/command.h"
-#include "../hdr/space.h"
-#include "../hdr/object.h"
-#include "../hdr/player.h"
-#include "../hdr/die.h"
-#include "../hdr/link.h"
-#include "../hdr/inventory.h"
+#include "../include/command.h"
+#include "../include/space.h"
+#include "../include/object.h"
+#include "../include/player.h"
+#include "../include/die.h"
+#include "../include/link.h"
+#include "../include/inventory.h"
 
 #define MAX_OBJECTS 4
 

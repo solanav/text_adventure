@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../hdr/inventory.h"
+#include "../include/inventory.h"
 
 struct _Inventory
 {

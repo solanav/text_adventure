@@ -1,6 +1,6 @@
 /**
  * @brief Commands and user input
- * 
+ *
  * @file command.h
  * @author NONAME
  * @date 2018-04-09
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "../hdr/types.h"
+#include "../include/types.h"
 
 typedef struct _Die Die;
 

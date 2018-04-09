@@ -1,6 +1,6 @@
 /**
  * @brief Commands and user input
- * 
+ *
  * @file command.h
  * @author NONAME
  * @date 2018-04-09
@@ -10,7 +10,7 @@
 #ifndef LINK
 #define LINK
 
-#include "../hdr/types.h"
+#include "../include/types.h"
 
 #define MAX_LINK 100
 

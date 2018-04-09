@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../hdr/link.h"
+#include "../include/link.h"
 
 struct _Link
 {

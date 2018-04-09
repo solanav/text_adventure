@@ -1,6 +1,6 @@
 /**
  * @brief Commands and user input
- * 
+ *
  * @file command.h
  * @author NONAME
  * @date 2018-04-09
@@ -10,9 +10,9 @@
 #ifndef SPACE_H
 #define SPACE_H
 
-#include "../hdr/types.h"
-#include "../hdr/object.h"
-#include "../hdr/set.h"
+#include "../include/types.h"
+#include "../include/object.h"
+#include "../include/set.h"
 
 typedef struct _Space Space;
 

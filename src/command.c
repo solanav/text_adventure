@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <strings.h>
 
-#include "../hdr/command.h"
+#include "../include/command.h"
 
 #define CMD_LENGHT 30
 #define N_CMD 8
@@ -34,7 +34,12 @@ STATUS get_user_input(F_Command * command)
 	if(fgets(input, CMD_LENGHT, stdin) != NULL && input[0] != '\n')
 	{
 		/* Check what command the user is giving */
-		sscanf(input, "%s", string0);
+		if(sscanf(input, "%s", string0) != 1)
+		{
+			printf("Invalid input");
+			command_setCmd(command, UNKNOWN);
+			return ERROR;
+		}
 
 		for(i = 0; i < N_CMD && command_found == 0; i++)
 		{
@@ -66,7 +71,7 @@ STATUS get_user_input(F_Command * command)
 		if(aux_command == MOVE)
 		{
 			printf("\tCommand is move. Setting id. [%s %s]\n", string0, string1);
-			
+
 			if (strcasecmp(string1, "n")==0 || strcasecmp(string1, "north")==0)
 				command_set_id(command, "north");
 			else if (strcasecmp(string1, "e")==0 || strcasecmp(string1, "east")==0)

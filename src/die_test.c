@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../hdr/die.h"
+#include "../include/die.h"
 
 
 int main() {

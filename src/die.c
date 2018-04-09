@@ -1,4 +1,4 @@
-#include "../hdr/die.h"
+#include "../include/die.h"
 
 struct _Die
 {

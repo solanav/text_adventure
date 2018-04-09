@@ -1,6 +1,6 @@
 /**
  * @brief Commands and user input
- * 
+ *
  * @file command.h
  * @author NONAME
  * @date 2018-04-09
@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../hdr/types.h"
+#include "../include/types.h"
 
 #define MAX_INV_SIZE 1024
 

@@ -1,6 +1,6 @@
 #include <string.h>
 
-#include "../hdr/object.h"
+#include "../include/object.h"
 
 struct _Object{
 	char name [STDSIZE];

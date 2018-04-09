@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "../hdr/link.h"
+#include "../include/link.h"
 #include "../hdr/types.h"
 
 int main()

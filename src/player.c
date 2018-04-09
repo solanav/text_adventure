@@ -1,9 +1,9 @@
 #include <string.h>
 
-#include "../hdr/player.h"
-#include "../hdr/object.h"
-#include "../hdr/set.h"
-#include "../hdr/inventory.h"
+#include "../include/player.h"
+#include "../include/object.h"
+#include "../include/set.h"
+#include "../include/inventory.h"
 
 struct _Player {
   char name[STDSIZE];

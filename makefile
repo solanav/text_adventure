@@ -14,7 +14,7 @@ ALL_EXEC=game_exec die_test set_test link_test
 ################ PATHS
 
 SRCPATH = ./src/
-HDRPATH = ./hdr/
+HDRPATH = ./include/
 OBJPATH = ./obj/
 DOCPATH = ./doc/
 
@@ -92,6 +92,9 @@ all: clean $(ALL_EXEC)
 
 val:
 	valgrind --leak-check=full ./game_exec data.dat
+
+test_game:
+	./game_exec data.dat < ./log/partida_prueba.oca
 
 val_die:
 	valgrind --leak-check=full ./die_test

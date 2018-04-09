@@ -1,9 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "../hdr/screen.h"
-#include "../hdr/graphic_engine.h"
-#include "../hdr/set.h"
+#include "../include/screen.h"
+#include "../include/graphic_engine.h"
+#include "../include/set.h"
 
 #define STD_SPACE "             "
 #define STD_SPACE1 "    "
@@ -134,7 +134,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 	last_cmd = game_get_last_command(game);
 	sprintf(str, " %s > %s", cmd_to_str[last_cmd_text-NO_CMD], command_get_id(last_cmd));
 	screen_area_puts(ge->feedback, str);
-	
+
 	if(last_cmd_text == ROLL)
 	{
 		sprintf(str, "   You rolled: %d", game_get_last_roll(game));

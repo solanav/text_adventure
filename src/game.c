@@ -13,8 +13,8 @@
 #include <stdlib.h>
 #include <strings.h>
 
-#include "../hdr/game.h"
-#include "../hdr/game_reader.h"
+#include "../include/game.h"
+#include "../include/game_reader.h"
 
 #define N_CALLBACK 7
 
@@ -67,14 +67,14 @@ Game * game_create()
 		printf("Calloc didn't work\n");
 		return NULL;
 	}
-	
+
 	for (i = 0; i < MAX_SPACES; i++)
 	{
 		game->spaces[i] = NULL;
 	}
-	
+
 	game->player = player_create("player1", NO_ID, NO_ID, 1);
-	
+
 	for(i = 0; i < MAX_OBJECTS; i++)
 	{
 		/* This is not ok - Solanav*/
@@ -146,7 +146,7 @@ STATUS game_create_from_file(Game * game, char * filename)
 	{
 		space_print(game->spaces[i]);
 	}
-	
+
 	for (i=0; i<MAX_OBJECTS; i++)
 	{
 		printf("Object -> %s [%ld]", object_get_name(game->objects[i]), object_get_id(game->objects[i]));
@@ -219,7 +219,7 @@ Object * game_get_object(Game * game, char * object_name)
 {
 	int i;
 
-	if(!game || !object_name) return NULL; 
+	if(!game || !object_name) return NULL;
 
 	for(i=0; i < 4 && game->objects[i]; i++)
 	{
@@ -446,9 +446,9 @@ void game_callback_check(Game * game)
 
 	char space_description[20] = {0};
 	char space_name[20] = {0};
-	
+
 	if (!game) return;
-	
+
 	/* Clever hack if i say so myself, prob shouldn't be doing it but meh - Solanav */
 	if (strcasecmp(command_get_id(game->last_cmd), "s") == 0 || strcasecmp(command_get_id(game->last_cmd), "space") == 0)
 	{
@@ -462,13 +462,11 @@ void game_callback_check(Game * game)
 		strcpy(object_name, command_get_id(game->last_cmd));
 
 		if (!game_get_object(game, object_name)) return;
-		
+
 		strcpy(object_description, object_get_description(game_get_object(game, object_name)));
 
 		command_set_id(game->last_cmd, object_description);
 	}
-
-	
 
 	return;
 }
@@ -508,9 +506,9 @@ STATUS game_set_player_location(Game * game, Id id)
 STATUS game_set_link(Game * game, Id link_id, Id space_id0, Id space_id1)
 {
 	int i;
-	
+
 	if (link_id == NO_ID || space_id0 == NO_ID || space_id1 == NO_ID || !game ) return ERROR;
-	
+
 	for (i = 0; i < MAX_LINK; i++)
 	{
 		if (game_get_link_id_at(game, i) == NO_ID)

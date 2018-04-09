@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../hdr/screen.h"
+#include "../include/screen.h"
 
 #pragma GCC diagnostic ignored "-Wpedantic"
 

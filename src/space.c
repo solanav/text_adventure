@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../hdr/types.h"
-#include "../hdr/space.h"
-#include "../hdr/set.h"
+#include "../include/types.h"
+#include "../include/space.h"
+#include "../include/set.h"
 
 struct _Space {
 	Id id;
@@ -32,7 +32,7 @@ Space * space_create(Id id)
 
 	newSpace->name[0] = '\0';
 	newSpace->description[0] = '\0';
-	
+
 	newSpace->linkNorth = NO_ID;
 	newSpace->linkSouth = NO_ID;
 	newSpace->linkEast = NO_ID;

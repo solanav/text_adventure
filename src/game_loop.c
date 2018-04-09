@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../hdr/graphic_engine.h"
+#include "../include/graphic_engine.h"
 
 int main(int argc, char *argv[])
 {
@@ -43,8 +43,8 @@ int main(int argc, char *argv[])
 	while ((command_getCmd(command) != EXIT) && !game_is_over(game))
 	{
 		graphic_engine_paint_game(gengine, game);
-		get_user_input(command);
-		game_update(game, command);
+		if(get_user_input(command)== OK)
+			game_update(game, command);
 	}
 
 	command_free(command);
