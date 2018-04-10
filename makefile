@@ -9,7 +9,7 @@ m="Automatic Commit"
 
 ################ FILES
 
-ALL_EXEC=game_exec die_test set_test link_test
+ALL_EXEC=game_exec die_test set_test link_test object_test command_test inventory_test
 
 ################ PATHS
 
@@ -38,6 +38,12 @@ link_test: link.o link_test.o
 
 die_test: die_test.o die.o
 	$(CC) $(CFLAGS) -o $@ $(OBJPATH)die.o $(TESTOBJPATH)die_test.o
+
+command_test: command_test.o command.o
+	$(CC) $(CFLAGS) -o $@ $(OBJPATH)command.o $(TESTOBJPATH)command_test.o
+
+inventory_test: inventory_test.o inventory.o set.o
+	$(CC) $(CFLAGS) -o $@ $(OBJPATH)inventory.o $(OBJPATH)set.o $(TESTOBJPATH)inventory_test.o
 
 ################ OBJECT CREATION
 
@@ -94,6 +100,12 @@ die_test.o: $(TESTPATH)die_test.c $(HDRPATH)die.h $(HDRPATH)test.h $(HDRPATH)die
 link_test.o: $(TESTPATH)link_test.c $(HDRPATH)link.h $(HDRPATH)test.h $(HDRPATH)link_test.h
 	$(CC) $(CFLAGS) -c $(TESTPATH)link_test.c -o $(TESTOBJPATH)link_test.o
 
+command_test.o: $(TESTPATH)command_test.c $(HDRPATH)command.h $(HDRPATH)test.h $(HDRPATH)command_test.h
+	$(CC) $(CFLAGS) -c $(TESTPATH)command_test.c -o $(TESTOBJPATH)command_test.o
+
+inventory_test.o: $(TESTPATH)inventory_test.c $(HDRPATH)inventory.h $(HDRPATH)test.h $(HDRPATH)inventory_test.h $(HDRPATH)set.h
+	$(CC) $(CFLAGS) -c $(TESTPATH)inventory_test.c -o $(TESTOBJPATH)inventory_test.o
+
 set_test.o: $(SRCPATH)set_test.c $(HDRPATH)set.h $(HDRPATH)object.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)set_test.c -o $(TESTOBJPATH)set_test.o
 
@@ -116,7 +128,7 @@ val_set:
 	valgrind --leak-check=full ./set_test
 
 clean:
-	rm -rf $(OBJPATH)*.o $(TESTOBJPATH)*.o $(ALL_EXEC)
+	rm -rf $(ALL_EXEC)
 
 tar:
 	tar -czf PPROG_2163_I3_P11.tar.gz *
