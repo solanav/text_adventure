@@ -37,6 +37,8 @@ STATUS set_add(Set * set, Id id)
 {
 	int i, done;
 
+	if(!set) return ERROR;
+
 	for (i=0, done=0; i<set->id_total && done==0; i++)
 	{
 		if (set->id_list[i] == NO_ID)
@@ -93,9 +95,13 @@ STATUS set_rm_all(Set * set)
 Set * set_cp_all(Set * set)
 {
 	int i;
-	Set * set_copy = set_create(set->id_total);
+	Set * set_copy;
 
 	if (!set) return NULL;
+
+	set_copy = set_create(set->id_total);
+	
+	if(!set_copy) return NULL;
 
 	for (i=0; i<set->id_total; i++)
 	{

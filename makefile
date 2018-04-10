@@ -10,6 +10,7 @@ m="Automatic Commit"
 ################ FILES
 
 ALL_EXEC=game_exec die_test set_test link_test object_test command_test inventory_test
+ALL_TEST=die_test set_test link_test object_test command_test inventory_test player_test
 
 ################ PATHS
 
@@ -44,6 +45,12 @@ command_test: command_test.o command.o
 
 inventory_test: inventory_test.o inventory.o set.o
 	$(CC) $(CFLAGS) -o $@ $(OBJPATH)inventory.o $(OBJPATH)set.o $(TESTOBJPATH)inventory_test.o
+
+player_test: player_test.o player.o inventory.o set.o
+	$(CC) $(CFLAGS) -o $@ $(OBJPATH)player.o $(OBJPATH)inventory.o $(OBJPATH)set.o $(TESTOBJPATH)player_test.o
+
+set_test: set_test.o set.o
+	$(CC) $(CFLAGS) -o $@ $(OBJPATH)set.o $(TESTOBJPATH)set_test.o
 
 ################ OBJECT CREATION
 
@@ -106,14 +113,22 @@ command_test.o: $(TESTPATH)command_test.c $(HDRPATH)command.h $(HDRPATH)test.h $
 inventory_test.o: $(TESTPATH)inventory_test.c $(HDRPATH)inventory.h $(HDRPATH)test.h $(HDRPATH)inventory_test.h $(HDRPATH)set.h
 	$(CC) $(CFLAGS) -c $(TESTPATH)inventory_test.c -o $(TESTOBJPATH)inventory_test.o
 
-set_test.o: $(SRCPATH)set_test.c $(HDRPATH)set.h $(HDRPATH)object.h
-	$(CC) $(CFLAGS) -c $(SRCPATH)set_test.c -o $(TESTOBJPATH)set_test.o
+player_test.o: $(TESTPATH)player_test.c $(HDRPATH)player.h $(HDRPATH)player_test.h $(HDRPATH)test.h
+	$(CC) $(CFLAGS) -c $(TESTPATH)player_test.c -o $(TESTOBJPATH)player_test.o
+
+set_test.o: $(TESTPATH)set_test.c $(HDRPATH)set.h $(HDRPATH)test.h $(HDRPATH)set_test.h
+	$(CC) $(CFLAGS) -c $(TESTPATH)set_test.c -o $(TESTOBJPATH)set_test.o
 
 ################ ALL
 
 all: clean $(ALL_EXEC)
 
+all_test: clean $(ALL_TEST)
+
 ################ OTHER COMMANDS
+
+run_test: all_test
+	./space_test ; ./object_test ; ./die_test ; ./link_test ; ./command_test ; ./inventory_test ; ./player_test ; ./set_test
 
 val:
 	valgrind --leak-check=full ./game_exec data.dat

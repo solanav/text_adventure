@@ -8,7 +8,6 @@
 struct _Player {
   char name[STDSIZE];
   Id location_id;
-  Set * inventory;
   Inventory * inv;
   Id id;
 };

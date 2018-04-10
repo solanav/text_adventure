@@ -9,7 +9,7 @@ R08 - OK
 R09 - OK
 R10 - OK
 R11 - OK
-R12 - HD - Player, set, inventory
+R12 - OK
 R13 - OK
 R14 - OK
 R15 - OK
