@@ -1,0 +1,158 @@
+\hypertarget{set__test_8c}{}\section{set\+\_\+test.\+c File Reference}
+\label{set__test_8c}\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}../include/set.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/set\+\_\+test.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/test.\+h\char`\"{}}\\*
+Include dependency graph for set\+\_\+test.\+c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{set__test_8c_a2a77d2f2c5b698c69c19e1f8782bf709}{M\+A\+X\+\_\+\+T\+E\+S\+TS}~28
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{set__test_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Funcion principal de pruebas para el modulo Space. \end{DoxyCompactList}\item 
+void \hyperlink{set__test_8c_a6f654ab4b44e8a9b9cedfb78c378a5d7}{test1\+\_\+set\+\_\+create} ()
+\item 
+void \hyperlink{set__test_8c_a014ebe1b46af5ea318143fc61894d9c0}{test1\+\_\+set\+\_\+add} ()
+\item 
+void \hyperlink{set__test_8c_ab09827322a313bf97b9757c98c2bdbb0}{test2\+\_\+set\+\_\+add} ()
+\item 
+void \hyperlink{set__test_8c_a2a15d0c24e7a943dec28b6d8e3850e60}{test1\+\_\+set\+\_\+del} ()
+\item 
+void \hyperlink{set__test_8c_a4e8b8663f067122ea82b83e2d07e685c}{test2\+\_\+set\+\_\+del} ()
+\item 
+void \hyperlink{set__test_8c_af5b80896afe0d23ab4a347bdb4b3c48b}{test1\+\_\+set\+\_\+get\+\_\+id} ()
+\item 
+void \hyperlink{set__test_8c_a665b83794eafe832cc4d71aa42dc016d}{test2\+\_\+set\+\_\+get\+\_\+id} ()
+\item 
+void \hyperlink{set__test_8c_a88f5ed9ffd44c08fd4e08c647506c257}{test1\+\_\+set\+\_\+rm\+\_\+all} ()
+\item 
+void \hyperlink{set__test_8c_a5e7078d4972370c0b06618b514787b6c}{test2\+\_\+set\+\_\+rm\+\_\+all} ()
+\item 
+void \hyperlink{set__test_8c_a445dfce2dcca32a9454205ae4a3d6007}{test1\+\_\+set\+\_\+rearrange} ()
+\item 
+void \hyperlink{set__test_8c_ab2697b95104977c543087493a26dd39b}{test2\+\_\+set\+\_\+rearrange} ()
+\item 
+void \hyperlink{set__test_8c_af935827bf3ef10631736d720e41afd9d}{test1\+\_\+set\+\_\+cp\+\_\+all} ()
+\item 
+void \hyperlink{set__test_8c_ab8754ea8f52366f761911b6b0db2c0f6}{test2\+\_\+set\+\_\+cp\+\_\+all} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!M\+A\+X\+\_\+\+T\+E\+S\+TS@{M\+A\+X\+\_\+\+T\+E\+S\+TS}}
+\index{M\+A\+X\+\_\+\+T\+E\+S\+TS@{M\+A\+X\+\_\+\+T\+E\+S\+TS}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+X\+\_\+\+T\+E\+S\+TS}{MAX_TESTS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+T\+E\+S\+TS~28}\hypertarget{set__test_8c_a2a77d2f2c5b698c69c19e1f8782bf709}{}\label{set__test_8c_a2a77d2f2c5b698c69c19e1f8782bf709}
+
+
+\subsection{Function Documentation}
+\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!main@{main}}
+\index{main@{main}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{main(int argc, char $\ast$$\ast$argv)}{main(int argc, char **argv)}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}\hypertarget{set__test_8c_a3c04138a5bfe5d72780bb7e82a18e627}{}\label{set__test_8c_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+Funcion principal de pruebas para el modulo Space. 
+
+Dos modos de ejecucion\+: 1.-\/\+Si se ejecuta sin parametros se ejecutan todas las pruebas 2.-\/\+Si se ejecuta con un numero entre 1 y el numero de pruebas solo ejecuta la prueba indicada \index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!test1\+\_\+set\+\_\+add@{test1\+\_\+set\+\_\+add}}
+\index{test1\+\_\+set\+\_\+add@{test1\+\_\+set\+\_\+add}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{test1\+\_\+set\+\_\+add()}{test1_set_add()}}]{\setlength{\rightskip}{0pt plus 5cm}void test1\+\_\+set\+\_\+add (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{set__test_8c_a014ebe1b46af5ea318143fc61894d9c0}{}\label{set__test_8c_a014ebe1b46af5ea318143fc61894d9c0}
+\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!test1\+\_\+set\+\_\+cp\+\_\+all@{test1\+\_\+set\+\_\+cp\+\_\+all}}
+\index{test1\+\_\+set\+\_\+cp\+\_\+all@{test1\+\_\+set\+\_\+cp\+\_\+all}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{test1\+\_\+set\+\_\+cp\+\_\+all()}{test1_set_cp_all()}}]{\setlength{\rightskip}{0pt plus 5cm}void test1\+\_\+set\+\_\+cp\+\_\+all (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{set__test_8c_af935827bf3ef10631736d720e41afd9d}{}\label{set__test_8c_af935827bf3ef10631736d720e41afd9d}
+\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!test1\+\_\+set\+\_\+create@{test1\+\_\+set\+\_\+create}}
+\index{test1\+\_\+set\+\_\+create@{test1\+\_\+set\+\_\+create}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{test1\+\_\+set\+\_\+create()}{test1_set_create()}}]{\setlength{\rightskip}{0pt plus 5cm}void test1\+\_\+set\+\_\+create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{set__test_8c_a6f654ab4b44e8a9b9cedfb78c378a5d7}{}\label{set__test_8c_a6f654ab4b44e8a9b9cedfb78c378a5d7}
+\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!test1\+\_\+set\+\_\+del@{test1\+\_\+set\+\_\+del}}
+\index{test1\+\_\+set\+\_\+del@{test1\+\_\+set\+\_\+del}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{test1\+\_\+set\+\_\+del()}{test1_set_del()}}]{\setlength{\rightskip}{0pt plus 5cm}void test1\+\_\+set\+\_\+del (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{set__test_8c_a2a15d0c24e7a943dec28b6d8e3850e60}{}\label{set__test_8c_a2a15d0c24e7a943dec28b6d8e3850e60}
+\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!test1\+\_\+set\+\_\+get\+\_\+id@{test1\+\_\+set\+\_\+get\+\_\+id}}
+\index{test1\+\_\+set\+\_\+get\+\_\+id@{test1\+\_\+set\+\_\+get\+\_\+id}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{test1\+\_\+set\+\_\+get\+\_\+id()}{test1_set_get_id()}}]{\setlength{\rightskip}{0pt plus 5cm}void test1\+\_\+set\+\_\+get\+\_\+id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{set__test_8c_af5b80896afe0d23ab4a347bdb4b3c48b}{}\label{set__test_8c_af5b80896afe0d23ab4a347bdb4b3c48b}
+\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!test1\+\_\+set\+\_\+rearrange@{test1\+\_\+set\+\_\+rearrange}}
+\index{test1\+\_\+set\+\_\+rearrange@{test1\+\_\+set\+\_\+rearrange}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{test1\+\_\+set\+\_\+rearrange()}{test1_set_rearrange()}}]{\setlength{\rightskip}{0pt plus 5cm}void test1\+\_\+set\+\_\+rearrange (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{set__test_8c_a445dfce2dcca32a9454205ae4a3d6007}{}\label{set__test_8c_a445dfce2dcca32a9454205ae4a3d6007}
+\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!test1\+\_\+set\+\_\+rm\+\_\+all@{test1\+\_\+set\+\_\+rm\+\_\+all}}
+\index{test1\+\_\+set\+\_\+rm\+\_\+all@{test1\+\_\+set\+\_\+rm\+\_\+all}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{test1\+\_\+set\+\_\+rm\+\_\+all()}{test1_set_rm_all()}}]{\setlength{\rightskip}{0pt plus 5cm}void test1\+\_\+set\+\_\+rm\+\_\+all (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{set__test_8c_a88f5ed9ffd44c08fd4e08c647506c257}{}\label{set__test_8c_a88f5ed9ffd44c08fd4e08c647506c257}
+\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!test2\+\_\+set\+\_\+add@{test2\+\_\+set\+\_\+add}}
+\index{test2\+\_\+set\+\_\+add@{test2\+\_\+set\+\_\+add}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{test2\+\_\+set\+\_\+add()}{test2_set_add()}}]{\setlength{\rightskip}{0pt plus 5cm}void test2\+\_\+set\+\_\+add (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{set__test_8c_ab09827322a313bf97b9757c98c2bdbb0}{}\label{set__test_8c_ab09827322a313bf97b9757c98c2bdbb0}
+\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!test2\+\_\+set\+\_\+cp\+\_\+all@{test2\+\_\+set\+\_\+cp\+\_\+all}}
+\index{test2\+\_\+set\+\_\+cp\+\_\+all@{test2\+\_\+set\+\_\+cp\+\_\+all}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{test2\+\_\+set\+\_\+cp\+\_\+all()}{test2_set_cp_all()}}]{\setlength{\rightskip}{0pt plus 5cm}void test2\+\_\+set\+\_\+cp\+\_\+all (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{set__test_8c_ab8754ea8f52366f761911b6b0db2c0f6}{}\label{set__test_8c_ab8754ea8f52366f761911b6b0db2c0f6}
+\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!test2\+\_\+set\+\_\+del@{test2\+\_\+set\+\_\+del}}
+\index{test2\+\_\+set\+\_\+del@{test2\+\_\+set\+\_\+del}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{test2\+\_\+set\+\_\+del()}{test2_set_del()}}]{\setlength{\rightskip}{0pt plus 5cm}void test2\+\_\+set\+\_\+del (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{set__test_8c_a4e8b8663f067122ea82b83e2d07e685c}{}\label{set__test_8c_a4e8b8663f067122ea82b83e2d07e685c}
+\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!test2\+\_\+set\+\_\+get\+\_\+id@{test2\+\_\+set\+\_\+get\+\_\+id}}
+\index{test2\+\_\+set\+\_\+get\+\_\+id@{test2\+\_\+set\+\_\+get\+\_\+id}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{test2\+\_\+set\+\_\+get\+\_\+id()}{test2_set_get_id()}}]{\setlength{\rightskip}{0pt plus 5cm}void test2\+\_\+set\+\_\+get\+\_\+id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{set__test_8c_a665b83794eafe832cc4d71aa42dc016d}{}\label{set__test_8c_a665b83794eafe832cc4d71aa42dc016d}
+\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!test2\+\_\+set\+\_\+rearrange@{test2\+\_\+set\+\_\+rearrange}}
+\index{test2\+\_\+set\+\_\+rearrange@{test2\+\_\+set\+\_\+rearrange}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{test2\+\_\+set\+\_\+rearrange()}{test2_set_rearrange()}}]{\setlength{\rightskip}{0pt plus 5cm}void test2\+\_\+set\+\_\+rearrange (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{set__test_8c_ab2697b95104977c543087493a26dd39b}{}\label{set__test_8c_ab2697b95104977c543087493a26dd39b}
+\index{set\+\_\+test.\+c@{set\+\_\+test.\+c}!test2\+\_\+set\+\_\+rm\+\_\+all@{test2\+\_\+set\+\_\+rm\+\_\+all}}
+\index{test2\+\_\+set\+\_\+rm\+\_\+all@{test2\+\_\+set\+\_\+rm\+\_\+all}!set\+\_\+test.\+c@{set\+\_\+test.\+c}}
+\subsubsection[{\texorpdfstring{test2\+\_\+set\+\_\+rm\+\_\+all()}{test2_set_rm_all()}}]{\setlength{\rightskip}{0pt plus 5cm}void test2\+\_\+set\+\_\+rm\+\_\+all (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{set__test_8c_a5e7078d4972370c0b06618b514787b6c}{}\label{set__test_8c_a5e7078d4972370c0b06618b514787b6c}

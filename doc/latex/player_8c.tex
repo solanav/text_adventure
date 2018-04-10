@@ -1,0 +1,144 @@
+\hypertarget{player_8c}{}\section{player.\+c File Reference}
+\label{player_8c}\index{player.\+c@{player.\+c}}
+
+
+Functions for the creation of players.  
+
+
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}../include/player.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/object.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/set.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/inventory.\+h\char`\"{}}\\*
+Include dependency graph for player.\+c\+:
+% FIG 0
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__Player}{\+\_\+\+Player}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$ \hyperlink{player_8c_a875d0de3a82ea2482f7af6fc19ff1b5b}{player\+\_\+create} (char $\ast$name, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} location\+\_\+id, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} object\+\_\+id, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
+\item 
+void \hyperlink{player_8c_a73b5e14b9a3b1d4111ea2713d666bdc9}{player\+\_\+destroy} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$player)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{player_8c_a90fc386643bb025cdcbfa828fe6671e6}{player\+\_\+set\+Name} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$player, char $\ast$new\+Name)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{player_8c_a2bc8692e4e6773613c61ebef465935ee}{player\+\_\+set\+Loc\+Id} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$player, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} new\+\_\+loc\+Id)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{player_8c_a05d8f2a3c866c0eb98246a0ccd7d94de}{player\+\_\+set\+Obj\+Id} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$player, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} new\+\_\+obj\+Id)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{player_8c_a9ba44a6fe4c38cb50f19e2f0f93bdc18}{player\+\_\+set\+Id} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$player, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} new\+\_\+id)
+\item 
+char $\ast$ \hyperlink{player_8c_abdba41f9b63b037f2138068da96ee9bd}{player\+\_\+get\+Name} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$player)
+\item 
+\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{player_8c_a0dff36ebf92bedde82a5d60d96072daf}{player\+\_\+get\+Loc\+Id} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$player)
+\item 
+\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{player_8c_ac3d514b13a8989a408a6c711ddac0e25}{player\+\_\+get\+Obj\+Id} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$player, int num)
+\item 
+\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{player_8c_ac276800d65514e07ad63008b40281442}{player\+\_\+get\+Id} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$player)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{player_8c_af618dc361f91ec6678dacca975325c50}{player\+\_\+remove\+Obj\+Id} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$player, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions for the creation of players. 
+
+\begin{DoxyAuthor}{Author}
+Guillermo Ríos 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\index{player.\+c@{player.\+c}!player\+\_\+create@{player\+\_\+create}}
+\index{player\+\_\+create@{player\+\_\+create}!player.\+c@{player.\+c}}
+\subsubsection[{\texorpdfstring{player\+\_\+create(char $\ast$name, Id location\+\_\+id, Id object\+\_\+id, Id id)}{player_create(char *name, Id location_id, Id object_id, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player}$\ast$ player\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{{\bf Id}}]{location\+\_\+id, }
+\item[{{\bf Id}}]{object\+\_\+id, }
+\item[{{\bf Id}}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{player_8c_a875d0de3a82ea2482f7af6fc19ff1b5b}{}\label{player_8c_a875d0de3a82ea2482f7af6fc19ff1b5b}
+Returns null if no name is given to the player Returns pointer to the newly created player if ok\index{player.\+c@{player.\+c}!player\+\_\+destroy@{player\+\_\+destroy}}
+\index{player\+\_\+destroy@{player\+\_\+destroy}!player.\+c@{player.\+c}}
+\subsubsection[{\texorpdfstring{player\+\_\+destroy(\+Player $\ast$player)}{player_destroy(Player *player)}}]{\setlength{\rightskip}{0pt plus 5cm}void player\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf Player} $\ast$}]{player}
+\end{DoxyParamCaption}
+)}\hypertarget{player_8c_a73b5e14b9a3b1d4111ea2713d666bdc9}{}\label{player_8c_a73b5e14b9a3b1d4111ea2713d666bdc9}
+\index{player.\+c@{player.\+c}!player\+\_\+get\+Id@{player\+\_\+get\+Id}}
+\index{player\+\_\+get\+Id@{player\+\_\+get\+Id}!player.\+c@{player.\+c}}
+\subsubsection[{\texorpdfstring{player\+\_\+get\+Id(\+Player $\ast$player)}{player_getId(Player *player)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} player\+\_\+get\+Id (
+\begin{DoxyParamCaption}
+\item[{{\bf Player} $\ast$}]{player}
+\end{DoxyParamCaption}
+)}\hypertarget{player_8c_ac276800d65514e07ad63008b40281442}{}\label{player_8c_ac276800d65514e07ad63008b40281442}
+\index{player.\+c@{player.\+c}!player\+\_\+get\+Loc\+Id@{player\+\_\+get\+Loc\+Id}}
+\index{player\+\_\+get\+Loc\+Id@{player\+\_\+get\+Loc\+Id}!player.\+c@{player.\+c}}
+\subsubsection[{\texorpdfstring{player\+\_\+get\+Loc\+Id(\+Player $\ast$player)}{player_getLocId(Player *player)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} player\+\_\+get\+Loc\+Id (
+\begin{DoxyParamCaption}
+\item[{{\bf Player} $\ast$}]{player}
+\end{DoxyParamCaption}
+)}\hypertarget{player_8c_a0dff36ebf92bedde82a5d60d96072daf}{}\label{player_8c_a0dff36ebf92bedde82a5d60d96072daf}
+\index{player.\+c@{player.\+c}!player\+\_\+get\+Name@{player\+\_\+get\+Name}}
+\index{player\+\_\+get\+Name@{player\+\_\+get\+Name}!player.\+c@{player.\+c}}
+\subsubsection[{\texorpdfstring{player\+\_\+get\+Name(\+Player $\ast$player)}{player_getName(Player *player)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ player\+\_\+get\+Name (
+\begin{DoxyParamCaption}
+\item[{{\bf Player} $\ast$}]{player}
+\end{DoxyParamCaption}
+)}\hypertarget{player_8c_abdba41f9b63b037f2138068da96ee9bd}{}\label{player_8c_abdba41f9b63b037f2138068da96ee9bd}
+\index{player.\+c@{player.\+c}!player\+\_\+get\+Obj\+Id@{player\+\_\+get\+Obj\+Id}}
+\index{player\+\_\+get\+Obj\+Id@{player\+\_\+get\+Obj\+Id}!player.\+c@{player.\+c}}
+\subsubsection[{\texorpdfstring{player\+\_\+get\+Obj\+Id(\+Player $\ast$player, int num)}{player_getObjId(Player *player, int num)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} player\+\_\+get\+Obj\+Id (
+\begin{DoxyParamCaption}
+\item[{{\bf Player} $\ast$}]{player, }
+\item[{int}]{num}
+\end{DoxyParamCaption}
+)}\hypertarget{player_8c_ac3d514b13a8989a408a6c711ddac0e25}{}\label{player_8c_ac3d514b13a8989a408a6c711ddac0e25}
+\index{player.\+c@{player.\+c}!player\+\_\+remove\+Obj\+Id@{player\+\_\+remove\+Obj\+Id}}
+\index{player\+\_\+remove\+Obj\+Id@{player\+\_\+remove\+Obj\+Id}!player.\+c@{player.\+c}}
+\subsubsection[{\texorpdfstring{player\+\_\+remove\+Obj\+Id(\+Player $\ast$player, Id id)}{player_removeObjId(Player *player, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} player\+\_\+remove\+Obj\+Id (
+\begin{DoxyParamCaption}
+\item[{{\bf Player} $\ast$}]{player, }
+\item[{{\bf Id}}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{player_8c_af618dc361f91ec6678dacca975325c50}{}\label{player_8c_af618dc361f91ec6678dacca975325c50}
+\index{player.\+c@{player.\+c}!player\+\_\+set\+Id@{player\+\_\+set\+Id}}
+\index{player\+\_\+set\+Id@{player\+\_\+set\+Id}!player.\+c@{player.\+c}}
+\subsubsection[{\texorpdfstring{player\+\_\+set\+Id(\+Player $\ast$player, Id new\+\_\+id)}{player_setId(Player *player, Id new_id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} player\+\_\+set\+Id (
+\begin{DoxyParamCaption}
+\item[{{\bf Player} $\ast$}]{player, }
+\item[{{\bf Id}}]{new\+\_\+id}
+\end{DoxyParamCaption}
+)}\hypertarget{player_8c_a9ba44a6fe4c38cb50f19e2f0f93bdc18}{}\label{player_8c_a9ba44a6fe4c38cb50f19e2f0f93bdc18}
+\index{player.\+c@{player.\+c}!player\+\_\+set\+Loc\+Id@{player\+\_\+set\+Loc\+Id}}
+\index{player\+\_\+set\+Loc\+Id@{player\+\_\+set\+Loc\+Id}!player.\+c@{player.\+c}}
+\subsubsection[{\texorpdfstring{player\+\_\+set\+Loc\+Id(\+Player $\ast$player, Id new\+\_\+loc\+Id)}{player_setLocId(Player *player, Id new_locId)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} player\+\_\+set\+Loc\+Id (
+\begin{DoxyParamCaption}
+\item[{{\bf Player} $\ast$}]{player, }
+\item[{{\bf Id}}]{new\+\_\+loc\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{player_8c_a2bc8692e4e6773613c61ebef465935ee}{}\label{player_8c_a2bc8692e4e6773613c61ebef465935ee}
+\index{player.\+c@{player.\+c}!player\+\_\+set\+Name@{player\+\_\+set\+Name}}
+\index{player\+\_\+set\+Name@{player\+\_\+set\+Name}!player.\+c@{player.\+c}}
+\subsubsection[{\texorpdfstring{player\+\_\+set\+Name(\+Player $\ast$player, char $\ast$new\+Name)}{player_setName(Player *player, char *newName)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} player\+\_\+set\+Name (
+\begin{DoxyParamCaption}
+\item[{{\bf Player} $\ast$}]{player, }
+\item[{char $\ast$}]{new\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{player_8c_a90fc386643bb025cdcbfa828fe6671e6}{}\label{player_8c_a90fc386643bb025cdcbfa828fe6671e6}
+\index{player.\+c@{player.\+c}!player\+\_\+set\+Obj\+Id@{player\+\_\+set\+Obj\+Id}}
+\index{player\+\_\+set\+Obj\+Id@{player\+\_\+set\+Obj\+Id}!player.\+c@{player.\+c}}
+\subsubsection[{\texorpdfstring{player\+\_\+set\+Obj\+Id(\+Player $\ast$player, Id new\+\_\+obj\+Id)}{player_setObjId(Player *player, Id new_objId)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} player\+\_\+set\+Obj\+Id (
+\begin{DoxyParamCaption}
+\item[{{\bf Player} $\ast$}]{player, }
+\item[{{\bf Id}}]{new\+\_\+obj\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{player_8c_a05d8f2a3c866c0eb98246a0ccd7d94de}{}\label{player_8c_a05d8f2a3c866c0eb98246a0ccd7d94de}

@@ -1,0 +1,89 @@
+\hypertarget{die_8h}{}\section{die.\+h File Reference}
+\label{die_8h}\index{die.\+h@{die.\+h}}
+
+
+It declares the die module.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}../include/types.\+h\char`\"{}}\\*
+Include dependency graph for die.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__Die}{\+\_\+\+Die} \hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$ \hyperlink{die_8h_a58ac2859cec9338bd57d2cbf142f565f}{die\+\_\+ini} (\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id})
+\item 
+void \hyperlink{die_8h_a94ea40d2a3508e2d6aac560582e9e9bc}{die\+\_\+die\+\_\+die} (\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{die_8h_a8b747943478f695a940e267d69baae7b}{die\+\_\+roll} (\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$)
+\item 
+short int \hyperlink{die_8h_a8bf4da5fb5440c903b605e54ceae97e5}{die\+\_\+get\+\_\+last\+\_\+roll} (\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{die_8h_ac5fb013351c7196f7ace1ac1043771fc}{die\+\_\+print} (F\+I\+LE $\ast$, \hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+It declares the die module. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez Redondo 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\subsection{Typedef Documentation}
+\index{die.\+h@{die.\+h}!Die@{Die}}
+\index{Die@{Die}!die.\+h@{die.\+h}}
+\subsubsection[{\texorpdfstring{Die}{Die}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Die} {\bf Die}}\hypertarget{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{}\label{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}
+
+
+\subsection{Function Documentation}
+\index{die.\+h@{die.\+h}!die\+\_\+die\+\_\+die@{die\+\_\+die\+\_\+die}}
+\index{die\+\_\+die\+\_\+die@{die\+\_\+die\+\_\+die}!die.\+h@{die.\+h}}
+\subsubsection[{\texorpdfstring{die\+\_\+die\+\_\+die(\+Die $\ast$)}{die_die_die(Die *)}}]{\setlength{\rightskip}{0pt plus 5cm}void die\+\_\+die\+\_\+die (
+\begin{DoxyParamCaption}
+\item[{{\bf Die} $\ast$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{die_8h_a94ea40d2a3508e2d6aac560582e9e9bc}{}\label{die_8h_a94ea40d2a3508e2d6aac560582e9e9bc}
+\index{die.\+h@{die.\+h}!die\+\_\+get\+\_\+last\+\_\+roll@{die\+\_\+get\+\_\+last\+\_\+roll}}
+\index{die\+\_\+get\+\_\+last\+\_\+roll@{die\+\_\+get\+\_\+last\+\_\+roll}!die.\+h@{die.\+h}}
+\subsubsection[{\texorpdfstring{die\+\_\+get\+\_\+last\+\_\+roll(\+Die $\ast$)}{die_get_last_roll(Die *)}}]{\setlength{\rightskip}{0pt plus 5cm}short int die\+\_\+get\+\_\+last\+\_\+roll (
+\begin{DoxyParamCaption}
+\item[{{\bf Die} $\ast$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{die_8h_a8bf4da5fb5440c903b605e54ceae97e5}{}\label{die_8h_a8bf4da5fb5440c903b605e54ceae97e5}
+\index{die.\+h@{die.\+h}!die\+\_\+ini@{die\+\_\+ini}}
+\index{die\+\_\+ini@{die\+\_\+ini}!die.\+h@{die.\+h}}
+\subsubsection[{\texorpdfstring{die\+\_\+ini(\+Id)}{die_ini(Id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Die}$\ast$ die\+\_\+ini (
+\begin{DoxyParamCaption}
+\item[{{\bf Id}}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{die_8h_a58ac2859cec9338bd57d2cbf142f565f}{}\label{die_8h_a58ac2859cec9338bd57d2cbf142f565f}
+\index{die.\+h@{die.\+h}!die\+\_\+print@{die\+\_\+print}}
+\index{die\+\_\+print@{die\+\_\+print}!die.\+h@{die.\+h}}
+\subsubsection[{\texorpdfstring{die\+\_\+print(\+F\+I\+L\+E $\ast$, Die $\ast$)}{die_print(FILE *, Die *)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} die\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{, }
+\item[{{\bf Die} $\ast$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{die_8h_ac5fb013351c7196f7ace1ac1043771fc}{}\label{die_8h_ac5fb013351c7196f7ace1ac1043771fc}
+\index{die.\+h@{die.\+h}!die\+\_\+roll@{die\+\_\+roll}}
+\index{die\+\_\+roll@{die\+\_\+roll}!die.\+h@{die.\+h}}
+\subsubsection[{\texorpdfstring{die\+\_\+roll(\+Die $\ast$)}{die_roll(Die *)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} die\+\_\+roll (
+\begin{DoxyParamCaption}
+\item[{{\bf Die} $\ast$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{die_8h_a8b747943478f695a940e267d69baae7b}{}\label{die_8h_a8b747943478f695a940e267d69baae7b}

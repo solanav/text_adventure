@@ -1,0 +1,372 @@
+\hypertarget{game_8c}{}\section{game.\+c File Reference}
+\label{game_8c}\index{game.\+c@{game.\+c}}
+
+
+It implements the game interface and all the associated callbacks for each command.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$strings.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}../include/game.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/game\+\_\+reader.\+h\char`\"{}}\\*
+Include dependency graph for game.\+c\+:
+% FIG 0
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__Game}{\+\_\+\+Game}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{game_8c_a8366e5ad74afbbea0cd0a414770c304a}{N\+\_\+\+C\+A\+L\+L\+B\+A\+CK}~7
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{game_8c_ac54a175bdefaeb274c3515fc6f43dbe5}{callback\+\_\+fn}) (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{game_8c_ac8ed327ed13f97dcb778d0293f14d8bb}{game\+\_\+callback\+\_\+unknown} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+void \hyperlink{game_8c_acc98d79a418d2093fc3224b5c02e5418}{game\+\_\+callback\+\_\+exit} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+void \hyperlink{game_8c_a63b864e2b87c09dc2a61a55c7f26db44}{game\+\_\+callback\+\_\+pickup} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+void \hyperlink{game_8c_a424d0c659a926b0588a4287ea82552b6}{game\+\_\+callback\+\_\+drop} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+void \hyperlink{game_8c_a4929c380e741fce955cb09ad3058e6d7}{game\+\_\+callback\+\_\+roll} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+void \hyperlink{game_8c_a7525cbe807f8d1c3b698afcb75903903}{game\+\_\+callback\+\_\+move} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+void \hyperlink{game_8c_a83bb67a81f8905d8aebdc441fd23325b}{game\+\_\+callback\+\_\+check} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$ \hyperlink{game_8c_a1cdbe3f06b9bf49eb5e334a22ad3b2b9}{game\+\_\+create} ()
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{game_8c_afc77f90739be0fd45b7f5616e543bfae}{game\+\_\+create\+\_\+from\+\_\+file} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, char $\ast$filename)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{game_8c_a0736924a1235c0e6fe9b6d91c2a12af8}{game\+\_\+destroy} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space} $\ast$ \hyperlink{game_8c_a69d94da9d27b542d3ebdeb8b60f1f2dc}{game\+\_\+get\+\_\+space} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
+\item 
+\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$ \hyperlink{game_8c_af46efd507d797aec6da90d08aa592e32}{game\+\_\+get\+\_\+player} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$ \hyperlink{game_8c_a2cb6731352a9584e9d40bbb242e9a13e}{game\+\_\+get\+\_\+object} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, char $\ast$object\+\_\+name)
+\item 
+\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$ \hyperlink{game_8c_a08ebb46534ea7ae3cb4708d44bdece68}{game\+\_\+get\+\_\+object\+\_\+from\+\_\+id} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
+\item 
+\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$ \hyperlink{game_8c_a1064ec927b8c33cf55982b73845db7d3}{game\+\_\+get\+\_\+link} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
+\item 
+\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{game_8c_af9e55e987ccd50b818c275a3dcf96527}{game\+\_\+get\+\_\+link\+\_\+id\+\_\+at} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, int pos)
+\item 
+\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{game_8c_ac6a628f2106f81c37d0e83c67920615f}{game\+\_\+get\+\_\+player\+\_\+location} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{game_8c_aa84eca5a1131daafd7acbf74263b6f82}{game\+\_\+get\+\_\+object\+\_\+location} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{game_8c_abdff7789be1e3a7202ac0a6a8ab7cd41}{game\+\_\+update} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, \hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$cmd)
+\item 
+\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$ \hyperlink{game_8c_a1ef0400a8e4f09888f01adef3b0b44d0}{game\+\_\+get\+\_\+last\+\_\+command} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+\hyperlink{command_8h_a0473597db8c45c0289b6b8e2f8abbe32}{T\+\_\+\+Command} \hyperlink{game_8c_aedbcb6a2a1b0a99505543599f040e1df}{game\+\_\+get\+\_\+last\+\_\+command\+\_\+text} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+void \hyperlink{game_8c_a33a5ed8937423f8c012df3cedad4fa4c}{game\+\_\+print\+\_\+data} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+\hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} \hyperlink{game_8c_aa6efe0650af110bbd84e742cc8046d93}{game\+\_\+is\+\_\+over} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{game_8c_ae5ad86de0a92d9eccb234948458da7f1}{game\+\_\+add\+\_\+space} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, \hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space} $\ast$space)
+\item 
+\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{game_8c_ad2dfd865e2bd2c545a15d33f4d1cf3ae}{game\+\_\+get\+\_\+space\+\_\+id\+\_\+at} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, int position)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{game_8c_a492ca9fb594442dc43fc7d18a3820426}{game\+\_\+set\+\_\+player\+\_\+location} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{game_8c_ac78e92998818d2b2029ba60077be8f3f}{game\+\_\+set\+\_\+link} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} link\+\_\+id, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} space\+\_\+id0, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} space\+\_\+id1)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{game_8c_a75a0a6b7a241f91e60c61ea8deb65e1d}{game\+\_\+set\+\_\+object\+\_\+location} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} obj\+\_\+id, char $\ast$name, char $\ast$description)
+\item 
+int \hyperlink{game_8c_a58877f9f0a1d0d8d469d1aefde2c2e20}{game\+\_\+get\+\_\+last\+\_\+roll} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\item 
+\hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} \hyperlink{game_8c_af1e5cb66149225a040415851cd7ad523}{game\+\_\+are\+Spaces\+Adjacent} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$g, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} space1, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} space2)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{game_8c_ac54a175bdefaeb274c3515fc6f43dbe5}{callback\+\_\+fn} \hyperlink{game_8c_a736ddaf27abb68c75a635760497a3f5e}{game\+\_\+callback\+\_\+fn\+\_\+list} \mbox{[}\hyperlink{game_8c_a8366e5ad74afbbea0cd0a414770c304a}{N\+\_\+\+C\+A\+L\+L\+B\+A\+CK}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+It implements the game interface and all the associated callbacks for each command. 
+
+\begin{DoxyAuthor}{Author}
+Profesores P\+P\+R\+OG 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\subsection{Macro Definition Documentation}
+\index{game.\+c@{game.\+c}!N\+\_\+\+C\+A\+L\+L\+B\+A\+CK@{N\+\_\+\+C\+A\+L\+L\+B\+A\+CK}}
+\index{N\+\_\+\+C\+A\+L\+L\+B\+A\+CK@{N\+\_\+\+C\+A\+L\+L\+B\+A\+CK}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{N\+\_\+\+C\+A\+L\+L\+B\+A\+CK}{N_CALLBACK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+\_\+\+C\+A\+L\+L\+B\+A\+CK~7}\hypertarget{game_8c_a8366e5ad74afbbea0cd0a414770c304a}{}\label{game_8c_a8366e5ad74afbbea0cd0a414770c304a}
+
+
+\subsection{Typedef Documentation}
+\index{game.\+c@{game.\+c}!callback\+\_\+fn@{callback\+\_\+fn}}
+\index{callback\+\_\+fn@{callback\+\_\+fn}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{callback\+\_\+fn}{callback_fn}}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ callback\+\_\+fn) ({\bf Game} $\ast$game)}\hypertarget{game_8c_ac54a175bdefaeb274c3515fc6f43dbe5}{}\label{game_8c_ac54a175bdefaeb274c3515fc6f43dbe5}
+Define the function type for the callbacks 
+
+\subsection{Function Documentation}
+\index{game.\+c@{game.\+c}!game\+\_\+add\+\_\+space@{game\+\_\+add\+\_\+space}}
+\index{game\+\_\+add\+\_\+space@{game\+\_\+add\+\_\+space}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+add\+\_\+space(\+Game $\ast$game, Space $\ast$space)}{game_add_space(Game *game, Space *space)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} game\+\_\+add\+\_\+space (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game, }
+\item[{{\bf Space} $\ast$}]{space}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_ae5ad86de0a92d9eccb234948458da7f1}{}\label{game_8c_ae5ad86de0a92d9eccb234948458da7f1}
+\index{game.\+c@{game.\+c}!game\+\_\+are\+Spaces\+Adjacent@{game\+\_\+are\+Spaces\+Adjacent}}
+\index{game\+\_\+are\+Spaces\+Adjacent@{game\+\_\+are\+Spaces\+Adjacent}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+are\+Spaces\+Adjacent(\+Game $\ast$g, Id space1, Id space2)}{game_areSpacesAdjacent(Game *g, Id space1, Id space2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} game\+\_\+are\+Spaces\+Adjacent (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{g, }
+\item[{{\bf Id}}]{space1, }
+\item[{{\bf Id}}]{space2}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_af1e5cb66149225a040415851cd7ad523}{}\label{game_8c_af1e5cb66149225a040415851cd7ad523}
+\index{game.\+c@{game.\+c}!game\+\_\+callback\+\_\+check@{game\+\_\+callback\+\_\+check}}
+\index{game\+\_\+callback\+\_\+check@{game\+\_\+callback\+\_\+check}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+callback\+\_\+check(\+Game $\ast$game)}{game_callback_check(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}void game\+\_\+callback\+\_\+check (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a83bb67a81f8905d8aebdc441fd23325b}{}\label{game_8c_a83bb67a81f8905d8aebdc441fd23325b}
+\index{game.\+c@{game.\+c}!game\+\_\+callback\+\_\+drop@{game\+\_\+callback\+\_\+drop}}
+\index{game\+\_\+callback\+\_\+drop@{game\+\_\+callback\+\_\+drop}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+callback\+\_\+drop(\+Game $\ast$game)}{game_callback_drop(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}void game\+\_\+callback\+\_\+drop (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a424d0c659a926b0588a4287ea82552b6}{}\label{game_8c_a424d0c659a926b0588a4287ea82552b6}
+\index{game.\+c@{game.\+c}!game\+\_\+callback\+\_\+exit@{game\+\_\+callback\+\_\+exit}}
+\index{game\+\_\+callback\+\_\+exit@{game\+\_\+callback\+\_\+exit}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+callback\+\_\+exit(\+Game $\ast$game)}{game_callback_exit(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}void game\+\_\+callback\+\_\+exit (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_acc98d79a418d2093fc3224b5c02e5418}{}\label{game_8c_acc98d79a418d2093fc3224b5c02e5418}
+\index{game.\+c@{game.\+c}!game\+\_\+callback\+\_\+move@{game\+\_\+callback\+\_\+move}}
+\index{game\+\_\+callback\+\_\+move@{game\+\_\+callback\+\_\+move}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+callback\+\_\+move(\+Game $\ast$game)}{game_callback_move(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}void game\+\_\+callback\+\_\+move (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a7525cbe807f8d1c3b698afcb75903903}{}\label{game_8c_a7525cbe807f8d1c3b698afcb75903903}
+\index{game.\+c@{game.\+c}!game\+\_\+callback\+\_\+pickup@{game\+\_\+callback\+\_\+pickup}}
+\index{game\+\_\+callback\+\_\+pickup@{game\+\_\+callback\+\_\+pickup}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+callback\+\_\+pickup(\+Game $\ast$game)}{game_callback_pickup(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}void game\+\_\+callback\+\_\+pickup (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a63b864e2b87c09dc2a61a55c7f26db44}{}\label{game_8c_a63b864e2b87c09dc2a61a55c7f26db44}
+\index{game.\+c@{game.\+c}!game\+\_\+callback\+\_\+roll@{game\+\_\+callback\+\_\+roll}}
+\index{game\+\_\+callback\+\_\+roll@{game\+\_\+callback\+\_\+roll}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+callback\+\_\+roll(\+Game $\ast$game)}{game_callback_roll(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}void game\+\_\+callback\+\_\+roll (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a4929c380e741fce955cb09ad3058e6d7}{}\label{game_8c_a4929c380e741fce955cb09ad3058e6d7}
+\index{game.\+c@{game.\+c}!game\+\_\+callback\+\_\+unknown@{game\+\_\+callback\+\_\+unknown}}
+\index{game\+\_\+callback\+\_\+unknown@{game\+\_\+callback\+\_\+unknown}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+callback\+\_\+unknown(\+Game $\ast$game)}{game_callback_unknown(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}void game\+\_\+callback\+\_\+unknown (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_ac8ed327ed13f97dcb778d0293f14d8bb}{}\label{game_8c_ac8ed327ed13f97dcb778d0293f14d8bb}
+List of callbacks for each command in the game \index{game.\+c@{game.\+c}!game\+\_\+create@{game\+\_\+create}}
+\index{game\+\_\+create@{game\+\_\+create}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+create()}{game_create()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game}$\ast$ game\+\_\+create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a1cdbe3f06b9bf49eb5e334a22ad3b2b9}{}\label{game_8c_a1cdbe3f06b9bf49eb5e334a22ad3b2b9}
+\index{game.\+c@{game.\+c}!game\+\_\+create\+\_\+from\+\_\+file@{game\+\_\+create\+\_\+from\+\_\+file}}
+\index{game\+\_\+create\+\_\+from\+\_\+file@{game\+\_\+create\+\_\+from\+\_\+file}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+create\+\_\+from\+\_\+file(\+Game $\ast$game, char $\ast$filename)}{game_create_from_file(Game *game, char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} game\+\_\+create\+\_\+from\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game, }
+\item[{char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_afc77f90739be0fd45b7f5616e543bfae}{}\label{game_8c_afc77f90739be0fd45b7f5616e543bfae}
+\index{game.\+c@{game.\+c}!game\+\_\+destroy@{game\+\_\+destroy}}
+\index{game\+\_\+destroy@{game\+\_\+destroy}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+destroy(\+Game $\ast$game)}{game_destroy(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} game\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a0736924a1235c0e6fe9b6d91c2a12af8}{}\label{game_8c_a0736924a1235c0e6fe9b6d91c2a12af8}
+\index{game.\+c@{game.\+c}!game\+\_\+get\+\_\+last\+\_\+command@{game\+\_\+get\+\_\+last\+\_\+command}}
+\index{game\+\_\+get\+\_\+last\+\_\+command@{game\+\_\+get\+\_\+last\+\_\+command}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+get\+\_\+last\+\_\+command(\+Game $\ast$game)}{game_get_last_command(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+\_\+\+Command}$\ast$ game\+\_\+get\+\_\+last\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a1ef0400a8e4f09888f01adef3b0b44d0}{}\label{game_8c_a1ef0400a8e4f09888f01adef3b0b44d0}
+\index{game.\+c@{game.\+c}!game\+\_\+get\+\_\+last\+\_\+command\+\_\+text@{game\+\_\+get\+\_\+last\+\_\+command\+\_\+text}}
+\index{game\+\_\+get\+\_\+last\+\_\+command\+\_\+text@{game\+\_\+get\+\_\+last\+\_\+command\+\_\+text}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+get\+\_\+last\+\_\+command\+\_\+text(\+Game $\ast$game)}{game_get_last_command_text(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\+\_\+\+Command} game\+\_\+get\+\_\+last\+\_\+command\+\_\+text (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_aedbcb6a2a1b0a99505543599f040e1df}{}\label{game_8c_aedbcb6a2a1b0a99505543599f040e1df}
+\index{game.\+c@{game.\+c}!game\+\_\+get\+\_\+last\+\_\+roll@{game\+\_\+get\+\_\+last\+\_\+roll}}
+\index{game\+\_\+get\+\_\+last\+\_\+roll@{game\+\_\+get\+\_\+last\+\_\+roll}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+get\+\_\+last\+\_\+roll(\+Game $\ast$game)}{game_get_last_roll(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}int game\+\_\+get\+\_\+last\+\_\+roll (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a58877f9f0a1d0d8d469d1aefde2c2e20}{}\label{game_8c_a58877f9f0a1d0d8d469d1aefde2c2e20}
+\index{game.\+c@{game.\+c}!game\+\_\+get\+\_\+link@{game\+\_\+get\+\_\+link}}
+\index{game\+\_\+get\+\_\+link@{game\+\_\+get\+\_\+link}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+get\+\_\+link(\+Game $\ast$game, Id id)}{game_get_link(Game *game, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Link}$\ast$ game\+\_\+get\+\_\+link (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game, }
+\item[{{\bf Id}}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a1064ec927b8c33cf55982b73845db7d3}{}\label{game_8c_a1064ec927b8c33cf55982b73845db7d3}
+\index{game.\+c@{game.\+c}!game\+\_\+get\+\_\+link\+\_\+id\+\_\+at@{game\+\_\+get\+\_\+link\+\_\+id\+\_\+at}}
+\index{game\+\_\+get\+\_\+link\+\_\+id\+\_\+at@{game\+\_\+get\+\_\+link\+\_\+id\+\_\+at}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+get\+\_\+link\+\_\+id\+\_\+at(\+Game $\ast$game, int pos)}{game_get_link_id_at(Game *game, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} game\+\_\+get\+\_\+link\+\_\+id\+\_\+at (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_af9e55e987ccd50b818c275a3dcf96527}{}\label{game_8c_af9e55e987ccd50b818c275a3dcf96527}
+\index{game.\+c@{game.\+c}!game\+\_\+get\+\_\+object@{game\+\_\+get\+\_\+object}}
+\index{game\+\_\+get\+\_\+object@{game\+\_\+get\+\_\+object}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+get\+\_\+object(\+Game $\ast$game, char $\ast$object\+\_\+name)}{game_get_object(Game *game, char *object_name)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object}$\ast$ game\+\_\+get\+\_\+object (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game, }
+\item[{char $\ast$}]{object\+\_\+name}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a2cb6731352a9584e9d40bbb242e9a13e}{}\label{game_8c_a2cb6731352a9584e9d40bbb242e9a13e}
+\index{game.\+c@{game.\+c}!game\+\_\+get\+\_\+object\+\_\+from\+\_\+id@{game\+\_\+get\+\_\+object\+\_\+from\+\_\+id}}
+\index{game\+\_\+get\+\_\+object\+\_\+from\+\_\+id@{game\+\_\+get\+\_\+object\+\_\+from\+\_\+id}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+get\+\_\+object\+\_\+from\+\_\+id(\+Game $\ast$game, Id id)}{game_get_object_from_id(Game *game, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object}$\ast$ game\+\_\+get\+\_\+object\+\_\+from\+\_\+id (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game, }
+\item[{{\bf Id}}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a08ebb46534ea7ae3cb4708d44bdece68}{}\label{game_8c_a08ebb46534ea7ae3cb4708d44bdece68}
+\index{game.\+c@{game.\+c}!game\+\_\+get\+\_\+object\+\_\+location@{game\+\_\+get\+\_\+object\+\_\+location}}
+\index{game\+\_\+get\+\_\+object\+\_\+location@{game\+\_\+get\+\_\+object\+\_\+location}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+get\+\_\+object\+\_\+location(\+Game $\ast$game, Id id)}{game_get_object_location(Game *game, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} game\+\_\+get\+\_\+object\+\_\+location (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game, }
+\item[{{\bf Id}}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_aa84eca5a1131daafd7acbf74263b6f82}{}\label{game_8c_aa84eca5a1131daafd7acbf74263b6f82}
+\index{game.\+c@{game.\+c}!game\+\_\+get\+\_\+player@{game\+\_\+get\+\_\+player}}
+\index{game\+\_\+get\+\_\+player@{game\+\_\+get\+\_\+player}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+get\+\_\+player(\+Game $\ast$game)}{game_get_player(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player}$\ast$ game\+\_\+get\+\_\+player (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_af46efd507d797aec6da90d08aa592e32}{}\label{game_8c_af46efd507d797aec6da90d08aa592e32}
+\index{game.\+c@{game.\+c}!game\+\_\+get\+\_\+player\+\_\+location@{game\+\_\+get\+\_\+player\+\_\+location}}
+\index{game\+\_\+get\+\_\+player\+\_\+location@{game\+\_\+get\+\_\+player\+\_\+location}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+get\+\_\+player\+\_\+location(\+Game $\ast$game)}{game_get_player_location(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} game\+\_\+get\+\_\+player\+\_\+location (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_ac6a628f2106f81c37d0e83c67920615f}{}\label{game_8c_ac6a628f2106f81c37d0e83c67920615f}
+\index{game.\+c@{game.\+c}!game\+\_\+get\+\_\+space@{game\+\_\+get\+\_\+space}}
+\index{game\+\_\+get\+\_\+space@{game\+\_\+get\+\_\+space}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+get\+\_\+space(\+Game $\ast$game, Id id)}{game_get_space(Game *game, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Space}$\ast$ game\+\_\+get\+\_\+space (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game, }
+\item[{{\bf Id}}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a69d94da9d27b542d3ebdeb8b60f1f2dc}{}\label{game_8c_a69d94da9d27b542d3ebdeb8b60f1f2dc}
+\index{game.\+c@{game.\+c}!game\+\_\+get\+\_\+space\+\_\+id\+\_\+at@{game\+\_\+get\+\_\+space\+\_\+id\+\_\+at}}
+\index{game\+\_\+get\+\_\+space\+\_\+id\+\_\+at@{game\+\_\+get\+\_\+space\+\_\+id\+\_\+at}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+get\+\_\+space\+\_\+id\+\_\+at(\+Game $\ast$game, int position)}{game_get_space_id_at(Game *game, int position)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} game\+\_\+get\+\_\+space\+\_\+id\+\_\+at (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game, }
+\item[{int}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_ad2dfd865e2bd2c545a15d33f4d1cf3ae}{}\label{game_8c_ad2dfd865e2bd2c545a15d33f4d1cf3ae}
+\index{game.\+c@{game.\+c}!game\+\_\+is\+\_\+over@{game\+\_\+is\+\_\+over}}
+\index{game\+\_\+is\+\_\+over@{game\+\_\+is\+\_\+over}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+is\+\_\+over(\+Game $\ast$game)}{game_is_over(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} game\+\_\+is\+\_\+over (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_aa6efe0650af110bbd84e742cc8046d93}{}\label{game_8c_aa6efe0650af110bbd84e742cc8046d93}
+\index{game.\+c@{game.\+c}!game\+\_\+print\+\_\+data@{game\+\_\+print\+\_\+data}}
+\index{game\+\_\+print\+\_\+data@{game\+\_\+print\+\_\+data}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+print\+\_\+data(\+Game $\ast$game)}{game_print_data(Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}void game\+\_\+print\+\_\+data (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a33a5ed8937423f8c012df3cedad4fa4c}{}\label{game_8c_a33a5ed8937423f8c012df3cedad4fa4c}
+\index{game.\+c@{game.\+c}!game\+\_\+set\+\_\+link@{game\+\_\+set\+\_\+link}}
+\index{game\+\_\+set\+\_\+link@{game\+\_\+set\+\_\+link}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+set\+\_\+link(\+Game $\ast$game, Id link\+\_\+id, Id space\+\_\+id0, Id space\+\_\+id1)}{game_set_link(Game *game, Id link_id, Id space_id0, Id space_id1)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} game\+\_\+set\+\_\+link (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game, }
+\item[{{\bf Id}}]{link\+\_\+id, }
+\item[{{\bf Id}}]{space\+\_\+id0, }
+\item[{{\bf Id}}]{space\+\_\+id1}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_ac78e92998818d2b2029ba60077be8f3f}{}\label{game_8c_ac78e92998818d2b2029ba60077be8f3f}
+\index{game.\+c@{game.\+c}!game\+\_\+set\+\_\+object\+\_\+location@{game\+\_\+set\+\_\+object\+\_\+location}}
+\index{game\+\_\+set\+\_\+object\+\_\+location@{game\+\_\+set\+\_\+object\+\_\+location}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+set\+\_\+object\+\_\+location(\+Game $\ast$game, Id id, Id obj\+\_\+id, char $\ast$name, char $\ast$description)}{game_set_object_location(Game *game, Id id, Id obj_id, char *name, char *description)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} game\+\_\+set\+\_\+object\+\_\+location (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game, }
+\item[{{\bf Id}}]{id, }
+\item[{{\bf Id}}]{obj\+\_\+id, }
+\item[{char $\ast$}]{name, }
+\item[{char $\ast$}]{description}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a75a0a6b7a241f91e60c61ea8deb65e1d}{}\label{game_8c_a75a0a6b7a241f91e60c61ea8deb65e1d}
+\index{game.\+c@{game.\+c}!game\+\_\+set\+\_\+player\+\_\+location@{game\+\_\+set\+\_\+player\+\_\+location}}
+\index{game\+\_\+set\+\_\+player\+\_\+location@{game\+\_\+set\+\_\+player\+\_\+location}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+set\+\_\+player\+\_\+location(\+Game $\ast$game, Id id)}{game_set_player_location(Game *game, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} game\+\_\+set\+\_\+player\+\_\+location (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game, }
+\item[{{\bf Id}}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_a492ca9fb594442dc43fc7d18a3820426}{}\label{game_8c_a492ca9fb594442dc43fc7d18a3820426}
+\index{game.\+c@{game.\+c}!game\+\_\+update@{game\+\_\+update}}
+\index{game\+\_\+update@{game\+\_\+update}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+update(\+Game $\ast$game, F\+\_\+\+Command $\ast$cmd)}{game_update(Game *game, F_Command *cmd)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} game\+\_\+update (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{game, }
+\item[{{\bf F\+\_\+\+Command} $\ast$}]{cmd}
+\end{DoxyParamCaption}
+)}\hypertarget{game_8c_abdff7789be1e3a7202ac0a6a8ab7cd41}{}\label{game_8c_abdff7789be1e3a7202ac0a6a8ab7cd41}
+
+
+\subsection{Variable Documentation}
+\index{game.\+c@{game.\+c}!game\+\_\+callback\+\_\+fn\+\_\+list@{game\+\_\+callback\+\_\+fn\+\_\+list}}
+\index{game\+\_\+callback\+\_\+fn\+\_\+list@{game\+\_\+callback\+\_\+fn\+\_\+list}!game.\+c@{game.\+c}}
+\subsubsection[{\texorpdfstring{game\+\_\+callback\+\_\+fn\+\_\+list}{game_callback_fn_list}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf callback\+\_\+fn} game\+\_\+callback\+\_\+fn\+\_\+list\mbox{[}{\bf N\+\_\+\+C\+A\+L\+L\+B\+A\+CK}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{game_8c_a736ddaf27abb68c75a635760497a3f5e}{}\label{game_8c_a736ddaf27abb68c75a635760497a3f5e}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+\{
+    \hyperlink{game_8c_ac8ed327ed13f97dcb778d0293f14d8bb}{game\_callback\_unknown},
+    \hyperlink{game_8c_acc98d79a418d2093fc3224b5c02e5418}{game\_callback\_exit},
+    \hyperlink{game_8c_a63b864e2b87c09dc2a61a55c7f26db44}{game\_callback\_pickup},
+    \hyperlink{game_8c_a424d0c659a926b0588a4287ea82552b6}{game\_callback\_drop},
+    \hyperlink{game_8c_a4929c380e741fce955cb09ad3058e6d7}{game\_callback\_roll},
+    \hyperlink{game_8c_a7525cbe807f8d1c3b698afcb75903903}{game\_callback\_move},
+    \hyperlink{game_8c_a83bb67a81f8905d8aebdc441fd23325b}{game\_callback\_check}
+\}
+\end{DoxyCode}

@@ -1,0 +1,100 @@
+\hypertarget{graphic__engine_8h}{}\section{graphic\+\_\+engine.\+h File Reference}
+\label{graphic__engine_8h}\index{graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}}
+
+
+Uses screen.$\ast$ to create the UI.  
+
+
+{\ttfamily \#include \char`\"{}../include/game.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/screen.\+h\char`\"{}}\\*
+Include dependency graph for graphic\+\_\+engine.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__Graphic__engine}{\+\_\+\+Graphic\+\_\+engine} \hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine} $\ast$ \hyperlink{graphic__engine_8h_a8c3d9abe7282bee1d77d23ea80a4bdec}{graphic\+\_\+engine\+\_\+create} ()
+\item 
+void \hyperlink{graphic__engine_8h_a5813ddf7561256cb841f3f62dd41c9c4}{graphic\+\_\+engine\+\_\+destroy} (\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine} $\ast$)
+\item 
+void \hyperlink{graphic__engine_8h_a778819bf85643975da17ff84752495a3}{graphic\+\_\+engine\+\_\+paint\+\_\+game} (\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine} $\ast$, \hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$)
+\item 
+void \hyperlink{graphic__engine_8h_a95c59d3256c61b3c76bf6228e4976924}{graphic\+\_\+engine\+\_\+paint\+\_\+space} (\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine} $\ast$, \hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$, int)
+\item 
+void \hyperlink{graphic__engine_8h_a7c185c973d86fd21f4b6075a215b461a}{print\+\_\+new\+\_\+line} (\hyperlink{screen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area} $\ast$, int number)
+\item 
+char $\ast$ \hyperlink{graphic__engine_8h_a528b276cbbcb8eb9bb09d20c8ad566b2}{create\+\_\+objects\+\_\+string} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Uses screen.$\ast$ to create the UI. 
+
+\begin{DoxyAuthor}{Author}
+Antonio Solana 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\subsection{Typedef Documentation}
+\index{graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}!Graphic\+\_\+engine@{Graphic\+\_\+engine}}
+\index{Graphic\+\_\+engine@{Graphic\+\_\+engine}!graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}}
+\subsubsection[{\texorpdfstring{Graphic\+\_\+engine}{Graphic_engine}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Graphic\+\_\+engine} {\bf Graphic\+\_\+engine}}\hypertarget{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{}\label{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}
+
+
+\subsection{Function Documentation}
+\index{graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}!create\+\_\+objects\+\_\+string@{create\+\_\+objects\+\_\+string}}
+\index{create\+\_\+objects\+\_\+string@{create\+\_\+objects\+\_\+string}!graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}}
+\subsubsection[{\texorpdfstring{create\+\_\+objects\+\_\+string(\+Game $\ast$, Id)}{create_objects_string(Game *, Id)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ create\+\_\+objects\+\_\+string (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{, }
+\item[{{\bf Id}}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{graphic__engine_8h_a528b276cbbcb8eb9bb09d20c8ad566b2}{}\label{graphic__engine_8h_a528b276cbbcb8eb9bb09d20c8ad566b2}
+\index{graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}!graphic\+\_\+engine\+\_\+create@{graphic\+\_\+engine\+\_\+create}}
+\index{graphic\+\_\+engine\+\_\+create@{graphic\+\_\+engine\+\_\+create}!graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}}
+\subsubsection[{\texorpdfstring{graphic\+\_\+engine\+\_\+create()}{graphic_engine_create()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Graphic\+\_\+engine}$\ast$ graphic\+\_\+engine\+\_\+create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{graphic__engine_8h_a8c3d9abe7282bee1d77d23ea80a4bdec}{}\label{graphic__engine_8h_a8c3d9abe7282bee1d77d23ea80a4bdec}
+\index{graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}!graphic\+\_\+engine\+\_\+destroy@{graphic\+\_\+engine\+\_\+destroy}}
+\index{graphic\+\_\+engine\+\_\+destroy@{graphic\+\_\+engine\+\_\+destroy}!graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}}
+\subsubsection[{\texorpdfstring{graphic\+\_\+engine\+\_\+destroy(\+Graphic\+\_\+engine $\ast$)}{graphic_engine_destroy(Graphic_engine *)}}]{\setlength{\rightskip}{0pt plus 5cm}void graphic\+\_\+engine\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf Graphic\+\_\+engine} $\ast$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{graphic__engine_8h_a5813ddf7561256cb841f3f62dd41c9c4}{}\label{graphic__engine_8h_a5813ddf7561256cb841f3f62dd41c9c4}
+\index{graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}!graphic\+\_\+engine\+\_\+paint\+\_\+game@{graphic\+\_\+engine\+\_\+paint\+\_\+game}}
+\index{graphic\+\_\+engine\+\_\+paint\+\_\+game@{graphic\+\_\+engine\+\_\+paint\+\_\+game}!graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}}
+\subsubsection[{\texorpdfstring{graphic\+\_\+engine\+\_\+paint\+\_\+game(\+Graphic\+\_\+engine $\ast$, Game $\ast$)}{graphic_engine_paint_game(Graphic_engine *, Game *)}}]{\setlength{\rightskip}{0pt plus 5cm}void graphic\+\_\+engine\+\_\+paint\+\_\+game (
+\begin{DoxyParamCaption}
+\item[{{\bf Graphic\+\_\+engine} $\ast$}]{, }
+\item[{{\bf Game} $\ast$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{graphic__engine_8h_a778819bf85643975da17ff84752495a3}{}\label{graphic__engine_8h_a778819bf85643975da17ff84752495a3}
+\index{graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}!graphic\+\_\+engine\+\_\+paint\+\_\+space@{graphic\+\_\+engine\+\_\+paint\+\_\+space}}
+\index{graphic\+\_\+engine\+\_\+paint\+\_\+space@{graphic\+\_\+engine\+\_\+paint\+\_\+space}!graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}}
+\subsubsection[{\texorpdfstring{graphic\+\_\+engine\+\_\+paint\+\_\+space(\+Graphic\+\_\+engine $\ast$, Game $\ast$, int)}{graphic_engine_paint_space(Graphic_engine *, Game *, int)}}]{\setlength{\rightskip}{0pt plus 5cm}void graphic\+\_\+engine\+\_\+paint\+\_\+space (
+\begin{DoxyParamCaption}
+\item[{{\bf Graphic\+\_\+engine} $\ast$}]{, }
+\item[{{\bf Game} $\ast$}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{graphic__engine_8h_a95c59d3256c61b3c76bf6228e4976924}{}\label{graphic__engine_8h_a95c59d3256c61b3c76bf6228e4976924}
+\index{graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}!print\+\_\+new\+\_\+line@{print\+\_\+new\+\_\+line}}
+\index{print\+\_\+new\+\_\+line@{print\+\_\+new\+\_\+line}!graphic\+\_\+engine.\+h@{graphic\+\_\+engine.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+new\+\_\+line(\+Area $\ast$, int number)}{print_new_line(Area *, int number)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+new\+\_\+line (
+\begin{DoxyParamCaption}
+\item[{{\bf Area} $\ast$}]{, }
+\item[{int}]{number}
+\end{DoxyParamCaption}
+)}\hypertarget{graphic__engine_8h_a7c185c973d86fd21f4b6075a215b461a}{}\label{graphic__engine_8h_a7c185c973d86fd21f4b6075a215b461a}
