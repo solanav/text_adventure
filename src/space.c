@@ -1,3 +1,11 @@
+/**
+ * @brief Defines functions for space manipulation
+ *
+ * @file command.c
+ * @author Catalín Rotaru
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

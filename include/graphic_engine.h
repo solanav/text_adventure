@@ -1,9 +1,8 @@
 /**
- * @brief Commands and user input
+ * @brief Uses screen.* to create the UI
  *
- * @file command.h
- * @author NONAME
- * @date 2018-04-09
+ * @file graphic_engine.h
+ * @author Antonio Solana
  * @copyright GNU Public License
  */
 

@@ -4,7 +4,9 @@
 		"typeinfo": "c",
 		"set.h": "c",
 		"types.h": "c",
-		"object.h": "c"
+		"object.h": "c",
+		"screen.h": "c",
+		"stdlib.h": "c"
 	},
 	"C_Cpp.intelliSenseEngineFallback": "Disabled"
 }

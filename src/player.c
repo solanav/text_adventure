@@ -1,3 +1,11 @@
+/**
+ * @brief Functions for the creation of players
+ *
+ * @file player.c
+ * @author Guillermo Ríos
+ * @copyright GNU Public License
+ */
+
 #include <string.h>
 
 #include "../include/player.h"

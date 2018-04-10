@@ -1,3 +1,11 @@
+/**
+ * @brief Main loop
+ *
+ * @file game_loop.c
+ * @author Antonio Solana
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 

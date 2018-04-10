@@ -1,9 +1,8 @@
 /**
- * @brief Commands and user input
+ * @brief Main function
  *
- * @file command.h
- * @author NONAME
- * @date 2018-04-09
+ * @file game.h
+ * @author Bernardo Zambrano
  * @copyright GNU Public License
  */
 

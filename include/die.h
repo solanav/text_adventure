@@ -1,9 +1,8 @@
 /**
- * @brief Commands and user input
+ * @brief It declares the die module
  *
- * @file command.h
- * @author Pablo Sánchez
- * @date 2018-04-09
+ * @file die.h
+ * @author Pablo Sánchez Redondo
  * @copyright GNU Public License
  */
 
@@ -17,16 +16,10 @@
 #include "../include/types.h"
 
 typedef struct _Die Die;
-
-/*This functions create and destroy (respectively) one Die for the game*/
 Die* die_ini(Id);
 void die_die_die(Die* );
-
-/*Rolls the dice and returns the result*/
 STATUS die_roll(Die* );
 short int die_get_last_roll(Die*);
-
-/*Prints  Dice Id and result*/
 STATUS die_print(FILE* , Die* );
 
 #endif

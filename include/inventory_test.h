@@ -1,3 +1,11 @@
+/**
+ * @brief It declares the tests for the inventory module
+ *
+ * @file inventory_test.h
+ * @author Pablo Sánchez Redondo
+ * @copyright GNU Public License
+ */
+
 #ifndef INVENTORY_TEST_H
 #define INVENTORY_TEST_H
 

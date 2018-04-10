@@ -1,3 +1,11 @@
+/**
+ * @brief Test low level functions
+ *
+ * @file test.h
+ * @author Profesores Pprog
+ * @copyright GNU Public License
+ */
+
 #ifndef _TEST_H
 #define _TEST_H
 

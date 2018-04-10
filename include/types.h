@@ -1,9 +1,8 @@
 /**
- * @brief Commands and user input
+ * @brief Global typedefs
  *
- * @file command.h
+ * @file types.h
  * @author NONAME
- * @date 2018-04-09
  * @copyright GNU Public License
  */
 
@@ -31,6 +30,6 @@ typedef enum {
 typedef enum
 {
 	OPEN, CLOSED, NO_LINK
-}LinkStatus;
+} LinkStatus;
 
 #endif

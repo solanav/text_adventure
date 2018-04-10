@@ -3,8 +3,6 @@
  * 
  * @file space_test.h
  * @author Profesores Pprog
- * @version 2.0 
- * @date 19-01-2016
  * @copyright GNU Public License
  */
 

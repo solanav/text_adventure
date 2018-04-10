@@ -1,10 +1,8 @@
 /**
- * @brief It implements the command interpreter
+ * @brief Commands and user input
  *
  * @file command.c
- * @author Profesores PPROG
- * @version 1.0
- * @date 19-12-2014
+ * @author Antonio Solana
  * @copyright GNU Public License
  */
 

@@ -2,8 +2,7 @@
  * @brief Commands and user input
  *
  * @file command.h
- * @author NONAME
- * @date 2018-04-09
+ * @author Antonio Solana
  * @copyright GNU Public License
  */
 

@@ -1,3 +1,11 @@
+/**
+ * @brief It declares the tests for the player module
+ *
+ * @file player_test.h
+ * @author Pablo Sánchez Redondo
+ * @copyright GNU Public License
+ */
+
 #ifndef PLAYER_TEST_H
 #define PLAYER_TEST_H
 

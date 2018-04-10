@@ -1,3 +1,11 @@
+/**
+ * @brief It declares the tests for the set module
+ *
+ * @file set_test.h
+ * @author Pablo Sánchez Redondo
+ * @copyright GNU Public License
+ */
+
 #ifndef SET_TEST_H
 #define SET_TEST_H
 

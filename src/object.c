@@ -1,3 +1,11 @@
+/**
+ * @brief Functions for the creation of objects
+ *
+ * @file object.c
+ * @author Guillermo Ríos
+ * @copyright GNU Public License
+ */
+
 #include <string.h>
 
 #include "../include/object.h"

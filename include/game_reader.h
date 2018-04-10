@@ -1,9 +1,8 @@
 /**
- * @brief Commands and user input
+ * @brief Reads data for the game from files
  *
- * @file command.h
- * @author NONAME
- * @date 2018-04-09
+ * @file game_reader.h
+ * @author Catalín Rotaru
  * @copyright GNU Public License
  */
 

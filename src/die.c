@@ -1,3 +1,11 @@
+/**
+ * @brief It declares the die module
+ *
+ * @file die.c
+ * @author Pablo Sánchez Redondo
+ * @copyright GNU Public License
+ */
+
 #include "../include/die.h"
 
 struct _Die

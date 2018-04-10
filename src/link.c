@@ -1,3 +1,11 @@
+/**
+ * @brief Creates the links between spaces
+ *
+ * @file link.c
+ * @author Pablo Sánchez Redondo
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 

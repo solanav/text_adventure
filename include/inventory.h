@@ -1,9 +1,8 @@
 /**
- * @brief Commands and user input
+ * @brief Module for player's inventory
  *
- * @file command.h
- * @author NONAME
- * @date 2018-04-09
+ * @file inventory.h
+ * @author Guillermo Ríos
  * @copyright GNU Public License
  */
 

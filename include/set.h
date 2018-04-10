@@ -1,9 +1,8 @@
 /**
- * @brief Commands and user input
+ * @brief Low level stack and queue functions
  *
- * @file command.h
- * @author NONAME
- * @date 2018-04-09
+ * @file set.h
+ * @author Bernardo Zambrano
  * @copyright GNU Public License
  */
 

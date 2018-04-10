@@ -1,3 +1,11 @@
+/**
+ * @brief It declares the tests for the command module
+ * 
+ * @file command_test.h
+ * @author Pablo Sánchez Redondo 
+ * @copyright GNU Public License
+ */
+
 #ifndef COMMAND_TEST_H
 #define COMMAND_TEST_H
 

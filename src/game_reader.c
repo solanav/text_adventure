@@ -1,3 +1,11 @@
+/**
+ * @brief Reads data for the game from files
+ *
+ * @file game_reader.c
+ * @author Catalín Rotaru
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

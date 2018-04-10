@@ -25,7 +25,5 @@ ND - Not done
 
 ================================================
 
-- Hace falta crear test de todos los modulos
 - Revisar la rubrica hasta que tengamos todo lo mejor posible
 - Arreglar el estilo del codigo para seguir las "Linux coding conventions"
-- Arreglar un bug por el cual no se resetea el string1 (ver get_user_input)

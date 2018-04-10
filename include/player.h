@@ -1,9 +1,8 @@
 /**
- * @brief Commands and user input
+ * @brief Functions for the creation of players
  *
- * @file command.h
- * @author NONAME
- * @date 2018-04-09
+ * @file player.h
+ * @author Guillermo Ríos
  * @copyright GNU Public License
  */
 

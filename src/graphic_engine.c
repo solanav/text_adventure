@@ -1,3 +1,11 @@
+/**
+ * @brief Uses screen.* to create the UI
+ *
+ * @file graphic_engine.c
+ * @author Antonio Solana
+ * @copyright GNU Public License
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 

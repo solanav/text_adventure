@@ -1,3 +1,11 @@
+/**
+ * @brief Functions for the creation of players
+ *
+ * @file screen.c
+ * @author Profesores Pprog
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

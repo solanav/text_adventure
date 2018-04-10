@@ -1,9 +1,8 @@
 /**
- * @brief Commands and user input
+ * @brief Functions used by graphic_engine.*
  * 
- * @file command.h
- * @author NONAME
- * @date 2018-04-09
+ * @file screen.h
+ * @author Profesores Pprog
  * @copyright GNU Public License
  */
 

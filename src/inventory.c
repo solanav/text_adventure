@@ -1,3 +1,11 @@
+/**
+ * @brief Module for player's inventory
+ *
+ * @file inventory.c
+ * @author Guillermo Ríos
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,90 +14,89 @@
 
 struct _Inventory
 {
-  Set *ids;
-  int id_max;
+	Set *ids;
+	int id_max;
 };
 
 Inventory * inventory_create(int size)
 {
-  Inventory *inv = NULL;
+	Inventory *inv = NULL;
 
-  inv = (Inventory *)calloc(1, sizeof(Inventory));
-  if(!inv) return NULL;
+	inv = (Inventory *)calloc(1, sizeof(Inventory));
+	if(!inv) return NULL;
 
-  inv->ids = set_create(size);
-  inv->id_max = size;
+	inv->ids = set_create(size);
+	inv->id_max = size;
 
-  return inv;
+	return inv;
 }
 
 STATUS inventory_destroy(Inventory *inv)
 {
-  if(!inv) return ERROR;
+	if(!inv) return ERROR;
 
-  set_destroy(inv->ids);
+	set_destroy(inv->ids);
 
-  free(inv);
+	free(inv);
 
-  return OK;
+	return OK;
 }
 
 STATUS inventory_set_ids(Inventory *inv, Set *ids)
 {
-  if(!inv || !ids) return ERROR;
+	if(!inv || !ids) return ERROR;
 
-  inv->ids = ids;
+	inv->ids = ids;
 
-  return OK;
-
+	return OK;
 }
 
 Set * inventory_get_ids(Inventory *inv)
 {
-  if(!inv) return NULL;
+	if(!inv) return NULL;
 
-  return inv->ids;
+	return inv->ids;
 }
 
 Id inventory_get_id_at(Inventory *inv, int num)
 {
-  if(!inv) return NO_ID;
+	if(!inv) return NO_ID;
 
-  return set_get_id(inv->ids, num);
+	return set_get_id(inv->ids, num);
 }
 
 STATUS inventory_set_id_max(Inventory *inv, int id_max)
 {
-  if(!inv || id_max <= 0) return ERROR;
+	if(!inv || id_max <= 0) return ERROR;
 
-  inv->id_max = id_max;
+	inv->id_max = id_max;
 
-  return OK;
+	return OK;
 }
 
 int inventory_get_id_max(Inventory *inv)
 {
-  if(!inv) return 0;
+	if(!inv) return 0;
 
-  return inv->id_max;
+	return inv->id_max;
 }
 
 STATUS inventory_add_id(Inventory *inv, Id id)
 {
-  if(!inv || id == NO_ID) return ERROR;
+	if(!inv || id == NO_ID) return ERROR;
 
-  if(set_add(inv->ids, id) == ERROR) return ERROR;
+	if(set_add(inv->ids, id) == ERROR) return ERROR;
 
-  return OK;
+	return OK;
 }
 
 STATUS inventory_del_id(Inventory *inv, Id id)
 {
-  if(!inv || id == NO_ID) return ERROR;
+	if(!inv || id == NO_ID) return ERROR;
 
-  if(set_del(inv->ids, id) == ERROR) return ERROR;
+	if(set_del(inv->ids, id) == ERROR) return ERROR;
 
-  return OK;
+	return OK;
 }
 
 void inventory_print(Inventory * inv)

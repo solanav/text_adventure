@@ -1,3 +1,11 @@
+/**
+ * @brief Low level stack and queue functions
+ *
+ * @file set.c
+ * @author Bernardo Zambrano
+ * @copyright GNU Public License
+ */
+
 #include "../include/set.h"
 
 struct _Set
