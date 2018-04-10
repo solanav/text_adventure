@@ -15,15 +15,15 @@
 #include "../include/set.h"
 
 struct _Space {
-	Id id;
-	char name[WORD_SIZE];
-	char description[WORD_SIZE];
-	Id linkNorth;
-	Id linkSouth;
-	Id linkEast;
-	Id linkWest;
-	char gdesc[3][21];
-	Set * objects;
+	Id id; /*!< id del espacio*/
+	char name[WORD_SIZE]; /*!< nombre del espacio*/
+	char description[WORD_SIZE]; /*!<  descripcion*/
+	Id linkNorth; /*!< id del link al norte*/
+	Id linkSouth; /*!< id del link al sur*/
+	Id linkEast; /*!< id del link al este*/
+	Id linkWest; /*!< id del link al oeste*/
+	char gdesc[3][21]; /*!< strings para objetos ASCII*/
+	Set * objects; /*!< Set de objetos*/
 };
 
 Space * space_create(Id id)

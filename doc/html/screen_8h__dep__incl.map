@@ -1,0 +1,6 @@
+<map id="screen.h" name="screen.h">
+<area shape="rect" id="node2" href="$graphic__engine_8h.html" title="Uses screen.* to create the UI. " alt="" coords="28,80,148,107"/>
+<area shape="rect" id="node4" href="$graphic__engine_8c.html" title="Uses screen.* to create the UI. " alt="" coords="125,155,245,181"/>
+<area shape="rect" id="node5" href="$screen_8c.html" title="Functions for the creation of players. " alt="" coords="223,80,295,107"/>
+<area shape="rect" id="node3" href="$game__loop_8c.html" title="Main loop. " alt="" coords="5,155,101,181"/>
+</map>

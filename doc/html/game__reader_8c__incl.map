@@ -1,0 +1,13 @@
+<map id="game_reader.c" name="game_reader.c">
+<area shape="rect" id="node5" href="$game__reader_8h.html" title="Reads data for the game from files. " alt="" coords="412,80,576,107"/>
+<area shape="rect" id="node6" href="$types_8h.html" title="Global typedefs. " alt="" coords="175,379,298,405"/>
+<area shape="rect" id="node7" href="$game_8h.html" title="Main function. " alt="" coords="434,155,556,181"/>
+<area shape="rect" id="node8" href="$command_8h.html" title="Commands and user input. " alt="" coords="694,229,840,256"/>
+<area shape="rect" id="node9" href="$space_8h.html" title="Defines functions for space manipulation. " alt="" coords="332,229,458,256"/>
+<area shape="rect" id="node10" href="$object_8h.html" title="Functions for the creation of objects. " alt="" coords="366,304,491,331"/>
+<area shape="rect" id="node12" href="$player_8h.html" title="Functions for the creation of players. " alt="" coords="515,304,640,331"/>
+<area shape="rect" id="node13" href="$die_8h.html" title="It declares the die module. " alt="" coords="664,304,771,331"/>
+<area shape="rect" id="node15" href="$link_8h.html" title="Creates the links between spaces. " alt="" coords="30,229,140,256"/>
+<area shape="rect" id="node16" href="$inventory_8h.html" title="Module for player&#39;s inventory. " alt="" coords="165,229,307,256"/>
+<area shape="rect" id="node11" href="$set_8h.html" title="Low level stack and queue functions. " alt="" coords="182,304,290,331"/>
+</map>

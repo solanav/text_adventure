@@ -1,5 +1,6 @@
-\hypertarget{object_8c}{}\section{object.\+c File Reference}
+\hypertarget{object_8c}{\section{object.\+c File Reference}
 \label{object_8c}\index{object.\+c@{object.\+c}}
+}
 
 
 Functions for the creation of objects.  
@@ -7,8 +8,13 @@ Functions for the creation of objects.
 
 {\ttfamily \#include $<$string.\+h$>$}\\*
 {\ttfamily \#include \char`\"{}../include/object.\+h\char`\"{}}\\*
-Include dependency graph for object.\+c\+:
-% FIG 0
+Include dependency graph for object.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{object_8c__incl}
+\end{center}
+\end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -21,11 +27,11 @@ struct \hyperlink{struct__Object}{\+\_\+\+Object}
 \item 
 void \hyperlink{object_8c_a355e2f55e8467c2cfb2ef6bd5abbabfb}{object\+\_\+destroy} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
 \item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8c_a1f468a3ddebae0cf31431705a824371a}{object\+\_\+set\+\_\+name} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, char $\ast$name)
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{object_8c_a1f468a3ddebae0cf31431705a824371a}{object\+\_\+set\+\_\+name} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, char $\ast$name)
 \item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8c_a28f4fc583f12c241619faa4456ef453d}{object\+\_\+set\+\_\+description} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, char $\ast$description)
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{object_8c_a28f4fc583f12c241619faa4456ef453d}{object\+\_\+set\+\_\+description} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, char $\ast$description)
 \item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8c_afcf71b4444a014a542f82c78bc9ee112}{object\+\_\+set\+\_\+id} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{object_8c_afcf71b4444a014a542f82c78bc9ee112}{object\+\_\+set\+\_\+id} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
 \item 
 char $\ast$ \hyperlink{object_8c_ac6f2a9d9a4ed22600839724e8306f750}{object\+\_\+get\+\_\+name} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
 \item 
@@ -39,71 +45,71 @@ char $\ast$ \hyperlink{object_8c_a42dcce5b32474b5d2500329b97913c15}{object\+\_\+
 Functions for the creation of objects. 
 
 \begin{DoxyAuthor}{Author}
-Guillermo Ríos 
+Pablo Sánchez y Guillermo Ríos 
 \end{DoxyAuthor}
 \begin{DoxyCopyright}{Copyright}
-G\+NU Public License 
+G\+N\+U Public License 
 \end{DoxyCopyright}
 
 
 \subsection{Function Documentation}
-\index{object.\+c@{object.\+c}!object\+\_\+create@{object\+\_\+create}}
+\hypertarget{object_8c_a6c55f8c2541966f6dd3a65c5559633c8}{\index{object.\+c@{object.\+c}!object\+\_\+create@{object\+\_\+create}}
 \index{object\+\_\+create@{object\+\_\+create}!object.\+c@{object.\+c}}
-\subsubsection[{\texorpdfstring{object\+\_\+create(char $\ast$name, Id id)}{object_create(char *name, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object}$\ast$ object\+\_\+create (
+\subsubsection[{object\+\_\+create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object}$\ast$ object\+\_\+create (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{name, }
 \item[{{\bf Id}}]{id}
 \end{DoxyParamCaption}
-)}\hypertarget{object_8c_a6c55f8c2541966f6dd3a65c5559633c8}{}\label{object_8c_a6c55f8c2541966f6dd3a65c5559633c8}
-\index{object.\+c@{object.\+c}!object\+\_\+destroy@{object\+\_\+destroy}}
+)}}\label{object_8c_a6c55f8c2541966f6dd3a65c5559633c8}
+\hypertarget{object_8c_a355e2f55e8467c2cfb2ef6bd5abbabfb}{\index{object.\+c@{object.\+c}!object\+\_\+destroy@{object\+\_\+destroy}}
 \index{object\+\_\+destroy@{object\+\_\+destroy}!object.\+c@{object.\+c}}
-\subsubsection[{\texorpdfstring{object\+\_\+destroy(\+Object $\ast$obj)}{object_destroy(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}void object\+\_\+destroy (
+\subsubsection[{object\+\_\+destroy}]{\setlength{\rightskip}{0pt plus 5cm}void object\+\_\+destroy (
 \begin{DoxyParamCaption}
 \item[{{\bf Object} $\ast$}]{obj}
 \end{DoxyParamCaption}
-)}\hypertarget{object_8c_a355e2f55e8467c2cfb2ef6bd5abbabfb}{}\label{object_8c_a355e2f55e8467c2cfb2ef6bd5abbabfb}
-\index{object.\+c@{object.\+c}!object\+\_\+get\+\_\+description@{object\+\_\+get\+\_\+description}}
+)}}\label{object_8c_a355e2f55e8467c2cfb2ef6bd5abbabfb}
+\hypertarget{object_8c_a42dcce5b32474b5d2500329b97913c15}{\index{object.\+c@{object.\+c}!object\+\_\+get\+\_\+description@{object\+\_\+get\+\_\+description}}
 \index{object\+\_\+get\+\_\+description@{object\+\_\+get\+\_\+description}!object.\+c@{object.\+c}}
-\subsubsection[{\texorpdfstring{object\+\_\+get\+\_\+description(\+Object $\ast$obj)}{object_get_description(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ object\+\_\+get\+\_\+description (
+\subsubsection[{object\+\_\+get\+\_\+description}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ object\+\_\+get\+\_\+description (
 \begin{DoxyParamCaption}
 \item[{{\bf Object} $\ast$}]{obj}
 \end{DoxyParamCaption}
-)}\hypertarget{object_8c_a42dcce5b32474b5d2500329b97913c15}{}\label{object_8c_a42dcce5b32474b5d2500329b97913c15}
-\index{object.\+c@{object.\+c}!object\+\_\+get\+\_\+id@{object\+\_\+get\+\_\+id}}
+)}}\label{object_8c_a42dcce5b32474b5d2500329b97913c15}
+\hypertarget{object_8c_ac9c3ace11b0440f373c67ccd3801398e}{\index{object.\+c@{object.\+c}!object\+\_\+get\+\_\+id@{object\+\_\+get\+\_\+id}}
 \index{object\+\_\+get\+\_\+id@{object\+\_\+get\+\_\+id}!object.\+c@{object.\+c}}
-\subsubsection[{\texorpdfstring{object\+\_\+get\+\_\+id(\+Object $\ast$obj)}{object_get_id(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} object\+\_\+get\+\_\+id (
+\subsubsection[{object\+\_\+get\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} object\+\_\+get\+\_\+id (
 \begin{DoxyParamCaption}
 \item[{{\bf Object} $\ast$}]{obj}
 \end{DoxyParamCaption}
-)}\hypertarget{object_8c_ac9c3ace11b0440f373c67ccd3801398e}{}\label{object_8c_ac9c3ace11b0440f373c67ccd3801398e}
-\index{object.\+c@{object.\+c}!object\+\_\+get\+\_\+name@{object\+\_\+get\+\_\+name}}
+)}}\label{object_8c_ac9c3ace11b0440f373c67ccd3801398e}
+\hypertarget{object_8c_ac6f2a9d9a4ed22600839724e8306f750}{\index{object.\+c@{object.\+c}!object\+\_\+get\+\_\+name@{object\+\_\+get\+\_\+name}}
 \index{object\+\_\+get\+\_\+name@{object\+\_\+get\+\_\+name}!object.\+c@{object.\+c}}
-\subsubsection[{\texorpdfstring{object\+\_\+get\+\_\+name(\+Object $\ast$obj)}{object_get_name(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ object\+\_\+get\+\_\+name (
+\subsubsection[{object\+\_\+get\+\_\+name}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ object\+\_\+get\+\_\+name (
 \begin{DoxyParamCaption}
 \item[{{\bf Object} $\ast$}]{obj}
 \end{DoxyParamCaption}
-)}\hypertarget{object_8c_ac6f2a9d9a4ed22600839724e8306f750}{}\label{object_8c_ac6f2a9d9a4ed22600839724e8306f750}
-\index{object.\+c@{object.\+c}!object\+\_\+set\+\_\+description@{object\+\_\+set\+\_\+description}}
+)}}\label{object_8c_ac6f2a9d9a4ed22600839724e8306f750}
+\hypertarget{object_8c_a28f4fc583f12c241619faa4456ef453d}{\index{object.\+c@{object.\+c}!object\+\_\+set\+\_\+description@{object\+\_\+set\+\_\+description}}
 \index{object\+\_\+set\+\_\+description@{object\+\_\+set\+\_\+description}!object.\+c@{object.\+c}}
-\subsubsection[{\texorpdfstring{object\+\_\+set\+\_\+description(\+Object $\ast$obj, char $\ast$description)}{object_set_description(Object *obj, char *description)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+set\+\_\+description (
+\subsubsection[{object\+\_\+set\+\_\+description}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} object\+\_\+set\+\_\+description (
 \begin{DoxyParamCaption}
 \item[{{\bf Object} $\ast$}]{obj, }
 \item[{char $\ast$}]{description}
 \end{DoxyParamCaption}
-)}\hypertarget{object_8c_a28f4fc583f12c241619faa4456ef453d}{}\label{object_8c_a28f4fc583f12c241619faa4456ef453d}
-\index{object.\+c@{object.\+c}!object\+\_\+set\+\_\+id@{object\+\_\+set\+\_\+id}}
+)}}\label{object_8c_a28f4fc583f12c241619faa4456ef453d}
+\hypertarget{object_8c_afcf71b4444a014a542f82c78bc9ee112}{\index{object.\+c@{object.\+c}!object\+\_\+set\+\_\+id@{object\+\_\+set\+\_\+id}}
 \index{object\+\_\+set\+\_\+id@{object\+\_\+set\+\_\+id}!object.\+c@{object.\+c}}
-\subsubsection[{\texorpdfstring{object\+\_\+set\+\_\+id(\+Object $\ast$obj, Id id)}{object_set_id(Object *obj, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+set\+\_\+id (
+\subsubsection[{object\+\_\+set\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} object\+\_\+set\+\_\+id (
 \begin{DoxyParamCaption}
 \item[{{\bf Object} $\ast$}]{obj, }
 \item[{{\bf Id}}]{id}
 \end{DoxyParamCaption}
-)}\hypertarget{object_8c_afcf71b4444a014a542f82c78bc9ee112}{}\label{object_8c_afcf71b4444a014a542f82c78bc9ee112}
-\index{object.\+c@{object.\+c}!object\+\_\+set\+\_\+name@{object\+\_\+set\+\_\+name}}
+)}}\label{object_8c_afcf71b4444a014a542f82c78bc9ee112}
+\hypertarget{object_8c_a1f468a3ddebae0cf31431705a824371a}{\index{object.\+c@{object.\+c}!object\+\_\+set\+\_\+name@{object\+\_\+set\+\_\+name}}
 \index{object\+\_\+set\+\_\+name@{object\+\_\+set\+\_\+name}!object.\+c@{object.\+c}}
-\subsubsection[{\texorpdfstring{object\+\_\+set\+\_\+name(\+Object $\ast$obj, char $\ast$name)}{object_set_name(Object *obj, char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+set\+\_\+name (
+\subsubsection[{object\+\_\+set\+\_\+name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} object\+\_\+set\+\_\+name (
 \begin{DoxyParamCaption}
 \item[{{\bf Object} $\ast$}]{obj, }
 \item[{char $\ast$}]{name}
 \end{DoxyParamCaption}
-)}\hypertarget{object_8c_a1f468a3ddebae0cf31431705a824371a}{}\label{object_8c_a1f468a3ddebae0cf31431705a824371a}
+)}}\label{object_8c_a1f468a3ddebae0cf31431705a824371a}

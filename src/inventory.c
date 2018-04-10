@@ -14,8 +14,8 @@
 
 struct _Inventory
 {
-	Set *ids;
-	int id_max;
+	Set *ids; /*!< Inventario*/
+	int id_max; /*!< Maximo de lugares*/
 };
 
 Inventory * inventory_create(int size)

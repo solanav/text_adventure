@@ -14,10 +14,10 @@
 #include "../include/inventory.h"
 
 struct _Player {
-  char name[STDSIZE];
-  Id location_id;
-  Inventory * inv;
-  Id id;
+  char name[STDSIZE]; /*!< Nombre del jugador*/
+  Id location_id; /*!< id de donde esta*/
+  Inventory * inv; /*!< inventario del jugador*/
+  Id id; /*!< id del jugador*/
 };
 
 Player * player_create(char * name, Id location_id, Id object_id, Id id)

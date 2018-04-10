@@ -11,9 +11,9 @@
 #include "../include/object.h"
 
 struct _Object{
-	char name [STDSIZE];
-	char description[STDSIZE];
-	Id id;
+	char name [STDSIZE]; /*!< Nombre del objeto*/
+	char description[STDSIZE]; /*!< Descripcion del objeto*/
+	Id id; /*!< Identificador */
 };
 
 Object* object_create(char* name, Id id)

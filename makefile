@@ -143,7 +143,7 @@ clean:
 	rm -rf $(ALL_EXEC)
 
 tar:
-	tar -czf PPROG_2163_I3_P11.tar.gz *
+	tar -czf PPROG_2163_G3_P11.tar.gz *
 
 git:
 	git add -A

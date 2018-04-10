@@ -1,5 +1,6 @@
-\hypertarget{command_8c}{}\section{command.\+c File Reference}
+\hypertarget{command_8c}{\section{command.\+c File Reference}
 \label{command_8c}\index{command.\+c@{command.\+c}}
+}
 
 
 Commands and user input.  
@@ -8,4 +9,137 @@ Commands and user input.
 {\ttfamily \#include $<$stdio.\+h$>$}\\*
 {\ttfamily \#include $<$strings.\+h$>$}\\*
 {\ttfamily \#include \char`\"{}../include/command.\+h\char`\"{}}\\*
-Include dependency graph for command.\+c\+:
+Include dependency graph for command.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{command_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__F__Command}{\+\_\+\+F\+\_\+\+Command}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{command_8c_a2b1bd24d2eddf8081d8c541e4cc4fd4b}{C\+M\+D\+\_\+\+L\+E\+N\+G\+H\+T}~30
+\item 
+\#define \hyperlink{command_8c_ae180fe89f0ae48ce5c80ffaa18de9271}{N\+\_\+\+C\+M\+D}~8
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{command_8c_a08a814029449fcbfd410755cafd2e275}{get\+\_\+user\+\_\+input} (\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$command)
+\item 
+\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$ \hyperlink{command_8c_ae66916e90ab149b0bb6222b1ce60f09b}{command\+\_\+create} ()
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{command_8c_a0f65c3e80483261e7a4212ec1686c209}{command\+\_\+set\+Cmd} (\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$cmd, \hyperlink{command_8h_a0473597db8c45c0289b6b8e2f8abbe32}{T\+\_\+\+Command} command)
+\item 
+\hyperlink{command_8h_a0473597db8c45c0289b6b8e2f8abbe32}{T\+\_\+\+Command} \hyperlink{command_8c_a2438443fd32ff9ba62670005fde274b6}{command\+\_\+get\+Cmd} (\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$cmd)
+\item 
+char $\ast$ \hyperlink{command_8c_abfe79582caad3f5d3042ebaddf62e03c}{command\+\_\+get\+\_\+id} (\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$cmd)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{command_8c_ae36f03b1858db756583a061b49d86f0c}{command\+\_\+set\+\_\+id} (\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$cmd, char $\ast$string)
+\item 
+void \hyperlink{command_8c_a7717a3f0b1aae92678c1fec154019d22}{command\+\_\+free} (\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$cmd)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{command_8c_aa491d83d4e2f55a3074e418318a8d0fe}{cmd\+\_\+to\+\_\+str} \mbox{[}\hyperlink{command_8c_ae180fe89f0ae48ce5c80ffaa18de9271}{N\+\_\+\+C\+M\+D}\mbox{]} = \{\char`\"{}No command\char`\"{}, \char`\"{}Unknown\char`\"{}, \char`\"{}Exit\char`\"{}, \char`\"{}Pickup\char`\"{}, \char`\"{}Drop\char`\"{}, \char`\"{}Roll\char`\"{}, \char`\"{}Move\char`\"{}, \char`\"{}Check\char`\"{}\}
+\item 
+char $\ast$ \hyperlink{command_8c_a6397d54c2691d7e8ffe9a8da5db5df58}{short\+\_\+cmd\+\_\+to\+\_\+str} \mbox{[}\hyperlink{command_8c_ae180fe89f0ae48ce5c80ffaa18de9271}{N\+\_\+\+C\+M\+D}\mbox{]} = \{\char`\"{}\char`\"{}, \char`\"{}\char`\"{}, \char`\"{}e\char`\"{}, \char`\"{}p\char`\"{}, \char`\"{}d\char`\"{}, \char`\"{}r\char`\"{}, \char`\"{}m\char`\"{}, \char`\"{}c\char`\"{}\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Commands and user input. 
+
+Defines functions for space manipulation.
+
+\begin{DoxyAuthor}{Author}
+Antonio Solana 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+G\+N\+U Public License
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Catalín Rotaru 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+G\+N\+U Public License 
+\end{DoxyCopyright}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{command_8c_a2b1bd24d2eddf8081d8c541e4cc4fd4b}{\index{command.\+c@{command.\+c}!C\+M\+D\+\_\+\+L\+E\+N\+G\+H\+T@{C\+M\+D\+\_\+\+L\+E\+N\+G\+H\+T}}
+\index{C\+M\+D\+\_\+\+L\+E\+N\+G\+H\+T@{C\+M\+D\+\_\+\+L\+E\+N\+G\+H\+T}!command.\+c@{command.\+c}}
+\subsubsection[{C\+M\+D\+\_\+\+L\+E\+N\+G\+H\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+L\+E\+N\+G\+H\+T~30}}\label{command_8c_a2b1bd24d2eddf8081d8c541e4cc4fd4b}
+\hypertarget{command_8c_ae180fe89f0ae48ce5c80ffaa18de9271}{\index{command.\+c@{command.\+c}!N\+\_\+\+C\+M\+D@{N\+\_\+\+C\+M\+D}}
+\index{N\+\_\+\+C\+M\+D@{N\+\_\+\+C\+M\+D}!command.\+c@{command.\+c}}
+\subsubsection[{N\+\_\+\+C\+M\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+\_\+\+C\+M\+D~8}}\label{command_8c_ae180fe89f0ae48ce5c80ffaa18de9271}
+
+
+\subsection{Function Documentation}
+\hypertarget{command_8c_ae66916e90ab149b0bb6222b1ce60f09b}{\index{command.\+c@{command.\+c}!command\+\_\+create@{command\+\_\+create}}
+\index{command\+\_\+create@{command\+\_\+create}!command.\+c@{command.\+c}}
+\subsubsection[{command\+\_\+create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+\_\+\+Command}$\ast$ command\+\_\+create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{command_8c_ae66916e90ab149b0bb6222b1ce60f09b}
+\hypertarget{command_8c_a7717a3f0b1aae92678c1fec154019d22}{\index{command.\+c@{command.\+c}!command\+\_\+free@{command\+\_\+free}}
+\index{command\+\_\+free@{command\+\_\+free}!command.\+c@{command.\+c}}
+\subsubsection[{command\+\_\+free}]{\setlength{\rightskip}{0pt plus 5cm}void command\+\_\+free (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+\_\+\+Command} $\ast$}]{cmd}
+\end{DoxyParamCaption}
+)}}\label{command_8c_a7717a3f0b1aae92678c1fec154019d22}
+\hypertarget{command_8c_abfe79582caad3f5d3042ebaddf62e03c}{\index{command.\+c@{command.\+c}!command\+\_\+get\+\_\+id@{command\+\_\+get\+\_\+id}}
+\index{command\+\_\+get\+\_\+id@{command\+\_\+get\+\_\+id}!command.\+c@{command.\+c}}
+\subsubsection[{command\+\_\+get\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ command\+\_\+get\+\_\+id (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+\_\+\+Command} $\ast$}]{cmd}
+\end{DoxyParamCaption}
+)}}\label{command_8c_abfe79582caad3f5d3042ebaddf62e03c}
+\hypertarget{command_8c_a2438443fd32ff9ba62670005fde274b6}{\index{command.\+c@{command.\+c}!command\+\_\+get\+Cmd@{command\+\_\+get\+Cmd}}
+\index{command\+\_\+get\+Cmd@{command\+\_\+get\+Cmd}!command.\+c@{command.\+c}}
+\subsubsection[{command\+\_\+get\+Cmd}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\+\_\+\+Command} command\+\_\+get\+Cmd (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+\_\+\+Command} $\ast$}]{cmd}
+\end{DoxyParamCaption}
+)}}\label{command_8c_a2438443fd32ff9ba62670005fde274b6}
+\hypertarget{command_8c_ae36f03b1858db756583a061b49d86f0c}{\index{command.\+c@{command.\+c}!command\+\_\+set\+\_\+id@{command\+\_\+set\+\_\+id}}
+\index{command\+\_\+set\+\_\+id@{command\+\_\+set\+\_\+id}!command.\+c@{command.\+c}}
+\subsubsection[{command\+\_\+set\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} command\+\_\+set\+\_\+id (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+\_\+\+Command} $\ast$}]{cmd, }
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+)}}\label{command_8c_ae36f03b1858db756583a061b49d86f0c}
+\hypertarget{command_8c_a0f65c3e80483261e7a4212ec1686c209}{\index{command.\+c@{command.\+c}!command\+\_\+set\+Cmd@{command\+\_\+set\+Cmd}}
+\index{command\+\_\+set\+Cmd@{command\+\_\+set\+Cmd}!command.\+c@{command.\+c}}
+\subsubsection[{command\+\_\+set\+Cmd}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} command\+\_\+set\+Cmd (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+\_\+\+Command} $\ast$}]{cmd, }
+\item[{{\bf T\+\_\+\+Command}}]{command}
+\end{DoxyParamCaption}
+)}}\label{command_8c_a0f65c3e80483261e7a4212ec1686c209}
+\hypertarget{command_8c_a08a814029449fcbfd410755cafd2e275}{\index{command.\+c@{command.\+c}!get\+\_\+user\+\_\+input@{get\+\_\+user\+\_\+input}}
+\index{get\+\_\+user\+\_\+input@{get\+\_\+user\+\_\+input}!command.\+c@{command.\+c}}
+\subsubsection[{get\+\_\+user\+\_\+input}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} get\+\_\+user\+\_\+input (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+\_\+\+Command} $\ast$}]{command}
+\end{DoxyParamCaption}
+)}}\label{command_8c_a08a814029449fcbfd410755cafd2e275}
+
+
+\subsection{Variable Documentation}
+\hypertarget{command_8c_aa491d83d4e2f55a3074e418318a8d0fe}{\index{command.\+c@{command.\+c}!cmd\+\_\+to\+\_\+str@{cmd\+\_\+to\+\_\+str}}
+\index{cmd\+\_\+to\+\_\+str@{cmd\+\_\+to\+\_\+str}!command.\+c@{command.\+c}}
+\subsubsection[{cmd\+\_\+to\+\_\+str}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cmd\+\_\+to\+\_\+str\mbox{[}{\bf N\+\_\+\+C\+M\+D}\mbox{]} = \{\char`\"{}No command\char`\"{}, \char`\"{}Unknown\char`\"{}, \char`\"{}Exit\char`\"{}, \char`\"{}Pickup\char`\"{}, \char`\"{}Drop\char`\"{}, \char`\"{}Roll\char`\"{}, \char`\"{}Move\char`\"{}, \char`\"{}Check\char`\"{}\}}}\label{command_8c_aa491d83d4e2f55a3074e418318a8d0fe}
+\hypertarget{command_8c_a6397d54c2691d7e8ffe9a8da5db5df58}{\index{command.\+c@{command.\+c}!short\+\_\+cmd\+\_\+to\+\_\+str@{short\+\_\+cmd\+\_\+to\+\_\+str}}
+\index{short\+\_\+cmd\+\_\+to\+\_\+str@{short\+\_\+cmd\+\_\+to\+\_\+str}!command.\+c@{command.\+c}}
+\subsubsection[{short\+\_\+cmd\+\_\+to\+\_\+str}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ short\+\_\+cmd\+\_\+to\+\_\+str\mbox{[}{\bf N\+\_\+\+C\+M\+D}\mbox{]} = \{\char`\"{}\char`\"{}, \char`\"{}\char`\"{}, \char`\"{}e\char`\"{}, \char`\"{}p\char`\"{}, \char`\"{}d\char`\"{}, \char`\"{}r\char`\"{}, \char`\"{}m\char`\"{}, \char`\"{}c\char`\"{}\}}}\label{command_8c_a6397d54c2691d7e8ffe9a8da5db5df58}

@@ -18,12 +18,12 @@
 
 struct _Game
 {
-	Player * player;
-	Object * objects[MAX_OBJECTS];
-	Space * spaces[MAX_SPACES + 1];
-	Link * links[MAX_LINK];
-	Die * die;
-	F_Command * last_cmd;
+	Player * player; /*!< Jugador*/
+	Object * objects[MAX_OBJECTS]; /*!< Array de objetos*/
+	Space * spaces[MAX_SPACES + 1]; /*!< Array de espacios*/
+	Link * links[MAX_LINK]; /*!< Array de links*/
+	Die * die; /*!< Dado */
+	F_Command * last_cmd; /*!< ultimo comando*/
 };
 
 /**
@@ -389,7 +389,7 @@ void game_callback_drop(Game * game)
 
 	space_add_object(space_pointer, object_id);
 	player_removeObjId(game->player, object_id);
-	
+
 	return;
 }
 

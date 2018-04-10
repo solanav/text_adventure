@@ -1,0 +1,11 @@
+<map id="game.h" name="game.h">
+<area shape="rect" id="node2" href="$command_8h.html" title="Commands and user input. " alt="" coords="5,155,152,181"/>
+<area shape="rect" id="node6" href="$space_8h.html" title="Defines functions for space manipulation. " alt="" coords="431,80,556,107"/>
+<area shape="rect" id="node7" href="$object_8h.html" title="Functions for the creation of objects. " alt="" coords="461,155,587,181"/>
+<area shape="rect" id="node10" href="$player_8h.html" title="Functions for the creation of players. " alt="" coords="611,155,736,181"/>
+<area shape="rect" id="node11" href="$die_8h.html" title="It declares the die module. " alt="" coords="760,155,867,181"/>
+<area shape="rect" id="node13" href="$link_8h.html" title="Creates the links between spaces. " alt="" coords="129,80,239,107"/>
+<area shape="rect" id="node14" href="$inventory_8h.html" title="Module for player&#39;s inventory. " alt="" coords="263,80,405,107"/>
+<area shape="rect" id="node5" href="$types_8h.html" title="Global typedefs. " alt="" coords="275,229,397,256"/>
+<area shape="rect" id="node9" href="$set_8h.html" title="Low level stack and queue functions. " alt="" coords="329,155,436,181"/>
+</map>

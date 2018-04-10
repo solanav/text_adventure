@@ -26,8 +26,8 @@
 
 struct _Area
 {
-  int x, y, width, height;
-  char *cursor;
+  int x, y, width, height; /*!< dimesiones*/
+  char *cursor; /*!< cursor*/
 };
 
 char *__data;

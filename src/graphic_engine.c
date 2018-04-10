@@ -19,11 +19,11 @@
 /*This is the definition of graphic engine for the object functions*/
 struct _Graphic_engine
 {
-	Area * map;
-	Area * descript;
-	Area * banner;
-	Area * help;
-	Area * feedback;
+	Area * map; /*!< Mapa, dibujo*/
+	Area * descript; /*!< donde van las descripciones*/
+	Area * banner; /*!< banner*/
+	Area * help; /*!<  ayuda*/
+	Area * feedback; /*!< Commandos realizados e info*/
 };
 
 Graphic_engine *graphic_engine_create()

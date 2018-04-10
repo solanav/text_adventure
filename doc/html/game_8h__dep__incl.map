@@ -1,0 +1,8 @@
+<map id="game.h" name="game.h">
+<area shape="rect" id="node2" href="$game__reader_8h.html" title="Reads data for the game from files. " alt="" coords="79,80,187,107"/>
+<area shape="rect" id="node3" href="$game_8c.html" title="It implements the game interface and all the associated callbacks for each command. " alt="" coords="5,155,69,181"/>
+<area shape="rect" id="node5" href="$graphic__engine_8h.html" title="Uses screen.* to create the UI. " alt="" coords="215,80,335,107"/>
+<area shape="rect" id="node4" href="$game__reader_8c.html" title="Reads data for the game from files. " alt="" coords="94,155,201,181"/>
+<area shape="rect" id="node6" href="$game__loop_8c.html" title="Main loop. " alt="" coords="227,155,323,181"/>
+<area shape="rect" id="node7" href="$graphic__engine_8c.html" title="Uses screen.* to create the UI. " alt="" coords="347,155,467,181"/>
+</map>

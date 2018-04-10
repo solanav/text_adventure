@@ -13,9 +13,9 @@
 
 struct _Link
 {
-	Id linkId;
-	Id linkspace1, linkspace2;
-	LinkStatus door;
+	Id linkId; /*!< Id del link*/
+	Id linkspace1, linkspace2; /*!< id de los espacios conectados*/
+	LinkStatus door; /*!< Estatus del link OPEN/CLOSED*/
 };
 
 Link * link_create(Id id)

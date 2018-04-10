@@ -10,8 +10,8 @@
 
 struct _Die
 {
-  Id id;
-  short int result;
+  Id id; /*!< Id del dado*/
+  short int result; /*!< Valor de la ultima tirada*/
 };
 
 Die* die_ini(Id id)

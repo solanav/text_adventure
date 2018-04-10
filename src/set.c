@@ -11,8 +11,8 @@
 struct _Set
 {
 	/* "top" points to next empty space */
-	Id id_list[MAX_INV_SIZE];
-	int id_total;
+	Id id_list[MAX_INV_SIZE]; /*!< Array*/
+	int id_total; /*!< Total del array*/
 };
 
 Set * set_create(int inv_size)
@@ -108,7 +108,7 @@ Set * set_cp_all(Set * set)
 	if (!set) return NULL;
 
 	set_copy = set_create(set->id_total);
-	
+
 	if(!set_copy) return NULL;
 
 	for (i=0; i<set->id_total; i++)

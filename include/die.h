@@ -13,17 +13,17 @@
  #include <stdlib.h>
  #include <time.h>
  #include "types.h"
- /*
+ /**
      la estructura _Die consta de dos componentes, uno de ellos, ID (donde se guardara el id de los dados) e int ult_tirada
      (donde se guarda el ultimo resultado de la funcion roll_die() ).
  */
  typedef struct _Die Die;
- /*
-     @author Pablo Sánchez
-     @brief esta funcion se encarga de crear el dado reservando memoria para el mismo.
-     @param1 ID, el id del dado.
-     @return newdie, el dado creado, o NULL si algo no ha salido como esperaba.
- */
+ /**
+  *     @author Pablo Sánchez
+  *     @brief esta funcion se encarga de crear el dado reservando memoria para el mismo.
+  *     @param1 ID, el id del dado.
+  *     @return newdie, el dado creado, o NULL si algo no ha salido como esperaba.
+  */
  Die* die_ini(Id);
  /*  @author Pablo Sánchez
      @brief Destruye el dado recibido
