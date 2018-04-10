@@ -21,7 +21,7 @@ struct _F_Command
 };
 
 char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check"};
-char *short_cmd_to_str[N_CMD] = {"", "", "e", "u", "d", "r", "m", "c"};
+char *short_cmd_to_str[N_CMD] = {"", "", "e", "p", "d", "r", "m", "c"};
 
 STATUS get_user_input(F_Command * command)
 {

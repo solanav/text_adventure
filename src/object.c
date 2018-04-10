@@ -2,7 +2,7 @@
  * @brief Functions for the creation of objects
  *
  * @file object.c
- * @author Guillermo Ríos
+ * @author Pablo Sánchez y Guillermo Ríos
  * @copyright GNU Public License
  */
 

@@ -2,7 +2,7 @@
  * @brief Functions for the creation of players
  *
  * @file player.c
- * @author Guillermo Ríos
+ * @author Antonio Solana
  * @copyright GNU Public License
  */
 

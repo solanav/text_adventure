@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     int all = 1;
 
     if (argc < 2) {
-        printf("Running all test for module Space:\n");
+        printf("Running all test for module Object:\n");
     } else {
         test = atoi(argv[1]);
         all = 0;
@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
 
 	PRINT_PASSED_PERCENTAGE;
 
-	return 1;
+	return 0;
 }
 
 void test1_object_create()

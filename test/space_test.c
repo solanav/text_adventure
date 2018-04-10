@@ -2,10 +2,6 @@
  * @brief It tests space module
  *
  * @file space_test.c
- * @version 2.0
- * @date 16-01-2015
- * @updated 19-01-2016
- * @copyright GNU Public License
  */
 
 #include <stdio.h>
@@ -75,7 +71,7 @@ int main(int argc, char** argv) {
 
     PRINT_PASSED_PERCENTAGE;
 
-    return 1;
+    return 0;
 }
 
 void test1_space_create() {
