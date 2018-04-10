@@ -1,5 +1,20 @@
+move north
 u o1
-m s
-m s
+check space
+move south
+move south
+Roll
+move south
+move south
 d o1
-e
+move west
+move north
+check o3
+Roll
+move east
+check space
+move south
+move south
+move east
+move west
+exit
