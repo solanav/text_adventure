@@ -136,11 +136,8 @@ val:
 test_game:
 	./game_exec data.dat < ./log/partida_prueba.oca
 
-val_die:
-	valgrind --leak-check=full ./die_test
-
-val_set:
-	valgrind --leak-check=full ./set_test
+doxygen:
+	doxygen -g doxyconfig && doxygen doxyconfig
 
 clean:
 	rm -rf $(ALL_EXEC)
