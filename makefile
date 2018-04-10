@@ -9,7 +9,7 @@ m="Automatic Commit"
 
 ################ FILES
 
-ALL_EXEC=game_exec die_test set_test link_test object_test command_test inventory_test
+ALL_EXEC=game_exec player_test space_test die_test set_test link_test object_test command_test inventory_test
 ALL_TEST=die_test set_test link_test object_test command_test inventory_test player_test
 
 ################ PATHS

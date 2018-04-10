@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 {
 	Game * game = NULL;
 
-	FILE * log;
+	FILE * log = NULL;
 	char log_dir[1024] = "./log/";
 	char *cmd_to_str[8] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check"};
 
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	fclose(log);
+	if (log != NULL) fclose(log);
 	command_free(command);
 	game_destroy(game);
 	graphic_engine_destroy(gengine);
