@@ -24,10 +24,10 @@
 #s:24|Casilla 24|Casilla 24 desc|23|-1|25|-1
 #s:25|Casilla 25|Casilla 25 desc|24|-1|-1|-1|                 |      <O)__/     |        \_-/     |
 #s:26|Casilla 26|Casilla 26 desc|-1|-1|-1|-1
-#o:1|linterna|1|Objecto o1 desc|
-#o:2|libro|3|Objecto o2 desc|
-#o:3|pocion|5|Objecto o3 desc|
-#o:4|llave|8|Objecto o4 desc|
+#o:1|Linterna|2|ilumina aquello que no ves|
+#o:2|Libro|3|Siempre puedes aprender|
+#o:3|Pocion|5|No sabes que es pero no huele sano|
+#o:4|Llave|8|Para cada llave hay una puerta, supongo|
 #l:1|Lnk 1|1|2|0|
 #l:2|Lnk 2|2|3|0|
 #l:3|Lnk 3|3|4|0|

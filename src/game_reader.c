@@ -36,6 +36,7 @@ STATUS game_load_spaces(Game* game, char* filename)
 	Id link0 = NO_ID, link1 = NO_ID;
 
 	Space* space = NULL;
+	Object* object = NULL;
 	STATUS status = OK;
 
 	if (!filename || !game) return ERROR;
@@ -123,7 +124,10 @@ STATUS game_load_spaces(Game* game, char* filename)
 			toks = strtok(NULL, "|");
 			strcpy(description, toks);
 
-			game_set_object_location(game, place, id, name, description);
+			object = object_create(name, id);
+			object_set_description(object, description);
+			game_set_object(game, object);
+			game_set_object_location(game, place, id);
 		}
 
 		if (strncmp("#l:", line, 3) == 0)

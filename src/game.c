@@ -72,10 +72,10 @@ Game * game_create()
 
 	game->player = player_create("player1", NO_ID, NO_ID, 1);
 
-	game->objects[0] = object_create("linterna", (long int) 1);
-	game->objects[1] = object_create("libro", (long int) 2);
-	game->objects[2] = object_create("pocion", (long int) 3);
-	game->objects[3] = object_create("llave", (long int) 4);
+	for (i =0; i < MAX_OBJECTS; i++)
+	{
+		game->objects[i] = NULL;
+	}
 
 	for (i = 0; i < MAX_LINK; i++)
 	{
@@ -145,6 +145,7 @@ STATUS game_create_from_file(Game * game, char * filename)
 	for (i=0; i<MAX_OBJECTS; i++)
 	{
 		printf("Object -> %s [%ld]", object_get_name(game->objects[i]), object_get_id(game->objects[i]));
+		printf("Object location -> %d", (int)game_get_object_location(game, i+1));
 	}
 
 	printf("Player name -> %s\n", player_getName(game->player));
@@ -216,7 +217,7 @@ Object * game_get_object(Game * game, char * object_name)
 
 	if(!game || !object_name) return NULL;
 
-	for(i=0; i < 4 && game->objects[i]; i++)
+	for(i=0; i < MAX_OBJECTS && game->objects[i]; i++)
 	{
 		printf("Comparing [%s] with [%s]\n", object_name, object_get_name(game->objects[i]));
 		if (strcasecmp(object_name, object_get_name(game->objects[i])) ==  0)
@@ -274,7 +275,7 @@ Id game_get_object_location(Game * game, Id id)
 	Set * objects = NULL;
 
 	/* Itera por los espacios comprobando si esta el objeto que buscas*/
-	for (i = 0; i < MAX_SPACES; i++)
+	for (i = 0; i < MAX_OBJECTS; i++)
 	{
 		objects = space_get_objects_id(game->spaces[i]);
 		for(n = 0; set_get_id(objects, n) != NO_ID; n++)
@@ -386,6 +387,8 @@ void game_callback_drop(Game * game)
 	object_id = object_get_id(game_get_object(game, object));
 
 	if (object_id > MAX_OBJECTS) return;
+
+	if(player_removeObjId(game->player, object_id) == ERROR) return;
 
 	space_add_object(space_pointer, object_id);
 	player_removeObjId(game->player, object_id);
@@ -514,6 +517,13 @@ STATUS game_set_player_location(Game * game, Id id)
 	return OK;
 }
 
+Id game_get_object_id_at(Game * game, int position)
+{
+	if (position < 0 || position >= MAX_OBJECTS) return NO_ID;
+
+	return object_get_id(game->objects[position]);
+}
+
 STATUS game_set_link(Game * game, Id link_id, Id space_id0, Id space_id1)
 {
 	int i;
@@ -533,7 +543,25 @@ STATUS game_set_link(Game * game, Id link_id, Id space_id0, Id space_id1)
 	return ERROR;
 }
 
-STATUS game_set_object_location(Game * game, Id id, Id obj_id, char * name, char * description)
+STATUS game_set_object(Game* game, Object* object)
+{
+	int i;
+
+	if(!game || !object) return ERROR;
+
+	for (i = 0; i < MAX_OBJECTS; i++)
+	{
+		if (game_get_object_id_at(game, i) == NO_ID)
+		{
+			game->objects[i] = object;
+			return OK;
+		}
+	}
+
+	return OK;
+}
+
+STATUS game_set_object_location(Game * game, Id id, Id obj_id)
 {
 	int i;
 
@@ -544,7 +572,6 @@ STATUS game_set_object_location(Game * game, Id id, Id obj_id, char * name, char
 		if (space_get_id(game->spaces[i]) == id)
 		{
 			space_add_object(game->spaces[i], obj_id);
-			object_set_description(game_get_object(game, name), description);
 			return OK;
 		}
 	}
