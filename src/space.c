@@ -22,8 +22,10 @@ struct _Space {
 	Id linkSouth; /*!< id del link al sur*/
 	Id linkEast; /*!< id del link al este*/
 	Id linkWest; /*!< id del link al oeste*/
+	Id linkUp; /*!< id del link hacia arriba*/
+	Id linkDown; /*!< id del link hacia abajo*/
 	char gdesc[3][21]; /*!< strings para objetos ASCII*/
-	Set * objects; /*!< Set de objetos*/
+	BOOL light; /* Bool que indica si la casilla esta iluminada*/
 };
 
 Space * space_create(Id id)
@@ -45,6 +47,8 @@ Space * space_create(Id id)
 	newSpace->linkSouth = NO_ID;
 	newSpace->linkEast = NO_ID;
 	newSpace->linkWest = NO_ID;
+	newSpace->linkUp = NO_ID;
+	newSpace->linkDown = NO_ID;
 
 	newSpace->objects = set_create(5);
 
@@ -124,6 +128,45 @@ STATUS space_set_west(Space* space, Id id)
   return OK;
 }
 
+STATUS space_set_up(Space* space, Id id)
+{
+  if (!space || id == NO_ID)
+  {
+    return ERROR;
+  }
+  space->linkUp = id;
+  return OK;
+}
+
+STATUS space_set_down(Space* space, Id id)
+{
+  if (!space || id == NO_ID)
+  {
+    return ERROR;
+  }
+  space->linkDown = id;
+  return OK;
+}
+
+STATUS space_set_light(Space* space, BOOL light)
+{
+	if(!space)
+		return ERROR;
+	else if(light!=TRUE && light!=FALSE)
+		return ERROR;
+	space->light=light;
+
+	return OK;
+}
+
+BOOL space_get_light(Space* space)
+{
+	if(!space)
+		return FALSE;
+
+	return space->light;
+}
+
 STATUS space_add_object(Space* space, Id obj_id)
 {
   if (!space) return ERROR;
@@ -187,6 +230,20 @@ Id space_get_west(Space* space)
   return space->linkWest;
 }
 
+Id space_get_up(Space* space)
+{
+  if (!space) return NO_ID;
+
+  return space->linkUp;
+}
+
+Id space_get_down(Space* space)
+{
+  if (!space) return NO_ID;
+
+  return space->linkDown;
+}
+
 Set * space_get_objects_id(Space* space)
 {
   Set * set;
@@ -204,6 +261,64 @@ Set * space_get_objects_id(Space* space)
 
   return set;
 }
+STATUS space_light_print(Space* space)
+{
+
+	Id idaux = NO_ID;
+	STATUS status;
+	if (!space)
+	 	return ERROR;
+
+	if(space->light==TRUE)
+	{
+		status=space_print(space);
+		return status;
+	}
+	else
+	{
+		fprintf(stdout, "\n\n--> Space (Id: %ld; Name: %s)\n", space->id, space->name);
+
+		idaux = space_get_north(space);
+		if (NO_ID != idaux)
+			fprintf(stdout, "---> North link: %ld.\n", idaux);
+		else
+			fprintf(stdout, "---> No north link.\n");
+
+		idaux = space_get_south(space);
+		if (NO_ID != idaux)
+			fprintf(stdout, "---> South link: %ld.\n", idaux);
+		else
+			fprintf(stdout, "---> No south link.\n");
+
+		idaux = space_get_east(space);
+		if (NO_ID != idaux)
+			fprintf(stdout, "---> East link: %ld.\n", idaux);
+		else
+			fprintf(stdout, "---> No east link.\n");
+
+		idaux = space_get_west(space);
+		if (NO_ID != idaux)
+			fprintf(stdout, "---> West link: %ld.\n", idaux);
+		else
+			fprintf(stdout, "---> No west link.\n");
+
+		idaux = space_get_up(space);
+		if (NO_ID != idaux)
+			fprintf(stdout, "---> Up link: %ld.\n", idaux);
+		else
+			fprintf(stdout, "---> No up link.\n");
+
+		idaux = space_get_down(space);
+		if (NO_ID != idaux)
+			fprintf(stdout, "---> Down link: %ld.\n", idaux);
+		else
+			fprintf(stdout, "---> No down link.\n");
+
+	}
+
+	return OK;
+}
+
 
 STATUS space_print(Space* space)
 {
@@ -237,6 +352,19 @@ STATUS space_print(Space* space)
     fprintf(stdout, "---> West link: %ld.\n", idaux);
   else
     fprintf(stdout, "---> No west link.\n");
+
+	idaux = space_get_up(space);
+	if (NO_ID != idaux)
+		fprintf(stdout, "---> Up link: %ld.\n", idaux);
+	else
+		fprintf(stdout, "---> No up link.\n");
+
+	idaux = space_get_down(space);
+	if (NO_ID != idaux)
+		fprintf(stdout, "---> Down link: %ld.\n", idaux);
+	else
+		fprintf(stdout, "---> No down link.\n");
+
 
   if ((aux = space_get_objects_id(space)))
   {
