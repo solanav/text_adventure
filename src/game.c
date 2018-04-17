@@ -275,7 +275,7 @@ Id game_get_object_location(Game * game, Id id)
 	Set * objects = NULL;
 
 	/* Itera por los espacios comprobando si esta el objeto que buscas*/
-	for (i = 0; i < MAX_OBJECTS; i++)
+	for (i = 0; i < MAX_SPACES; i++)
 	{
 		objects = space_get_objects_id(game->spaces[i]);
 		for(n = 0; set_get_id(objects, n) != NO_ID; n++)
@@ -567,11 +567,14 @@ STATUS game_set_object_location(Game * game, Id id, Id obj_id)
 
 	if (id == NO_ID || !game) return ERROR;
 
+	printf("Somebody is trying to set %ld to %ld\n", obj_id, id);
 	for (i = 0; i < MAX_SPACES; i++)
 	{
 		if (space_get_id(game->spaces[i]) == id)
 		{
-			space_add_object(game->spaces[i], obj_id);
+			printf("It worked\n");
+			if(space_add_object(game->spaces[i], obj_id) == ERROR)
+				printf("This didnt work for some reason %ld\n", obj_id);
 			return OK;
 		}
 	}

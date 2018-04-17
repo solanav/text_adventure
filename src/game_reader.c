@@ -127,7 +127,9 @@ STATUS game_load_spaces(Game* game, char* filename)
 			object = object_create(name, id);
 			object_set_description(object, description);
 			game_set_object(game, object);
+			printf("Set location %ld for %s\n", place, name);
 			game_set_object_location(game, place, id);
+			printf("%ld is in space %ld", id, game_get_object_location(game, id));
 		}
 
 		if (strncmp("#l:", line, 3) == 0)
