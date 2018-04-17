@@ -25,13 +25,13 @@ struct \hyperlink{struct__Die}{\+\_\+\+Die}
 \hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$ \hyperlink{die_8c_ad5714ba396ffc8c964b7be67240508b2}{die\+\_\+ini} (\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
 \begin{DoxyCompactList}\small\item\em esta funcion se encarga de crear el dado reservando memoria para el mismo. \end{DoxyCompactList}\item 
 void \hyperlink{die_8c_aa8e971f9b27132eda0d1e8177adc7ed5}{die\+\_\+die\+\_\+die} (\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$die)
-\item 
+\begin{DoxyCompactList}\small\item\em Destruye el dado recibido. \end{DoxyCompactList}\item 
 \hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{die_8c_afafc56aafeb40dbf889c421cace3d919}{die\+\_\+roll} (\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$die)
-\item 
+\begin{DoxyCompactList}\small\item\em esta funcion se encarga de llamar a la funcion aleatorio() para simular la tirada del dado y devolver el numero elegido \end{DoxyCompactList}\item 
 \hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{die_8c_a4ba0de5e507530e14302ac5096d7df56}{die\+\_\+print} (F\+I\+L\+E $\ast$f, \hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$die)
-\item 
+\begin{DoxyCompactList}\small\item\em esta funcion se encarga de imprimir el contenido del dado \end{DoxyCompactList}\item 
 short int \hyperlink{die_8c_a734148bcd7a5fc018966fa3b7909ac4a}{die\+\_\+get\+\_\+last\+\_\+roll} (\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$die)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em consigue el valor de la ultima tirada \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -50,16 +50,38 @@ G\+N\+U Public License
 \index{die\+\_\+die\+\_\+die@{die\+\_\+die\+\_\+die}!die.\+c@{die.\+c}}
 \subsubsection[{die\+\_\+die\+\_\+die}]{\setlength{\rightskip}{0pt plus 5cm}void die\+\_\+die\+\_\+die (
 \begin{DoxyParamCaption}
-\item[{{\bf Die} $\ast$}]{die}
+\item[{{\bf Die} $\ast$}]{}
 \end{DoxyParamCaption}
 )}}\label{die_8c_aa8e971f9b27132eda0d1e8177adc7ed5}
+
+
+Destruye el dado recibido. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$\+Die} & \\
+\hline
+\end{DoxyParams}
 \hypertarget{die_8c_a734148bcd7a5fc018966fa3b7909ac4a}{\index{die.\+c@{die.\+c}!die\+\_\+get\+\_\+last\+\_\+roll@{die\+\_\+get\+\_\+last\+\_\+roll}}
 \index{die\+\_\+get\+\_\+last\+\_\+roll@{die\+\_\+get\+\_\+last\+\_\+roll}!die.\+c@{die.\+c}}
 \subsubsection[{die\+\_\+get\+\_\+last\+\_\+roll}]{\setlength{\rightskip}{0pt plus 5cm}short int die\+\_\+get\+\_\+last\+\_\+roll (
 \begin{DoxyParamCaption}
-\item[{{\bf Die} $\ast$}]{die}
+\item[{{\bf Die} $\ast$}]{}
 \end{DoxyParamCaption}
 )}}\label{die_8c_a734148bcd7a5fc018966fa3b7909ac4a}
+
+
+consigue el valor de la ultima tirada 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez  Die$\ast$ 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+short int la ultima tirada 
+\end{DoxyReturn}
 \hypertarget{die_8c_ad5714ba396ffc8c964b7be67240508b2}{\index{die.\+c@{die.\+c}!die\+\_\+ini@{die\+\_\+ini}}
 \index{die\+\_\+ini@{die\+\_\+ini}!die.\+c@{die.\+c}}
 \subsubsection[{die\+\_\+ini}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Die}$\ast$ die\+\_\+ini (
@@ -81,14 +103,34 @@ newdie, el dado creado, o N\+U\+L\+L si algo no ha salido como esperaba.
 \index{die\+\_\+print@{die\+\_\+print}!die.\+c@{die.\+c}}
 \subsubsection[{die\+\_\+print}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} die\+\_\+print (
 \begin{DoxyParamCaption}
-\item[{F\+I\+L\+E $\ast$}]{f, }
-\item[{{\bf Die} $\ast$}]{die}
+\item[{F\+I\+L\+E $\ast$}]{, }
+\item[{{\bf Die} $\ast$}]{}
 \end{DoxyParamCaption}
 )}}\label{die_8c_a4ba0de5e507530e14302ac5096d7df56}
+
+
+esta funcion se encarga de imprimir el contenido del dado 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez  Die$\ast$die, el dado que desea imprimir. 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+E\+R\+R\+O\+R si algo no ha salido como se esperaba. 
+\end{DoxyReturn}
 \hypertarget{die_8c_afafc56aafeb40dbf889c421cace3d919}{\index{die.\+c@{die.\+c}!die\+\_\+roll@{die\+\_\+roll}}
 \index{die\+\_\+roll@{die\+\_\+roll}!die.\+c@{die.\+c}}
 \subsubsection[{die\+\_\+roll}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} die\+\_\+roll (
 \begin{DoxyParamCaption}
-\item[{{\bf Die} $\ast$}]{die}
+\item[{{\bf Die} $\ast$}]{}
 \end{DoxyParamCaption}
 )}}\label{die_8c_afafc56aafeb40dbf889c421cace3d919}
+
+
+esta funcion se encarga de llamar a la funcion aleatorio() para simular la tirada del dado y devolver el numero elegido 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+Die=$>$ult\+\_\+tirada si ha salido correctamente o E\+R\+R\+O\+R si no. 
+\end{DoxyReturn}

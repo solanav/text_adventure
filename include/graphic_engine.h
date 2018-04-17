@@ -18,11 +18,11 @@ Graphic_engine* graphic_engine_create();
 void graphic_engine_destroy(Graphic_engine *);
 void graphic_engine_paint_game(Graphic_engine *, Game *);
 
-/*
-	int = 0 -> top space
-	int = 1 -> middle space
-	int = 2 -> bottom space
-*/
+/**
+ *	int = 0 -> top space
+ *	int = 1 -> middle space
+ *	int = 2 -> bottom space
+ */
 void graphic_engine_paint_space(Graphic_engine *, Game *, int);
 
 void print_new_line(Area *, int number);
