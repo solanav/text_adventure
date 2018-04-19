@@ -16,8 +16,8 @@
 
 struct _F_Command
 {
-  T_Command text; /*!< Instruccion*/
-  char id[CMD_LENGHT];/*!< Parametro*/
+  T_Command text; /*!< Instruction*/
+  char id[CMD_LENGHT];/*!< Parameter*/
 };
 
 char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check"};
