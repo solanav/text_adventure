@@ -311,6 +311,11 @@ T_Command game_get_last_command_text(Game * game)
 	return command_getCmd(game->last_cmd);
 }
 
+char * game_get_last_command_parameters(Game * game)
+{
+	return command_get_id(game->last_cmd);
+}
+
 void game_print_data(Game * game)
 {
 	int i = 0;

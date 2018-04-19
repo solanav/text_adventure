@@ -56,6 +56,7 @@ STATUS	game_load_spaces(Game *, char *);
 
 F_Command*	game_get_last_command(Game *);
 T_Command	game_get_last_command_text(Game *);
+char *		game_get_last_command_parameters(Game *);
 
 BOOL game_areSpacesAdjacent(Game *, Id, Id);
 

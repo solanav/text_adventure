@@ -1,21 +1,41 @@
-R01 - OK
-R02 - OK
-R03 - OK
-R04 - OK
-R05 - OK
-R06 - OK
-R07 - OK
-R08 - OK
-R09 - OK
-R10 - OK
-R11 - OK
-R12 - OK
-R13 - OK
-R14 - OK
-R15 - OK
-R16 - ND - This is going to take a while i think
-R17 - OK
-R18 - OK
+POINTS =================
+
+Space - Guille
+R01 - ND
+R02 - ND
+R03 - ND
+
+Commands - Cata
+R04 - ND
+R07 - ND
+R08 - ND
+R09 - ND
+
+Object - Bernardo
+R05 - ND
+R06 - ND
+
+Data.dat - Solana
+R10 - ND
+R11 - ND
+
+Documentation - Bernardo
+R12 - ND
+
+Save and load - Pablo
+R13 - ND
+R14 - ND
+
+Dialog - Pablo
+R15 - ND
+
+Game Rules - Solana
+R16 - ND
+
+Manteinance - Solana
+R17 - ND
+
+INFO ===================
 
 OK - Finished
 NI - No info
@@ -23,7 +43,10 @@ PR - Pending revision
 HD - Half done
 ND - Not done
 
-================================================
+NOTAS ==================
 
-- Revisar la rubrica hasta que tengamos todo lo mejor posible
-- Arreglar el estilo del codigo para seguir las "Linux coding conventions"
+FECHAS =================
+
+19/04/18 - Limpieza
+26/04/18 - Puntos
+03/05/18 - Fecha final
