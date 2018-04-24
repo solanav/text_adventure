@@ -52,18 +52,25 @@
  	@param1 el conjunto del cual se desea obtener la id
     @return devuelve el id del conjunto.
  */
- Id set_get_id(Set *, int);
+ Id set_getId(Set *, int);
  /*
  	@author Antonio Solana
   	@brief esta funcion se encarga de vaciar el set, sin destruirlo
  	@param1 el set
     @return OK o ERROR
  */
- STATUS set_rm_all(Set *);
+ STATUS set_rmAll(Set *);
  /*
    @author Antonio Solana
    @brief limpia el set para que no haya espacios vacíos entre los llenos
    @param1 el set
+	@return OK o ERROR
+ */
+ Set * set_cpAll(Set *);
+ /*
+   @author Antonio Solana
+   @brief [DEBUG ONLY] imprime el set dado en el file dado
+   @param1 el set, un lugar donde imprimir (debe estar abierto)
 	@return OK o ERROR
  */
  STATUS set_rearrange(Set *);
@@ -73,13 +80,7 @@
    @param1 el set
 	@return copia del set
  */
- Set * set_cp_all(Set *);
- /*
-   @author Antonio Solana
-   @brief [DEBUG ONLY] imprime el set dado en el file dado
-   @param1 el set, un lugar donde imprimir (debe estar abierto)
-	@return OK o ERROR
- */
- STATUS set_print_debug(FILE *, Set *);
+
+ STATUS set_printDebug(FILE *, Set *);
 
  #endif

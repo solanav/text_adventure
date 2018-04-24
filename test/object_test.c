@@ -33,87 +33,87 @@ int main(int argc, char** argv) {
         }
     }
 
-	if (all || test == 1) test1_object_create();
-    if (all || test == 2) test2_object_create();
-    if (all || test == 3) test1_object_set_name();
-    if (all || test == 4) test2_object_set_name();
-    if (all || test == 5) test1_object_set_id();
-    if (all || test == 6) test2_object_set_id();
-    if (all || test == 7) test1_object_set_description();
-    if (all || test == 8) test2_object_set_description();
-    if (all || test == 9) test1_object_get_name();
-    if (all || test == 10) test1_object_get_description();
-	if (all || test == 11) test1_object_get_id();
+	if (all || test == 1) test1_objectCreate();
+    if (all || test == 2) test2_objectCreate();
+    if (all || test == 3) test1_objectSetName();
+    if (all || test == 4) test2_objectSetName();
+    if (all || test == 5) test1_objectSetId();
+    if (all || test == 6) test2_objectSetId();
+    if (all || test == 7) test1_objectSetDescription();
+    if (all || test == 8) test2_objectSetDescription();
+    if (all || test == 9) test1_object_getName();
+    if (all || test == 10) test1_objectGetDescription();
+	if (all || test == 11) test1_objectGetId();
 
 	PRINT_PASSED_PERCENTAGE;
 
 	return 0;
 }
 
-void test1_object_create()
+void test1_objectCreate()
 {
 	int result = object_create("name", 5) != NULL;
 	PRINT_TEST_RESULT(result);
 }
 
-void test2_object_create()
+void test2_objectCreate()
 {
 	Object *o;
 	o = object_create("name", 5);
-	PRINT_TEST_RESULT(object_get_id(o) == 5);
+	PRINT_TEST_RESULT(object_getIid(o) == 5);
 }
 
-void test1_object_set_name()
+void test1_objectSetName()
 {
 	Object *s = NULL;
-    PRINT_TEST_RESULT(object_set_name(s, "hola") == ERROR);
+    PRINT_TEST_RESULT(object_setName(s, "hola") == ERROR);
 }
 
-void test2_object_set_name()
+void test2_objectSetName()
 {
 	Object *s = object_create("name", 5);
-	PRINT_TEST_RESULT(object_set_name(s, "hola") == OK);
+	PRINT_TEST_RESULT(object_setName(s, "hola") == OK);
 }
 
-void test1_object_set_id()
+void test1_objectSetId()
 {
 	Object *s = NULL;
-    PRINT_TEST_RESULT(object_set_id(s, 5) == ERROR);
+    PRINT_TEST_RESULT(object_setId(s, 5) == ERROR);
 }
 
-void test2_object_set_id()
+void test2_objectSetId()
 {
 	Object *s = object_create("name", 5);
-	PRINT_TEST_RESULT(object_set_id(s, 6) == OK);
+	PRINT_TEST_RESULT(object_setId(s, 6) == OK);
 }
 
-void test1_object_set_description()
+void test1_objectSetDescription()
 {
 	Object *s = NULL;
-    PRINT_TEST_RESULT(object_set_description(s, "End this") == ERROR);
+    PRINT_TEST_RESULT(object_setDescription(s, "End this") == ERROR);
 }
 
-void test2_object_set_description()
+void test2_object_setDescription()
 {
 	Object *s = object_create("name", 5);
-	PRINT_TEST_RESULT(object_set_description(s, "End this") == OK);
+	PRINT_TEST_RESULT(object_setDescription(s, "End this") == OK);
 }
 
-void test1_object_get_name()
+void test1_objectGetName()
 {
 	Object *s = object_create("name", 5);
-	PRINT_TEST_RESULT(strcmp("name", object_get_name(s)) == 0);
+	PRINT_TEST_RESULT(strcmp("name", object_getName(s)) == 0);
 }
 
-void test1_object_get_description()
+void test1_objectGetDescription()
 {
 	Object *s = object_create("name", 5);
-	object_set_description(s, "This is a description");
-	PRINT_TEST_RESULT(strcmp("This is a description", object_get_description(s)) == 0);
+	object_setDescription(s, "This is a description");
+	PRINT_TEST_RESULT(strcmp("This is a description", object_getDescription(s)) == 0);
 }
 
-void test1_object_get_id()
+void test1_objectGetId()
 {
 	Object *s = object_create("name", 5);
-	PRINT_TEST_RESULT(object_get_id(s) == 5);
+	PRINT_TEST_RESULT(object_getId(s) == 5);
 }

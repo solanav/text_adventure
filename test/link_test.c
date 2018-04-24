@@ -33,25 +33,25 @@ int main(int argc, char** argv) {
         }
     }
 
-	if (all || test == 1) test1_link_create();
-    if (all || test == 2) test2_link_create();
-    if (all || test == 3) test1_link_set_id();
-    if (all || test == 4) test2_link_set_id();
-    if (all || test == 5) test1_link_set_status();
-    if (all || test == 6) test2_link_set_status();
-    if (all || test == 7) test1_link_set_spaces();
-    if (all || test == 8) test2_link_set_spaces();
-    if (all || test == 9) test1_link_get_id();
-    if (all || test == 10) test1_link_get_space1();
-	if (all || test == 11) test1_link_get_space2();
-	if (all || test == 12) test1_link_get_status();
-	if (all || test == 13) test1_link_get_destination();
+	if (all || test == 1) test1_linkCreate();
+    if (all || test == 2) test2_linkCreate();
+    if (all || test == 3) test1_linkSetId();
+    if (all || test == 4) test2_linkSetId();
+    if (all || test == 5) test1_linkSetStatus();
+    if (all || test == 6) test2_linkSetStatus();
+    if (all || test == 7) test1_linkSetSpaces();
+    if (all || test == 8) test2_linkSetSpaces();
+    if (all || test == 9) test1_linkGetId();
+    if (all || test == 10) test1_linkGetSpace1();
+	if (all || test == 11) test1_linkGetSpace2();
+	if (all || test == 12) test1_linkGetStatus();
+	if (all || test == 13) test1_linkGetDestination();
 
 	PRINT_PASSED_PERCENTAGE;
 
 	return 0;
 }
-void test1_link_create()
+void test1_linkCreate()
 {
 	int result = link_create(5) != NULL;
 	PRINT_TEST_RESULT(result);
@@ -64,70 +64,70 @@ void test2_link_create()
 	PRINT_TEST_RESULT(link_getId(o) == 5);
 }
 
-void test1_link_set_id()
+void test1_linkSetId()
 {
 	Link *s = NULL;
     PRINT_TEST_RESULT(link_setId(s, 5) == ERROR);
 }
 
-void test2_link_set_id()
+void test2_linkSetId()
 {
 	Link *s = link_create(5);
 	PRINT_TEST_RESULT(link_setId(s, 6) == OK);
 }
 
-void test1_link_set_status()
+void test1_linkSetStatus()
 {
 	Link *s = NULL;
     PRINT_TEST_RESULT(link_setStatus(s, OPEN) == ERROR);
 }
 
-void test2_link_set_status()
+void test2_linkSetStatus()
 {
 	Link *s = link_create(5);
 	PRINT_TEST_RESULT(link_setStatus(s, OPEN) == OK);
 }
 
-void test1_link_set_spaces()
+void test1_linkSetSpaces()
 {
 	Link *s = NULL;
     PRINT_TEST_RESULT(link_setSpaces(s, 1, 2) == ERROR);
 }
 
-void test2_link_set_spaces()
+void test2_linkSetSpaces()
 {
 	Link *s = link_create(5);
 	PRINT_TEST_RESULT(link_setSpaces(s, 1, 2) == OK);
 }
 
-void test1_link_get_id()
+void test1_linkGetId()
 {
 	Link *s = link_create(5);
 	PRINT_TEST_RESULT(link_getId(s) == 5);
 }
 
-void test1_link_get_space1()
+void test1_linkGetSpace1()
 {
 	Link *s = link_create(5);
 	link_setSpaces(s, 1, 2);
 	PRINT_TEST_RESULT(link_getSpace1(s) == 1);
 }
 
-void test1_link_get_space2()
+void test1_linkSetSpace2()
 {
 	Link *s = link_create(5);
 	link_setSpaces(s, 1, 2);
 	PRINT_TEST_RESULT(link_getSpace2(s) == 2);
 }
 
-void test1_link_get_status()
+void test1_linkGetStatus()
 {
 	Link *s = link_create(5);
 	link_setStatus(s, OPEN);
 	PRINT_TEST_RESULT(link_getStatus(s) == OPEN);
 }
 
-void test1_link_get_destination()
+void test1_linkGetDestination()
 {
 	Link *s = link_create(5);
 	link_setSpaces(s, 1, 2);

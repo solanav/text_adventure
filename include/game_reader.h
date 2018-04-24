@@ -12,7 +12,10 @@
 #include "../include/types.h"
 #include "../include/game.h"
 
-STATUS game_load_spaces(Game* game, char* filename);
-STATUS game_load_links (Game* game, char* filename);
+STATUS game_loadSpaces(Game* game, char* filename);
+STATUS game_loadLinks (Game* game, char* filename);
+STATUS game_loadObjects(Game* game, char* filename);
+STATUS game_loadAll(Game* game, char* filename);
+
 
 #endif

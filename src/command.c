@@ -23,7 +23,7 @@ struct _F_Command
 char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check"};
 char *short_cmd_to_str[N_CMD] = {"", "", "e", "p", "d", "r", "m", "c"};
 
-STATUS get_user_input(F_Command * command)
+STATUS get_userInput(F_Command * command)
 {
 	T_Command aux_command;
 	int i = UNKNOWN, command_found = 0;
@@ -61,8 +61,8 @@ STATUS get_user_input(F_Command * command)
 		aux_command = command_getCmd(command);
 		if(aux_command == PICK_UP || aux_command == DROP)
 		{
-			command_set_id(command, string1);
-			printf("\tCommand is either pick or drop. Setting id to %s.\n", command_get_id(command));
+			command_setId(command, string1);
+			printf("\tCommand is either pick or drop. Setting id to %s.\n", command_getId(command));
 		}
 
 		/* Command requires a string */
@@ -71,15 +71,15 @@ STATUS get_user_input(F_Command * command)
 			printf("\tCommand is move. Setting id. [%s %s]\n", string0, string1);
 
 			if (strcasecmp(string1, "n")==0 || strcasecmp(string1, "north")==0)
-				command_set_id(command, "north");
+				command_setId(command, "north");
 			else if (strcasecmp(string1, "e")==0 || strcasecmp(string1, "east")==0)
-				command_set_id(command, "east");
+				command_setId(command, "east");
 			else if (strcasecmp(string1, "s")==0 || strcasecmp(string1, "south")==0)
-				command_set_id(command, "south");
+				command_setId(command, "south");
 			else if (strcasecmp(string1, "w")==0 || strcasecmp(string1, "west")==0)
-				command_set_id(command, "west");
+				command_setId(command, "west");
 			else
-				command_set_id(command, NULL);
+				command_setId(command, NULL);
 		}
 
 		/* Command requires a string */
@@ -87,9 +87,9 @@ STATUS get_user_input(F_Command * command)
 		{
 			printf("\tCommand is check. Setting id. [%s %s]\n", string0, string1);
 			if (strcasecmp(string1, "space")==0 || strcasecmp(string1, "s")==0)
-				command_set_id(command, "space");
+				command_setId(command, "space");
 		 	else
-				command_set_id(command, string1);
+				command_setId(command, string1);
 		}
 	}
 	else
@@ -113,6 +113,13 @@ F_Command * command_create()
   return command;
 }
 
+void command_free(F_Command * cmd)
+{
+  if(!cmd) return;
+
+  free(cmd);
+}
+
 STATUS command_setCmd(F_Command * cmd, T_Command command)
 {
   if(!cmd) return ERROR;
@@ -126,25 +133,18 @@ T_Command command_getCmd(F_Command * cmd)
   return cmd->text;
 }
 
-char * command_get_id(F_Command * cmd)
+char * command_getId(F_Command * cmd)
 {
   if(!cmd) return NULL;
 
   return cmd->id;
 }
 
-STATUS command_set_id(F_Command * cmd, char * string)
+STATUS command_setId(F_Command * cmd, char * string)
 {
   printf("Trying to set command id to -> %s\n", string);
   if(!cmd || !string) return ERROR;
   printf("Done\n");
   strcpy(cmd->id, string);
   return OK;
-}
-
-void command_free(F_Command * cmd)
-{
-  if(!cmd) return;
-
-  free(cmd);
 }

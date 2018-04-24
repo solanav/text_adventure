@@ -39,38 +39,38 @@
  	@param string
  	@return devuelve OK si se ha modificado correctamente o ERROR si no
  */
- STATUS object_set_name(Object* obj, char* name);
+ STATUS object_setName(Object* obj, char* name);
  /*
  	@brief modifica la descricion de un objeto
  	@param puntero object de tipo Object
  	@param string
  	@return devuelve OK si se ha modificado correctamente o ERROR si no
  */
- STATUS object_set_description(Object* obj, char* descript);
+ STATUS object_setDescription(Object* obj, char* descript);
  /*
  	@brief modifica la id del objeto
  	@param puntero object de tipo Object
  	@param el id del objeto
  	@return devuelve OK si se ha modificado correctamente o ERROR si no
  */
- STATUS object_set_id(Object* obj, Id id);
+ STATUS object_setId(Object* obj, Id id);
  /*
  	@brief Devuelve el nombre de un objeto
  	@param puntero object de tipo Object
  	@return devuelve object->name (el nombre del objeto) o NULL si algo ha fallado
  */
- char * object_get_name(Object* obj);
+ char * object_getName(Object* obj);
  /*
  	@brief Devuelve la descricion de un objeto
  	@param puntero object de tipo Object
  	@return devuelve object->descript o NULL si algo ha fallado
  */
- char * object_get_description(Object* obj);
+ char * object_getDescription(Object* obj);
  /*
  	@brief Nos da la id del objecto
  	@param puntero object de tipo Object
  	@return nos devuelve NO_ID si el objeto es nulo o el id del objeto
  */
- Id object_get_id(Object* obj);
+ Id object_getId(Object* obj);
 
  #endif

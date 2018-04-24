@@ -1,6 +1,6 @@
 /**
  * @brief Functions used by graphic_engine.*
- * 
+ *
  * @file screen.h
  * @author Profesores Pprog
  * @copyright GNU Public License
@@ -18,10 +18,10 @@ void  screen_destroy();
 void  screen_paint();
 void  screen_gets(char *str);
 
-Area* screen_area_init(int x, int y, int width, int height);
-void  screen_area_destroy(Area* area);
-void  screen_area_clear(Area* area);
-void  screen_area_reset_cursor(Area* area);
-void  screen_area_puts(Area* area, char *str);
+Area* screen_areaInit(int x, int y, int width, int height);
+void  screen_areaDestroy(Area* area);
+void  screen_areaClear(Area* area);
+void  screen_areaResetCursor(Area* area);
+void  screen_areaPuts(Area* area, char *str);
 
 #endif
