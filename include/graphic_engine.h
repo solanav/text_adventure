@@ -18,15 +18,12 @@ Graphic_engine* graphic_engineCreate();
 void graphic_engineDestroy(Graphic_engine *);
 void graphic_enginePaintGame(Graphic_engine *, Game *);
 
-/*
-	int = 0 -> top space
-	int = 1 -> middle space
-	int = 2 -> bottom space
-*/
-void graphic_enginePaintSpace(Graphic_engine *, Game *, int);
-
-char * create_objectsString(Game *, Id);
-void print_newLine(Area *, int number);
+/**
+ *	int = 0 -> top space
+ *	int = 1 -> middle space
+ *	int = 2 -> bottom space
+ */
+void graphic_engine_paint_space(Graphic_engine *, Game *, int);
 
 
 #endif

@@ -127,12 +127,16 @@ Functions</h2></td></tr>
 <tr class="memdesc:a58ac2859cec9338bd57d2cbf142f565f"><td class="mdescLeft">&#160;</td><td class="mdescRight">esta funcion se encarga de crear el dado reservando memoria para el mismo.  <a href="#a58ac2859cec9338bd57d2cbf142f565f">More...</a><br /></td></tr>
 <tr class="separator:a58ac2859cec9338bd57d2cbf142f565f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94ea40d2a3508e2d6aac560582e9e9bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="die_8h.html#a94ea40d2a3508e2d6aac560582e9e9bc">die_die_die</a> (<a class="el" href="die_8h.html#a892f0b0bf81d69a1f7a14ea238e36dd3">Die</a> *)</td></tr>
+<tr class="memdesc:a94ea40d2a3508e2d6aac560582e9e9bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destruye el dado recibido.  <a href="#a94ea40d2a3508e2d6aac560582e9e9bc">More...</a><br /></td></tr>
 <tr class="separator:a94ea40d2a3508e2d6aac560582e9e9bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b747943478f695a940e267d69baae7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a32c27cc471df37f4fc818d65de0a56c4">STATUS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="die_8h.html#a8b747943478f695a940e267d69baae7b">die_roll</a> (<a class="el" href="die_8h.html#a892f0b0bf81d69a1f7a14ea238e36dd3">Die</a> *)</td></tr>
+<tr class="memdesc:a8b747943478f695a940e267d69baae7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">esta funcion se encarga de llamar a la funcion aleatorio() para simular la tirada del dado y devolver el numero elegido  <a href="#a8b747943478f695a940e267d69baae7b">More...</a><br /></td></tr>
 <tr class="separator:a8b747943478f695a940e267d69baae7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bf4da5fb5440c903b605e54ceae97e5"><td class="memItemLeft" align="right" valign="top">short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="die_8h.html#a8bf4da5fb5440c903b605e54ceae97e5">die_get_last_roll</a> (<a class="el" href="die_8h.html#a892f0b0bf81d69a1f7a14ea238e36dd3">Die</a> *)</td></tr>
+<tr class="memdesc:a8bf4da5fb5440c903b605e54ceae97e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">consigue el valor de la ultima tirada  <a href="#a8bf4da5fb5440c903b605e54ceae97e5">More...</a><br /></td></tr>
 <tr class="separator:a8bf4da5fb5440c903b605e54ceae97e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5fb013351c7196f7ace1ac1043771fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a32c27cc471df37f4fc818d65de0a56c4">STATUS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="die_8h.html#ac5fb013351c7196f7ace1ac1043771fc">die_print</a> (FILE *, <a class="el" href="die_8h.html#a892f0b0bf81d69a1f7a14ea238e36dd3">Die</a> *)</td></tr>
+<tr class="memdesc:ac5fb013351c7196f7ace1ac1043771fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">esta funcion se encarga de imprimir el contenido del dado  <a href="#ac5fb013351c7196f7ace1ac1043771fc">More...</a><br /></td></tr>
 <tr class="separator:ac5fb013351c7196f7ace1ac1043771fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -168,6 +172,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Destruye el dado recibido. </p>
+<dl class="section author"><dt>Author</dt><dd>Pablo Sánchez </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*Die</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="a8bf4da5fb5440c903b605e54ceae97e5"></a>
@@ -183,6 +196,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>consigue el valor de la ultima tirada </p>
+<dl class="section author"><dt>Author</dt><dd>Pablo Sánchez  Die* </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>short int la ultima tirada </dd></dl>
 
 </div>
 </div>
@@ -230,6 +247,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>esta funcion se encarga de imprimir el contenido del dado </p>
+<dl class="section author"><dt>Author</dt><dd>Pablo Sánchez  Die*die, el dado que desea imprimir. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>ERROR si algo no ha salido como se esperaba. </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a8b747943478f695a940e267d69baae7b"></a>
@@ -246,12 +267,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>esta funcion se encarga de llamar a la funcion aleatorio() para simular la tirada del dado y devolver el numero elegido </p>
+<dl class="section author"><dt>Author</dt><dd>Pablo Sánchez </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Die=&gt;ult_tirada si ha salido correctamente o ERROR si no. </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 10 2018 16:56:10 for like_ocas_in_the_rain by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 17 2018 17:49:47 for like_ocas_in_the_rain by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -118,7 +118,7 @@ STATUS player_removeObjId(Player * player, Id id)
 {
 	if (!player) return ERROR;
 
-	inventory_delId(player->inv, id);
+	if(inventory_del_id(player->inv, id) == ERROR) return ERROR;
 
 	return OK;
 }

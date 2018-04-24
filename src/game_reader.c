@@ -35,6 +35,7 @@ STATUS game_loadSpaces(Game* game, char* filename)
 	Id id = NO_ID, north = NO_ID, east = NO_ID, south = NO_ID, west = NO_ID ;
 
 	Space* space = NULL;
+	Object* object = NULL;
 	STATUS status = OK;
 
 	if (!filename || !game) return ERROR;
@@ -188,75 +189,12 @@ STATUS game_loadObjects(Game* game, char* filename)
 			toks = strtok(NULL, "|");
 			strcpy(description, toks);
 
-			game_setObjectLocation(game, place, id, name, description);
-		}
-	}
-
-	if (ferror(file)) {
-	status = ERROR;
-	}
-
-	fclose(file);
-
-	return status;
-}
-
-STATUS game_loadLinks(Game* game, char* filename)
-{
-	/*
-	* Loads game links from specified file.
-	*
-	* game: the main game structure
-	* filename: .dat file you want to use
-	*
-	* returns: ERROR or OK
-	*/
-
-	FILE* file = NULL;
-
-	char * toks = NULL;
-
-	char line[WORD_SIZE] = {0};
-	char name[WORD_SIZE] = {0};
-	char description[WORD_SIZE] = {0};
-
-
-	Id id = NO_ID;
-	Id link0 = NO_ID, link1 = NO_ID;
-
-	STATUS status = OK;
-
-	if (!filename || !game) return ERROR;
-
-	file = fopen(filename, "r");
-	if (file == NULL) return ERROR;
-
-	while (fgets(line, WORD_SIZE, file))
-	{
-		if (strncmp("#s:", line, 3) == 0)
-		{
-			/* Read Id */
-			toks = strtok(line + 3, "|");
-			id = atol(toks);
-
-			/* Read Name */
-			toks = strtok(NULL, "|");
-			strcpy(name, toks);
-
-			/* Read Description */
-			toks = strtok(NULL, "|");
-			strcpy(description, toks);
-
-			/* Read North/East/South/West */
-			toks = strtok(NULL, "|");
-
-			toks = strtok(NULL, "|");
-
-			toks = strtok(NULL, "|");
-
-			toks = strtok(NULL, "|");
-
-
+			object = object_create(name, id);
+			object_set_description(object, description);
+			game_set_object(game, object);
+			printf("Set location %ld for %s\n", place, name);
+			game_set_object_location(game, place, id);
+			printf("%ld is in space %ld", id, game_get_object_location(game, id));
 		}
 
 		if (strncmp("#l:", line, 3) == 0)

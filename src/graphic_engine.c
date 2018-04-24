@@ -62,9 +62,8 @@ void graphic_engineDestroy(Graphic_engine *ge)
 
 void graphic_enginePaintGame(Graphic_engine *ge, Game *game)
 {
-	int i, j;
+	int i;
 	Id id_act = NO_ID, obj_loc = NO_ID;
-	char ply[20]="\0";
 	char str[255];
 	F_Command* last_cmd = NULL;
 	T_Command last_cmd_text = UNKNOWN;
@@ -89,8 +88,8 @@ void graphic_enginePaintGame(Graphic_engine *ge, Game *game)
 	sprintf(str, " Game objects:");
 	screen_areaPuts(ge->descript, str);
 
-	print_newLine(ge->descript, 1);
-	for(i=1; i<5; i++)
+	print_new_line(ge->descript, 1);
+	for(i=1; i<=MAX_OBJECTS; i++)
 	{
 		if ((obj_loc = game_getObjectLocation(game, i)) != NO_ID)
 		{
@@ -99,31 +98,24 @@ void graphic_enginePaintGame(Graphic_engine *ge, Game *game)
 		}
 	}
 
-	print_newLine(ge->descript, 1);
-	for(i=1, j=0; i<5; i++)
+	print_new_line(ge->descript, 1);
+
+	print_new_line(ge->descript, 1);
+
+	sprintf(str, "Player has: ");
+	screen_area_puts(ge->descript, str);
+	for(i=1; i<=MAX_OBJECTS; i++)
 	{
-		if(game_getObjectLocation(game, i) == NO_ID)
+		if ((obj_loc = game_get_object_location(game, i)) == NO_ID)
 		{
-			ply[j]='o';
-			ply[j+1] = 48+i;
-			ply[j+2] = ',';
-			ply[j+3] = ' ';
-			j = j + 4;
-		}
-		else
-		{
-			ply[j]=' ';
-			ply[j+1]=' ';
+			sprintf(str, "  Object o%d [%s]", i, object_get_name(game_get_object_from_id(game, i)));
+			screen_area_puts(ge->descript, str);
 		}
 	}
 
-	print_newLine(ge->descript, 1);
-	sprintf(str, " Player objects: %s", ply);
-	screen_areaPuts(ge->descript, str);
-
-	print_newLine(ge->descript, 1);
-	sprintf(str, " Last roll stored value: %d", game_getLastRoll(game));
-	screen_areaPuts(ge->descript, str);
+	print_new_line(ge->descript, 1);
+	sprintf(str, " Last roll stored value: %d", game_get_last_roll(game));
+	screen_area_puts(ge->descript, str);
 
 	/* Banner */
 	screen_areaPuts(ge->banner, " The game of the Goose ");
@@ -138,10 +130,10 @@ void graphic_enginePaintGame(Graphic_engine *ge, Game *game)
 	screen_areaPuts(ge->help, str);
 
 	/* Command History */
-	last_cmd_text = game_getLastCommandText(game);
-	last_cmd = game_getLastCommand(game);
-	sprintf(str, " %s > %s", cmd_to_str[last_cmd_text-NO_CMD], command_getId(last_cmd));
-	screen_areaPuts(ge->feedback, str);
+	last_cmd_text = game_get_last_command_text(game, 0);
+	last_cmd = game_get_last_command(game);
+	sprintf(str, " %s > %s", cmd_to_str[last_cmd_text-NO_CMD], command_get_id(last_cmd));
+	screen_area_puts(ge->feedback, str);
 
 	if(last_cmd_text == ROLL)
 	{

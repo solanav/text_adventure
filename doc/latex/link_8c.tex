@@ -25,27 +25,27 @@ struct \hyperlink{struct__Link}{\+\_\+\+Link}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$ \hyperlink{link_8c_a8090d7f529cfd6a2fc5df3dd379fe514}{link\+\_\+create} (\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
-\item 
+\begin{DoxyCompactList}\small\item\em \+: Allocs memory for one link \end{DoxyCompactList}\item 
 void \hyperlink{link_8c_ad2a9e52ea7c506558a33bb6848bacc4b}{link\+\_\+destroy} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$l)
-\item 
+\begin{DoxyCompactList}\small\item\em \+: Frees the Link \end{DoxyCompactList}\item 
 \hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{link_8c_a5c7cbab32fbf5ab20fd041dea9875f39}{link\+\_\+set\+Id} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$l, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
-\item 
+\begin{DoxyCompactList}\small\item\em \+: Changes the link id to the given one \end{DoxyCompactList}\item 
 \hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{link_8c_a085cf528b6faac46522c5f7557f22154}{link\+\_\+set\+Status} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$l, \hyperlink{types_8h_aa60f669816b146d6373c62d9625e52ad}{Link\+Status} door)
-\item 
+\begin{DoxyCompactList}\small\item\em \+: Changes the Link status to O\+P\+E\+N or C\+L\+O\+S\+E\+D \end{DoxyCompactList}\item 
 \hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{link_8c_a894a7b512d0ef47fed125c52fc4efa18}{link\+\_\+set\+Spaces} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$l, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} space1, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} space2)
-\item 
+\begin{DoxyCompactList}\small\item\em \+: Sets the spaces the link is joining \end{DoxyCompactList}\item 
 \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{link_8c_a53c1abc5b1036293b2f083a43fa5f9a6}{link\+\_\+get\+Id} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$l)
-\item 
+\begin{DoxyCompactList}\small\item\em \+: Gets the links id \end{DoxyCompactList}\item 
 \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{link_8c_a0a71c306ec967042b34cb06f9c54b120}{link\+\_\+get\+Space1} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$l)
-\item 
+\begin{DoxyCompactList}\small\item\em \+: Gets the first Space of the link \end{DoxyCompactList}\item 
 \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{link_8c_a7ba54ca1d23bed23f67e059223df27cd}{link\+\_\+get\+Space2} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$l)
-\item 
+\begin{DoxyCompactList}\small\item\em \+: Gets the second Space of the link \end{DoxyCompactList}\item 
 \hyperlink{types_8h_aa60f669816b146d6373c62d9625e52ad}{Link\+Status} \hyperlink{link_8c_a41ceb902222cd286d751dad50cac70ba}{link\+\_\+get\+Status} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$l)
-\item 
+\begin{DoxyCompactList}\small\item\em \+: Gets the status the given link is in \end{DoxyCompactList}\item 
 \hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{link_8c_a95ea756dad592e65440a33dfbe47edcf}{link\+\_\+print} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$link)
-\item 
+\begin{DoxyCompactList}\small\item\em \+: \mbox{[}D\+E\+B\+U\+G O\+N\+L\+Y\mbox{]} prints the given link in stdout \end{DoxyCompactList}\item 
 \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{link_8c_a93f626504aabd27049d5a9e5c2ad9091}{link\+\_\+get\+Destination} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$l, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} origin\+Id)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \+: Gets the other space the link is connecting \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -64,81 +64,246 @@ G\+N\+U Public License
 \index{link\+\_\+create@{link\+\_\+create}!link.\+c@{link.\+c}}
 \subsubsection[{link\+\_\+create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Link}$\ast$ link\+\_\+create (
 \begin{DoxyParamCaption}
-\item[{{\bf Id}}]{id}
+\item[{{\bf Id}}]{}
 \end{DoxyParamCaption}
 )}}\label{link_8c_a8090d7f529cfd6a2fc5df3dd379fe514}
+
+
+\+: Allocs memory for one link 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & Null \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: a Link 
+\end{DoxyReturn}
 \hypertarget{link_8c_ad2a9e52ea7c506558a33bb6848bacc4b}{\index{link.\+c@{link.\+c}!link\+\_\+destroy@{link\+\_\+destroy}}
 \index{link\+\_\+destroy@{link\+\_\+destroy}!link.\+c@{link.\+c}}
 \subsubsection[{link\+\_\+destroy}]{\setlength{\rightskip}{0pt plus 5cm}void link\+\_\+destroy (
 \begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{l}
+\item[{{\bf Link} $\ast$}]{}
 \end{DoxyParamCaption}
 )}}\label{link_8c_ad2a9e52ea7c506558a33bb6848bacc4b}
+
+
+\+: Frees the Link 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & $\ast$\+Link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: void 
+\end{DoxyReturn}
 \hypertarget{link_8c_a93f626504aabd27049d5a9e5c2ad9091}{\index{link.\+c@{link.\+c}!link\+\_\+get\+Destination@{link\+\_\+get\+Destination}}
 \index{link\+\_\+get\+Destination@{link\+\_\+get\+Destination}!link.\+c@{link.\+c}}
 \subsubsection[{link\+\_\+get\+Destination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} link\+\_\+get\+Destination (
 \begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{l, }
-\item[{{\bf Id}}]{origin\+Id}
+\item[{{\bf Link} $\ast$}]{, }
+\item[{{\bf Id}}]{}
 \end{DoxyParamCaption}
 )}}\label{link_8c_a93f626504aabd27049d5a9e5c2ad9091}
+
+
+\+: Gets the other space the link is connecting 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & $\ast$\+Link space\+\_\+id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: space\+\_\+id 
+\end{DoxyReturn}
 \hypertarget{link_8c_a53c1abc5b1036293b2f083a43fa5f9a6}{\index{link.\+c@{link.\+c}!link\+\_\+get\+Id@{link\+\_\+get\+Id}}
 \index{link\+\_\+get\+Id@{link\+\_\+get\+Id}!link.\+c@{link.\+c}}
 \subsubsection[{link\+\_\+get\+Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} link\+\_\+get\+Id (
 \begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{l}
+\item[{{\bf Link} $\ast$}]{}
 \end{DoxyParamCaption}
 )}}\label{link_8c_a53c1abc5b1036293b2f083a43fa5f9a6}
+
+
+\+: Gets the links id 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & $\ast$\+Link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: link-\/$>$id 
+\end{DoxyReturn}
 \hypertarget{link_8c_a0a71c306ec967042b34cb06f9c54b120}{\index{link.\+c@{link.\+c}!link\+\_\+get\+Space1@{link\+\_\+get\+Space1}}
 \index{link\+\_\+get\+Space1@{link\+\_\+get\+Space1}!link.\+c@{link.\+c}}
 \subsubsection[{link\+\_\+get\+Space1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} link\+\_\+get\+Space1 (
 \begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{l}
+\item[{{\bf Link} $\ast$}]{}
 \end{DoxyParamCaption}
 )}}\label{link_8c_a0a71c306ec967042b34cb06f9c54b120}
+
+
+\+: Gets the first Space of the link 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & $\ast$\+Link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: link-\/$>$space1 
+\end{DoxyReturn}
 \hypertarget{link_8c_a7ba54ca1d23bed23f67e059223df27cd}{\index{link.\+c@{link.\+c}!link\+\_\+get\+Space2@{link\+\_\+get\+Space2}}
 \index{link\+\_\+get\+Space2@{link\+\_\+get\+Space2}!link.\+c@{link.\+c}}
 \subsubsection[{link\+\_\+get\+Space2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} link\+\_\+get\+Space2 (
 \begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{l}
+\item[{{\bf Link} $\ast$}]{}
 \end{DoxyParamCaption}
 )}}\label{link_8c_a7ba54ca1d23bed23f67e059223df27cd}
+
+
+\+: Gets the second Space of the link 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & $\ast$\+Link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: link-\/$>$space2 
+\end{DoxyReturn}
 \hypertarget{link_8c_a41ceb902222cd286d751dad50cac70ba}{\index{link.\+c@{link.\+c}!link\+\_\+get\+Status@{link\+\_\+get\+Status}}
 \index{link\+\_\+get\+Status@{link\+\_\+get\+Status}!link.\+c@{link.\+c}}
 \subsubsection[{link\+\_\+get\+Status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Link\+Status} link\+\_\+get\+Status (
 \begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{l}
+\item[{{\bf Link} $\ast$}]{}
 \end{DoxyParamCaption}
 )}}\label{link_8c_a41ceb902222cd286d751dad50cac70ba}
+
+
+\+: Gets the status the given link is in 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & $\ast$\+Link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: O\+P\+E\+N or C\+L\+O\+S\+E\+D 
+\end{DoxyReturn}
 \hypertarget{link_8c_a95ea756dad592e65440a33dfbe47edcf}{\index{link.\+c@{link.\+c}!link\+\_\+print@{link\+\_\+print}}
 \index{link\+\_\+print@{link\+\_\+print}!link.\+c@{link.\+c}}
 \subsubsection[{link\+\_\+print}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} link\+\_\+print (
 \begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{link}
+\item[{{\bf Link} $\ast$}]{}
 \end{DoxyParamCaption}
 )}}\label{link_8c_a95ea756dad592e65440a33dfbe47edcf}
+
+
+\+: \mbox{[}D\+E\+B\+U\+G O\+N\+L\+Y\mbox{]} prints the given link in stdout 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & $\ast$\+Link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: O\+K or E\+R\+R\+O\+R, printed the link; 
+\end{DoxyReturn}
 \hypertarget{link_8c_a5c7cbab32fbf5ab20fd041dea9875f39}{\index{link.\+c@{link.\+c}!link\+\_\+set\+Id@{link\+\_\+set\+Id}}
 \index{link\+\_\+set\+Id@{link\+\_\+set\+Id}!link.\+c@{link.\+c}}
 \subsubsection[{link\+\_\+set\+Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} link\+\_\+set\+Id (
 \begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{l, }
-\item[{{\bf Id}}]{id}
+\item[{{\bf Link} $\ast$}]{, }
+\item[{{\bf Id}}]{}
 \end{DoxyParamCaption}
 )}}\label{link_8c_a5c7cbab32fbf5ab20fd041dea9875f39}
+
+
+\+: Changes the link id to the given one 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & $\ast$\+Link Id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: O\+K or E\+R\+R\+O\+R 
+\end{DoxyReturn}
 \hypertarget{link_8c_a894a7b512d0ef47fed125c52fc4efa18}{\index{link.\+c@{link.\+c}!link\+\_\+set\+Spaces@{link\+\_\+set\+Spaces}}
 \index{link\+\_\+set\+Spaces@{link\+\_\+set\+Spaces}!link.\+c@{link.\+c}}
 \subsubsection[{link\+\_\+set\+Spaces}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} link\+\_\+set\+Spaces (
 \begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{l, }
-\item[{{\bf Id}}]{space1, }
-\item[{{\bf Id}}]{space2}
+\item[{{\bf Link} $\ast$}]{, }
+\item[{{\bf Id}}]{, }
+\item[{{\bf Id}}]{}
 \end{DoxyParamCaption}
 )}}\label{link_8c_a894a7b512d0ef47fed125c52fc4efa18}
+
+
+\+: Sets the spaces the link is joining 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & $\ast$\+Link two spaces ids \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: O\+K or E\+R\+R\+O\+R 
+\end{DoxyReturn}
 \hypertarget{link_8c_a085cf528b6faac46522c5f7557f22154}{\index{link.\+c@{link.\+c}!link\+\_\+set\+Status@{link\+\_\+set\+Status}}
 \index{link\+\_\+set\+Status@{link\+\_\+set\+Status}!link.\+c@{link.\+c}}
 \subsubsection[{link\+\_\+set\+Status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} link\+\_\+set\+Status (
 \begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{l, }
-\item[{{\bf Link\+Status}}]{door}
+\item[{{\bf Link} $\ast$}]{, }
+\item[{{\bf Link\+Status}}]{}
 \end{DoxyParamCaption}
 )}}\label{link_8c_a085cf528b6faac46522c5f7557f22154}
+
+
+\+: Changes the Link status to O\+P\+E\+N or C\+L\+O\+S\+E\+D 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & $\ast$\+Link Link\+Status \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: O\+K or E\+R\+R\+O\+R 
+\end{DoxyReturn}

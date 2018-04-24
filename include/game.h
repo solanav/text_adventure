@@ -39,21 +39,25 @@ Object * game_getObjectFromId(Game * game, Id id);
 Link*	game_getLink(Game *, Id);
 Id		game_getLinkIdAt(Game *, int);
 
-Id 		game_getPlayerLocation(Game *);
-Id	 	game_getObjectLocation(Game *, Id);
-Id		game_getSpaceIdAt(Game *, int);
-int		game_getLastRoll(Game *);
+Id 		game_get_player_location(Game *);
+Id	 	game_get_object_location(Game *, Id);
+Id		game_get_space_id_at(Game *, int);
+Id    game_get_object_id_at(Game *, int);
+int		game_get_last_roll(Game *);
 
 
-STATUS	game_addSpace(Game *, Space *);
-STATUS 	game_setPlayerLocation(Game *, Id);
-STATUS 	game_setObjectLocation(Game *, Id, Id, char *, char *);
-STATUS	game_setLink(Game *, Id, Id, Id);
+STATUS	game_add_space(Game *, Space *);
+STATUS 	game_set_player_location(Game *, Id);
+STATUS game_set_object(Game *, Object *);
+STATUS 	game_set_object_location(Game *, Id, Id);
+STATUS	game_set_link(Game *, Id, Id, Id);
 
 STATUS	game_loadspaces(Game *, char *);
 
-F_Command*	game_getLastCommand(Game *);
-T_Command	game_getLastCommandText(Game *);
+F_Command*	game_get_last_command(Game *);
+F_Command*  game_get_earlier_command(Game*);
+T_Command	game_get_last_command_text(Game *, int);
+char *		game_get_last_command_parameters(Game *, int);
 
 BOOL game_areSpacesAdjacent(Game *, Id, Id);
 

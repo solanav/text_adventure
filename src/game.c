@@ -23,7 +23,7 @@ struct _Game
 	Space * spaces[MAX_SPACES + 1]; /*!< Array de espacios*/
 	Link * links[MAX_LINK]; /*!< Array de links*/
 	Die * die; /*!< Dado */
-	F_Command * last_cmd; /*!< ultimo comando*/
+	F_Command * last_cmd[2]; /*!< ultimos  dos comandos*/
 };
 
 /**
@@ -72,10 +72,10 @@ Game * game_create()
 
 	game->player = player_create("player1", NO_ID, NO_ID, 1);
 
-	game->objects[0] = object_create("linterna", (long int) 1);
-	game->objects[1] = object_create("libro", (long int) 2);
-	game->objects[2] = object_create("pocion", (long int) 3);
-	game->objects[3] = object_create("llave", (long int) 4);
+	for (i =0; i < MAX_OBJECTS; i++)
+	{
+		game->objects[i] = NULL;
+	}
 
 	for (i = 0; i < MAX_LINK; i++)
 	{
@@ -85,7 +85,8 @@ Game * game_create()
 	game->die = die_ini(666);
 	game_setPlayerLocation(game, NO_ID);
 
-	game->last_cmd = NULL;
+	game->last_cmd[0] = NULL;
+	game->last_cmd[1] = NULL;
 
 	return game;
 }
@@ -144,7 +145,8 @@ STATUS game_createFromFile(Game * game, char * filename)
 
 	for (i=0; i<MAX_OBJECTS; i++)
 	{
-		printf("Object -> %s [%ld]", object_getName(game->objects[i]), object_getId(game->objects[i]));
+		printf("Object -> %s [%ld]", object_get_name(game->objects[i]), object_get_id(game->objects[i]));
+		printf("Object location -> %d", (int)game_get_object_location(game, i+1));
 	}
 
 	printf("Player name -> %s\n", player_getName(game->player));
@@ -216,7 +218,7 @@ Object * game_getObject(Game * game, char * object_name)
 
 	if(!game || !object_name) return NULL;
 
-	for(i=0; i < 4 && game->objects[i]; i++)
+	for(i=0; i < MAX_OBJECTS && game->objects[i]; i++)
 	{
 		printf("Comparing [%s] with [%s]\n", object_name, object_getName(game->objects[i]));
 		if (strcasecmp(object_name, object_getName(game->objects[i])) ==  0)
@@ -294,7 +296,8 @@ STATUS game_update(Game * game, F_Command * cmd)
 {
 	if(!game || !cmd) return ERROR;
 
-	game->last_cmd = cmd;
+	game->last_cmd[1] = game->last_cmd[0];
+	game->last_cmd[0] = cmd;
 
 	(*game_callback_fn_list[command_getCmd(cmd)])(game);
 	return OK;
@@ -302,12 +305,25 @@ STATUS game_update(Game * game, F_Command * cmd)
 
 F_Command * game_getLastCommand(Game * game)
 {
-	return game->last_cmd;
+	return game->last_cmd[0];
 }
 
-T_Command game_getLastCommandText(Game * game)
+F_Command * game_get_earlier_command(Game * game){
+	return game->last_cmd[1];
+}
+
+T_Command game_get_last_command_text(Game * game, int i)
 {
-	return command_getCmd(game->last_cmd);
+	if(i != 1 || i != 0) return UNKNOWN;
+
+	return command_getCmd(game->last_cmd[i]);
+}
+
+char * game_get_last_command_parameters(Game * game, int i)
+{
+	if(i != 1 || i != 0) return "\0";
+
+	return command_get_id(game->last_cmd[i]);
 }
 
 void game_printData(Game * game)
@@ -352,8 +368,8 @@ void game_callbackPickup(Game * game)
 	Space * space_pointer = game_getSpace(game, player_locId);
 	char object[20] = {0};
 
-	strcpy(object, command_getId(game->last_cmd));
-	object_id = object_getId(game_getObject(game, object));
+	strcpy(object, command_get_id(game->last_cmd[0]));
+	object_id = object_get_id(game_get_object(game, object));
 
 	if (!game) return;
 	if (game_getObjectLocation(game, object_id) == game_getPlayerLocation(game))
@@ -382,12 +398,14 @@ void game_callbackDrop(Game * game)
 
 	if (!game) return;
 
-	strcpy(object, command_getId(game->last_cmd));
-	object_id = object_getId(game_getObject(game, object));
+	strcpy(object, command_get_id(game->last_cmd[0]));
+	object_id = object_get_id(game_get_object(game, object));
 
 	if (object_id > MAX_OBJECTS) return;
 
-	space_addObject(space_pointer, object_id);
+	if(player_removeObjId(game->player, object_id) == ERROR) return;
+
+	space_add_object(space_pointer, object_id);
 	player_removeObjId(game->player, object_id);
 
 	return;
@@ -407,8 +425,8 @@ void game_callbackMove(Game * game)
 	Id space_id = NO_ID;
 	char movement[20] = {0};
 
-	space_id = game_getPlayerLocation(game);
-	strcpy(movement, command_getId(game->last_cmd));
+	space_id = game_get_player_location(game);
+	strcpy(movement, command_get_id(game->last_cmd[0]));
 
 	printf("Someone is trying to move...\n\tPlayer loc -> %ld\n\tMovement -> %s\n", space_id, movement);
 
@@ -461,22 +479,22 @@ void game_callbackCheck(Game * game)
 	if (!game) return;
 
 	/* Clever hack if i say so myself, prob shouldn't be doing it but meh - Solanav */
-	if (strcasecmp(command_getId(game->last_cmd), "s") == 0 || strcasecmp(command_getId(game->last_cmd), "space") == 0)
+	if (strcasecmp(command_get_id(game->last_cmd[0]), "s") == 0 || strcasecmp(command_get_id(game->last_cmd[0]), "space") == 0)
 	{
-		strcpy(space_name, command_getId(game->last_cmd));
-		strcpy(space_description, space_getDescription(game_getSpace(game, player_getLocId(game->player))));
+		strcpy(space_name, command_get_id(game->last_cmd[0]));
+		strcpy(space_description, space_get_description(game_get_space(game, player_getLocId(game->player))));
 
-		command_setId(game->last_cmd, space_description);
+		command_set_id(game->last_cmd[0], space_description);
 	}
 	else
 	{
-		strcpy(object_name, command_getId(game->last_cmd));
+		strcpy(object_name, command_get_id(game->last_cmd[0]));
 
 		if (!game_getObject(game, object_name)) return;
 
 		strcpy(object_description, object_getDescription(game_getObject(game, object_name)));
 
-		command_setId(game->last_cmd, object_description);
+		command_set_id(game->last_cmd[0], object_description);
 	}
 
 	return;
@@ -514,7 +532,14 @@ STATUS game_setPlayerLocation(Game * game, Id id)
 	return OK;
 }
 
-STATUS game_setLink(Game * game, Id link_id, Id space_id0, Id space_id1)
+Id game_get_object_id_at(Game * game, int position)
+{
+	if (position < 0 || position >= MAX_OBJECTS) return NO_ID;
+
+	return object_get_id(game->objects[position]);
+}
+
+STATUS game_set_link(Game * game, Id link_id, Id space_id0, Id space_id1)
 {
 	int i;
 
@@ -533,18 +558,38 @@ STATUS game_setLink(Game * game, Id link_id, Id space_id0, Id space_id1)
 	return ERROR;
 }
 
-STATUS game_setObjectLocation(Game * game, Id id, Id obj_id, char * name, char * description)
+STATUS game_set_object(Game* game, Object* object)
+{
+	int i;
+
+	if(!game || !object) return ERROR;
+
+	for (i = 0; i < MAX_OBJECTS; i++)
+	{
+		if (game_get_object_id_at(game, i) == NO_ID)
+		{
+			game->objects[i] = object;
+			return OK;
+		}
+	}
+
+	return OK;
+}
+
+STATUS game_set_object_location(Game * game, Id id, Id obj_id)
 {
 	int i;
 
 	if (id == NO_ID || !game) return ERROR;
 
+	printf("Somebody is trying to set %ld to %ld\n", obj_id, id);
 	for (i = 0; i < MAX_SPACES; i++)
 	{
 		if (space_getId(game->spaces[i]) == id)
 		{
-			space_addObject(game->spaces[i], obj_id);
-			object_setDescription(game_getObject(game, name), description);
+			printf("It worked\n");
+			if(space_add_object(game->spaces[i], obj_id) == ERROR)
+				printf("This didnt work for some reason %ld\n", obj_id);
 			return OK;
 		}
 	}

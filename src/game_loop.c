@@ -61,14 +61,14 @@ int main(int argc, char *argv[])
 	/* main loop */
 	while ((command_getCmd(command) != EXIT) && !game_isOver(game))
 	{
-		graphic_enginePaintGame(gengine, game);
+		graphic_engine_paint_game(gengine, game);
 
-		if(get_userInput(command)== OK)
+		if(get_user_input(command)== OK)
 			game_update(game, command);
 
 		if (argc == 4 && strcmp(argv[2], "-l")==0)
 		{
-			fprintf(log, "%s %s\n", cmd_to_str[game_getLastCommandText(game)+1], command_getId(game_getLastCommand(game)));
+			fprintf(log, "%s %s\n", cmd_to_str[game_get_last_command_text(game, 0)+1], game_get_last_command_parameters(game, 0)); 
 		}
 	}
 
