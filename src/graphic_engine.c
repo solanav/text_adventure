@@ -130,7 +130,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 	screen_area_puts(ge->help, str);
 
 	/* Command History */
-	last_cmd_text = game_get_last_command_text(game);
+	last_cmd_text = game_get_last_command_text(game, 0);
 	last_cmd = game_get_last_command(game);
 	sprintf(str, " %s > %s", cmd_to_str[last_cmd_text-NO_CMD], command_get_id(last_cmd));
 	screen_area_puts(ge->feedback, str);

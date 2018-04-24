@@ -11,6 +11,6 @@ char * dialogue_generate(Game * game)
 	if(!game) return NULL;
 
 	switch (CMD) {
-		case /* value */:
+		case :
 	}
 }

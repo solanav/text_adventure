@@ -23,7 +23,7 @@ struct _Game
 	Space * spaces[MAX_SPACES + 1]; /*!< Array de espacios*/
 	Link * links[MAX_LINK]; /*!< Array de links*/
 	Die * die; /*!< Dado */
-	F_Command * last_cmd; /*!< ultimo comando*/
+	F_Command * last_cmd[2]; /*!< ultimos  dos comandos*/
 };
 
 /**
@@ -85,7 +85,8 @@ Game * game_create()
 	game->die = die_ini(666);
 	game_set_player_location(game, NO_ID);
 
-	game->last_cmd = NULL;
+	game->last_cmd[0] = NULL;
+	game->last_cmd[1] = NULL;
 
 	return game;
 }
@@ -295,7 +296,8 @@ STATUS game_update(Game * game, F_Command * cmd)
 {
 	if(!game || !cmd) return ERROR;
 
-	game->last_cmd = cmd;
+	game->last_cmd[1] = game->last_cmd[0];
+	game->last_cmd[0] = cmd;
 
 	(*game_callback_fn_list[command_getCmd(cmd)])(game);
 	return OK;
@@ -303,17 +305,25 @@ STATUS game_update(Game * game, F_Command * cmd)
 
 F_Command * game_get_last_command(Game * game)
 {
-	return game->last_cmd;
+	return game->last_cmd[0];
 }
 
-T_Command game_get_last_command_text(Game * game)
-{
-	return command_getCmd(game->last_cmd);
+F_Command * game_get_earlier_command(Game * game){
+	return game->last_cmd[1];
 }
 
-char * game_get_last_command_parameters(Game * game)
+T_Command game_get_last_command_text(Game * game, int i)
 {
-	return command_get_id(game->last_cmd);
+	if(i != 1 || i != 0) return UNKNOWN;
+
+	return command_getCmd(game->last_cmd[i]);
+}
+
+char * game_get_last_command_parameters(Game * game, int i)
+{
+	if(i != 1 || i != 0) return "\0";
+
+	return command_get_id(game->last_cmd[i]);
 }
 
 void game_print_data(Game * game)
@@ -358,7 +368,7 @@ void game_callback_pickup(Game * game)
 	Space * space_pointer = game_get_space(game, player_locId);
 	char object[20] = {0};
 
-	strcpy(object, command_get_id(game->last_cmd));
+	strcpy(object, command_get_id(game->last_cmd[0]));
 	object_id = object_get_id(game_get_object(game, object));
 
 	if (!game) return;
@@ -388,7 +398,7 @@ void game_callback_drop(Game * game)
 
 	if (!game) return;
 
-	strcpy(object, command_get_id(game->last_cmd));
+	strcpy(object, command_get_id(game->last_cmd[0]));
 	object_id = object_get_id(game_get_object(game, object));
 
 	if (object_id > MAX_OBJECTS) return;
@@ -416,7 +426,7 @@ void game_callback_move(Game * game)
 	char movement[20] = {0};
 
 	space_id = game_get_player_location(game);
-	strcpy(movement, command_get_id(game->last_cmd));
+	strcpy(movement, command_get_id(game->last_cmd[0]));
 
 	printf("Someone is trying to move...\n\tPlayer loc -> %ld\n\tMovement -> %s\n", space_id, movement);
 
@@ -469,22 +479,22 @@ void game_callback_check(Game * game)
 	if (!game) return;
 
 	/* Clever hack if i say so myself, prob shouldn't be doing it but meh - Solanav */
-	if (strcasecmp(command_get_id(game->last_cmd), "s") == 0 || strcasecmp(command_get_id(game->last_cmd), "space") == 0)
+	if (strcasecmp(command_get_id(game->last_cmd[0]), "s") == 0 || strcasecmp(command_get_id(game->last_cmd[0]), "space") == 0)
 	{
-		strcpy(space_name, command_get_id(game->last_cmd));
+		strcpy(space_name, command_get_id(game->last_cmd[0]));
 		strcpy(space_description, space_get_description(game_get_space(game, player_getLocId(game->player))));
 
-		command_set_id(game->last_cmd, space_description);
+		command_set_id(game->last_cmd[0], space_description);
 	}
 	else
 	{
-		strcpy(object_name, command_get_id(game->last_cmd));
+		strcpy(object_name, command_get_id(game->last_cmd[0]));
 
 		if (!game_get_object(game, object_name)) return;
 
 		strcpy(object_description, object_get_description(game_get_object(game, object_name)));
 
-		command_set_id(game->last_cmd, object_description);
+		command_set_id(game->last_cmd[0], object_description);
 	}
 
 	return;
