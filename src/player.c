@@ -28,7 +28,6 @@ Player * player_create(char * name, Id location_id, Id object_id, Id id)
 	 *
 	**/
 	Player * new_player;
-
 	new_player = (Player *) calloc(1, sizeof(Player));
 
 	if (!name) return NULL;
@@ -73,7 +72,7 @@ STATUS player_setObjId(Player * player, Id new_objId)
 {
 	if(!player) return ERROR;
 
-	inventory_addId(player->inv, new_objId);
+	inventory_add_id(player->inv, new_objId);
 
 	return OK;
 }
@@ -104,7 +103,7 @@ Id player_getObjId(Player * player, int num)
 {
 	if(!player) return NO_ID;
 
-	return inventory_getIdAt(player->inv, num);
+	return inventory_get_id_at(player->inv, num);
 }
 
 Id player_getId(Player * player)

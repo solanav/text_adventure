@@ -44,14 +44,14 @@ int main(int argc, char *argv[])
 	}
 
 	/* load */
-	if (game_createFromFile(game, argv[1]) == ERROR)
+	if (game_create_from_file(game, argv[1]) == ERROR)
 	{
 		fprintf(stderr, "Error while initializing game.\n");
 		return 1;
 	}
 
 	/* start graphic engine */
-	if ((gengine = graphic_engineCreate()) == NULL)
+	if ((gengine = graphic_engine_create()) == NULL)
 	{
 		fprintf(stderr, "Error while initializing graphic engine.\n");
 		game_destroy(game);
@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 	}
 
 	/* main loop */
-	while ((command_getCmd(command) != EXIT) && !game_isOver(game))
+	while ((command_getCmd(command) != EXIT) && !game_is_over(game))
 	{
 		graphic_engine_paint_game(gengine, game);
 
@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
 	if (log != NULL) fclose(log);
 	command_free(command);
 	game_destroy(game);
-	graphic_engineDestroy(gengine);
+	graphic_engine_destroy(gengine);
 
 	return 0;
 }

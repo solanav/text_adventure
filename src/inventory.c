@@ -14,13 +14,13 @@
 
 struct _Inventory
 {
-	Set * ids; /*!< Inventario*/
+	Set *ids; /*!< Inventario*/
 	int id_max; /*!< Maximo de lugares*/
 };
 
 Inventory * inventory_create(int size)
 {
-	Inventory * inv = NULL;
+	Inventory *inv = NULL;
 
 	inv = (Inventory *)calloc(1, sizeof(Inventory));
 	if(!inv) return NULL;
@@ -42,7 +42,7 @@ STATUS inventory_destroy(Inventory *inv)
 	return OK;
 }
 
-STATUS inventory_setIds(Inventory *inv, Set *ids)
+STATUS inventory_set_ids(Inventory *inv, Set *ids)
 {
 	if(!inv || !ids) return ERROR;
 
@@ -51,21 +51,21 @@ STATUS inventory_setIds(Inventory *inv, Set *ids)
 	return OK;
 }
 
-Set * inventory_getIds(Inventory *inv)
+Set * inventory_get_ids(Inventory *inv)
 {
 	if(!inv) return NULL;
 
 	return inv->ids;
 }
 
-Id inventory_getIdAt(Inventory *inv, int num)
+Id inventory_get_id_at(Inventory *inv, int num)
 {
 	if(!inv) return NO_ID;
 
-	return set_getId(inv->ids, num);
+	return set_get_id(inv->ids, num);
 }
 
-STATUS inventory_setIdMax(Inventory *inv, int id_max)
+STATUS inventory_set_id_max(Inventory *inv, int id_max)
 {
 	if(!inv || id_max <= 0) return ERROR;
 
@@ -74,14 +74,14 @@ STATUS inventory_setIdMax(Inventory *inv, int id_max)
 	return OK;
 }
 
-int inventory_getIdMax(Inventory *inv)
+int inventory_get_id_max(Inventory *inv)
 {
 	if(!inv) return 0;
 
 	return inv->id_max;
 }
 
-STATUS inventory_addId(Inventory *inv, Id id)
+STATUS inventory_add_id(Inventory *inv, Id id)
 {
 	if(!inv || id == NO_ID) return ERROR;
 
@@ -90,7 +90,7 @@ STATUS inventory_addId(Inventory *inv, Id id)
 	return OK;
 }
 
-STATUS inventory_delId(Inventory *inv, Id id)
+STATUS inventory_del_id(Inventory *inv, Id id)
 {
 	if(!inv || id == NO_ID) return ERROR;
 
@@ -101,5 +101,5 @@ STATUS inventory_delId(Inventory *inv, Id id)
 
 void inventory_print(Inventory * inv)
 {
-	set_printDebug(stdin, inv->ids);
+	set_print_debug(stdin, inv->ids);
 }

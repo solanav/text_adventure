@@ -33,113 +33,113 @@ int main(int argc, char** argv) {
         }
     }
 
-	if (all || test == 1)   test1_playerCreate();
-   if (all || test == 2)  test1_playerSetName();
-   if (all || test == 3)  test2_playerSetName();
-   if (all || test == 4)  test1_playerSetLocId();
-   if (all || test == 5)  test2_playerSetLocId();
-   if (all || test == 6)  test1_playerSetObjId();
-   if (all || test == 7)  test2_playerSetObjId();
-   if (all || test == 8)  test1_playerSetId();
-   if (all || test == 9)  test2_playerSetId();
-   if (all || test == 10) test1_playerGetName();
-	 if (all || test == 11) test1_playerGetLocId();
-	 if (all || test == 12) test1_playerGetObjId();
-	 if (all || test == 13) test1_playerGetId();
-	 if (all || test == 14) test1_playerRemoveObjectId();
-	 if (all || test == 15) test2_playerRemoveObjectId();
+	if (all || test == 1) test1_player_create();
+    if (all || test == 2) test1_player_set_name();
+    if (all || test == 3) test2_player_set_name();
+    if (all || test == 4) test1_player_set_LocId();
+    if (all || test == 5) test2_player_set_LocId();
+    if (all || test == 6) test1_player_set_ObjId();
+    if (all || test == 7) test2_player_set_ObjId();
+    if (all || test == 8) test1_player_set_id();
+    if (all || test == 9) test2_player_set_id();
+    if (all || test == 10) test1_player_get_name();
+	if (all || test == 11) test1_player_get_LocId();
+	if (all || test == 12) test1_player_get_ObjId();
+	if (all || test == 13) test1_player_get_id();
+	if (all || test == 14) test1_player_remove_object_id();
+	if (all || test == 15) test2_player_remove_object_id();
 
 	PRINT_PASSED_PERCENTAGE;
 
 	return 0;
 }
 
-void test1_playerCreate()
+void test1_player_create()
 {
 	int p = player_create("Idi", 1, 1, 1) != NULL;
 	PRINT_TEST_RESULT(p);
 }
 
-void test1_playerSetName()
+void test1_player_set_name()
 {
 	Player *p = NULL;
 	PRINT_TEST_RESULT(player_setName(p, "I") == ERROR);
 }
 
-void test2_playerSetName()
+void test2_player_set_name()
 {
 	Player *p = player_create("I", 1, 1, 1);
 	PRINT_TEST_RESULT(player_setName(p, "W") == OK);
 }
 
-void test1_player_setLocId()
+void test1_player_set_LocId()
 {
 	Player *p = NULL;
 	PRINT_TEST_RESULT(player_setLocId(p, 2) == ERROR);
 }
 
-void test2_playerSetLocId()
+void test2_player_set_LocId()
 {
 	Player *p = player_create("I", 1, 1, 1);
 	PRINT_TEST_RESULT(player_setLocId(p, 2) == OK);
 }
 
-void test1_playerSetObjId()
+void test1_player_set_ObjId()
 {
 	Player *p = NULL;
 	PRINT_TEST_RESULT(player_setObjId(p, 2) == ERROR);
 }
 
-void test2_playerSetObjId()
+void test2_player_set_ObjId()
 {
 	Player *p = player_create("I", 1, 1, 1);
 	PRINT_TEST_RESULT(player_setObjId(p, 2) == OK);
 }
 
-void test1_playerSetId()
+void test1_player_set_id()
 {
 	Player *p = NULL;
 	PRINT_TEST_RESULT(player_setId(p, 2) == ERROR);
 }
 
-void test2_playerSetId()
+void test2_player_set_id()
 {
 	Player *p = player_create("I", 1, 1, 1);
 	PRINT_TEST_RESULT(player_setId(p, 2) == OK);
 }
 
-void test1_playerGetName()
+void test1_player_get_name()
 {
 	Player *p = player_create("I", 1, 1, 1);
 	PRINT_TEST_RESULT(strcmp(player_getName(p), "I") == 0);
 }
 
-void test1_playerGetLocId()
+void test1_player_get_LocId()
 {
 	Player *p = player_create("I", 1, 1, 1);
 	PRINT_TEST_RESULT(player_getLocId(p) == 1);
 }
 
-void test1_playerGetObjId()
+void test1_player_get_ObjId()
 {
 	Player *p = player_create("I", 1, 1, 1);
 	player_setObjId(p, 1);
 	PRINT_TEST_RESULT(player_getObjId(p, 0) == 1);
 }
 
-void test1_playerGetId()
+void test1_player_get_id()
 {
 	Player *p = player_create("I", 1, 1, 1);
 	PRINT_TEST_RESULT(player_getId(p) == 1);
 }
 
-void test1_playerRemoveObjectId()
+void test1_player_remove_object_id()
 {
 	Player *p = NULL;
 	PRINT_TEST_RESULT(player_removeObjId(p, 1) == ERROR);
 }
 
-void test2_playerRemoveObjectId()
+void test2_player_remove_object_id()
 {
 	Player *p = player_create("I", 1, 1, 1);
 	PRINT_TEST_RESULT(player_removeObjId(p, 1) == OK);

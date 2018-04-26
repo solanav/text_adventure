@@ -17,17 +17,13 @@ typedef struct _Inventory Inventory;
 Inventory * inventory_create(int);
 STATUS inventory_destroy(Inventory *inv);
 
-STATUS inventory_setIds(Inventory *inv, Set *ids);
-Set * inventory_getIds(Inventory *inv);
+STATUS inventory_set_ids(Inventory *inv, Set *ids);
+Set * inventory_get_ids(Inventory *inv);
 
-Id inventory_getIdAt(Inventory *inv, int num);
+Id inventory_get_id_at(Inventory *inv, int num);
 
-
-STATUS inventory_setIdMax(Inventory *inv, int id_max);
-int inventory_getIdMax(Inventory *inv);
-
-STATUS inventory_addId(Inventory *inv, Id id);
-STATUS inventory_delId(Inventory *inv, Id id);
+STATUS inventory_add_id(Inventory *inv, Id id);
+STATUS inventory_del_id(Inventory *inv, Id id);
 
 void inventory_print(Inventory *);
 

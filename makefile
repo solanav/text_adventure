@@ -23,8 +23,8 @@ DOCPATH = ./doc/
 
 ################ EXEC CREATION
 
-game_exec: game_loop.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o game.o inventory.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)game_loop.o $(OBJPATH)game_reader.o $(OBJPATH)graphic_engine.o $(OBJPATH)screen.o $(OBJPATH)command.o $(OBJPATH)space.o $(OBJPATH)object.o $(OBJPATH)player.o $(OBJPATH)set.o $(OBJPATH)die.o $(OBJPATH)link.o $(OBJPATH)game.o $(OBJPATH)inventory.o
+game_exec: game_loop.o game_management.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o game.o inventory.o
+	$(CC) $(CFLAGS) -o $@ $(OBJPATH)game_loop.o $(OBJPATH)game_management.o $(OBJPATH)graphic_engine.o $(OBJPATH)screen.o $(OBJPATH)command.o $(OBJPATH)space.o $(OBJPATH)object.o $(OBJPATH)player.o $(OBJPATH)set.o $(OBJPATH)die.o $(OBJPATH)link.o $(OBJPATH)game.o $(OBJPATH)inventory.o
 
 ################ TESTS
 
@@ -60,8 +60,8 @@ player.o: $(SRCPATH)player.c $(HDRPATH)types.h $(HDRPATH)player.h $(HDRPATH)set.
 game_loop.o: $(SRCPATH)game_loop.c $(HDRPATH)graphic_engine.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)game_loop.c -o $(OBJPATH)game_loop.o
 
-game_reader.o: $(SRCPATH)game_reader.c $(HDRPATH)game.h $(HDRPATH)types.h
-	$(CC) $(CFLAGS) -c $(SRCPATH)game_reader.c -o $(OBJPATH)game_reader.o
+game_management.o: $(SRCPATH)game_management.c $(HDRPATH)game.h $(HDRPATH)types.h
+	$(CC) $(CFLAGS) -c $(SRCPATH)game_management.c -o $(OBJPATH)game_management.o
 
 graphic_engine.o: $(SRCPATH)graphic_engine.c $(HDRPATH)graphic_engine.h $(HDRPATH)screen.h $(HDRPATH)game.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)graphic_engine.c -o $(OBJPATH)graphic_engine.o
@@ -78,7 +78,7 @@ object.o: $(SRCPATH)object.c $(HDRPATH)object.h $(HDRPATH)types.h
 command.o: $(SRCPATH)command.c $(HDRPATH)command.h $(HDRPATH)types.h $(HDRPATH)game.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)command.c -o $(OBJPATH)command.o
 
-game.o: $(SRCPATH)game.c $(HDRPATH)game.h $(HDRPATH)game_reader.h $(HDRPATH)object.h $(HDRPATH)player.h $(HDRPATH)space.h $(HDRPATH)command.h $(HDRPATH)die.h $(HDRPATH)link.h $(HDRPATH)inventory.h
+game.o: $(SRCPATH)game.c $(HDRPATH)game.h $(HDRPATH)game_management.h $(HDRPATH)object.h $(HDRPATH)player.h $(HDRPATH)space.h $(HDRPATH)command.h $(HDRPATH)die.h $(HDRPATH)link.h $(HDRPATH)inventory.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)game.c -o $(OBJPATH)game.o
 
 die.o: $(SRCPATH)die.c $(HDRPATH)die.h $(HDRPATH)types.h

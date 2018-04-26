@@ -26,7 +26,7 @@ Die* die_ini(Id id)
   return die;
 }
 
-void die_dieDie(Die* die)
+void die_die_die(Die* die)
 {
   if(!die) return;
 
@@ -53,7 +53,7 @@ STATUS die_print(FILE* f, Die* die)
   return OK;
 }
 
-short int die_getLastRoll(Die * die)
+short int die_get_last_roll(Die * die)
 {
   if(!die) return -1;
 

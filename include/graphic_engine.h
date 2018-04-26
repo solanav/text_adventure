@@ -14,9 +14,9 @@
 
 typedef struct _Graphic_engine Graphic_engine;
 
-Graphic_engine* graphic_engineCreate();
-void graphic_engineDestroy(Graphic_engine *);
-void graphic_enginePaintGame(Graphic_engine *, Game *);
+Graphic_engine* graphic_engine_create();
+void graphic_engine_destroy(Graphic_engine *);
+void graphic_engine_paint_game(Graphic_engine *, Game *);
 
 /**
  *	int = 0 -> top space
@@ -25,5 +25,7 @@ void graphic_enginePaintGame(Graphic_engine *, Game *);
  */
 void graphic_engine_paint_space(Graphic_engine *, Game *, int);
 
+void print_new_line(Area *, int number);
+char * create_objects_string(Game *, Id);
 
 #endif

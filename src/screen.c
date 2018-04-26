@@ -35,9 +35,9 @@ char *__data;
 /****************************/
 /*     Private functions    */
 /****************************/
-int  screen_areaCursorIsOutOfBounds(Area* area);
-void screen_areaScrollUp(Area* area);
-void screen_utilsReplacesSpecialChars(char* str);
+int  screen_area_cursor_is_out_of_bounds(Area* area);
+void screen_area_scroll_up(Area* area);
+void screen_utils_replaces_special_chars(char* str);
 
 /****************************/
 /* Functions implementation */
@@ -100,7 +100,7 @@ void screen_gets(char *str){
     *(str + strlen(str) - 1) = 0; /* Replaces newline character with '\0' */
 }
 
-Area* screen_areaInit(int x, int y, int width, int height){
+Area* screen_area_init(int x, int y, int width, int height){
   int i = 0;
   Area* area = NULL;
 
@@ -114,35 +114,35 @@ Area* screen_areaInit(int x, int y, int width, int height){
   return area;
 }
 
-void screen_areaDestroy(Area* area){
+void screen_area_destroy(Area* area){
   if(area)
     free(area);
 }
 
-void screen_areaClear(Area* area){
+void screen_area_clear(Area* area){
   int i = 0;
 
   if (area){
-    screen_areaResetCursor(area);
+    screen_area_reset_cursor(area);
 
     for (i=0; i < area->height; i++)
       memset(ACCESS(area->cursor, 0, i), (int) FG_CHAR, (size_t) area->width);
   }
 }
 
-void screen_areaResetCursor(Area* area){
+void screen_area_reset_cursor(Area* area){
   if (area)
     area->cursor = ACCESS(__data, area->x, area->y);
 }
 
-void screen_areaPuts(Area* area, char *str){
+void screen_area_puts(Area* area, char *str){
   int len = 0;
   char *ptr = NULL;
 
-  if (screen_areaCursorIsOutOfBounds(area))
-    screen_areaScrollUp(area);
+  if (screen_area_cursor_is_out_of_bounds(area))
+    screen_area_scroll_up(area);
 
-  screen_utilsReplacesSpecialChars(str);
+  screen_utils_replaces_special_chars(str);
 
   for (ptr = str; ptr < (str + strlen(str)); ptr+=area->width){
     memset(area->cursor, FG_CHAR, area->width);
@@ -152,13 +152,13 @@ void screen_areaPuts(Area* area, char *str){
   }
 }
 
-int screen_areaCursorIsOutOfBounds(Area* area){
+int screen_area_cursor_is_out_of_bounds(Area* area){
   return area->cursor > ACCESS(__data,
 			       area->x + area->width,
 			       area->y + area->height - 1);
 }
 
-void screen_areaScrollUp(Area* area){
+void screen_area_scroll_up(Area* area){
   for(area->cursor = ACCESS(__data, area->x, area->y);
       area->cursor < ACCESS(__data, area->x + area->width, area->y + area->height - 2);
       area->cursor += COLUMNS){
@@ -166,7 +166,7 @@ void screen_areaScrollUp(Area* area){
   }
 }
 
-void screen_utilsReplacesSpecialChars(char* str){
+void screen_utils_replaces_special_chars(char* str){
   char *pch = NULL;
 
   /* Replaces acutes and tilde with '??' */

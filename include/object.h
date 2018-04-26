@@ -71,6 +71,6 @@
  *	@param puntero object de tipo Object
  *	@return nos devuelve NO_ID si el objeto es nulo o el id del objeto
  */
- Id object_getId(Object* obj);
+ Id object_get_id(Object* obj);
 
  #endif

@@ -63,11 +63,6 @@ STATUS command_setCmd(F_Command *, T_Command);
 */
 T_Command command_getCmd(F_Command * );
 
-<<<<<<< HEAD
-
-char * command_getId(F_Command *);
-STATUS command_setId(F_Command *, char *);
-=======
 /**
 *	@author: Pablo Sánchez
 *	@brief:  Sets the the instruction parameters in the command
@@ -77,7 +72,6 @@ STATUS command_setId(F_Command *, char *);
 *	@return: STATUS OK or ERROR
 */
 STATUS command_set_id(F_Command *, char *);
->>>>>>> 5ea727888dbd80b6cf3888f90640fdcc3effa298
 
 /**
 *	@author: Pablo Sánchez

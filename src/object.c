@@ -16,9 +16,9 @@ struct _Object{
 	Id id; /*!< Identificador */
 };
 
-Object * object_create(char * name, Id id)
+Object* object_create(char* name, Id id)
 {
-	Object * obj;
+	Object *obj;
 
 	obj = calloc(1, sizeof(Object));
 	if(!obj){return NULL;}
@@ -29,14 +29,14 @@ Object * object_create(char * name, Id id)
 	return obj;
 }
 
-void object_destroy(Object * obj)
+void object_destroy(Object* obj)
 {
 	if(!obj) return;
 
 	free(obj);
 }
 
-STATUS object_setName(Object * obj, char * name)
+STATUS object_set_name(Object* obj, char* name)
 {
 	if(!obj||!name) return ERROR;
 
@@ -45,7 +45,7 @@ STATUS object_setName(Object * obj, char * name)
 	return OK;
 }
 
-STATUS object_setDescription(Object * obj, char * description)
+STATUS object_set_description(Object* obj, char* description)
 {
 	if(!obj||!description) return ERROR;
 
@@ -54,7 +54,7 @@ STATUS object_setDescription(Object * obj, char * description)
 	return OK;
 }
 
-STATUS object_setId(Object * obj, Id id)
+STATUS object_set_id(Object* obj, Id id)
 {
 	if(!obj) return ERROR;
 
@@ -63,21 +63,21 @@ STATUS object_setId(Object * obj, Id id)
 	return OK;
 }
 
-char * object_getName(Object * obj)
+char * object_get_name(Object* obj)
 {
 	if(!obj) return NULL;
 
 	return obj->name;
 }
 
-char * object_getDescription(Object * obj)
+char * object_get_description(Object* obj)
 {
 	if(!obj) return NULL;
 
 	return obj->description;
 }
 
-Id object_getId(Object* obj)
+Id object_get_id(Object* obj)
 {
 	if(!obj) return -1;
 

@@ -49,4 +49,3 @@ FECHAS =================
 
 19/04/18 - Limpieza
 26/04/18 - Puntos
-03/05/18 - Fecha final

@@ -66,7 +66,7 @@ STATUS space_destroy(Space* space)
 	return OK;
 }
 
-STATUS space_setName(Space* space, char* name)
+STATUS space_set_name(Space* space, char* name)
 {
 	if (!space || !name) return ERROR;
 
@@ -75,7 +75,7 @@ STATUS space_setName(Space* space, char* name)
 	return OK;
 }
 
-STATUS space_setDescription(Space* space, char* description)
+STATUS space_set_description(Space* space, char* description)
 {
 	if (!space || !description) return ERROR;
 
@@ -84,7 +84,7 @@ STATUS space_setDescription(Space* space, char* description)
 	return OK;
 }
 
-STATUS space_setNorth(Space* space, Id id)
+STATUS space_set_north(Space* space, Id id)
 {
   if (!space || id == NO_ID)
   {
@@ -94,7 +94,7 @@ STATUS space_setNorth(Space* space, Id id)
   return OK;
 }
 
-STATUS space_setSouth(Space* space, Id id)
+STATUS space_set_south(Space* space, Id id)
 {
   if (!space || id == NO_ID)
   {
@@ -104,7 +104,7 @@ STATUS space_setSouth(Space* space, Id id)
   return OK;
 }
 
-STATUS space_setEast(Space* space, Id id)
+STATUS space_set_east(Space* space, Id id)
 {
   if (!space || id == NO_ID)
   {
@@ -114,7 +114,7 @@ STATUS space_setEast(Space* space, Id id)
   return OK;
 }
 
-STATUS space_setWest(Space* space, Id id)
+STATUS space_set_west(Space* space, Id id)
 {
   if (!space || id == NO_ID)
   {
@@ -124,70 +124,70 @@ STATUS space_setWest(Space* space, Id id)
   return OK;
 }
 
-STATUS space_addObject(Space* space, Id obj_id)
+STATUS space_add_object(Space* space, Id obj_id)
 {
   if (!space) return ERROR;
 
   return set_add(space->objects, obj_id);
 }
 
-STATUS space_removeObject(Space* space, Id id)
+STATUS space_remove_object(Space* space, Id id)
 {
   if (!space) return ERROR;
 
   return set_del(space->objects, id);
 }
 
-const char * space_getName(Space* space)
+const char * space_get_name(Space* space)
 {
   if (!space) return NULL;
 
   return space->name;
 }
 
-const char * space_getDescription(Space* space)
+const char * space_get_description(Space* space)
 {
   if (!space) return NULL;
 
   return space->description;
 }
 
-Id space_getId(Space* space)
+Id space_get_id(Space* space)
 {
   if (!space) return NO_ID;
 
   return space->id;
 }
 
-Id space_getNorth(Space* space)
+Id space_get_north(Space* space)
 {
   if (!space) return NO_ID;
 
   return space->linkNorth;
 }
 
-Id space_getSouth(Space* space)
+Id space_get_south(Space* space)
 {
   if (!space) return NO_ID;
 
   return space->linkSouth;
 }
 
-Id space_getEast(Space* space)
+Id space_get_east(Space* space)
 {
   if (!space) return NO_ID;
 
   return space->linkEast;
 }
 
-Id space_getWest(Space* space)
+Id space_get_west(Space* space)
 {
   if (!space) return NO_ID;
 
   return space->linkWest;
 }
 
-Set * space_getObjectsId(Space* space)
+Set * space_get_objects_id(Space* space)
 {
   Set * set;
   int n;
@@ -197,9 +197,9 @@ Set * space_getObjectsId(Space* space)
   set = set_create(5);
   if(!set) return NULL;
 
-  for(n=0; set_getId(space->objects, n) != NO_ID; n++)
+  for(n=0; set_get_id(space->objects, n) != NO_ID; n++)
   {
-    if(set_add(set, set_getId(space->objects, n)) == ERROR) return NULL;
+    if(set_add(set, set_get_id(space->objects, n)) == ERROR) return NULL;
   }
 
   return set;
@@ -214,34 +214,34 @@ STATUS space_print(Space* space)
 
   fprintf(stdout, "\n\n--> Space (Id: %ld; Name: %s)\n", space->id, space->name);
 
-  idaux = space_getNorth(space);
+  idaux = space_get_north(space);
   if (NO_ID != idaux)
     fprintf(stdout, "---> North link: %ld.\n", idaux);
   else
     fprintf(stdout, "---> No north link.\n");
 
-  idaux = space_getSouth(space);
+  idaux = space_get_south(space);
   if (NO_ID != idaux)
     fprintf(stdout, "---> South link: %ld.\n", idaux);
   else
     fprintf(stdout, "---> No south link.\n");
 
-  idaux = space_getEast(space);
+  idaux = space_get_east(space);
   if (NO_ID != idaux)
     fprintf(stdout, "---> East link: %ld.\n", idaux);
   else
     fprintf(stdout, "---> No east link.\n");
 
-  idaux = space_getWest(space);
+  idaux = space_get_west(space);
   if (NO_ID != idaux)
     fprintf(stdout, "---> West link: %ld.\n", idaux);
   else
     fprintf(stdout, "---> No west link.\n");
 
-  if ((aux = space_getObjectsId(space)))
+  if ((aux = space_get_objects_id(space)))
   {
-    set_printDebug(stdout, space->objects);
-		set_destroy(aux);
+    set_print_debug(stdout, space->objects);
+	set_destroy(aux);
   }
   else
   {
@@ -251,7 +251,7 @@ STATUS space_print(Space* space)
   return OK;
 }
 
-STATUS space_setGdesc0(Space* space, char* cadena)
+STATUS space_set_gdesc_0(Space* space, char* cadena)
 {
   if (!space || !cadena) return ERROR;
 
@@ -259,7 +259,7 @@ STATUS space_setGdesc0(Space* space, char* cadena)
   return OK;
 }
 
-STATUS space_setGdesc1(Space* space, char* cadena)
+STATUS space_set_gdesc_1(Space* space, char* cadena)
 {
   if (!space || !cadena) return ERROR;
 
@@ -267,7 +267,7 @@ STATUS space_setGdesc1(Space* space, char* cadena)
   return OK;
 }
 
-STATUS space_setGdesc2(Space* space, char* cadena)
+STATUS space_set_gdesc_2(Space* space, char* cadena)
 {
   if (!space || !cadena) return ERROR;
 
@@ -276,7 +276,7 @@ STATUS space_setGdesc2(Space* space, char* cadena)
   return OK;
 }
 
-char* space_getGdesc0(Space* space)
+char* space_get_gdesc_0(Space* space)
 {
   if (space == NULL)
     return NULL;
@@ -284,7 +284,7 @@ char* space_getGdesc0(Space* space)
   return space->gdesc[0];
 }
 
-char* space_getGdesc1(Space* space)
+char* space_get_gdesc_1(Space* space)
 {
   if (space == NULL)
     return NULL;
@@ -292,7 +292,7 @@ char* space_getGdesc1(Space* space)
   return space->gdesc[1];
 }
 
-char* space_getGdesc2(Space* space)
+char* space_get_gdesc_2(Space* space)
 {
   if (space == NULL)
     return NULL;

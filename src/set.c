@@ -78,7 +78,7 @@ STATUS set_del(Set * set, Id id)
 	return ERROR;
 }
 
-Id set_getId(Set * set, int num)
+Id set_get_id(Set * set, int num)
 {
 	if (!set) return NO_ID;
 	if (num > set->id_total) return NO_ID;
@@ -86,7 +86,7 @@ Id set_getId(Set * set, int num)
 	return set->id_list[num];
 }
 
-STATUS set_rmAll(Set * set)
+STATUS set_rm_all(Set * set)
 {
 	int i=0;
 
@@ -100,7 +100,7 @@ STATUS set_rmAll(Set * set)
 	return OK;
 }
 
-Set * set_cpAll(Set * set)
+Set * set_cp_all(Set * set)
 {
 	int i;
 	Set * set_copy;
@@ -148,7 +148,7 @@ STATUS set_rearrange(Set * set)
 	return OK;
 }
 
-STATUS set_printDebug(FILE * f, Set * set)
+STATUS set_print_debug(FILE * f, Set * set)
 {
 	int i;
 
@@ -158,7 +158,7 @@ STATUS set_printDebug(FILE * f, Set * set)
 
 	for (i=0; i<set->id_total; i++)
 	{
-		fprintf(f, "POSITION > %d || ID > %ld\n", i, set_getId(set, i));
+		fprintf(f, "POSITION > %d || ID > %ld\n", i, set_get_id(set, i));
 	}
 
 	return OK;

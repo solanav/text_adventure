@@ -93,9 +93,6 @@ LinkStatus link_getStatus(Link *);
 *	@param: *Link space_id
 *	@return: space_id
 */
-
-STATUS link_print(Link *);
-
 Id link_getDestination(Link *, Id );
 
 /**
@@ -104,5 +101,6 @@ Id link_getDestination(Link *, Id );
 *	@param: *Link
 *	@return: OK or ERROR, printed the link;
 */
+STATUS link_print(Link *);
 
 #endif
