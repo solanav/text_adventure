@@ -12,7 +12,7 @@
 #include "../include/command.h"
 
 #define CMD_LENGHT 30
-#define N_CMD 8
+#define N_CMD 11
 
 struct _F_Command
 {
@@ -20,8 +20,8 @@ struct _F_Command
   char id[CMD_LENGHT];/*!< Parametro*/
 };
 
-char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check"};
-char *short_cmd_to_str[N_CMD] = {"", "", "e", "p", "d", "r", "m", "c"};
+char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check","Turn_on","Turn_off","Open"};
+char *short_cmd_to_str[N_CMD] = {"", "", "e", "p", "d", "r", "m", "c","t-on","t-off","o"};
 
 STATUS get_userInput(F_Command * command)
 {
@@ -91,6 +91,33 @@ STATUS get_userInput(F_Command * command)
 		 	else
 				command_setId(command, string1);
 		}
+
+    if(aux_command == TURN_ON)
+    {
+      printf("\tCommand is turn on. Setting id. [%s %s]\n", string0, string1);
+      if (strcasecmp(string1, "Turn-on")==0 || strcasecmp(string1, "t-on")==0)
+        command_setId(command, "Turn-on");
+      else
+        command_setId(command, string1);
+    }
+    if(aux_command == TURN_OFF)
+    {
+      printf("\tCommand is turn off. Setting id. [%s %s]\n", string0, string1);
+      if (strcasecmp(string1, "Turn-off")==0 || strcasecmp(string1, "t-off")==0)
+        command_setId(command, "Turn_off");
+      else
+        command_setId(command, string1);
+    }
+    if(aux_command == OPEN)
+    {
+      if (strcasecmp(string1, "open")==0 || strcasecmp(string1, "o")==0)
+      {
+        command_setId(command, "open");
+        printf("\tCommand is open <link>. Setting <object>. Open %s with %s \n", string0, string1);
+    }
+      else
+        command_setId(command, string1);
+    }
 	}
 	else
 	{

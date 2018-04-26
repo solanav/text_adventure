@@ -23,7 +23,10 @@ typedef enum enum_Command
   DROP,
   ROLL,
   MOVE,
-  CHECK
+  CHECK,
+  TURN_ON,
+  TURN_OFF,
+  OPEN
 } T_Command;
 
 typedef struct _F_Command F_Command;

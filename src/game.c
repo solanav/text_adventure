@@ -14,7 +14,7 @@
 #include "../include/game.h"
 #include "../include/game_reader.h"
 
-#define N_CALLBACK 7
+#define N_CALLBACK 10
 
 struct _Game
 {
@@ -41,7 +41,11 @@ void game_callbackDrop(Game * game);
 void game_callbackRoll(Game * game);
 void game_callbackMove(Game * game);
 void game_callbackCheck(Game * game);
-
+/*8*/
+void game_callbackTurnOn(Game * game);
+void game_callbackTurnOff(Game * game);
+/*9*/
+void game_callbackOpen(Game * game);
 static callback_fn game_callback_fn_list[N_CALLBACK]=
 {
 	game_callbackUnknown,
@@ -50,7 +54,13 @@ static callback_fn game_callback_fn_list[N_CALLBACK]=
 	game_callbackDrop,
 	game_callbackRoll,
 	game_callbackMove,
-	game_callbackCheck
+	game_callbackCheck,
+	/*8*/
+	game_callbackTurnOn,
+	game_callbackTurnOff,
+
+	/*9*/
+	game_callbackOpen
 };
 
 Game * game_create()
@@ -450,38 +460,6 @@ void game_callbackMove(Game * game)
 
 }
 
-void game_callbackCheck(Game * game)
-{
-	char object_description[20] = {0};
-	char object_name[20] = {0};
-
-	char space_description[20] = {0};
-	char space_name[20] = {0};
-
-	if (!game) return;
-
-	/* Clever hack if i say so myself, prob shouldn't be doing it but meh - Solanav */
-	if (strcasecmp(command_getId(game->last_cmd), "s") == 0 || strcasecmp(command_getId(game->last_cmd), "space") == 0)
-	{
-		strcpy(space_name, command_getId(game->last_cmd));
-		strcpy(space_description, space_getDescription(game_getSpace(game, player_getLocId(game->player))));
-
-		command_setId(game->last_cmd, space_description);
-	}
-	else
-	{
-		strcpy(object_name, command_getId(game->last_cmd));
-
-		if (!game_getObject(game, object_name)) return;
-
-		strcpy(object_description, object_getDescription(game_getObject(game, object_name)));
-
-		command_setId(game->last_cmd, object_description);
-	}
-
-	return;
-}
-
 STATUS game_addSpace(Game * game, Space* space)
 {
 	int i = 0;
@@ -574,4 +552,176 @@ BOOL game_areSpacesAdjacent(Game * g, Id space1, Id space2)
 		return TRUE;
 
 	return FALSE;
+}
+
+/*punto 8 encender y apagar objetos */
+void game_callbackTurnOn(Game * game)
+{
+	Id link_id = NO_ID;
+	Id current_id = NO_ID;
+	Id space_id = NO_ID;
+	BOOL light;
+
+	space_id = game_getPlayerLocation(game);
+	strcpy(light, command_getId(game->last_cmd));
+
+	printf("Someone is trying to turn...\n\tPlayer loc -> %ld\n\tLight -> %s\n", space_id, light);
+
+	if (!game || space_id == NO_ID) return;
+	/**/
+	if(inventory_isEmpty(player_getBag(game->player)) == OK)
+	{
+		game->=ERROR;
+		return;
+	}
+	object_id = game_getObject(game, object_id);
+
+	if(player_getBag(game->player,id_object)== TRUE)
+	{
+		if(object_getILuminati(game->objects) == TRUE)
+		{
+		space_setLight(game->spaces,TRUE);
+		}
+	}
+	if (strcmp(light, "turn_on") == 0)
+	{
+		link_id = space_getLight(game_getSpace(game, space_id));
+		current_id = link_getSpace1(game_getLink(game, link_id));
+	}
+	else
+	{
+		return;
+	}
+
+	printf("Id of link you are trying to use -> %ld\n", link_id);
+	printf("\tId of actposition -> %ld\n", link_getSpace1(game_getLink(game, link_id)));
+	printf("\tId of destination -> %ld\n", link_getSpace2(game_getLink(game, link_id)));
+
+	if(current_id != NO_ID)
+		game_setPlayerLocation(game, current_id);
+
+	printf("la nueva casilla iluminada es: -> %ld\n", game_getPlayerLocation(game));
+
+}
+void game_callbackTurnOff(Game * game)
+{
+	Id link_id = NO_ID;
+	Id current_id = NO_ID;
+	Id space_id = NO_ID;
+	BOOL light;
+
+	space_id = game_getPlayerLocation(game);
+	strcpy(light, command_getId(game->last_cmd));
+
+	printf("Someone is trying to turn...\n\tPlayer loc -> %ld\n\tLight -> %s\n", space_id, light);
+
+	if (!game || space_id == NO_ID) return;
+	/**/
+	if(inventory_isEmpty(player_getBag(game->player)) == OK)
+	{
+		game->=ERROR;
+		return;
+	}
+	object_id = game_getObject(game, object_id);
+
+	if(player_getBag(game->player,id_object)== TRUE)
+	{
+		if(object_getILuminati(game->objects) == TRUE)
+		{
+		space_setLight(game->spaces,FALSE);
+		}
+	}
+	if (strcmp(light, "turn_off") == 0)
+	{
+		link_id = space_getLight(game_getSpace(game, space_id));
+		current_id = link_getSpace1(game_getLink(game, link_id));
+	}
+	else
+	{
+		return;
+	}
+
+	printf("Id of link you are trying to use -> %ld\n", link_id);
+	printf("\tId of actposition -> %ld\n", link_getSpace1(game_getLink(game, link_id)));
+	printf("\tId of destination -> %ld\n", link_getSpace2(game_getLink(game, link_id)));
+
+	if(current_id != NO_ID)
+		game_setPlayerLocation(game, current_id);
+
+	printf("la casilla apagada es: -> %ld\n", game_getPlayerLocation(game));
+
+}
+
+
+/*check obj y check space punto 4 y 7 */
+void game_callbackCheck(Game * game)
+{
+	char object_description[20] = {0};
+	char object_name[20] = {0};
+
+	char space_description[20] = {0};
+	char space_name[20] = {0};
+
+	if (!game) return;
+
+	/* Clever hack if i say so myself, prob shouldn't be doing it but meh - Solanav */
+	if (strcasecmp(command_getId(game->last_cmd), "s") == 0 || strcasecmp(command_getId(game->last_cmd), "space") == 0)
+	{
+		strcpy(space_name, command_getId(game->last_cmd));
+		strcpy(space_description, space_getDescription(game_getSpace(game, player_getLocId(game->player))));
+		/*YO 4*/
+		if(space_getLight(game->spaces))
+			command_setId(game->last_cmd,space_getDescription(game->spaces));
+		else
+			command_getId(game->last_cmd);
+			/*YO 4*/
+	}
+	/*check object 7 */
+	else if(strcasecmp(command_getId(game->last_cmd), "o") == 0 || strcasecmp(command_getId(game->last_cmd),"object") == 0)
+	{
+		if(object)
+		strcpy(space_name, command_getId(game->last_cmd));
+		strcpy(object_description, object_getDescription(game_getSpace(game, player_getLocId(game->player))));
+
+		if(sapce_getLight(game->spaces && object_getMoved(game->objects)))
+			command_setId(game->last_cmd,object_getDescription(game->objects));
+		else
+			command_setId(game->last_cmd);
+/*check object 7 */
+	}
+	else
+	{
+		strcpy(object_name, command_getId(game->last_cmd));
+
+		if (!game_getObject(game, object_name)) return;
+
+		strcpy(object_description, object_getDescription(game_getObject(game, object_name)));
+
+		command_setId(game->last_cmd, object_description);
+	}
+
+	return;
+}
+
+
+/*punto 9*/
+void game_callbackOpen(Game * game)
+{
+	Id player_locId = game_getPlayerLocation(game);
+	Id object_id = NO_ID;
+	Id link_id =NO_ID;
+	Space * space_pointer = game_getSpace(game, player_locId);
+	char object[20] = {0};
+
+	if (!game) return;
+
+	if(object_getOpen(game->objects) == TRUE && link_getId(game->links))
+	{
+		link_setStatus(game_getLinkIdAt(game,link_id),0);
+		player_removeObjId(game->player, object_id);
+	}
+
+
+
+	return;
 }

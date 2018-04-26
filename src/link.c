@@ -103,7 +103,7 @@ STATUS link_print(Link * link)
 	printf("Link id: %ld\n", link->linkId);
 	printf("First space id: %ld\n", link->linkspace1);
 	printf("Second space id: %ld\n", link->linkspace2);
-	if(link->door == OPEN)
+	if(link->door == ACTIVATED)
 		printf("Link status: OPEN");
 	if(link->door == CLOSED)
 		printf("Link status: CLOSED");

@@ -73,4 +73,8 @@
  */
  Id object_getId(Object* obj);
 
+/*nuevas funcines*/
+
+STATUS object_setMoved(Object * object, BOOL moved);
+BOOL object_getMoved(Object * obj);
  #endif
