@@ -14,7 +14,7 @@
 #include "../include/game.h"
 #include "../include/game_management.h"
 
-#define N_CALLBACK 7
+#define N_CALLBACK 9
 
 struct _Game
 {
@@ -41,6 +41,8 @@ void game_callback_drop(Game * game);
 void game_callback_roll(Game * game);
 void game_callback_move(Game * game);
 void game_callback_check(Game * game);
+void game_callback_save(Game * game);
+void game_callback_load(Game * game);
 
 static callback_fn game_callback_fn_list[N_CALLBACK]=
 {
@@ -50,7 +52,9 @@ static callback_fn game_callback_fn_list[N_CALLBACK]=
 	game_callback_drop,
 	game_callback_roll,
 	game_callback_move,
-	game_callback_check
+	game_callback_check,
+	game_callback_save,
+	game_callback_load
 };
 
 Game * game_create()
@@ -100,7 +104,7 @@ STATUS game_create_from_file(Game * game, char * filename)
 	if(!game || !filename) return ERROR;
 
 	/* Load all data from file */
-	if (game_load_spaces(game, filename) == ERROR) return ERROR;
+	if (game_load(game, filename) == ERROR) return ERROR;
 
 	/* Put each link in the corresponding space */
 	for (i=0; i<MAX_LINK; i++)
@@ -212,9 +216,9 @@ Player* game_get_player(Game * game)
 	return game->player;
 }
 
-Die * game_get_die(Game *)
+Die * game_get_die(Game * game)
 {
-	if(!gmae) return NULL;
+	if(!game) return NULL;
 
 	return game->die;
 }
@@ -507,6 +511,31 @@ void game_callback_check(Game * game)
 	return;
 }
 
+void game_callback_save(Game * game)
+{
+	char filename[100];
+
+	strcpy(filename, command_get_id(game->last_cmd[0]));
+
+	game_save(game, filename);
+}
+
+void game_callback_load(Game * game)
+{
+	char filename[100];
+	Game * new; /*Not the best way but i can't think of another*/
+
+	strcpy(filename, command_get_id(game->last_cmd[0]));
+
+	new = game_create();
+	if(game_load(new, filename) == ERROR)
+		return;
+	else{
+		game_destroy(game);
+		game = new;
+	}
+}
+
 STATUS game_add_space(Game * game, Space* space)
 {
 	int i = 0;
@@ -563,6 +592,15 @@ STATUS game_set_link(Game * game, Id link_id, Id space_id0, Id space_id1)
 	}
 
 	return ERROR;
+}
+
+STATUS game_set_player(Game * game, Player * player)
+{
+	if(!game || !player) return ERROR;
+
+	game->player = player;
+
+	return OK;
 }
 
 STATUS game_set_object(Game* game, Object* object)

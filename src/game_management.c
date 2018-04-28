@@ -10,9 +10,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../include/game_reader.h"
+#include "../include/game_management.h"
 
-STATUS game_load_spaces(Game* game, char* filename)
+STATUS game_load(Game* game, char* filename)
 {
 	/*
 	* Loads game spaces from specified file.
@@ -127,8 +127,10 @@ STATUS game_load_spaces(Game* game, char* filename)
 			object = object_create(name, id);
 			object_set_description(object, description);
 			game_set_object(game, object);
-			printf("Set location %ld for %s\n", place, name);
-			game_set_object_location(game, place, id);
+			if(place != -1)
+				game_set_object_location(game, place, id);
+			else
+				 player_setObjId(game_get_player(game), id);
 			printf("%ld is in space %ld", id, game_get_object_location(game, id));
 		}
 
@@ -161,115 +163,97 @@ STATUS game_load_spaces(Game* game, char* filename)
 	return status;
 }
 
-STATUS game_save_on_file(Game * game, char* savefile)
+STATUS game_save_spaces(Game* game, FILE * f)
 {
-	int i, j[2]={2, 3};
-	char * string;
-	FILE * save;
-	Player * ply;
-	Object * obj;
+	int i;
 	Space * spc;
-	Link * lnk;
-	Die * die;
-	Id location;
 
-	if(!game || !savefile) return ERROR;
+	if(!game || !f) return ERROR;
 
-	sprintf(string, "../saves/%s.sv", savefile);
-
-	save = fopen(string, w);
-	if(!save) return ERROR;
-
-	/*OBJECTS*/
-	obj = game_get_object_from_id(game_get_object_id_at(game, 0));
-	location = game_get_object_location(game_get_object_id_at(game, 0));
-
-	for (i = 1; i<MAX_OBJECTS || obj != NULL;  i++);
-	{
-		fwrite(&obj, sizeof(struct Object), 1, save);
-		fwrite(&location, sizeof(long int), 1, save);
-		obj = game_get_object_from_id(game_get_object_id_at(game, i));
-		location = game_get_object_location(game_get_object_id_at(game, i));
+	for(i=0; game_get_space_id_at(game, i) || i<MAX_SPACES; i++){
+		spc = game_get_space(game, game_get_space_id_at(game, i));
+		fprintf(f, "#s:");
+		fprintf(f, "%ld|", space_get_id(spc));
+		fprintf(f, "%s|", space_get_name(spc));
+		fprintf(f, "%s|", space_get_description(spc));
+		fprintf(f, "%ld|", space_get_north(spc));
+		fprintf(f, "%ld|", space_get_east(spc));
+		fprintf(f, "%ld|", space_get_south(spc));
+		fprintf(f, "%ld|", space_get_west(spc));
+		fprintf(f, "%s|", space_get_gdesc_0(spc));
+		fprintf(f, "%s|", space_get_gdesc_1(spc));
+		fprintf(f, "%s|\n", space_get_gdesc_2(spc));
 	}
 
-	fwrite(j, sizeof(j), 2, save);
-
-	/*PLAYER*/
-
-	ply = game_get_player(game);
-	location = game_get_player_location(game);
-
-	fwrite(&ply, sizeof(struct Player), 1, save);
-	fwrite(location, sizeof(long int), 1, save);
-
-	fwrite(j, sizeof(j), 2, save);
-
-	/*SPACES*/
-
-	spc = game_get_space(game_get_space_id_at(game, 0));
-
-	for (i = 1; i<MAX_SPACES || spc != NULL;  i++)
-	{
-		fwrite(&spc, sizeof(struct Space), 1, save);
-		spc = game_get_space(game_get_space_id_at(game, 1));
-	}
-
-	fwrite(j, sizeof(j), 2, save);
-
-	/*LINKS*/
-
-	lnk = game_get_link(game_get_link_id_at(game, 0));
-
-	for (i = 1; i<MAX_LINK || lnk != NULL;  i++)
-	{
-		fwrite(&lnk, sizeof(struct Link), 1, save);
-		lnk = game_get_link(game_get_link_id_at(game, 0));
-	}
-
-	fwrite(j, sizeof(j), 2, save);
-
-	/*DIE*/
-
-	die = game_get_die();
-
-	fwrite(&die, sizeof(struct Die), 1, save);
-
-	fwrite(j, sizeof(j), 2, save);
-
-	fclose(save);
+	space_destroy(spc);
+	return OK;
 }
 
-STATUS game_load_from_file(Game * game, char * savefile)
+STATUS game_save_objects(Game * game, FILE * f)
 {
-	int r=0;
-	char * string;
-	FILE * save;
-	Player * ply;
+	int i;
 	Object * obj;
-	Space * spc;
-	Link * lnk;
-	Die * die;
-	Id location;
-	Game * new;
 
-	if(!game || !savefile) return ERROR;
+	if(!game || !f) return ERROR;
 
-	sprintf(string, "../saves/%s.sv", savefile);
-
-	game_destroy(game);
-	game = game_create();
-
-	save = fopen(string, r);
-	if(!save) return ERROR;
-
-	r = fread(&obj, sizeof(struct obj), 1, save);
-	while(r != 2){
-		game_set_object(game, obj);
-		r = fread(&obj, sizeof(struct obj), 1, save);
+	for(i=0; game_get_object_id_at(game, i) || i<MAX_OBJECTS; i++){
+		obj = game_get_object_from_id(game, game_get_object_id_at(game, i));
+		fprintf(f, "#o:");
+		fprintf(f, "%ld|", object_get_id(obj));
+		fprintf(f, "%s|", object_get_name(obj));
+		fprintf(f, "%ld|", game_get_object_location(game, object_get_id(obj)));
+		fprintf(f, "%s|\n", object_get_description(obj));
 	}
 
-	r = fread(&ply, sizeof(struct Player), 1, save);
-	
+	object_destroy(obj);
+	return OK;
+}
 
+STATUS game_save_links(Game * game, FILE * f)
+{
+	int i;
+	Link * lnk;
 
+	if(!game || !f) return ERROR;
+
+	for(i=0; game_get_link_id_at(game, i) || i<MAX_LINK; i++){
+		lnk = game_get_link(game, game_get_link_id_at(game, i));
+		fprintf(f, "#l:");
+		fprintf(f, "%ld|", link_getId(lnk));
+		fprintf(f, "Link %ld|", link_getId(lnk));
+		fprintf(f, "%ld|", link_getSpace1(lnk));
+		fprintf(f, "%ld|", link_getSpace2(lnk));
+		fprintf(f, "%d|\n", link_getStatus(lnk));
+	}
+
+	link_destroy(lnk);
+	return OK;
+}
+
+STATUS game_save(Game * game, char * filename)
+{
+	FILE * save;
+	char string[100];
+
+	if(!game || !filename) return ERROR;
+
+	sprintf(string, "..//saves/%s.sv", filename);
+
+	save = fopen(string, "w");
+	if(!save) return ERROR;
+
+	if(game_save_spaces(game, save) == ERROR)
+		return ERROR;
+
+	save = freopen(string, "a", save);
+	if(!save) return ERROR;
+
+	if(game_save_objects(game, save) == ERROR)
+		return ERROR;
+
+	if(game_save_links(game, save) == ERROR)
+		return ERROR;
+
+	fclose(save);
+	return OK;
 }
