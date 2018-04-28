@@ -41,7 +41,9 @@ typedef enum
   DROP,
   ROLL,
   MOVE,
-  CHECK
+  CHECK,
+  SAVE,
+  LOAD
 } T_Command;
 
 #endif

@@ -12,6 +12,7 @@
 #include "../include/types.h"
 #include "../include/game.h"
 
-STATUS game_load_spaces(Game* game, char* filename);
+STATUS game_load(Game* game, char * filename);
+STATUS game_save(Game * game, char * filename);
 
 #endif

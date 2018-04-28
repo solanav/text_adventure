@@ -12,7 +12,7 @@
 #include "../include/command.h"
 
 #define CMD_LENGHT 30
-#define N_CMD 8
+#define N_CMD 10
 
 struct _F_Command
 {
@@ -20,8 +20,8 @@ struct _F_Command
   char id[CMD_LENGHT];/*!< Parameter*/
 };
 
-char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check"};
-char *short_cmd_to_str[N_CMD] = {"", "", "e", "p", "d", "r", "m", "c"};
+char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check", "Save", "Load"};
+char *short_cmd_to_str[N_CMD] = {"", "", "e", "p", "d", "r", "m", "c", "s", "l"};
 
 STATUS get_user_input(F_Command * command)
 {
@@ -59,10 +59,10 @@ STATUS get_user_input(F_Command * command)
 		sscanf(input, "%s %s\n", string0, string1);
 		/* Command requires an string */
 		aux_command = command_getCmd(command);
-		if(aux_command == PICK_UP || aux_command == DROP)
+		if(aux_command == PICK_UP || aux_command == DROP || aux_command == SAVE || aux_command == LOAD)
 		{
 			command_set_id(command, string1);
-			printf("\tCommand is either pick or drop. Setting id to %s.\n", command_get_id(command));
+			printf("\tCommand requires parameters. Setting id to %s.\n", command_get_id(command));
 		}
 
 		/* Command requires a string */
