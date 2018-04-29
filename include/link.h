@@ -21,7 +21,7 @@ typedef struct _Link Link;
 *	@param: Null
 *	@return: a Link
 */
-Link * link_create(Id);
+Link *link_create(Id);
 
 /*
 *	@author: Pablo Sánchez
@@ -41,7 +41,7 @@ STATUS link_setId(Link *, Id);
 
 /*
 *	@author: Pablo Sánchez
-*	@brief: Changes the Link status to OPEN or CLOSED
+*	@brief: Changes the Link status to OPENED or CLOSED
 *	@param: *Link LinkStatus
 *	@return: OK or ERROR
 */
@@ -83,7 +83,7 @@ Id link_getSpace2(Link *);
 *	@author: Pablo Sánchez
 *	@brief: Gets the status the given link is in
 *	@param: *Link
-*	@return: OPEN or CLOSED
+*	@return: OPENED or CLOSED
 */
 LinkStatus link_getStatus(Link *);
 
@@ -93,7 +93,24 @@ LinkStatus link_getStatus(Link *);
 *	@param: *Link space_id
 *	@return: space_id
 */
-Id link_getDestination(Link *, Id );
+Id link_getDestination(Link *, Id);
+
+/*
+*	@author: Antonio Solana
+*	@brief: Gets the direction of the link (relative to space1)
+*	@param: *Link space_id
+*	@return: space_id
+*/
+Id link_getDirection(Link *);
+
+/*
+*	@author: Antonio Solana
+*	@brief: Sets the direction of the link (relative to space1)
+*	@param: *Link space_id
+*	@param: int 0 [north] 1 [east] 2 [south] 3 [west]
+*	@return: space_id
+*/
+STATUS link_setDirection(Link *, int);
 
 /*
 *	@author: Pablo Sánchez

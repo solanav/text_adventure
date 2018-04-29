@@ -29,7 +29,7 @@ typedef enum {
 
 typedef enum
 {
-	OPEN, CLOSED, NO_LINK
+	OPENED, CLOSED, NO_LINK
 } LinkStatus;
 
 #endif

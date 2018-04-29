@@ -23,8 +23,8 @@ DOCPATH = ./doc/
 
 ################ EXEC CREATION
 
-game_exec: game_loop.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o game.o inventory.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)game_loop.o $(OBJPATH)game_reader.o $(OBJPATH)graphic_engine.o $(OBJPATH)screen.o $(OBJPATH)command.o $(OBJPATH)space.o $(OBJPATH)object.o $(OBJPATH)player.o $(OBJPATH)set.o $(OBJPATH)die.o $(OBJPATH)link.o $(OBJPATH)game.o $(OBJPATH)inventory.o
+game_exec: game_loop.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o game.o inventory.o sprite_loader.o sprite.o
+	$(CC) $(CFLAGS) -o $@ $(OBJPATH)game_loop.o $(OBJPATH)game_reader.o $(OBJPATH)graphic_engine.o $(OBJPATH)screen.o $(OBJPATH)command.o $(OBJPATH)space.o $(OBJPATH)object.o $(OBJPATH)player.o $(OBJPATH)set.o $(OBJPATH)die.o $(OBJPATH)link.o $(OBJPATH)game.o $(OBJPATH)inventory.o $(OBJPATH)sprite_loader.o $(OBJPATH)sprite.o
 
 ################ TESTS
 
@@ -93,6 +93,12 @@ link.o: $(SRCPATH)link.c $(HDRPATH)link.h $(HDRPATH)types.h
 inventory.o: $(SRCPATH)inventory.c $(HDRPATH)set.h $(HDRPATH)types.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)inventory.c -o $(OBJPATH)inventory.o
 
+sprite_loader.o: $(SRCPATH)sprite_loader.c $(HDRPATH)game.h $(HDRPATH)types.h
+	$(CC) $(CFLAGS) -c $(SRCPATH)sprite_loader.c -o $(OBJPATH)sprite_loader.o
+
+sprite.o: $(SRCPATH)sprite.c $(HDRPATH)types.h
+	$(CC) $(CFLAGS) -c $(SRCPATH)sprite.c -o $(OBJPATH)sprite.o
+
 ################ OBJECTS FOR TESTS
 
 space_test.o: $(TESTPATH)space_test.c $(HDRPATH)space_test.h $(HDRPATH)space.h $(HDRPATH)test.h
@@ -143,7 +149,7 @@ clean:
 	rm -rf $(ALL_EXEC)
 
 tar:
-	tar -czf PPROG_2163_G3_P11.tar.gz *
+	tar -czf PPROG_2163_I3_G3.tar.gz *
 
 git:
 	git add -A

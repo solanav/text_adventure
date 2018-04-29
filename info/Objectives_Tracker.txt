@@ -1,21 +1,41 @@
+POINTS =================
+
+Space - Guille
 R01 - OK
 R02 - OK
 R03 - OK
+
+Commands - Cata
 R04 - OK
+R07 - OK
+R08 - PR
+R09 - PR
+
+Object - Bernardo
 R05 - OK
 R06 - OK
-R07 - OK
-R08 - OK
-R09 - OK
-R10 - OK
-R11 - OK
-R12 - OK
-R13 - OK
-R14 - OK
-R15 - OK
-R16 - ND - This is going to take a while i think
-R17 - OK
-R18 - OK
+
+Data.dat - Solana
+R10 - ND
+R11 - ND
+
+Documentation - Bernardo
+R12 - ND
+
+Save and load - Pablo
+R13 - ND
+R14 - ND
+
+Dialog - Pablo
+R15 - ND
+
+Game Rules - Solana
+R16 - ND
+
+Manteinance - Solana
+R17 - ND
+
+INFO ===================
 
 OK - Finished
 NI - No info
@@ -23,7 +43,17 @@ PR - Pending revision
 HD - Half done
 ND - Not done
 
-================================================
+NOTAS ==================
 
-- Revisar la rubrica hasta que tengamos todo lo mejor posible
-- Arreglar el estilo del codigo para seguir las "Linux coding conventions"
+- He cambiado el nombre de OPEN a OPENED en los links por que causaba un conflicto con el commando OPEN, hay que revisar que lo haya hecho bien. [Solana]
+- Revisar como pone arriba turnon turnoff y open por si las moscas [Solana]
+- Revisar que todo este inicializado a 0 / NULL o equivalentes [Solana]
+- Control de errores [Solana]
+- Pasar valgrind [Solana]
+- Cambiar direction en la estructura link para que use un enum en vez de int [Solana]
+
+FECHAS =================
+
+19/04/18 - Limpieza
+26/04/18 - Puntos
+03/05/18 - Fecha final

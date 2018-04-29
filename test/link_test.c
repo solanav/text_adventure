@@ -79,13 +79,13 @@ void test2_link_set_id()
 void test1_link_set_status()
 {
 	Link *s = NULL;
-    PRINT_TEST_RESULT(link_setStatus(s, OPEN) == ERROR);
+    PRINT_TEST_RESULT(link_setStatus(s, OPENED) == ERROR);
 }
 
 void test2_link_set_status()
 {
 	Link *s = link_create(5);
-	PRINT_TEST_RESULT(link_setStatus(s, OPEN) == OK);
+	PRINT_TEST_RESULT(link_setStatus(s, OPENED) == OK);
 }
 
 void test1_link_set_spaces()
@@ -123,8 +123,8 @@ void test1_link_get_space2()
 void test1_link_get_status()
 {
 	Link *s = link_create(5);
-	link_setStatus(s, OPEN);
-	PRINT_TEST_RESULT(link_getStatus(s) == OPEN);
+	link_setStatus(s, OPENED);
+	PRINT_TEST_RESULT(link_getStatus(s) == OPENED);
 }
 
 void test1_link_get_destination()

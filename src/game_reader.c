@@ -12,7 +12,7 @@
 
 #include "../include/game_reader.h"
 
-STATUS game_load_spaces(Game* game, char* filename)
+STATUS game_load_spaces(Game *game, char *filename)
 {
 	/*
 	* Loads game spaces from specified file.
@@ -23,25 +23,28 @@ STATUS game_load_spaces(Game* game, char* filename)
 	* returns: ERROR or OK
 	*/
 
-	FILE* file = NULL;
+	FILE *file = NULL;
 
-	char * gdesc0=NULL, * gdesc1=NULL, * gdesc2=NULL,* toks = NULL;
+	char *toks = NULL;
 
 	char line[WORD_SIZE] = {0};
 	char name[WORD_SIZE] = {0};
 	char description[WORD_SIZE] = {0};
-	char no_string[20] = "                 ";
 
-	Id id = NO_ID, north = NO_ID, east = NO_ID, south = NO_ID, west = NO_ID, place = NO_ID;
+	Id id = NO_ID, place = NO_ID, sprite_id = NO_ID;
 	Id link0 = NO_ID, link1 = NO_ID;
 
-	Space* space = NULL;
+	int direction;
+
+	Space *space = NULL;
 	STATUS status = OK;
 
-	if (!filename || !game) return ERROR;
+	if (!filename || !game)
+		return ERROR;
 
 	file = fopen(filename, "r");
-	if (file == NULL) return ERROR;
+	if (file == NULL)
+		return ERROR;
 
 	while (fgets(line, WORD_SIZE, file))
 	{
@@ -59,22 +62,9 @@ STATUS game_load_spaces(Game* game, char* filename)
 			toks = strtok(NULL, "|");
 			strcpy(description, toks);
 
-			/* Read North/East/South/West */
+			/* Read Sprite ID */
 			toks = strtok(NULL, "|");
-			north = atol(toks);
-
-			toks = strtok(NULL, "|");
-			east = atol(toks);
-
-			toks = strtok(NULL, "|");
-			south = atol(toks);
-
-			toks = strtok(NULL, "|");
-			west = atol(toks);
-
-			gdesc0 = strtok(NULL, "|");
-			gdesc1 = strtok(NULL, "|");
-			gdesc2 = strtok(NULL, "|");
+			sprite_id = atol(toks);
 
 			/* Create space (only assigns id for now) */
 			space = space_create(id);
@@ -83,27 +73,8 @@ STATUS game_load_spaces(Game* game, char* filename)
 			if (space != NULL)
 			{
 				space_set_name(space, name);
-				space_set_north(space, north);
-				space_set_east(space, east);
-				space_set_south(space, south);
-				space_set_west(space, west);
-
-				if (gdesc0 == NULL)
-					space_set_gdesc_0(space, no_string);
-				else
-					space_set_gdesc_0(space, gdesc0);
-
-				if (gdesc1 == NULL)
-					space_set_gdesc_1(space, no_string);
-				else
-					space_set_gdesc_1(space, gdesc1);
-
-				if (gdesc2 == NULL)
-					space_set_gdesc_2(space, no_string);
-				else
-					space_set_gdesc_2(space, gdesc2);
-
 				space_set_description(space, description);
+				space_setSprite(space, sprite_id);
 
 				game_add_space(game, space);
 			}
@@ -140,14 +111,18 @@ STATUS game_load_spaces(Game* game, char* filename)
 			toks = strtok(NULL, "|");
 			link1 = atol(toks);
 
-			printf("LinkId -> %ld, Link0 -> %ld Link1 -> %ld\n", id, link0, link1);
+			toks = strtok(NULL, "|");
+			direction = atol(toks);
 
-			game_set_link(game, id, link0, link1);
+			printf("LinkId -> %ld, Link0 -> %ld Link1 -> %ld, Direction -> %d\n", id, link0, link1, direction);
+
+			game_set_link(game, id, link0, link1, direction);
 		}
 	}
 
-	if (ferror(file)) {
-	status = ERROR;
+	if (ferror(file))
+	{
+		status = ERROR;
 	}
 
 	fclose(file);

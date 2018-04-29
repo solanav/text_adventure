@@ -16,45 +16,48 @@
 #include "../include/die.h"
 #include "../include/link.h"
 #include "../include/inventory.h"
+#include "../include/sprite.h"
 
 #define MAX_OBJECTS 4
 
 typedef struct _Game Game;
 
-Game*	game_create();
-STATUS 	game_create_from_file(Game *, char *);
+Game *game_create();
+STATUS game_create_from_file(Game *, char *);
 
-STATUS 	game_update(Game *, F_Command *);
-STATUS	game_destroy(Game *);
+STATUS game_update(Game *, F_Command *);
+STATUS game_destroy(Game *);
 
-BOOL   	game_is_over(Game *);
+BOOL game_is_over(Game *);
 
-void   	game_print_screen(Game *);
-void   	game_print_data(Game *);
+void game_print_screen(Game *);
+void game_print_data(Game *);
 
-Space*	game_get_space(Game *, Id);
-Player*	game_get_player(Game *);
-Object* game_get_object(Game *, char *);
-Object * game_get_object_from_id(Game * game, Id id);
-Link*	game_get_link(Game *, Id);
-Id		game_get_link_id_at(Game *, int);
+Space *game_get_space(Game *, Id);
+Player *game_get_player(Game *);
+Object *game_get_object(Game *, char *);
+Object *game_get_object_from_id(Game *game, Id id);
+Link *game_get_link(Game *, Id);
+Id game_get_link_id_at(Game *, int);
 
-Id 		game_get_player_location(Game *);
-Id	 	game_get_object_location(Game *, Id);
-Id		game_get_space_id_at(Game *, int);
-int		game_get_last_roll(Game *);
+Id game_get_player_location(Game *);
+Id game_get_object_location(Game *, Id);
+Id game_get_space_id_at(Game *, int);
+int game_get_last_roll(Game *);
 
+STATUS game_add_space(Game *, Space *);
+STATUS game_set_player_location(Game *, Id);
+STATUS game_set_object_location(Game *, Id, Id, char *, char *);
+STATUS game_set_link(Game *, Id, Id, Id, int);
 
-STATUS	game_add_space(Game *, Space *);
-STATUS 	game_set_player_location(Game *, Id);
-STATUS 	game_set_object_location(Game *, Id, Id, char *, char *);
-STATUS	game_set_link(Game *, Id, Id, Id);
+STATUS game_load_spaces(Game *, char *);
 
-STATUS	game_load_spaces(Game *, char *);
-
-F_Command*	game_get_last_command(Game *);
-T_Command	game_get_last_command_text(Game *);
+F_Command *game_get_last_command(Game *);
+T_Command game_get_last_command_text(Game *);
 
 BOOL game_areSpacesAdjacent(Game *, Id, Id);
+
+Sprite *game_get_sprite(Game *game, Id id);
+STATUS game_add_sprite(Game *game, Sprite *sprite, int i);
 
 #endif
