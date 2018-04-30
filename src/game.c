@@ -81,7 +81,7 @@ Game *game_create()
 	game->player = player_create("player1", NO_ID, NO_ID, 1);
 
 	game->objects[0] = object_create("linterna", (long int)1);
-	game->objects[1] = object_create("libro", (long int)2);
+	game->objects[1] = object_create("libro", (long int)1);
 	game->objects[2] = object_create("pocion", (long int)3);
 	game->objects[3] = object_create("llave", (long int)4);
 
@@ -300,6 +300,9 @@ STATUS game_update(Game *game, F_Command *cmd)
 	printf("Updating with command -> %d\n\n", command_getCmd(cmd));
 
 	(*game_callback_fn_list[command_getCmd(cmd)])(game);
+
+	update_sprites(game);
+
 	return OK;
 }
 
@@ -394,7 +397,7 @@ STATUS game_set_player_location(Game *game, Id id)
 	return OK;
 }
 
-STATUS game_set_link(Game *game, Id link_id, Id space_id0, Id space_id1, int direction)
+STATUS game_set_link(Game *game, Id link_id, Id space_id0, Id space_id1, int direction, LinkStatus door)
 {
 	int i;
 
@@ -481,9 +484,9 @@ STATUS update_sprites(Game *game)
 		space = game->spaces[i];
 
 		north = game_get_link(game, space_get_north(space));
-		east = game_get_link(game, space_get_north(space));
-		south = game_get_link(game, space_get_north(space));
-		west = game_get_link(game, space_get_north(space));
+		east = game_get_link(game, space_get_east(space));
+		south = game_get_link(game, space_get_south(space));
+		west = game_get_link(game, space_get_west(space));
 
 		if (link_getStatus(north) == OPENED)
 			opened_links_val += 1;
@@ -498,7 +501,13 @@ STATUS update_sprites(Game *game)
 
 		printf("Space id[%ld] i[%d]\n", space_get_id(space), i);
 		printf("\tLight is (0 false)-> %d\n", light);
-		printf("\tCurrent sprite    -> %d\n\n", opened_links_val);
+		printf("\tCurrent sprite    -> %d\n", opened_links_val);
+		printf("\t");
+		printf("N %d ", link_getStatus(north));
+		printf("E %d ", link_getStatus(east));
+		printf("S %d ", link_getStatus(south));
+		printf("W %d ", link_getStatus(west));
+		printf("\n\n");
 
 		if (light == FALSE)
 			space_setCurrentSprite(space, 16);

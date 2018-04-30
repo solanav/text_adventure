@@ -35,7 +35,7 @@ STATUS sprite_loader_map(Game *game, char *filename)
 
 	while (fgets(line, WORD_SIZE, file))
 	{
-		if (i < 16 && strcmp(line, "\n"))
+		if (i <= 16 && strcmp(line, "\n"))
 		{
 			sprite_putLine(sprite, line, i);
 			i++;

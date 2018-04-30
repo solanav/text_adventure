@@ -38,6 +38,7 @@ STATUS game_load_spaces(Game *game, char *filename)
 
 	Space *space = NULL;
 	STATUS status = OK;
+	LinkStatus door;
 
 	if (!filename || !game)
 		return ERROR;
@@ -80,10 +81,21 @@ STATUS game_load_spaces(Game *game, char *filename)
 			{
 				space_set_name(space, name);
 				space_set_description(space, description);
-				space_setSprite(space, sprite_id[0], 0);
+				space_set_light(space, TRUE);
+				
+				for (i=0; i<=16; i++)
+				{
+					printf("- Saving %ld in %d\n", sprite_id[i], i);
+					space_setSprite(space, sprite_id[i], i);
+				}
 
 				game_add_space(game, space);
 			}
+
+			printf("|");
+			for (i = 0; i <= 16; i++)
+				printf("%ld|", space_getSprite(space, i));
+			printf("\n\n");
 		}
 
 		if (strncmp("#o:", line, 3) == 0)
@@ -120,7 +132,12 @@ STATUS game_load_spaces(Game *game, char *filename)
 			toks = strtok(NULL, "|");
 			direction = atol(toks);
 
-			game_set_link(game, id, link0, link1, direction);
+			toks = strtok(NULL, "|");
+			door = atoi(toks);
+
+			printf("Door %d\n", door);
+
+			game_set_link(game, id, link0, link1, direction, door);
 		}
 	}
 
