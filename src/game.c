@@ -49,7 +49,7 @@ void game_callback_turnOff(Game *game);
 void game_callback_open(Game *game);
 
 static callback_fn game_callback_fn_list[N_CALLBACK] =
-{
+    {
 	game_callback_unknown,
 	game_callback_exit,
 	game_callback_pickup,
@@ -59,8 +59,7 @@ static callback_fn game_callback_fn_list[N_CALLBACK] =
 	game_callback_check,
 	game_callback_turnOn,
 	game_callback_turnOff,
-	game_callback_open
-};
+	game_callback_open};
 
 Game *game_create()
 {
@@ -114,7 +113,7 @@ STATUS game_create_from_file(Game *game, char *filename)
 	if (!game || !filename)
 		return ERROR;
 
-	/* Load all data from file */
+	/* Load all opened_links from file */
 	if (game_load_spaces(game, filename) == ERROR)
 		return ERROR;
 
@@ -149,32 +148,12 @@ STATUS game_create_from_file(Game *game, char *filename)
 			space_set_south(space_act, link_id);
 		else if (direction == 3)
 			space_set_west(space_act, link_id);
-
-		/* DEBUG 
-
-		printf("Link id -> %ld\n", link_id);
-		printf("\tSpace act id  -> %ld\n", space_act_id);
-		printf("\tSpace next id -> %ld\n", space_next_id);
-		printf("\tDirection     -> %d \n\n", direction); */
 	}
 
 	game_set_player_location(game, game_get_space_id_at(game, 0));
 
-	/* DEBUG 
-	for (i = 0; i < MAX_SPACES; i++)
-	{
-		space_print(game->spaces[i]);
-	}
+	update_sprites(game);
 
-	for (i = 0; i < MAX_OBJECTS; i++)
-	{
-		printf("Object -> %s [%ld]", object_get_name(game->objects[i]), object_get_id(game->objects[i]));
-	}
-
-	printf("Player name -> %s\n", player_getName(game->player));
-	printf("Player location -> %ld\n", player_getLocId(game->player));
-	printf("Player id -> %ld\n", player_getId(game->player));
-	*/
 	return OK;
 }
 
@@ -183,32 +162,19 @@ STATUS game_destroy(Game *game)
 	int i = 0;
 	printf("\nMAX_SPACES -> %d\n", MAX_SPACES);
 
-	for (i = 0; (i <= 26) && game->spaces[i]; i++)
-	{
-		printf("Iteration now on -> %d  \n", i);
-		printf("Going with space -> %p  \n", (void *)game->spaces[i]);
-		printf("Space ID is      -> %ld \n\n", space_get_id(game->spaces[i]));
+	for (i = 0; i <= MAX_SPACES && game->spaces[i]; i++)
 		space_destroy(game->spaces[i]);
-	}
 
 	player_destroy(game->player);
 
 	for (i = 0; i < MAX_OBJECTS && game->objects[i]; i++)
-	{
-		printf("Destroying %p with i %d\n", (void *)game->objects[i], i);
-		printf("\tObject has id %ld\n", object_get_id(game->objects[i]));
 		object_destroy(game->objects[i]);
-	}
 
 	for (i = 0; i < MAX_LINK && game->links[i]; i++)
-	{
 		link_destroy(game->links[i]);
-	}
 
 	for (i = 0; i < MAX_SPRITES && game->sprites[i]; i++)
-	{
 		sprite_destroy(game->sprites[i]);
-	}
 
 	die_die_die(game->die);
 
@@ -250,7 +216,6 @@ Object *game_get_object(Game *game, char *object_name)
 
 	for (i = 0; i < 4 && game->objects[i]; i++)
 	{
-		printf("Comparing [%s] with [%s]\n", object_name, object_get_name(game->objects[i]));
 		if (strcasecmp(object_name, object_get_name(game->objects[i])) == 0)
 			return game->objects[i];
 	}
@@ -348,7 +313,7 @@ T_Command game_get_last_command_text(Game *game)
 	return command_getCmd(game->last_cmd);
 }
 
-void game_print_data(Game *game)
+void game_print_opened_links(Game *game)
 {
 	int i = 0;
 
@@ -407,13 +372,6 @@ STATUS game_add_sprite(Game *game, Sprite *sprite, int i)
 	game->sprites[i] = sprite;
 
 	printf("Someone added this [%d] ->\n", i);
-	sprite_print(game->sprites[i]);
-
-	if (i != 0)
-	{
-		printf("Last ONE [%d] ->\n", i - 1);
-		sprite_print(game->sprites[i - 1]);
-	}
 
 	return OK;
 }
@@ -501,6 +459,54 @@ BOOL game_areSpacesAdjacent(Game *g, Id space1, Id space2)
 		return TRUE;
 
 	return FALSE;
+}
+
+STATUS update_sprites(Game *game)
+{
+	int i;
+
+	Link *north = NULL, *east = NULL, *south = NULL, *west = NULL;
+	BOOL light = FALSE;
+	Space *space = NULL;
+
+	int opened_links_val = 0;
+
+	if (!game)
+		return ERROR;
+
+	for (i = 0; i < MAX_SPACES && space_get_id(game->spaces[i]) != -1; i++)
+	{
+		opened_links_val = 0;
+
+		space = game->spaces[i];
+
+		north = game_get_link(game, space_get_north(space));
+		east = game_get_link(game, space_get_north(space));
+		south = game_get_link(game, space_get_north(space));
+		west = game_get_link(game, space_get_north(space));
+
+		if (link_getStatus(north) == OPENED)
+			opened_links_val += 1;
+		if (link_getStatus(east) == OPENED)
+			opened_links_val += 2;
+		if (link_getStatus(south) == OPENED)
+			opened_links_val += 4;
+		if (link_getStatus(west) == OPENED)
+			opened_links_val += 8;
+
+		light = space_get_light(space);
+
+		printf("Space id[%ld] i[%d]\n", space_get_id(space), i);
+		printf("\tLight is (0 false)-> %d\n", light);
+		printf("\tCurrent sprite    -> %d\n\n", opened_links_val);
+
+		if (light == FALSE)
+			space_setCurrentSprite(space, 16);
+		else
+			space_setCurrentSprite(space, opened_links_val);
+	}
+
+	return OK;
 }
 
 BOOL game_is_over(Game *game)
@@ -654,7 +660,9 @@ void game_callback_check(Game *game)
 		if (space_get_light(current_space) == TRUE)
 			strcpy(space_description, space_get_description(current_space));
 		else
-			strcpy(space_description, "you can't see anything here");
+			strcpy(space_description, "you can't see");
+
+		printf("Description -> %s\n", space_description);
 
 		command_set_id(game->last_cmd, space_description);
 	}
@@ -747,10 +755,15 @@ void game_callback_open(Game *game)
 	else if (strcasecmp(unpak_link, "w") == 0 || strcasecmp(unpak_link, "west") == 0)
 		link_id = space_get_west(game_get_space(game, actpos));
 
-	else 
+	else
 		return;
 
 	link = game_get_link(game, link_id);
 
+	printf("Next move should be -> %ld\n", link_getSpace2(link));
+	printf("Currently has STATUS -> %d\n", link_getStatus(link));
+
 	link_setStatus(link, OPENED);
+
+	printf("Currently has STATUS -> %d\n", link_getStatus(link));
 }

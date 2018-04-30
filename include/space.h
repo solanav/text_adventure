@@ -165,9 +165,9 @@ STATUS space_print(Space *space);
 *	@brief: Saca la linea deseada del sprite
 *	@param: Space
 *	@param: numero de la linea
-*	@return: a Link
+*	@return: el Id en la posicion
 */
-Id space_getSprite(Space *);
+Id space_getSprite(Space *, int);
 
 /*
 *	@author: Antonio Solana
@@ -177,6 +177,23 @@ Id space_getSprite(Space *);
 *	@param: numero de la linea
 *	@return: STATUS
 */
-STATUS space_setSprite(Space *space, Id spriteId);
+STATUS space_setSprite(Space *, Id, int);
+
+/*
+*	@author: Antonio Solana
+*	@brief: Set para la sprite que deberia estar usandose
+*	@param: Space
+*	@param: numero de la sprite
+*	@return: STATUS
+*/
+STATUS space_setCurrentSprite(Space *space, int i);
+
+/*
+*	@author: Antonio Solana
+*	@brief: Get para la sprite en uso actualmente
+*	@param: Space
+*	@return: STATUS
+*/
+int space_getCurentSprite(Space *space);
 
 #endif

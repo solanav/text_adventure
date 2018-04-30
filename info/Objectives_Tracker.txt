@@ -9,14 +9,14 @@ Commands - Cata
 R04 - OK
 R07 - OK
 R08 - PR
-R09 - PR
+R09 - OK
 
 Object - Bernardo
 R05 - OK
 R06 - OK
 
 Data.dat - Solana
-R10 - ND
+R10 - OK
 R11 - ND
 
 Documentation - Bernardo

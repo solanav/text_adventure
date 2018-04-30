@@ -47,6 +47,7 @@ STATUS get_user_input(F_Command *command)
 			return ERROR;
 		}
 
+		/* Identify the command given */
 		for (i = 0; i < N_CMD && command_found == 0; i++)
 		{
 			if ((strcasecmp(string0, short_cmd_to_str[i]) == 0 || strcasecmp(string0, cmd_to_str[i]) == 0))
@@ -66,6 +67,7 @@ STATUS get_user_input(F_Command *command)
 
 		sscanf(input, "%s %s\n", string0, string1);
 		aux_command = command_getCmd(command);
+
 		if (aux_command == PICK_UP || aux_command == DROP)
 		{
 			command_set_id(command, string1);
@@ -95,6 +97,12 @@ STATUS get_user_input(F_Command *command)
 				command_set_id(command, "space");
 			else
 				command_set_id(command, string1);
+		}
+
+		if (aux_command == TURNON || aux_command == TURNOFF)
+		{
+			printf("\tCommand is turn. Setting id. [%s %s]\n", string0, string1);
+			command_set_id(command, string1);
 		}
 
 		if (aux_command == OPEN)
@@ -170,8 +178,10 @@ STATUS command_set_id(F_Command *cmd, char *string)
 	if (!cmd || !string)
 		return ERROR;
 
-	printf("Done\n");
 	strcpy(cmd->id, string);
+
+	printf("Done, id set ok\n");
+
 	return OK;
 }
 

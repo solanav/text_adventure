@@ -17,22 +17,25 @@
 struct _Space
 {
 	Id id;			     /*!< id del espacio*/
-	char name[WORD_SIZE];	/*!< nombre del espacio*/
-	char description[WORD_SIZE]; /*!<  descripcion*/
+	char name[WORD_SIZE];	     /*!< nombre del espacio*/
+	char description[WORD_SIZE]; /*!< descripcion*/
 	Id linkNorth;		     /*!< id del link al norte*/
 	Id linkSouth;		     /*!< id del link al sur*/
 	Id linkEast;		     /*!< id del link al este*/
 	Id linkWest;		     /*!< id del link al oeste*/
 	Id linkUp;		     /*!< id del link hacia arriba*/
 	Id linkDown;		     /*!< id del link hacia abajo*/
-	Id spriteId;		     /*!< id del sprite*/
-	char gdesc[3][21];	   /*!< strings para objetos ASCII*/
+	Id spriteId[17];	     /*!< id del sprite*/
+	int curentSprite;	     /*!< sprite que actual*/
+	char gdesc[3][21];	     /*!< strings para objetos ASCII*/
 	Set *objects;		     /*!< Set de objetos*/
 	BOOL light;		     /*!< Bool que indica si la casilla esta iluminada*/
 };
 
 Space *space_create(Id id)
 {
+	int i;
+
 	Space *newSpace = NULL;
 
 	if (id == NO_ID)
@@ -55,7 +58,10 @@ Space *space_create(Id id)
 	newSpace->linkUp = NO_ID;
 	newSpace->linkDown = NO_ID;
 
-	newSpace->spriteId = NO_ID;
+	for (i = 0; i<=16; i++)
+	{
+		newSpace->spriteId[i] = NO_ID;
+	}
 
 	newSpace->objects = set_create(5);
 
@@ -88,12 +94,22 @@ STATUS space_set_name(Space *space, char *name)
 	return OK;
 }
 
-STATUS space_setSprite(Space *space, Id spriteId)
+STATUS space_setSprite(Space *space, Id spriteId, int i)
 {
 	if (!space)
 		return ERROR;
 
-	space->spriteId = spriteId;
+	space->spriteId[i] = spriteId;
+
+	return OK;
+}
+
+STATUS space_setCurrentSprite(Space *space, int i)
+{
+	if (!space)
+		return ERROR;
+
+	space->curentSprite = i;
 
 	return OK;
 }
@@ -189,6 +205,7 @@ BOOL space_get_light(Space *space)
 	return space->light;
 }
 
+
 STATUS space_add_object(Space *space, Id obj_id)
 {
 	if (!space)
@@ -205,12 +222,20 @@ STATUS space_remove_object(Space *space, Id id)
 	return set_del(space->objects, id);
 }
 
-Id space_getSprite(Space *space)
+Id space_getSprite(Space *space, int i)
 {
 	if (!space)
 		return ERROR;
 
-	return space->spriteId;
+	return space->spriteId[i];
+}
+
+int space_getCurentSprite(Space *space)
+{
+	if (!space)
+		return ERROR;
+
+	return space->curentSprite;
 }
 
 const char *space_get_name(Space *space)

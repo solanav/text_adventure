@@ -31,10 +31,10 @@ STATUS game_load_spaces(Game *game, char *filename)
 	char name[WORD_SIZE] = {0};
 	char description[WORD_SIZE] = {0};
 
-	Id id = NO_ID, place = NO_ID, sprite_id = NO_ID;
+	Id id = NO_ID, place = NO_ID, sprite_id[16];
 	Id link0 = NO_ID, link1 = NO_ID;
 
-	int direction;
+	int direction, i, j = 0;
 
 	Space *space = NULL;
 	STATUS status = OK;
@@ -62,19 +62,25 @@ STATUS game_load_spaces(Game *game, char *filename)
 			toks = strtok(NULL, "|");
 			strcpy(description, toks);
 
-			/* Read Sprite ID */
-			toks = strtok(NULL, "|");
-			sprite_id = atol(toks);
+			/* Read Sprites */
+			for (i=0; i<=16; i++)
+			{
+				toks = strtok(NULL, "|");
+				sprite_id[i] = atol(toks);
+			}
 
 			/* Create space (only assigns id for now) */
 			space = space_create(id);
+
+			printf("Created space [%d]\n", j);
+			j++;
 
 			/* Save what we just read */
 			if (space != NULL)
 			{
 				space_set_name(space, name);
 				space_set_description(space, description);
-				space_setSprite(space, sprite_id);
+				space_setSprite(space, sprite_id[0], 0);
 
 				game_add_space(game, space);
 			}
@@ -114,8 +120,6 @@ STATUS game_load_spaces(Game *game, char *filename)
 			toks = strtok(NULL, "|");
 			direction = atol(toks);
 
-			printf("LinkId -> %ld, Link0 -> %ld Link1 -> %ld, Direction -> %d\n", id, link0, link1, direction);
-
 			game_set_link(game, id, link0, link1, direction);
 		}
 	}
@@ -126,6 +130,8 @@ STATUS game_load_spaces(Game *game, char *filename)
 	}
 
 	fclose(file);
+
+	printf("Reading of game complete...\n");
 
 	return status;
 }

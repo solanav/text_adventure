@@ -19,7 +19,6 @@ int main(int argc, char *argv[])
 	char log_dir[1024] = "./log/";
 	char *cmd_to_str[8] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check"};
 
-
 	F_Command * command  = command_create();
 	Graphic_engine *gengine;
 

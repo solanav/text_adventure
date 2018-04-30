@@ -81,10 +81,15 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 	if ((id_act = game_get_player_location(game)) != NO_ID)
 	{
 		space_act = game_get_space(game, id_act);
-		spriteId = space_getSprite(space_act);
+		spriteId = space_getSprite(space_act, space_getCurentSprite(space_act));
 		sprite = game_get_sprite(game, spriteId);
 
 		print_new_line(ge->map, 2);
+
+		printf("Space ID      -> %ld\n", id_act);
+		printf("Space name    -> %s\n", space_get_name(space_act));
+		printf("Current sprite-> %d\n", space_getCurentSprite(space_act));
+		printf("Sprite ID     -> %ld\n\n", spriteId);
 
 		if (!sprite)
 		{

@@ -9,8 +9,6 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-#define MAX_SPRITES 1000
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

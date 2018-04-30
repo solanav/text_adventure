@@ -57,7 +57,31 @@ T_Command game_get_last_command_text(Game *);
 
 BOOL game_areSpacesAdjacent(Game *, Id, Id);
 
+/*
+*	@author: Antonio Solana
+*	@brief: Searches in sprite index for the pointer that corresponds to your id
+*	@param: Game
+*	@param: id of sprite
+*	@return: STATUS
+*/
 Sprite *game_get_sprite(Game *game, Id id);
+
+/*
+*	@author: Antonio Solana
+*	@brief: Adds a new sprite to game sprite index in game structure
+*	@param: Game
+*	@param: sprite pointer to add
+*	@param: position to add it in
+*	@return: STATUS
+*/
 STATUS game_add_sprite(Game *game, Sprite *sprite, int i);
+
+/*
+*	@author: Antonio Solana
+*	@brief: Updates current sprite for every space according to rules
+*	@param: Game
+*	@return: STATUS
+*/
+STATUS update_sprites(Game *game);
 
 #endif
