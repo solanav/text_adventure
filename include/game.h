@@ -26,6 +26,7 @@ STATUS 	game_create_from_file(Game *, char *);
 
 STATUS 	game_update(Game *, F_Command *);
 STATUS	game_destroy(Game *);
+size_t game_size();
 
 BOOL   	game_is_over(Game *);
 
@@ -53,6 +54,7 @@ STATUS 	game_set_player(Game *, Player *);
 STATUS 	game_set_object(Game *, Object *);
 STATUS 	game_set_object_location(Game *, Id loc, Id obj);
 STATUS	game_set_link(Game *, Id, Id, Id);
+STATUS	game_set_die(Game *, Die*);
 
 STATUS	game_load_spaces(Game *, char *);
 

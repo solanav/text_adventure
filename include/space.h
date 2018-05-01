@@ -21,6 +21,8 @@ typedef struct _Space Space;
 Space* 		space_create(Id id);
 STATUS 		space_destroy(Space* space);
 
+size_t space_size();
+
 Id 			space_get_id(Space* space);
 
 STATUS 		space_set_name(Space* space, char* name);
@@ -44,6 +46,7 @@ Id 			space_get_west(Space* space);
 STATUS 		space_add_object(Space* space, Id obj_id);
 STATUS 		space_remove_object(Space* space, Id obj_id);
 Set * 		space_get_objects_id(Space* space);
+STATUS		space_set_objects_id(Space* space, Set* ids);
 
 STATUS		space_set_gdesc_0(Space *, char *);
 STATUS		space_set_gdesc_1(Space *, char *);

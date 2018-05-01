@@ -30,6 +30,8 @@ Set * set_create(int);
  */
 void set_destroy(Set *);
 
+size_t set_size();
+
 /**
  *	@author Pablo Sánchez
  * 	@brief esta funcion se encarga de añadir un elemento al conjunto.

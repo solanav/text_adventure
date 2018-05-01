@@ -33,6 +33,9 @@
   *	@return devuelve OK si se ha realizado correctamente o ERROR si no.
   */
  void object_destroy(Object* obj);
+
+ size_t object_size();
+
  /**
   *	@brief modifica el nombre de un objeto
   *	@param puntero object de tipo Object

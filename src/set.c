@@ -41,6 +41,10 @@ void set_destroy(Set * set)
 	return;
 }
 
+size_t set_size(){
+	return sizeof(Set);
+}
+
 STATUS set_add(Set * set, Id id)
 {
 	int i, done;

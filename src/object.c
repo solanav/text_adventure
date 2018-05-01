@@ -36,6 +36,10 @@ void object_destroy(Object* obj)
 	free(obj);
 }
 
+size_t object_size(){
+	return sizeof(Object);
+}
+
 STATUS object_set_name(Object* obj, char* name)
 {
 	if(!obj||!name) return ERROR;

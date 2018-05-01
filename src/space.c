@@ -66,6 +66,10 @@ STATUS space_destroy(Space* space)
 	return OK;
 }
 
+size_t space_size(){
+	return sizeof(Space);
+}
+
 STATUS space_set_name(Space* space, char* name)
 {
 	if (!space || !name) return ERROR;
@@ -203,6 +207,15 @@ Set * space_get_objects_id(Space* space)
   }
 
   return set;
+}
+
+STATUS space_set_objects_id(Space * space, Set* ids)
+{
+	if(!space || !ids) return ERROR;
+
+	space->objects = ids;
+
+	return OK;
 }
 
 STATUS space_print(Space* space)

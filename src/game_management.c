@@ -163,29 +163,46 @@ STATUS game_load(Game* game, char* filename)
 	return status;
 }
 
+STATUS game_save_player(Game* game, FILE * f)
+{
+	Player * player;
+	Inventory * inv;
+	Set * set;
+
+	if(!game || !f) return ERROR;
+
+	player = game_get_player(game);
+	if(!player) return ERROR;
+	fwrite(&player, player_size(), 1, f);
+	inv = player_getInventory(player);
+	if(!inv) return ERROR;
+	fwrite(&inv, inventory_size(), 1, f);
+	set = inventory_get_ids(inv);
+	if(!set) return ERROR;
+	fwrite(&set, set_size(), 1, f);
+
+	return OK;
+}
+
 STATUS game_save_spaces(Game* game, FILE * f)
 {
 	int i;
 	Space * spc;
+	Set * set;
 
 	if(!game || !f) return ERROR;
 
-	for(i=0; game_get_space_id_at(game, i) || i<MAX_SPACES; i++){
+	for(i = 0; game_get_space_id_at(game, i) != NO_ID; i++){
+	}
+	fwrite(&i, sizeof(int), 1, f);
+
+	for(i=0; game_get_space_id_at(game, i) != NO_ID || i<MAX_SPACES; i++){
 		spc = game_get_space(game, game_get_space_id_at(game, i));
-		fprintf(f, "#s:");
-		fprintf(f, "%ld|", space_get_id(spc));
-		fprintf(f, "%s|", space_get_name(spc));
-		fprintf(f, "%s|", space_get_description(spc));
-		fprintf(f, "%ld|", space_get_north(spc));
-		fprintf(f, "%ld|", space_get_east(spc));
-		fprintf(f, "%ld|", space_get_south(spc));
-		fprintf(f, "%ld|", space_get_west(spc));
-		fprintf(f, "%s|", space_get_gdesc_0(spc));
-		fprintf(f, "%s|", space_get_gdesc_1(spc));
-		fprintf(f, "%s|\n", space_get_gdesc_2(spc));
+		fwrite(&spc, space_size(), 1, f);
+		set = space_get_objects_id(spc);
+		fwrite(&set, set_size(), 1 , f);
 	}
 
-	space_destroy(spc);
 	return OK;
 }
 
@@ -196,16 +213,16 @@ STATUS game_save_objects(Game * game, FILE * f)
 
 	if(!game || !f) return ERROR;
 
+	for(i = 0; game_get_object_id_at(game, i) != NO_ID; i++){
+	}
+	fwrite(&i, sizeof(int), 1, f);
+
 	for(i=0; game_get_object_id_at(game, i) || i<MAX_OBJECTS; i++){
 		obj = game_get_object_from_id(game, game_get_object_id_at(game, i));
-		fprintf(f, "#o:");
-		fprintf(f, "%ld|", object_get_id(obj));
-		fprintf(f, "%s|", object_get_name(obj));
-		fprintf(f, "%ld|", game_get_object_location(game, object_get_id(obj)));
-		fprintf(f, "%s|\n", object_get_description(obj));
+		fwrite(&obj, object_size(), 1, f);
+
 	}
 
-	object_destroy(obj);
 	return OK;
 }
 
@@ -216,17 +233,29 @@ STATUS game_save_links(Game * game, FILE * f)
 
 	if(!game || !f) return ERROR;
 
+	for(i = 0; game_get_link_id_at(game, i) != NO_ID; i++){
+	}
+	fwrite(&i, sizeof(int), 1, f);
+
 	for(i=0; game_get_link_id_at(game, i) || i<MAX_LINK; i++){
 		lnk = game_get_link(game, game_get_link_id_at(game, i));
-		fprintf(f, "#l:");
-		fprintf(f, "%ld|", link_getId(lnk));
-		fprintf(f, "Link %ld|", link_getId(lnk));
-		fprintf(f, "%ld|", link_getSpace1(lnk));
-		fprintf(f, "%ld|", link_getSpace2(lnk));
-		fprintf(f, "%d|\n", link_getStatus(lnk));
+		fwrite(&lnk, link_size(), 1, f);
 	}
 
 	link_destroy(lnk);
+	return OK;
+}
+
+STATUS game_save_die(Game * game, FILE * f)
+{
+	Die * die;
+
+	if(!game || !f) return ERROR;
+
+	die = game_get_die(game);
+
+	fwrite(&die, die_size(), 1, f);
+
 	return OK;
 }
 
@@ -237,23 +266,84 @@ STATUS game_save(Game * game, char * filename)
 
 	if(!game || !filename) return ERROR;
 
-	sprintf(string, "..//saves/%s.sv", filename);
+	sprintf(string, "/saves/%s.sv", filename);
 
-	save = fopen(string, "w");
+	save = fopen(string, "wb");
 	if(!save) return ERROR;
 
-	if(game_save_spaces(game, save) == ERROR)
+	fwrite(&game, game_size(), 1, save);
+
+	if(game_save_player(game, save) == ERROR)
 		return ERROR;
 
-	save = freopen(string, "a", save);
-	if(!save) return ERROR;
-
 	if(game_save_objects(game, save) == ERROR)
+		return ERROR;
+
+	if(game_save_spaces(game, save) == ERROR)
 		return ERROR;
 
 	if(game_save_links(game, save) == ERROR)
 		return ERROR;
 
+	if(game_save_die(game, save) == ERROR)
+		return ERROR;
+
 	fclose(save);
+	return OK;
+}
+
+STATUS game_load_saved_game(Game * game, char * filename)
+{
+	int i;
+	FILE * save;
+	char string[100];
+	Player * ply;
+	Inventory * inv;
+	Set* set;
+	Object * obj;
+	Space * spc;
+	Link * lnk;
+	Die * die;
+
+	if(!game || !filename) return ERROR;
+
+	sprintf(string, "/saves/%s.sv", filename);
+
+	save = fopen(string, "rb");
+	if(!save) return ERROR;
+
+	fread(&game, game_size(), 1, save);
+	fread(&ply, player_size(), 1, save);
+	fread(&inv, inventory_size(), 1, save);
+	fread(&set, set_size(), 1, save);
+
+	inventory_set_ids(inv, set);
+	player_setInventory(ply, inv);
+	game_set_player(game, ply);
+
+	fread(&i, sizeof(int), 1, save);
+	while( i >= 0){
+		fread(&obj, object_size(), 1, save);
+		game_set_object(game, obj);
+		i--;
+	}
+
+	fread(&i, sizeof(int), 1, save);
+	while( i >= 0){
+		fread(&spc, space_size(), 1, save);
+		fread(&set, set_size(), 1 ,save);
+		space_set_objects_id(spc, set);
+		game_add_space(game, spc);
+	}
+
+	fread(&i, sizeof(int), 1, save);
+	while( i >= 0){
+		fread(&lnk, link_size(), 1, save);
+		game_set_link(game, link_getId(lnk), link_getSpace1(lnk), link_getSpace2(lnk));
+	}
+
+	fread(&die, die_size(), 1, save);
+	game_set_die(game, die);
+
 	return OK;
 }

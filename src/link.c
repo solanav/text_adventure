@@ -40,6 +40,10 @@ void link_destroy(Link * l)
 	free(l);
 }
 
+size_t link_size(){
+	return sizeof(Link);
+}
+
 STATUS link_setId(Link * l, Id id)
 {
 	if(!l) return ERROR;

@@ -49,6 +49,10 @@ void player_destroy(Player *player)
   free(player);
 }
 
+size_t player_size(){
+	return sizeof(Player);
+}
+
 
 STATUS player_setName(Player * player, char * newName)
 {
@@ -118,6 +122,22 @@ STATUS player_removeObjId(Player * player, Id id)
 	if (!player) return ERROR;
 
 	if(inventory_del_id(player->inv, id) == ERROR) return ERROR;
+
+	return OK;
+}
+
+Inventory * player_getInventory(Player * player)
+{
+	if(!player) return NULL;
+
+	return player->inv;
+}
+
+STATUS player_setInventory(Player * player, Inventory* inventory)
+{
+	if(!player || !inventory) return ERROR;
+
+	player->inv = inventory;
 
 	return OK;
 }

@@ -60,7 +60,7 @@ player.o: $(SRCPATH)player.c $(HDRPATH)types.h $(HDRPATH)player.h $(HDRPATH)set.
 game_loop.o: $(SRCPATH)game_loop.c $(HDRPATH)graphic_engine.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)game_loop.c -o $(OBJPATH)game_loop.o
 
-game_management.o: $(SRCPATH)game_management.c $(HDRPATH)game.h $(HDRPATH)types.h
+game_management.o: $(SRCPATH)game_management.c $(HDRPATH)game.h $(HDRPATH)types.h $(HDRPATH)object.h $(HDRPATH)player.h $(HDRPATH)space.h $(HDRPATH)command.h $(HDRPATH)die.h $(HDRPATH)link.h $(HDRPATH)inventory.h $(HDRPATH)set.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)game_management.c -o $(OBJPATH)game_management.o
 
 graphic_engine.o: $(SRCPATH)graphic_engine.c $(HDRPATH)graphic_engine.h $(HDRPATH)screen.h $(HDRPATH)game.h

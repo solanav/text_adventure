@@ -17,6 +17,8 @@ typedef struct _Inventory Inventory;
 Inventory * inventory_create(int);
 STATUS inventory_destroy(Inventory *inv);
 
+size_t inventory_size();
+
 STATUS inventory_set_ids(Inventory *inv, Set *ids);
 Set * inventory_get_ids(Inventory *inv);
 

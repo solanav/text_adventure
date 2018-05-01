@@ -31,6 +31,9 @@ Die* die_ini(Id);
  *  @param *Die
  */
 void die_die_die(Die* );
+
+size_t die_size();
+
 /**
  *	@author Pablo Sánchez
  *	@brief esta funcion se encarga de llamar a la funcion aleatorio() para simular la tirada del dado y devolver el numero elegido

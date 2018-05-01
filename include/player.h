@@ -12,6 +12,7 @@
  #include <stdio.h>
  #include <stdlib.h>
  #include "types.h"
+ #include "inventory.h"
 
 /**
  * 	En este caso cada jugador tendrá una id
@@ -35,6 +36,9 @@
  *	@param Player* es el jugador a eliminar
  */
  void player_destroy(Player *);
+
+size_t player_size();
+
 /**
  *	@author Antonio Solana
  *	@brief modifica el nombre de un jugador
@@ -114,5 +118,15 @@
  */
 
  STATUS player_removeObjId(Player *, Id);
+
+/**
+ * @author Pablo Sanchez
+ * @brief acesses the player full inventory structure
+ * @param Player*
+ * @return Inventory*
+ */
+Inventory * player_getInventory(Player*);
+
+STATUS player_setInventory(Player * player, Inventory* inventory);
 
  #endif

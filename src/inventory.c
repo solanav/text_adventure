@@ -42,6 +42,10 @@ STATUS inventory_destroy(Inventory *inv)
 	return OK;
 }
 
+size_t inventory_size(){
+	return sizeof(Inventory);
+}
+
 STATUS inventory_set_ids(Inventory *inv, Set *ids)
 {
 	if(!inv || !ids) return ERROR;

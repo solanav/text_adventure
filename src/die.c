@@ -33,6 +33,10 @@ void die_die_die(Die* die)
   free(die);
 }
 
+size_t die_size(){
+	return sizeof(Die);
+}
+
 STATUS die_roll(Die* die)
 {
   if(!die) return ERROR;

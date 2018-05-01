@@ -31,6 +31,8 @@ Link * link_create(Id);
 */
 void link_destroy(Link *);
 
+size_t link_size();
+
 /**
 *	@author: Pablo Sánchez
 *	@brief: Changes the link id to the given one

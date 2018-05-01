@@ -7,6 +7,7 @@
  * @copyright GNU Public License
  */
 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <strings.h>
@@ -194,6 +195,10 @@ STATUS game_destroy(Game * game)
 	return OK;
 }
 
+size_t game_size(){
+	return sizeof(Game);
+}
+
 Space* game_get_space(Game * game, Id id)
 {
 	int i;
@@ -221,6 +226,15 @@ Die * game_get_die(Game * game)
 	if(!game) return NULL;
 
 	return game->die;
+}
+
+STATUS game_set_die(Game * game, Die* die)
+{
+	if(!game || !die) return ERROR;
+
+	game->die = die;
+
+	return OK;
 }
 
 Object * game_get_object(Game * game, char * object_name)
@@ -523,17 +537,10 @@ void game_callback_save(Game * game)
 void game_callback_load(Game * game)
 {
 	char filename[100];
-	Game * new; /*Not the best way but i can't think of another*/
 
 	strcpy(filename, command_get_id(game->last_cmd[0]));
 
-	new = game_create();
-	if(game_load(new, filename) == ERROR)
-		return;
-	else{
-		game_destroy(game);
-		game = new;
-	}
+	game_load_saved_game(game, filename);
 }
 
 STATUS game_add_space(Game * game, Space* space)
@@ -542,7 +549,7 @@ STATUS game_add_space(Game * game, Space* space)
 
 	if (space == NULL) return ERROR;
 
-	while ((i < MAX_SPACES) && (game->spaces[i] != NULL))
+	while ((i < MAX_SPACES) && game_get_space_id_at(game, i) != NO_ID)
 		i++;
 
 	if (i >= MAX_SPACES) return ERROR;
