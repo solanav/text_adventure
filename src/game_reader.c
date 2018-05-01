@@ -35,6 +35,7 @@ STATUS game_load_spaces(Game *game, char *filename)
 	Id link0 = NO_ID, link1 = NO_ID;
 
 	int direction, i, j = 0;
+	BOOL light = FALSE;
 
 	Space *space = NULL;
 	STATUS status = OK;
@@ -63,6 +64,10 @@ STATUS game_load_spaces(Game *game, char *filename)
 			toks = strtok(NULL, "|");
 			strcpy(description, toks);
 
+			/* Read Light */
+			toks = strtok(NULL, "|");
+			light = atoi(toks);
+
 			/* Read Sprites */
 			for (i=0; i<=16; i++)
 			{
@@ -81,7 +86,9 @@ STATUS game_load_spaces(Game *game, char *filename)
 			{
 				space_set_name(space, name);
 				space_set_description(space, description);
-				space_set_light(space, TRUE);
+				space_set_light(space, light);
+
+				printf("%s => lights %d\n", space_get_name(space), space_get_light(space));
 				
 				for (i=0; i<=16; i++)
 				{

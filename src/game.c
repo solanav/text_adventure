@@ -68,22 +68,12 @@ Game *game_create()
 
 	game = (Game *)calloc(1, sizeof(Game));
 	if (!game)
-	{
-		printf("Calloc didn't work\n");
 		return NULL;
-	}
 
 	for (i = 0; i < MAX_SPACES; i++)
 	{
 		game->spaces[i] = NULL;
 	}
-
-	game->player = player_create("player1", NO_ID, NO_ID, 1);
-
-	game->objects[0] = object_create("linterna", (long int)1);
-	game->objects[1] = object_create("libro", (long int)1);
-	game->objects[2] = object_create("pocion", (long int)3);
-	game->objects[3] = object_create("llave", (long int)4);
 
 	for (i = 0; i < MAX_LINK; i++)
 	{
@@ -99,6 +89,10 @@ Game *game_create()
 	game_set_player_location(game, NO_ID);
 
 	game->last_cmd = NULL;
+
+	game->player = player_create("player1", NO_ID, NO_ID, 1);
+
+	game->objects[0] = object_create("linterna", (long int)1, TRUE, FALSE, NO_ID, TRUE, FALSE);
 
 	return game;
 }
@@ -150,7 +144,7 @@ STATUS game_create_from_file(Game *game, char *filename)
 			space_set_west(space_act, link_id);
 	}
 
-	game_set_player_location(game, game_get_space_id_at(game, 0));
+	game_set_player_location(game, (long int)25);
 
 	update_sprites(game);
 
@@ -230,7 +224,7 @@ Object *game_get_object_from_id(Game *game, Id id)
 	if (id == NO_ID)
 		return NULL;
 
-	for (i = 0; i < MAX_OBJECTS && game->objects[i] != NULL; i++)
+	for (i = 0; i < MAX_OBJECTS; i++)
 	{
 		if (id == object_get_id(game->objects[i]))
 			return game->objects[i];
@@ -468,20 +462,51 @@ STATUS update_sprites(Game *game)
 {
 	int i;
 
-	Link *north = NULL, *east = NULL, *south = NULL, *west = NULL;
-	BOOL light = FALSE;
+	BOOL player_light = FALSE;
 	Space *space = NULL;
+	Player *player = NULL;
+	Object *object = NULL;
 
 	int opened_links_val = 0;
 
 	if (!game)
 		return ERROR;
+	
+	space = game_get_space(game, game_get_player_location(game));
 
-	for (i = 0; i < MAX_SPACES && space_get_id(game->spaces[i]) != -1; i++)
+	printf("\nUPDATING SPACE %ld\n", space_get_id(space));
+	player = game_get_player(game);
+	for (i=0; i<MAX_INV_SIZE; i++)
+	{
+		object = game_get_object_from_id(game, player_getObjId(player, i));
+		if (object_get_name(object))
+		{
+			printf("\nPlayer object -> %s", object_get_name(object));
+			if (object_get_on(object) == TRUE)
+			{
+				player_light = TRUE;
+				i = MAX_INV_SIZE;
+			}
+		}
+	}
+
+	if (space_get_light(space) == FALSE)
+	{
+		if (player_light == FALSE)
+			space_setCurrentSprite(space, 16);
+		else
+			space_setCurrentSprite(space, opened_links_val);
+	}
+	else
+		space_setCurrentSprite(space, opened_links_val);
+	
+	/*
+	for (i = 0; i < MAX_SPACES; i++)
 	{
 		opened_links_val = 0;
 
 		space = game->spaces[i];
+		player = game_get_player(game);
 
 		north = game_get_link(game, space_get_north(space));
 		east = game_get_link(game, space_get_east(space));
@@ -499,21 +524,33 @@ STATUS update_sprites(Game *game)
 
 		light = space_get_light(space);
 
-		printf("Space id[%ld] i[%d]\n", space_get_id(space), i);
-		printf("\tLight is (0 false)-> %d\n", light);
-		printf("\tCurrent sprite    -> %d\n", opened_links_val);
-		printf("\t");
-		printf("N %d ", link_getStatus(north));
-		printf("E %d ", link_getStatus(east));
-		printf("S %d ", link_getStatus(south));
-		printf("W %d ", link_getStatus(west));
-		printf("\n\n");
+		for (i = 0; i < MAX_INV_SIZE; i++)
+		{
+			object = game_get_object_from_id(game, player_getObjId(player, i));
+			
+			if (object)
+			{
+				if (object_get_iluminati(object) == TRUE)
+				{
+					if (object_get_on(object) == TRUE)
+					{
+						player_light = TRUE;
+						i = MAX_INV_SIZE;
+					}
+				}
+			}
+		}
 
 		if (light == FALSE)
-			space_setCurrentSprite(space, 16);
+		{
+			if (player_light == FALSE)
+				space_setCurrentSprite(space, 16);
+			else
+				space_setCurrentSprite(space, opened_links_val);
+		}
 		else
 			space_setCurrentSprite(space, opened_links_val);
-	}
+	}*/
 
 	return OK;
 }
@@ -537,7 +574,6 @@ void game_callback_exit(Game *game)
 
 void game_callback_pickup(Game *game)
 {
-	/* TODO : check if the object exists (same for drop) */
 	int i = 0;
 	Id debug = 0;
 
@@ -551,10 +587,18 @@ void game_callback_pickup(Game *game)
 
 	if (!game)
 		return;
+
 	if (game_get_object_location(game, object_id) == game_get_player_location(game))
 	{
-		player_setObjId(game->player, object_id);
-		space_remove_object(space_pointer, object_id);
+		if (object_get_mobile(game_get_object_from_id(game, object_id)) == TRUE)
+		{
+			player_setObjId(game->player, object_id);
+			space_remove_object(space_pointer, object_id);
+		}
+		else
+		{
+			command_set_id(game_get_last_command(game), "you can't move that");
+		}
 	}
 
 	/* DEBUG : this is to check if it works (spoiler alert: it does)*/
@@ -711,7 +755,7 @@ void game_callback_turnOn(Game *game)
 
 	object = game_get_object(game, object_name);
 
-	object_set_ilumnati(object, TRUE);
+	object_set_on(object, TRUE);
 }
 
 void game_callback_turnOff(Game *game)
@@ -727,7 +771,7 @@ void game_callback_turnOff(Game *game)
 
 	object = game_get_object(game, object_name);
 
-	object_set_ilumnati(object, FALSE);
+	object_set_on(object, FALSE);
 }
 
 void game_callback_open(Game *game)

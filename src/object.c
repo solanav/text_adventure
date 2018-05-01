@@ -24,22 +24,23 @@ struct _Object
 	char description_al[STDSIZE]; /*!< Descripcion alternativa del objeto*/
 };
 
-Object *object_create(char *name, Id id)
+Object *object_create(char *name, Id id, BOOL mobile, BOOL hidden, Id open, BOOL lights, BOOL on)
 {
 	Object *obj;
 
 	obj = calloc(1, sizeof(Object));
-	if (!obj) return NULL;
+	if (!obj)
+		return NULL;
 
 	obj->id = id;
 	strcpy(obj->name, name);
 
-	obj->mobile = FALSE;
+	obj->mobile = mobile;
 	obj->moved = FALSE;
-	obj->hidden = FALSE;
-	obj->open = NO_ID;
-	obj->iluminati = FALSE;
-	obj->on = FALSE;
+	obj->hidden = hidden;
+	obj->open = open;
+	obj->iluminati = lights;
+	obj->on = on;
 
 	return obj;
 }

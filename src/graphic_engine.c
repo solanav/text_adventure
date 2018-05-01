@@ -62,12 +62,10 @@ void graphic_engine_destroy(Graphic_engine *ge)
 
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 {
-	int i, j;
-	Id id_act = NO_ID, obj_loc = NO_ID, spriteId = NO_ID;
+	int i;
+	Id id_act = NO_ID, spriteId = NO_ID;
 
-	char ply[20] = {0};
 	char str[255] = {0};
-	char obj_name[20] = {0};
 
 	F_Command *last_cmd = NULL;
 	T_Command last_cmd_text = UNKNOWN;
@@ -76,8 +74,8 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
 	Space *space_act = NULL;
 	Sprite *sprite = NULL;
-	Player *player = NULL;
 	Object *object = NULL;
+	Player *player = NULL;
 
 	/* Paint the in the map area */
 	screen_area_clear(ge->map);
@@ -119,7 +117,6 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 	screen_area_puts(ge->descript, str);
 
 	print_new_line(ge->descript, 1);
-	player = game_get_player(game);
 
 	for (i=0; i<MAX_OBJECTS; i++)
 	{
@@ -128,36 +125,51 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 		
 		if (object_get_name(object))
 		{
-			sprintf(str, "      - %s", object_get_name(object));
+			printf("Object name -> %d\n", object_get_iluminati(object));
+			if (object_get_iluminati(object) == FALSE)
+				sprintf(str, "      - %s", object_get_name(object));
+			else
+			{
+				if(object_get_on(object) == TRUE)
+					sprintf(str, "      - %s [ON]", object_get_name(object));
+				else
+					sprintf(str, "      - %s [OFF]", object_get_name(object));
+			}
 			screen_area_puts(ge->descript, str);
 		}
 	}
 
 	print_new_line(ge->descript, 1);
-	for (i = 1, j = 0; i < MAX_OBJECTS+1; i++)
+	sprintf(str, " Inventory:");
+	screen_area_puts(ge->descript, str);
+	
+	player = game_get_player(game);
+
+	for (i=0; i<MAX_INV_SIZE; i++)
 	{
-		if (game_get_object_location(game, i) == NO_ID)
+		object = game_get_object_from_id(game, player_getObjId(player, i));
+		
+		if (object_get_name(object))
 		{
-			ply[j] = 'o';
-			ply[j + 1] = 48 + i;
-			ply[j + 2] = ',';
-			ply[j + 3] = ' ';
-			j = j + 4;
-		}
-		else
-		{
-			ply[j] = ' ';
-			ply[j + 1] = ' ';
+			printf("PLAYER OBJECT [%d]->[%s]\n", i, object_get_name(object));
+			if (object_get_iluminati(object) == FALSE)
+				sprintf(str, "      - %s", object_get_name(object));
+			else
+			{
+				if(object_get_on(object) == TRUE)
+					sprintf(str, "      - %s [ON]", object_get_name(object));
+				else
+					sprintf(str, "      - %s [OFF]", object_get_name(object));
+			}
+			screen_area_puts(ge->descript, str);
 		}
 	}
 
-	print_new_line(ge->descript, 1);
-	sprintf(str, " Player objects: %s", ply);
-	screen_area_puts(ge->descript, str);
-
+	/*
 	print_new_line(ge->descript, 1);
 	sprintf(str, " Last roll stored value: %d", game_get_last_roll(game));
 	screen_area_puts(ge->descript, str);
+	*/
 
 	/* Banner */
 	screen_area_puts(ge->banner, " The game of the Goose ");

@@ -37,14 +37,57 @@ STATUS sprite_loader_map(Game *game, char *filename)
 	{
 		if (i <= 16 && strcmp(line, "\n"))
 		{
-			sprite_putLine(sprite, line, i);
-			i++;
+			if (i == 6)
+			{
+				line[16] = ' ';
+				line[17] = ',';
+				line[18] = ',';
+				line[19] = ',';
+				line[20] = ' ';
+				sprite_putLine(sprite, line, i);
+				i++;
+			}
+			else if (i == 7)
+			{
+				line[16] = '(';
+				line[17] = 'o';
+				line[18] = '_';
+				line[19] = 'o';
+				line[20] = ')';
+				sprite_putLine(sprite, line, i);
+				i++;
+			}
+			else if (i == 8)
+			{
+				line[16] = '<';
+				line[17] = '|';
+				line[18] = ' ';
+				line[19] = '|';
+				line[20] = 92;
+				sprite_putLine(sprite, line, i);
+				i++;
+			}
+			else if (i == 9)
+			{
+				line[16] = ' ';
+				line[17] = '/';
+				line[18] = ' ';
+				line[19] = 92;
+				line[20] = ' ';
+				sprite_putLine(sprite, line, i);
+				i++;
+			}
+			else
+			{
+				sprite_putLine(sprite, line, i);
+				i++;
+			}
 		}
 		else
 		{
 			i = 0;
 			game_add_sprite(game, sprite, j);
-			
+
 			/* Create another sprite */
 			j++;
 			sprite = sprite_create(j);
@@ -53,9 +96,7 @@ STATUS sprite_loader_map(Game *game, char *filename)
 		}
 	}
 
-	
 	fclose(file);
 
 	return OK;
-	/*TODO: LIBERAR MEMORIA*/
 }
