@@ -1,6 +1,5 @@
-\hypertarget{screen_8c}{\section{screen.\+c File Reference}
+\hypertarget{screen_8c}{}\section{screen.\+c File Reference}
 \label{screen_8c}\index{screen.\+c@{screen.\+c}}
-}
 
 
 Functions for the creation of players.  
@@ -25,19 +24,19 @@ struct \hyperlink{struct__Area}{\+\_\+\+Area}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{screen_8c_a3cfd3aa62338d12609f6d65bce97e9cd}{R\+O\+W\+S}~33
+\#define \hyperlink{screen_8c_a3cfd3aa62338d12609f6d65bce97e9cd}{R\+O\+WS}~29
 \item 
-\#define \hyperlink{screen_8c_a06c6c391fc11d106e9909f0401b255b1}{C\+O\+L\+U\+M\+N\+S}~85
+\#define \hyperlink{screen_8c_a06c6c391fc11d106e9909f0401b255b1}{C\+O\+L\+U\+M\+NS}~75
 \item 
-\#define \hyperlink{screen_8c_afba5c5b9f73273ce653f890bb64740b0}{T\+O\+T\+A\+L\+\_\+\+D\+A\+T\+A}~(\hyperlink{screen_8c_a3cfd3aa62338d12609f6d65bce97e9cd}{R\+O\+W\+S} $\ast$ \hyperlink{screen_8c_a06c6c391fc11d106e9909f0401b255b1}{C\+O\+L\+U\+M\+N\+S}) + 1
+\#define \hyperlink{screen_8c_afba5c5b9f73273ce653f890bb64740b0}{T\+O\+T\+A\+L\+\_\+\+D\+A\+TA}~(\hyperlink{screen_8c_a3cfd3aa62338d12609f6d65bce97e9cd}{R\+O\+WS} $\ast$ \hyperlink{screen_8c_a06c6c391fc11d106e9909f0401b255b1}{C\+O\+L\+U\+M\+NS}) + 1
 \item 
-\#define \hyperlink{screen_8c_a5e7c78a2c827b39d4464f2fc84058f87}{B\+G\+\_\+\+C\+H\+A\+R}~'$\sim$'
+\#define \hyperlink{screen_8c_a5e7c78a2c827b39d4464f2fc84058f87}{B\+G\+\_\+\+C\+H\+AR}~\textquotesingle{}$\sim$\textquotesingle{}
 \item 
-\#define \hyperlink{screen_8c_a0bbf43d51e6cd6f7119cf1d0063a3a94}{F\+G\+\_\+\+C\+H\+A\+R}~' '
+\#define \hyperlink{screen_8c_a0bbf43d51e6cd6f7119cf1d0063a3a94}{F\+G\+\_\+\+C\+H\+AR}~\textquotesingle{} \textquotesingle{}
 \item 
-\#define \hyperlink{screen_8c_accdbea14ea06c15e271784368bd993e8}{P\+R\+O\+M\+P\+T}~\char`\"{} prompt\+:$>$ \char`\"{}
+\#define \hyperlink{screen_8c_accdbea14ea06c15e271784368bd993e8}{P\+R\+O\+M\+PT}~\char`\"{} prompt\+:$>$ \char`\"{}
 \item 
-\#define \hyperlink{screen_8c_a28b37557462b06fbb08e707dc0ba2136}{A\+C\+C\+E\+S\+S}(d, x, y)~(d + ((y) $\ast$ \hyperlink{screen_8c_a06c6c391fc11d106e9909f0401b255b1}{C\+O\+L\+U\+M\+N\+S}) + (x))
+\#define \hyperlink{screen_8c_a28b37557462b06fbb08e707dc0ba2136}{A\+C\+C\+E\+SS}(d,  x,  y)~(d + ((y)$\ast$\hyperlink{screen_8c_a06c6c391fc11d106e9909f0401b255b1}{C\+O\+L\+U\+M\+NS}) + (x))
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -80,132 +79,132 @@ Functions for the creation of players.
 Profesores Pprog 
 \end{DoxyAuthor}
 \begin{DoxyCopyright}{Copyright}
-G\+N\+U Public License 
+G\+NU Public License 
 \end{DoxyCopyright}
 
 
 \subsection{Macro Definition Documentation}
-\hypertarget{screen_8c_a28b37557462b06fbb08e707dc0ba2136}{\index{screen.\+c@{screen.\+c}!A\+C\+C\+E\+S\+S@{A\+C\+C\+E\+S\+S}}
-\index{A\+C\+C\+E\+S\+S@{A\+C\+C\+E\+S\+S}!screen.\+c@{screen.\+c}}
-\subsubsection[{A\+C\+C\+E\+S\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+C\+C\+E\+S\+S(
+\index{screen.\+c@{screen.\+c}!A\+C\+C\+E\+SS@{A\+C\+C\+E\+SS}}
+\index{A\+C\+C\+E\+SS@{A\+C\+C\+E\+SS}!screen.\+c@{screen.\+c}}
+\subsubsection[{\texorpdfstring{A\+C\+C\+E\+SS}{ACCESS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+C\+C\+E\+SS(
 \begin{DoxyParamCaption}
 \item[{}]{d, }
 \item[{}]{x, }
 \item[{}]{y}
 \end{DoxyParamCaption}
-)~(d + ((y) $\ast$ {\bf C\+O\+L\+U\+M\+N\+S}) + (x))}}\label{screen_8c_a28b37557462b06fbb08e707dc0ba2136}
-\hypertarget{screen_8c_a5e7c78a2c827b39d4464f2fc84058f87}{\index{screen.\+c@{screen.\+c}!B\+G\+\_\+\+C\+H\+A\+R@{B\+G\+\_\+\+C\+H\+A\+R}}
-\index{B\+G\+\_\+\+C\+H\+A\+R@{B\+G\+\_\+\+C\+H\+A\+R}!screen.\+c@{screen.\+c}}
-\subsubsection[{B\+G\+\_\+\+C\+H\+A\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+G\+\_\+\+C\+H\+A\+R~'$\sim$'}}\label{screen_8c_a5e7c78a2c827b39d4464f2fc84058f87}
-\hypertarget{screen_8c_a06c6c391fc11d106e9909f0401b255b1}{\index{screen.\+c@{screen.\+c}!C\+O\+L\+U\+M\+N\+S@{C\+O\+L\+U\+M\+N\+S}}
-\index{C\+O\+L\+U\+M\+N\+S@{C\+O\+L\+U\+M\+N\+S}!screen.\+c@{screen.\+c}}
-\subsubsection[{C\+O\+L\+U\+M\+N\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+L\+U\+M\+N\+S~85}}\label{screen_8c_a06c6c391fc11d106e9909f0401b255b1}
-\hypertarget{screen_8c_a0bbf43d51e6cd6f7119cf1d0063a3a94}{\index{screen.\+c@{screen.\+c}!F\+G\+\_\+\+C\+H\+A\+R@{F\+G\+\_\+\+C\+H\+A\+R}}
-\index{F\+G\+\_\+\+C\+H\+A\+R@{F\+G\+\_\+\+C\+H\+A\+R}!screen.\+c@{screen.\+c}}
-\subsubsection[{F\+G\+\_\+\+C\+H\+A\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+G\+\_\+\+C\+H\+A\+R~' '}}\label{screen_8c_a0bbf43d51e6cd6f7119cf1d0063a3a94}
-\hypertarget{screen_8c_accdbea14ea06c15e271784368bd993e8}{\index{screen.\+c@{screen.\+c}!P\+R\+O\+M\+P\+T@{P\+R\+O\+M\+P\+T}}
-\index{P\+R\+O\+M\+P\+T@{P\+R\+O\+M\+P\+T}!screen.\+c@{screen.\+c}}
-\subsubsection[{P\+R\+O\+M\+P\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+O\+M\+P\+T~\char`\"{} prompt\+:$>$ \char`\"{}}}\label{screen_8c_accdbea14ea06c15e271784368bd993e8}
-\hypertarget{screen_8c_a3cfd3aa62338d12609f6d65bce97e9cd}{\index{screen.\+c@{screen.\+c}!R\+O\+W\+S@{R\+O\+W\+S}}
-\index{R\+O\+W\+S@{R\+O\+W\+S}!screen.\+c@{screen.\+c}}
-\subsubsection[{R\+O\+W\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+O\+W\+S~33}}\label{screen_8c_a3cfd3aa62338d12609f6d65bce97e9cd}
-\hypertarget{screen_8c_afba5c5b9f73273ce653f890bb64740b0}{\index{screen.\+c@{screen.\+c}!T\+O\+T\+A\+L\+\_\+\+D\+A\+T\+A@{T\+O\+T\+A\+L\+\_\+\+D\+A\+T\+A}}
-\index{T\+O\+T\+A\+L\+\_\+\+D\+A\+T\+A@{T\+O\+T\+A\+L\+\_\+\+D\+A\+T\+A}!screen.\+c@{screen.\+c}}
-\subsubsection[{T\+O\+T\+A\+L\+\_\+\+D\+A\+T\+A}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+O\+T\+A\+L\+\_\+\+D\+A\+T\+A~({\bf R\+O\+W\+S} $\ast$ {\bf C\+O\+L\+U\+M\+N\+S}) + 1}}\label{screen_8c_afba5c5b9f73273ce653f890bb64740b0}
+)~(d + ((y)$\ast${\bf C\+O\+L\+U\+M\+NS}) + (x))}\hypertarget{screen_8c_a28b37557462b06fbb08e707dc0ba2136}{}\label{screen_8c_a28b37557462b06fbb08e707dc0ba2136}
+\index{screen.\+c@{screen.\+c}!B\+G\+\_\+\+C\+H\+AR@{B\+G\+\_\+\+C\+H\+AR}}
+\index{B\+G\+\_\+\+C\+H\+AR@{B\+G\+\_\+\+C\+H\+AR}!screen.\+c@{screen.\+c}}
+\subsubsection[{\texorpdfstring{B\+G\+\_\+\+C\+H\+AR}{BG_CHAR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+G\+\_\+\+C\+H\+AR~\textquotesingle{}$\sim$\textquotesingle{}}\hypertarget{screen_8c_a5e7c78a2c827b39d4464f2fc84058f87}{}\label{screen_8c_a5e7c78a2c827b39d4464f2fc84058f87}
+\index{screen.\+c@{screen.\+c}!C\+O\+L\+U\+M\+NS@{C\+O\+L\+U\+M\+NS}}
+\index{C\+O\+L\+U\+M\+NS@{C\+O\+L\+U\+M\+NS}!screen.\+c@{screen.\+c}}
+\subsubsection[{\texorpdfstring{C\+O\+L\+U\+M\+NS}{COLUMNS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+L\+U\+M\+NS~75}\hypertarget{screen_8c_a06c6c391fc11d106e9909f0401b255b1}{}\label{screen_8c_a06c6c391fc11d106e9909f0401b255b1}
+\index{screen.\+c@{screen.\+c}!F\+G\+\_\+\+C\+H\+AR@{F\+G\+\_\+\+C\+H\+AR}}
+\index{F\+G\+\_\+\+C\+H\+AR@{F\+G\+\_\+\+C\+H\+AR}!screen.\+c@{screen.\+c}}
+\subsubsection[{\texorpdfstring{F\+G\+\_\+\+C\+H\+AR}{FG_CHAR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+G\+\_\+\+C\+H\+AR~\textquotesingle{} \textquotesingle{}}\hypertarget{screen_8c_a0bbf43d51e6cd6f7119cf1d0063a3a94}{}\label{screen_8c_a0bbf43d51e6cd6f7119cf1d0063a3a94}
+\index{screen.\+c@{screen.\+c}!P\+R\+O\+M\+PT@{P\+R\+O\+M\+PT}}
+\index{P\+R\+O\+M\+PT@{P\+R\+O\+M\+PT}!screen.\+c@{screen.\+c}}
+\subsubsection[{\texorpdfstring{P\+R\+O\+M\+PT}{PROMPT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+O\+M\+PT~\char`\"{} prompt\+:$>$ \char`\"{}}\hypertarget{screen_8c_accdbea14ea06c15e271784368bd993e8}{}\label{screen_8c_accdbea14ea06c15e271784368bd993e8}
+\index{screen.\+c@{screen.\+c}!R\+O\+WS@{R\+O\+WS}}
+\index{R\+O\+WS@{R\+O\+WS}!screen.\+c@{screen.\+c}}
+\subsubsection[{\texorpdfstring{R\+O\+WS}{ROWS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+O\+WS~29}\hypertarget{screen_8c_a3cfd3aa62338d12609f6d65bce97e9cd}{}\label{screen_8c_a3cfd3aa62338d12609f6d65bce97e9cd}
+\index{screen.\+c@{screen.\+c}!T\+O\+T\+A\+L\+\_\+\+D\+A\+TA@{T\+O\+T\+A\+L\+\_\+\+D\+A\+TA}}
+\index{T\+O\+T\+A\+L\+\_\+\+D\+A\+TA@{T\+O\+T\+A\+L\+\_\+\+D\+A\+TA}!screen.\+c@{screen.\+c}}
+\subsubsection[{\texorpdfstring{T\+O\+T\+A\+L\+\_\+\+D\+A\+TA}{TOTAL_DATA}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+O\+T\+A\+L\+\_\+\+D\+A\+TA~({\bf R\+O\+WS} $\ast$ {\bf C\+O\+L\+U\+M\+NS}) + 1}\hypertarget{screen_8c_afba5c5b9f73273ce653f890bb64740b0}{}\label{screen_8c_afba5c5b9f73273ce653f890bb64740b0}
 
 
 \subsection{Function Documentation}
-\hypertarget{screen_8c_a0950dc68cba3d491b909a8abaac1c666}{\index{screen.\+c@{screen.\+c}!screen\+\_\+area\+\_\+clear@{screen\+\_\+area\+\_\+clear}}
+\index{screen.\+c@{screen.\+c}!screen\+\_\+area\+\_\+clear@{screen\+\_\+area\+\_\+clear}}
 \index{screen\+\_\+area\+\_\+clear@{screen\+\_\+area\+\_\+clear}!screen.\+c@{screen.\+c}}
-\subsubsection[{screen\+\_\+area\+\_\+clear}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+area\+\_\+clear (
+\subsubsection[{\texorpdfstring{screen\+\_\+area\+\_\+clear(\+Area $\ast$area)}{screen_area_clear(Area *area)}}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+area\+\_\+clear (
 \begin{DoxyParamCaption}
 \item[{{\bf Area} $\ast$}]{area}
 \end{DoxyParamCaption}
-)}}\label{screen_8c_a0950dc68cba3d491b909a8abaac1c666}
-\hypertarget{screen_8c_ad1b32d3d54fea228f1ef0c73de4a3929}{\index{screen.\+c@{screen.\+c}!screen\+\_\+area\+\_\+cursor\+\_\+is\+\_\+out\+\_\+of\+\_\+bounds@{screen\+\_\+area\+\_\+cursor\+\_\+is\+\_\+out\+\_\+of\+\_\+bounds}}
+)}\hypertarget{screen_8c_a0950dc68cba3d491b909a8abaac1c666}{}\label{screen_8c_a0950dc68cba3d491b909a8abaac1c666}
+\index{screen.\+c@{screen.\+c}!screen\+\_\+area\+\_\+cursor\+\_\+is\+\_\+out\+\_\+of\+\_\+bounds@{screen\+\_\+area\+\_\+cursor\+\_\+is\+\_\+out\+\_\+of\+\_\+bounds}}
 \index{screen\+\_\+area\+\_\+cursor\+\_\+is\+\_\+out\+\_\+of\+\_\+bounds@{screen\+\_\+area\+\_\+cursor\+\_\+is\+\_\+out\+\_\+of\+\_\+bounds}!screen.\+c@{screen.\+c}}
-\subsubsection[{screen\+\_\+area\+\_\+cursor\+\_\+is\+\_\+out\+\_\+of\+\_\+bounds}]{\setlength{\rightskip}{0pt plus 5cm}int screen\+\_\+area\+\_\+cursor\+\_\+is\+\_\+out\+\_\+of\+\_\+bounds (
+\subsubsection[{\texorpdfstring{screen\+\_\+area\+\_\+cursor\+\_\+is\+\_\+out\+\_\+of\+\_\+bounds(\+Area $\ast$area)}{screen_area_cursor_is_out_of_bounds(Area *area)}}]{\setlength{\rightskip}{0pt plus 5cm}int screen\+\_\+area\+\_\+cursor\+\_\+is\+\_\+out\+\_\+of\+\_\+bounds (
 \begin{DoxyParamCaption}
 \item[{{\bf Area} $\ast$}]{area}
 \end{DoxyParamCaption}
-)}}\label{screen_8c_ad1b32d3d54fea228f1ef0c73de4a3929}
-\hypertarget{screen_8c_aca5123ed5a7afb75e79c0001e5d1df4f}{\index{screen.\+c@{screen.\+c}!screen\+\_\+area\+\_\+destroy@{screen\+\_\+area\+\_\+destroy}}
+)}\hypertarget{screen_8c_ad1b32d3d54fea228f1ef0c73de4a3929}{}\label{screen_8c_ad1b32d3d54fea228f1ef0c73de4a3929}
+\index{screen.\+c@{screen.\+c}!screen\+\_\+area\+\_\+destroy@{screen\+\_\+area\+\_\+destroy}}
 \index{screen\+\_\+area\+\_\+destroy@{screen\+\_\+area\+\_\+destroy}!screen.\+c@{screen.\+c}}
-\subsubsection[{screen\+\_\+area\+\_\+destroy}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+area\+\_\+destroy (
+\subsubsection[{\texorpdfstring{screen\+\_\+area\+\_\+destroy(\+Area $\ast$area)}{screen_area_destroy(Area *area)}}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+area\+\_\+destroy (
 \begin{DoxyParamCaption}
 \item[{{\bf Area} $\ast$}]{area}
 \end{DoxyParamCaption}
-)}}\label{screen_8c_aca5123ed5a7afb75e79c0001e5d1df4f}
-\hypertarget{screen_8c_a194528bec3ed3b57618a8f2df9bea743}{\index{screen.\+c@{screen.\+c}!screen\+\_\+area\+\_\+init@{screen\+\_\+area\+\_\+init}}
+)}\hypertarget{screen_8c_aca5123ed5a7afb75e79c0001e5d1df4f}{}\label{screen_8c_aca5123ed5a7afb75e79c0001e5d1df4f}
+\index{screen.\+c@{screen.\+c}!screen\+\_\+area\+\_\+init@{screen\+\_\+area\+\_\+init}}
 \index{screen\+\_\+area\+\_\+init@{screen\+\_\+area\+\_\+init}!screen.\+c@{screen.\+c}}
-\subsubsection[{screen\+\_\+area\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Area}$\ast$ screen\+\_\+area\+\_\+init (
+\subsubsection[{\texorpdfstring{screen\+\_\+area\+\_\+init(int x, int y, int width, int height)}{screen_area_init(int x, int y, int width, int height)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Area}$\ast$ screen\+\_\+area\+\_\+init (
 \begin{DoxyParamCaption}
 \item[{int}]{x, }
 \item[{int}]{y, }
 \item[{int}]{width, }
 \item[{int}]{height}
 \end{DoxyParamCaption}
-)}}\label{screen_8c_a194528bec3ed3b57618a8f2df9bea743}
-\hypertarget{screen_8c_a4f4cd4c7899c096d6c90cc33de9a9814}{\index{screen.\+c@{screen.\+c}!screen\+\_\+area\+\_\+puts@{screen\+\_\+area\+\_\+puts}}
+)}\hypertarget{screen_8c_a194528bec3ed3b57618a8f2df9bea743}{}\label{screen_8c_a194528bec3ed3b57618a8f2df9bea743}
+\index{screen.\+c@{screen.\+c}!screen\+\_\+area\+\_\+puts@{screen\+\_\+area\+\_\+puts}}
 \index{screen\+\_\+area\+\_\+puts@{screen\+\_\+area\+\_\+puts}!screen.\+c@{screen.\+c}}
-\subsubsection[{screen\+\_\+area\+\_\+puts}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+area\+\_\+puts (
+\subsubsection[{\texorpdfstring{screen\+\_\+area\+\_\+puts(\+Area $\ast$area, char $\ast$str)}{screen_area_puts(Area *area, char *str)}}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+area\+\_\+puts (
 \begin{DoxyParamCaption}
 \item[{{\bf Area} $\ast$}]{area, }
 \item[{char $\ast$}]{str}
 \end{DoxyParamCaption}
-)}}\label{screen_8c_a4f4cd4c7899c096d6c90cc33de9a9814}
-\hypertarget{screen_8c_af77fa9df4f7170e1e3bf1c6209b7f0c2}{\index{screen.\+c@{screen.\+c}!screen\+\_\+area\+\_\+reset\+\_\+cursor@{screen\+\_\+area\+\_\+reset\+\_\+cursor}}
+)}\hypertarget{screen_8c_a4f4cd4c7899c096d6c90cc33de9a9814}{}\label{screen_8c_a4f4cd4c7899c096d6c90cc33de9a9814}
+\index{screen.\+c@{screen.\+c}!screen\+\_\+area\+\_\+reset\+\_\+cursor@{screen\+\_\+area\+\_\+reset\+\_\+cursor}}
 \index{screen\+\_\+area\+\_\+reset\+\_\+cursor@{screen\+\_\+area\+\_\+reset\+\_\+cursor}!screen.\+c@{screen.\+c}}
-\subsubsection[{screen\+\_\+area\+\_\+reset\+\_\+cursor}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+area\+\_\+reset\+\_\+cursor (
+\subsubsection[{\texorpdfstring{screen\+\_\+area\+\_\+reset\+\_\+cursor(\+Area $\ast$area)}{screen_area_reset_cursor(Area *area)}}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+area\+\_\+reset\+\_\+cursor (
 \begin{DoxyParamCaption}
 \item[{{\bf Area} $\ast$}]{area}
 \end{DoxyParamCaption}
-)}}\label{screen_8c_af77fa9df4f7170e1e3bf1c6209b7f0c2}
-\hypertarget{screen_8c_a110e0b378730322f5a2f1dc91e65e2aa}{\index{screen.\+c@{screen.\+c}!screen\+\_\+area\+\_\+scroll\+\_\+up@{screen\+\_\+area\+\_\+scroll\+\_\+up}}
+)}\hypertarget{screen_8c_af77fa9df4f7170e1e3bf1c6209b7f0c2}{}\label{screen_8c_af77fa9df4f7170e1e3bf1c6209b7f0c2}
+\index{screen.\+c@{screen.\+c}!screen\+\_\+area\+\_\+scroll\+\_\+up@{screen\+\_\+area\+\_\+scroll\+\_\+up}}
 \index{screen\+\_\+area\+\_\+scroll\+\_\+up@{screen\+\_\+area\+\_\+scroll\+\_\+up}!screen.\+c@{screen.\+c}}
-\subsubsection[{screen\+\_\+area\+\_\+scroll\+\_\+up}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+area\+\_\+scroll\+\_\+up (
+\subsubsection[{\texorpdfstring{screen\+\_\+area\+\_\+scroll\+\_\+up(\+Area $\ast$area)}{screen_area_scroll_up(Area *area)}}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+area\+\_\+scroll\+\_\+up (
 \begin{DoxyParamCaption}
 \item[{{\bf Area} $\ast$}]{area}
 \end{DoxyParamCaption}
-)}}\label{screen_8c_a110e0b378730322f5a2f1dc91e65e2aa}
-\hypertarget{screen_8c_a3d6d82dde2bb4f3ddc4d276dabe313ef}{\index{screen.\+c@{screen.\+c}!screen\+\_\+destroy@{screen\+\_\+destroy}}
+)}\hypertarget{screen_8c_a110e0b378730322f5a2f1dc91e65e2aa}{}\label{screen_8c_a110e0b378730322f5a2f1dc91e65e2aa}
+\index{screen.\+c@{screen.\+c}!screen\+\_\+destroy@{screen\+\_\+destroy}}
 \index{screen\+\_\+destroy@{screen\+\_\+destroy}!screen.\+c@{screen.\+c}}
-\subsubsection[{screen\+\_\+destroy}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+destroy (
+\subsubsection[{\texorpdfstring{screen\+\_\+destroy()}{screen_destroy()}}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+destroy (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{screen_8c_a3d6d82dde2bb4f3ddc4d276dabe313ef}
-\hypertarget{screen_8c_a57b2f852be623dca59255306c1482eb2}{\index{screen.\+c@{screen.\+c}!screen\+\_\+gets@{screen\+\_\+gets}}
+)}\hypertarget{screen_8c_a3d6d82dde2bb4f3ddc4d276dabe313ef}{}\label{screen_8c_a3d6d82dde2bb4f3ddc4d276dabe313ef}
+\index{screen.\+c@{screen.\+c}!screen\+\_\+gets@{screen\+\_\+gets}}
 \index{screen\+\_\+gets@{screen\+\_\+gets}!screen.\+c@{screen.\+c}}
-\subsubsection[{screen\+\_\+gets}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+gets (
+\subsubsection[{\texorpdfstring{screen\+\_\+gets(char $\ast$str)}{screen_gets(char *str)}}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+gets (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{str}
 \end{DoxyParamCaption}
-)}}\label{screen_8c_a57b2f852be623dca59255306c1482eb2}
-\hypertarget{screen_8c_a9dbb6c251337c03c078dc330caee48d2}{\index{screen.\+c@{screen.\+c}!screen\+\_\+init@{screen\+\_\+init}}
+)}\hypertarget{screen_8c_a57b2f852be623dca59255306c1482eb2}{}\label{screen_8c_a57b2f852be623dca59255306c1482eb2}
+\index{screen.\+c@{screen.\+c}!screen\+\_\+init@{screen\+\_\+init}}
 \index{screen\+\_\+init@{screen\+\_\+init}!screen.\+c@{screen.\+c}}
-\subsubsection[{screen\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+init (
+\subsubsection[{\texorpdfstring{screen\+\_\+init()}{screen_init()}}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+init (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{screen_8c_a9dbb6c251337c03c078dc330caee48d2}
-\hypertarget{screen_8c_a3eaa0547a956d39b6c55c9593524e0d1}{\index{screen.\+c@{screen.\+c}!screen\+\_\+paint@{screen\+\_\+paint}}
+)}\hypertarget{screen_8c_a9dbb6c251337c03c078dc330caee48d2}{}\label{screen_8c_a9dbb6c251337c03c078dc330caee48d2}
+\index{screen.\+c@{screen.\+c}!screen\+\_\+paint@{screen\+\_\+paint}}
 \index{screen\+\_\+paint@{screen\+\_\+paint}!screen.\+c@{screen.\+c}}
-\subsubsection[{screen\+\_\+paint}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+paint (
+\subsubsection[{\texorpdfstring{screen\+\_\+paint()}{screen_paint()}}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+paint (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{screen_8c_a3eaa0547a956d39b6c55c9593524e0d1}
-\hypertarget{screen_8c_a55dedaa3b402fef825ceb6c3a957781d}{\index{screen.\+c@{screen.\+c}!screen\+\_\+utils\+\_\+replaces\+\_\+special\+\_\+chars@{screen\+\_\+utils\+\_\+replaces\+\_\+special\+\_\+chars}}
+)}\hypertarget{screen_8c_a3eaa0547a956d39b6c55c9593524e0d1}{}\label{screen_8c_a3eaa0547a956d39b6c55c9593524e0d1}
+\index{screen.\+c@{screen.\+c}!screen\+\_\+utils\+\_\+replaces\+\_\+special\+\_\+chars@{screen\+\_\+utils\+\_\+replaces\+\_\+special\+\_\+chars}}
 \index{screen\+\_\+utils\+\_\+replaces\+\_\+special\+\_\+chars@{screen\+\_\+utils\+\_\+replaces\+\_\+special\+\_\+chars}!screen.\+c@{screen.\+c}}
-\subsubsection[{screen\+\_\+utils\+\_\+replaces\+\_\+special\+\_\+chars}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+utils\+\_\+replaces\+\_\+special\+\_\+chars (
+\subsubsection[{\texorpdfstring{screen\+\_\+utils\+\_\+replaces\+\_\+special\+\_\+chars(char $\ast$str)}{screen_utils_replaces_special_chars(char *str)}}]{\setlength{\rightskip}{0pt plus 5cm}void screen\+\_\+utils\+\_\+replaces\+\_\+special\+\_\+chars (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{str}
 \end{DoxyParamCaption}
-)}}\label{screen_8c_a55dedaa3b402fef825ceb6c3a957781d}
+)}\hypertarget{screen_8c_a55dedaa3b402fef825ceb6c3a957781d}{}\label{screen_8c_a55dedaa3b402fef825ceb6c3a957781d}
 
 
 \subsection{Variable Documentation}
-\hypertarget{screen_8c_a34a5b96f7a2aa5db335b9fd09706cf0a}{\index{screen.\+c@{screen.\+c}!\+\_\+\+\_\+data@{\+\_\+\+\_\+data}}
+\index{screen.\+c@{screen.\+c}!\+\_\+\+\_\+data@{\+\_\+\+\_\+data}}
 \index{\+\_\+\+\_\+data@{\+\_\+\+\_\+data}!screen.\+c@{screen.\+c}}
-\subsubsection[{\+\_\+\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \+\_\+\+\_\+data}}\label{screen_8c_a34a5b96f7a2aa5db335b9fd09706cf0a}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+data}{__data}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \+\_\+\+\_\+data}\hypertarget{screen_8c_a34a5b96f7a2aa5db335b9fd09706cf0a}{}\label{screen_8c_a34a5b96f7a2aa5db335b9fd09706cf0a}

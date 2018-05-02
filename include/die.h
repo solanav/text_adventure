@@ -2,7 +2,7 @@
  * @brief It declares the die module
  *
  * @file die.h
- * @author Pablo Sánchez Redondo
+ * @author Pablo Sánchez
  * @copyright GNU Public License
  */
 

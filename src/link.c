@@ -2,7 +2,7 @@
  * @brief Creates the links between spaces
  *
  * @file link.c
- * @author Pablo Sánchez Redondo
+ * @author Pablo Sánchez
  * @copyright GNU Public License
  */
 

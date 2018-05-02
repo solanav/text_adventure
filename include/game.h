@@ -17,6 +17,7 @@
 #include "../include/link.h"
 #include "../include/inventory.h"
 #include "../include/sprite.h"
+#include "../include/game_rules.h"
 
 #define MAX_OBJECTS 1024
 
@@ -35,6 +36,7 @@ void game_print_data(Game *);
 
 Space *game_get_space(Game *, Id);
 Player *game_get_player(Game *);
+Die *game_get_die(Game *game);
 Object *game_get_object(Game *, char *);
 Object *game_get_object_from_id(Game *game, Id id);
 Link *game_get_link(Game *, Id);
@@ -84,5 +86,13 @@ STATUS game_add_sprite(Game *game, Sprite *sprite, int i);
 *	@return: STATUS
 */
 STATUS update_sprites(Game *game);
+
+/*
+*	@author: Antonio Solana
+*	@brief: Updates game according to rules
+*	@param: Game
+*	@return: STATUS
+*/
+STATUS update_rules(Game *game, Rule_Data *);
 
 #endif

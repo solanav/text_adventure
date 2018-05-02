@@ -2,7 +2,7 @@
  * @brief It declares the die module
  *
  * @file die.c
- * @author Pablo Sánchez Redondo
+ * @author Pablo Sánchez
  * @copyright GNU Public License
  */
 
@@ -10,52 +10,57 @@
 
 struct _Die
 {
-  Id id; /*!< Id del dado*/
-  short int result; /*!< Valor de la ultima tirada*/
+	Id id;		  /*!< Id del dado*/
+	short int result; /*!< Valor de la ultima tirada*/
 };
 
-Die* die_ini(Id id)
+Die *die_ini(Id id)
 {
-  Die* die;
+	Die *die;
 
-  die = calloc(1, sizeof(Die));
-  if(!die) return NULL;
+	die = calloc(1, sizeof(Die));
+	if (!die)
+		return NULL;
 
-  die->id = id;
+	die->id = id;
 
-  return die;
+	return die;
 }
 
-void die_die_die(Die* die)
+void die_die_die(Die *die)
 {
-  if(!die) return;
+	if (!die)
+		return;
 
-  free(die);
+	free(die);
 }
 
-STATUS die_roll(Die* die)
+STATUS die_roll(Die *die)
 {
-  if(!die) return ERROR;
-  srand(time(NULL));
+	if (!die)
+		return ERROR;
+	srand(time(NULL));
 
-  die->result = (rand()%6)+1;
+	die->result = (rand() % 6) + 1;
 
-  return OK;
+	return OK;
 }
 
-STATUS die_print(FILE* f, Die* die)
+STATUS die_print(FILE *f, Die *die)
 {
-  if(!f || !die) return ERROR;
+	if (!f || !die)
+		return ERROR;
 
-  fprintf(f, "Dice Id: %ld\n", die->id);
-  fprintf(f, "Stored result: %d\n", die->result);
+	fprintf(f, "Dice Id: %ld\n", die->id);
+	fprintf(f, "Stored result: %d\n", die->result);
 
-  return OK;
+	return OK;
 }
 
-short int die_get_last_roll(Die * die)
+short int die_get_last_roll(Die *die)
 {
-  if(!die) return -1;
+	if (!die)
+		return -1;
 
-  return die->result;
+	return die->result;
 }

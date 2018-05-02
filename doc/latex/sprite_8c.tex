@@ -1,0 +1,94 @@
+\hypertarget{sprite_8c}{}\section{sprite.\+c File Reference}
+\label{sprite_8c}\index{sprite.\+c@{sprite.\+c}}
+
+
+It declares the sprite module.  
+
+
+{\ttfamily \#include \char`\"{}../include/sprite.\+h\char`\"{}}\\*
+Include dependency graph for sprite.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__Sprite}{\+\_\+\+Sprite}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{sprite_8h_a4dac9894071cab0926c0b91f2fe6e9cf}{Sprite} $\ast$ \hyperlink{sprite_8c_a99036d6e48760ddf5034418ecadbb3fe}{sprite\+\_\+create} (\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
+\item 
+void \hyperlink{sprite_8c_a23bda5268d3dd5cae3a877ab1a428816}{sprite\+\_\+destroy} (\hyperlink{sprite_8h_a4dac9894071cab0926c0b91f2fe6e9cf}{Sprite} $\ast$sprite)
+\item 
+\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{sprite_8c_a2a730651103936590c0ebab618efa073}{sprite\+\_\+get\+Id} (\hyperlink{sprite_8h_a4dac9894071cab0926c0b91f2fe6e9cf}{Sprite} $\ast$sprite)
+\item 
+char $\ast$ \hyperlink{sprite_8c_a19119e8b188da7794f6ed137fd0cf9e8}{sprite\+\_\+get\+Data} (\hyperlink{sprite_8h_a4dac9894071cab0926c0b91f2fe6e9cf}{Sprite} $\ast$sprite, int line)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{sprite_8c_a9ff91495bc6194f2dfb1449130f43f2b}{sprite\+\_\+put\+Line} (\hyperlink{sprite_8h_a4dac9894071cab0926c0b91f2fe6e9cf}{Sprite} $\ast$sprite, char $\ast$string, int line)
+\item 
+void \hyperlink{sprite_8c_ad46d190d28a6771371405d3ebcf63ba8}{sprite\+\_\+print} (\hyperlink{sprite_8h_a4dac9894071cab0926c0b91f2fe6e9cf}{Sprite} $\ast$sprite)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+It declares the sprite module. 
+
+\begin{DoxyAuthor}{Author}
+Antonio Solana 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\index{sprite.\+c@{sprite.\+c}!sprite\+\_\+create@{sprite\+\_\+create}}
+\index{sprite\+\_\+create@{sprite\+\_\+create}!sprite.\+c@{sprite.\+c}}
+\subsubsection[{\texorpdfstring{sprite\+\_\+create(\+Id id)}{sprite_create(Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sprite}$\ast$ sprite\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{{\bf Id}}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{sprite_8c_a99036d6e48760ddf5034418ecadbb3fe}{}\label{sprite_8c_a99036d6e48760ddf5034418ecadbb3fe}
+\index{sprite.\+c@{sprite.\+c}!sprite\+\_\+destroy@{sprite\+\_\+destroy}}
+\index{sprite\+\_\+destroy@{sprite\+\_\+destroy}!sprite.\+c@{sprite.\+c}}
+\subsubsection[{\texorpdfstring{sprite\+\_\+destroy(\+Sprite $\ast$sprite)}{sprite_destroy(Sprite *sprite)}}]{\setlength{\rightskip}{0pt plus 5cm}void sprite\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf Sprite} $\ast$}]{sprite}
+\end{DoxyParamCaption}
+)}\hypertarget{sprite_8c_a23bda5268d3dd5cae3a877ab1a428816}{}\label{sprite_8c_a23bda5268d3dd5cae3a877ab1a428816}
+\index{sprite.\+c@{sprite.\+c}!sprite\+\_\+get\+Data@{sprite\+\_\+get\+Data}}
+\index{sprite\+\_\+get\+Data@{sprite\+\_\+get\+Data}!sprite.\+c@{sprite.\+c}}
+\subsubsection[{\texorpdfstring{sprite\+\_\+get\+Data(\+Sprite $\ast$sprite, int line)}{sprite_getData(Sprite *sprite, int line)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ sprite\+\_\+get\+Data (
+\begin{DoxyParamCaption}
+\item[{{\bf Sprite} $\ast$}]{sprite, }
+\item[{int}]{line}
+\end{DoxyParamCaption}
+)}\hypertarget{sprite_8c_a19119e8b188da7794f6ed137fd0cf9e8}{}\label{sprite_8c_a19119e8b188da7794f6ed137fd0cf9e8}
+\index{sprite.\+c@{sprite.\+c}!sprite\+\_\+get\+Id@{sprite\+\_\+get\+Id}}
+\index{sprite\+\_\+get\+Id@{sprite\+\_\+get\+Id}!sprite.\+c@{sprite.\+c}}
+\subsubsection[{\texorpdfstring{sprite\+\_\+get\+Id(\+Sprite $\ast$sprite)}{sprite_getId(Sprite *sprite)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} sprite\+\_\+get\+Id (
+\begin{DoxyParamCaption}
+\item[{{\bf Sprite} $\ast$}]{sprite}
+\end{DoxyParamCaption}
+)}\hypertarget{sprite_8c_a2a730651103936590c0ebab618efa073}{}\label{sprite_8c_a2a730651103936590c0ebab618efa073}
+\index{sprite.\+c@{sprite.\+c}!sprite\+\_\+print@{sprite\+\_\+print}}
+\index{sprite\+\_\+print@{sprite\+\_\+print}!sprite.\+c@{sprite.\+c}}
+\subsubsection[{\texorpdfstring{sprite\+\_\+print(\+Sprite $\ast$sprite)}{sprite_print(Sprite *sprite)}}]{\setlength{\rightskip}{0pt plus 5cm}void sprite\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{{\bf Sprite} $\ast$}]{sprite}
+\end{DoxyParamCaption}
+)}\hypertarget{sprite_8c_ad46d190d28a6771371405d3ebcf63ba8}{}\label{sprite_8c_ad46d190d28a6771371405d3ebcf63ba8}
+\index{sprite.\+c@{sprite.\+c}!sprite\+\_\+put\+Line@{sprite\+\_\+put\+Line}}
+\index{sprite\+\_\+put\+Line@{sprite\+\_\+put\+Line}!sprite.\+c@{sprite.\+c}}
+\subsubsection[{\texorpdfstring{sprite\+\_\+put\+Line(\+Sprite $\ast$sprite, char $\ast$string, int line)}{sprite_putLine(Sprite *sprite, char *string, int line)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} sprite\+\_\+put\+Line (
+\begin{DoxyParamCaption}
+\item[{{\bf Sprite} $\ast$}]{sprite, }
+\item[{char $\ast$}]{string, }
+\item[{int}]{line}
+\end{DoxyParamCaption}
+)}\hypertarget{sprite_8c_a9ff91495bc6194f2dfb1449130f43f2b}{}\label{sprite_8c_a9ff91495bc6194f2dfb1449130f43f2b}

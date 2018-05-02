@@ -3,7 +3,7 @@
  * for each command
  *
  * @file game.c
- * @author Profesores PPROG
+ * @author Antonio Solana
  * @copyright GNU Public License
  */
 
@@ -21,6 +21,7 @@
 #define DIE_SEED 666
 #define STARTING_SPACE 25
 #define NO_LIGHT_SPRITE 16
+#define MOVES_TO_START_RULES 10
 
 struct _Game
 {
@@ -31,16 +32,11 @@ struct _Game
 	Die *die;		       /*!< Dado */
 	F_Command *last_cmd;	   /*!< ultimo comando*/
 	Sprite *sprites[MAX_SPRITES];  /*!< sprites del mapa*/
+	Rule_Data *rule_data;	  /*!< datos para su uso en game_rules*/
 };
 
-/**
-   Define the function type for the callbacks
-*/
 typedef void (*callback_fn)(Game *game);
 
-/**
-   List of callbacks for each command in the game
-*/
 void game_callback_unknown(Game *game);
 void game_callback_exit(Game *game);
 void game_callback_pickup(Game *game);
@@ -91,10 +87,9 @@ Game *game_create()
 
 	game->die = die_ini(DIE_SEED);
 	game_set_player_location(game, NO_ID);
-
 	game->last_cmd = NULL;
-
 	game->player = player_create("player1", NO_ID, NO_ID, PLAYER_ID);
+	game->rule_data = rules_create();
 
 	return game;
 }
@@ -167,7 +162,7 @@ STATUS game_destroy(Game *game)
 		sprite_destroy(game->sprites[i]);
 
 	die_die_die(game->die);
-
+	rules_destroy(game->rule_data);
 	free(game);
 
 	return OK;
@@ -195,6 +190,14 @@ Player *game_get_player(Game *game)
 		return NULL;
 
 	return game->player;
+}
+
+Die *game_get_die(Game *game)
+{
+	if (!game)
+		return NULL;
+
+	return game->die;
 }
 
 Object *game_get_object(Game *game, char *object_name)
@@ -289,6 +292,7 @@ STATUS game_update(Game *game, F_Command *cmd)
 
 	(*game_callback_fn_list[command_getCmd(cmd)])(game);
 
+	update_rules(game, game->rule_data);
 	update_sprites(game);
 
 	return OK;
@@ -511,6 +515,59 @@ STATUS update_sprites(Game *game)
 	return OK;
 }
 
+STATUS update_rules(Game *game, Rule_Data *rule_data)
+{
+	Player *player = NULL;
+	Die *die = NULL;
+	Space *space = NULL;
+
+	if (!game || !rule_data)
+		return ERROR;
+
+	player = game_get_player(game);
+	die = game_get_die(game);
+	space = game_get_space(game, game_get_player_location(game));
+
+	die_roll(die);
+	rules_setDieVal(rule_data, die_get_last_roll(die));
+
+	if (game_get_last_command_text(game) == MOVE)
+		rules_moveCount(rule_data);
+
+	if (game_get_last_command_text(game) == ROLL)
+	{
+		if (rules_getDieVal(rule_data) == NO_RULES)
+		{
+			/* NO RULES */
+		}
+		else if (rules_getDieVal(rule_data) == NO_LIGHT)
+		{
+			space_set_light(space, FALSE);
+		}
+		else if (rules_getDieVal(rule_data) == GO_START)
+		{
+			game_set_player_location(game, STARTING_SPACE);
+		}
+		else if (rules_getDieVal(rule_data) == NO_TORCH)
+		{
+			player_removeObjId(player, 1);
+		}
+		else if (rules_getDieVal(rule_data) == BECOME_TREE)
+		{
+			/* Malas noticias, eres un arbol */
+			player_setTreeState(player, TRUE);
+		}
+		else if (rules_getDieVal(rule_data) == GO_RAND)
+		{
+			die_roll(die);
+			player_setLocId(player, die_get_last_roll(die));
+		}
+		
+	}
+
+	return OK;
+}
+
 BOOL game_is_over(Game *game)
 {
 	return FALSE;
@@ -591,13 +648,13 @@ void game_callback_move(Game *game)
 	Id act_space_id = NO_ID;
 	char direction[MAX_STRING] = {0};
 
+	Player *player = game_get_player(game);
+
 	if (!game)
 		return;
 
 	act_space_id = game_get_player_location(game);
 	strcpy(direction, command_get_id(game->last_cmd));
-
-	printf("Someone is trying to move...\n\tPlayer loc -> %ld\n\tMovement -> %s\n", act_space_id, direction);
 
 	if (!game || act_space_id == NO_ID)
 		return;
@@ -627,14 +684,12 @@ void game_callback_move(Game *game)
 
 	next_space_id = link_getSpace2(link);
 
-	printf("Id of link you are trying to use -> %ld\n", link_id);
-	printf("\tId of actposition -> %ld\n", link_getSpace1(link));
-	printf("\tId of destination -> %ld\n", link_getSpace2(link));
-
-	if (next_space_id != NO_ID)
+	if (player_getTreeState(player) == TRUE)
+		command_set_id(game->last_cmd, "you are a tree :^)");
+	else if (next_space_id != NO_ID)
 		game_set_player_location(game, next_space_id);
-
-	printf("Player's new location -> %ld\n", game_get_player_location(game));
+	else
+		command_set_id(game->last_cmd, "you can't move there");
 }
 
 void game_callback_check(Game *game)

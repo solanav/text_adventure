@@ -1,0 +1,4 @@
+<map id="sprite_loader.h" name="sprite_loader.h">
+<area shape="rect" id="node2" href="$game_8c.html" title="It implements the game interface and all the associated callbacks for each command. " alt="" coords="5,80,71,107"/>
+<area shape="rect" id="node3" href="$sprite__loader_8c.html" title="Reads the sprites from a file. " alt="" coords="95,80,202,107"/>
+</map>

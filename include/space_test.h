@@ -2,7 +2,7 @@
  * @brief It declares the tests for the space module
  * 
  * @file space_test.h
- * @author Profesores Pprog
+ * @author Pablo Sánchez
  * @copyright GNU Public License
  */
 

@@ -10,5 +10,6 @@ var searchData=
   ['_5fobject',['_Object',['../struct__Object.html',1,'']]],
   ['_5fplayer',['_Player',['../struct__Player.html',1,'']]],
   ['_5fset',['_Set',['../struct__Set.html',1,'']]],
-  ['_5fspace',['_Space',['../struct__Space.html',1,'']]]
+  ['_5fspace',['_Space',['../struct__Space.html',1,'']]],
+  ['_5fsprite',['_Sprite',['../struct__Sprite.html',1,'']]]
 ];
