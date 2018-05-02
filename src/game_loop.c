@@ -38,7 +38,6 @@ int main(int argc, char *argv[])
 
 	if (argc == 4 && strcmp(argv[2], "-l")==0)
 	{
-		printf("Saving session on log\n");
 		log = fopen(strcat(log_dir,argv[3]), "w+");
 	}
 

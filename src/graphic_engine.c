@@ -85,17 +85,6 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 		spriteId = space_getSprite(space_act, space_getCurentSprite(space_act));
 		sprite = game_get_sprite(game, spriteId);
 
-		printf("Space ID      -> %ld\n", id_act);
-		printf("Space name    -> %s\n", space_get_name(space_act));
-		printf("Current sprite-> %d\n", space_getCurentSprite(space_act));
-		printf("Sprite ID     -> %ld\n\n", spriteId);
-
-		for (i = 0; i <= 16; i++)
-			printf("%ld|", space_getSprite(space_act, i));
-		printf("\n\n");
-
-		sprite_print(sprite);
-
 		if (!sprite)
 		{
 			printf("ERROR, COULDN'T FIND SPRITE\n");
@@ -121,11 +110,9 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 	for (i=0; i<MAX_OBJECTS; i++)
 	{
 		object = game_get_object_from_id(game, set_get_id(space_get_objects_id(space_act), i));
-		printf("Object [%d]->[%s]", i, object_get_name(object));
-		
+
 		if (object_get_name(object))
 		{
-			printf("Object name -> %d\n", object_get_iluminati(object));
 			if (object_get_iluminati(object) == FALSE)
 				sprintf(str, "      - %s", object_get_name(object));
 			else

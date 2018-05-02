@@ -34,7 +34,26 @@
 #s:46|Casilla 46|Casilla 46 desc|01|02|02|02|02|02|02|02|02|02|02|02|02|02|02|02|02|00|
 #s:56|Casilla 56|Casilla 56 desc|01|09|09|09|09|09|09|09|09|09|09|09|09|09|09|09|09|00|
 #s:66|Casilla 66|Casilla 66 desc|01|05|05|05|05|05|05|05|05|05|05|05|05|05|05|05|05|00|
-#o:01|torch|25|Objecto o1 desc|01|00|-1|01|00|
+#o:01|Torch|25|Lights your way|01|00|-1|01|00|
+#o:02|Key1|13|Just a broken fragment|01|00|-1|00|00|
+#o:03|Key2|53|Just a broken fragment|01|00|-1|00|00|
+#o:04|Key3|65|Just a broken fragment|01|00|-1|00|00|
+#o:05|Key4|26|Just a broken fragment|01|00|-1|00|00|
+#o:06|Key5|45|Just a broken fragment|01|00|-1|00|00|
+#o:07|Note1|13|Note 1 description|00|00|-1|00|00|
+#o:08|Note2|53|Note 2 description|00|00|-1|00|00|
+#o:09|Note3|65|Note 3 description|00|00|-1|00|00|
+#o:10|Note4|26|Note 4 description|00|00|-1|00|00|
+#o:11|Note5|45|Note 5 description|00|00|-1|00|00|
+#o:12|Bottle|25|There's a sticky substance|01|00|-1|00|00|
+#o:13|Rock1|66|It's got big bones|00|00|00|00|00|
+#o:14|Rock2|15|Do you know big rock?|00|00|00|00|00|
+#o:15|Rock3|11|Do you know medium rock?|00|00|00|00|00|
+#o:16|Stick|25|Why would you take it?|00|00|00|00|00|
+#o:17|Leafs|38|From the tree to the south|00|00|00|00|00|
+#o:18|Tree|35|Yeah, a tree|00|00|00|00|00|
+#o:19|Wand|42|You are no wizard Dante!|00|00|-1|00|00|
+#o:20|Sword|42|You are no warrior Dante!|00|00|-1|00|00|
 #l:01|Lnk  1|11|12|0|1|
 #l:02|Lnk  1|12|11|2|1|
 #l:03|Lnk  2|12|13|0|1|

@@ -117,11 +117,6 @@ STATUS game_create_from_file(Game *game, char *filename)
 	if (sprite_loader_map(game, "data/map.dat") == ERROR)
 		return ERROR;
 
-	for (i = 0; game->sprites[i]; i++)
-	{
-		sprite_print(game->sprites[i]);
-	}
-
 	/* Put each link in the corresponding space */
 	for (i = 0; i < MAX_LINK; i++)
 	{
@@ -156,7 +151,6 @@ STATUS game_create_from_file(Game *game, char *filename)
 STATUS game_destroy(Game *game)
 {
 	int i = 0;
-	printf("\nMAX_SPACES -> %d\n", MAX_SPACES);
 
 	for (i = 0; i <= MAX_SPACES && game->spaces[i]; i++)
 		space_destroy(game->spaces[i]);
@@ -293,8 +287,6 @@ STATUS game_update(Game *game, F_Command *cmd)
 
 	game->last_cmd = cmd;
 
-	printf("Updating with command -> %d\n\n", command_getCmd(cmd));
-
 	(*game_callback_fn_list[command_getCmd(cmd)])(game);
 
 	update_sprites(game);
@@ -375,7 +367,6 @@ Sprite *game_get_sprite(Game *game, Id id)
 
 	for (i = 0; i < MAX_SPRITES; i++)
 	{
-		printf("Checking -> %d has id -> %ld\n", i, sprite_getId(game->sprites[i]));
 		if (sprite_getId(game->sprites[i]) == id)
 		{
 			return game->sprites[i];
@@ -387,8 +378,6 @@ Sprite *game_get_sprite(Game *game, Id id)
 STATUS game_add_sprite(Game *game, Sprite *sprite, int i)
 {
 	game->sprites[i] = sprite;
-
-	printf("Someone added this [%d] ->\n", i);
 
 	return OK;
 }
@@ -494,7 +483,6 @@ STATUS update_sprites(Game *game)
 
 	space = game_get_space(game, game_get_player_location(game));
 
-	printf("\nUPDATING SPACE %ld\n", space_get_id(space));
 	player = game_get_player(game);
 	for (i = 0; i < MAX_INV_SIZE; i++)
 	{
@@ -538,13 +526,10 @@ void game_callback_exit(Game *game)
 
 void game_callback_pickup(Game *game)
 {
-	int i = 0;
-	Id debug = 0;
-
 	Id player_locId = game_get_player_location(game);
 	Id object_id = NO_ID;
 	Space *space_pointer = game_get_space(game, player_locId);
-	char object[] = {0};
+	char object[MAX_STRING] = {0};
 
 	strcpy(object, command_get_id(game->last_cmd));
 	object_id = object_get_id(game_get_object(game, object));
@@ -563,14 +548,6 @@ void game_callback_pickup(Game *game)
 		{
 			command_set_id(game_get_last_command(game), "you can't move that");
 		}
-	}
-
-	/* DEBUG : this is to check if it works (spoiler alert: it does)*/
-	printf("ThiS niBBa has the following objects:\n");
-	for (i = 1; debug != NO_ID && i < 10; i++)
-	{
-		debug = player_getObjId(game->player, i);
-		printf("\tTHIS ONE -> %ld [%d]\n", debug, i);
 	}
 
 	return;

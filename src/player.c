@@ -36,7 +36,7 @@ Player * player_create(char * name, Id location_id, Id object_id, Id id)
 	new_player->location_id = location_id;
 	new_player->id = id;
 
-	new_player->inv = inventory_create(4);
+	new_player->inv = inventory_create(MAX_INV_SIZE);
 
 	return new_player;
 }

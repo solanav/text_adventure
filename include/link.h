@@ -11,7 +11,7 @@
 
 #include "../include/types.h"
 
-#define MAX_LINK 100
+#define MAX_LINK 1024
 
 typedef struct _Link Link;
 

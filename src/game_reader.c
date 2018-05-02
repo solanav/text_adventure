@@ -76,7 +76,6 @@ STATUS game_load_spaces(Game *game, char *filename)
 			/* Create space (only assigns id for now) */
 			space = space_create(id);
 
-			printf("Created space [%d]\n", j);
 			j++;
 
 			/* Save what we just read */
@@ -86,21 +85,13 @@ STATUS game_load_spaces(Game *game, char *filename)
 				space_set_description(space, description);
 				space_set_light(space, light);
 
-				printf("%s => lights %d\n", space_get_name(space), space_get_light(space));
-
 				for (i = 0; i <= 16; i++)
 				{
-					printf("- Saving %ld in %d\n", sprite_id[i], i);
 					space_setSprite(space, sprite_id[i], i);
 				}
 
 				game_add_space(game, space);
 			}
-
-			printf("|");
-			for (i = 0; i <= 16; i++)
-				printf("%ld|", space_getSprite(space, i));
-			printf("\n\n");
 		}
 
 		if (strncmp("#o:", line, 3) == 0)
@@ -132,17 +123,6 @@ STATUS game_load_spaces(Game *game, char *filename)
 			toks = strtok(NULL, "|");
 			on = atoi(toks);
 
-			printf("DATA\n");
-			printf("\tname %s\n", name);
-			printf("\tid   %ld\n", id);
-			printf("\tspce %ld\n", place);
-			printf("\tdesc %s\n", description);
-			printf("\tmob  %d\n", mobile);
-			printf("\thid  %d\n", hidden);
-			printf("\topns %ld\n", opens);
-			printf("\tlit? %d\n", lights);
-			printf("\ton   %d\n\n", on);
-
 			game_add_object(game, object_create(name, id, mobile, hidden, opens, lights, on));
 			game_set_object_location(game, place, id, name, description);
 		}
@@ -167,8 +147,6 @@ STATUS game_load_spaces(Game *game, char *filename)
 			toks = strtok(NULL, "|");
 			door = atoi(toks);
 
-			printf("Door %d\n", door);
-
 			game_set_link(game, id, link0, link1, direction, door);
 		}
 	}
@@ -179,8 +157,6 @@ STATUS game_load_spaces(Game *game, char *filename)
 	}
 
 	fclose(file);
-
-	printf("Reading of game complete...\n");
 
 	return status;
 }

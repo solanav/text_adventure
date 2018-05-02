@@ -52,7 +52,6 @@ STATUS get_user_input(F_Command *command)
 		{
 			if ((strcasecmp(string0, short_cmd_to_str[i]) == 0 || strcasecmp(string0, cmd_to_str[i]) == 0))
 			{
-				printf("Setting parameter CMD of command to -> %d\n", i + NO_CMD);
 				command_setCmd(command, i + NO_CMD);
 				command_found = 1;
 			}

@@ -18,7 +18,7 @@
 #include "../include/inventory.h"
 #include "../include/sprite.h"
 
-#define MAX_OBJECTS 4
+#define MAX_OBJECTS 1024
 
 typedef struct _Game Game;
 
