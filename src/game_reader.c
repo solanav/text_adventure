@@ -26,16 +26,14 @@ STATUS game_load_spaces(Game *game, char *filename)
 	FILE *file = NULL;
 
 	char *toks = NULL;
-
 	char line[WORD_SIZE] = {0};
 	char name[WORD_SIZE] = {0};
 	char description[WORD_SIZE] = {0};
 
-	Id id = NO_ID, place = NO_ID, sprite_id[16];
-	Id link0 = NO_ID, link1 = NO_ID;
+	Id id = NO_ID, place = NO_ID, sprite_id[16], link0 = NO_ID, link1 = NO_ID, opens = NO_ID;
 
 	int direction, i, j = 0;
-	BOOL light = FALSE;
+	BOOL light, mobile, hidden, on, lights;
 
 	Space *space = NULL;
 	STATUS status = OK;
@@ -69,7 +67,7 @@ STATUS game_load_spaces(Game *game, char *filename)
 			light = atoi(toks);
 
 			/* Read Sprites */
-			for (i=0; i<=16; i++)
+			for (i = 0; i <= 16; i++)
 			{
 				toks = strtok(NULL, "|");
 				sprite_id[i] = atol(toks);
@@ -89,8 +87,8 @@ STATUS game_load_spaces(Game *game, char *filename)
 				space_set_light(space, light);
 
 				printf("%s => lights %d\n", space_get_name(space), space_get_light(space));
-				
-				for (i=0; i<=16; i++)
+
+				for (i = 0; i <= 16; i++)
 				{
 					printf("- Saving %ld in %d\n", sprite_id[i], i);
 					space_setSprite(space, sprite_id[i], i);
@@ -119,6 +117,33 @@ STATUS game_load_spaces(Game *game, char *filename)
 			toks = strtok(NULL, "|");
 			strcpy(description, toks);
 
+			toks = strtok(NULL, "|");
+			mobile = atoi(toks);
+
+			toks = strtok(NULL, "|");
+			hidden = atoi(toks);
+
+			toks = strtok(NULL, "|");
+			opens = atol(toks);
+
+			toks = strtok(NULL, "|");
+			lights = atoi(toks);
+
+			toks = strtok(NULL, "|");
+			on = atoi(toks);
+
+			printf("DATA\n");
+			printf("\tname %s\n", name);
+			printf("\tid   %ld\n", id);
+			printf("\tspce %ld\n", place);
+			printf("\tdesc %s\n", description);
+			printf("\tmob  %d\n", mobile);
+			printf("\thid  %d\n", hidden);
+			printf("\topns %ld\n", opens);
+			printf("\tlit? %d\n", lights);
+			printf("\ton   %d\n\n", on);
+
+			game_add_object(game, object_create(name, id, mobile, hidden, opens, lights, on));
 			game_set_object_location(game, place, id, name, description);
 		}
 

@@ -92,8 +92,6 @@ Game *game_create()
 
 	game->player = player_create("player1", NO_ID, NO_ID, 1);
 
-	game->objects[0] = object_create("linterna", (long int)1, TRUE, FALSE, NO_ID, TRUE, FALSE);
-
 	return game;
 }
 
@@ -342,6 +340,24 @@ STATUS game_add_space(Game *game, Space *space)
 		return ERROR;
 
 	game->spaces[i] = space;
+
+	return OK;
+}
+
+STATUS game_add_object(Game *game, Object *object)
+{
+	int i = 0;
+
+	if (object == NULL)
+		return ERROR;
+
+	while ((i < MAX_OBJECTS) && (game->objects[i] != NULL))
+		i++;
+
+	if (i >= MAX_OBJECTS)
+		return ERROR;
+
+	game->objects[i] = object;
 
 	return OK;
 }

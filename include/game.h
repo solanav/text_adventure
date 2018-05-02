@@ -46,6 +46,7 @@ Id game_get_space_id_at(Game *, int);
 int game_get_last_roll(Game *);
 
 STATUS game_add_space(Game *, Space *);
+STATUS game_add_object(Game *game, Object *object);
 STATUS game_set_player_location(Game *, Id);
 STATUS game_set_object_location(Game *, Id, Id, char *, char *);
 STATUS game_set_link(Game *, Id, Id, Id, int, LinkStatus);
