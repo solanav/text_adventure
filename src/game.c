@@ -13,241 +13,230 @@
 
 #include "../include/game.h"
 #include "../include/game_reader.h"
+#include "../include/sprite_loader.h"
+#include "../include/sprite.h"
 
-#define N_CALLBACK 7
+#define N_CALLBACK 11
+#define PLAYER_ID 1
+#define DIE_SEED 666
+#define STARTING_SPACE 25
+#define NO_LIGHT_SPRITE 16
 
 struct _Game
 {
-	Player * player; /*!< Jugador*/
-	Object * objects[MAX_OBJECTS]; /*!< Array de objetos*/
-	Space * spaces[MAX_SPACES + 1]; /*!< Array de espacios*/
-	Link * links[MAX_LINK]; /*!< Array de links*/
-	Die * die; /*!< Dado */
-	F_Command * last_cmd; /*!< ultimo comando*/
+	Player *player;		       /*!< Jugador*/
+	Object *objects[MAX_OBJECTS];  /*!< Array de objetos*/
+	Space *spaces[MAX_SPACES + 1]; /*!< Array de espacios*/
+	Link *links[MAX_LINK];	 /*!< Array de links*/
+	Die *die;		       /*!< Dado */
+	F_Command *last_cmd;	   /*!< ultimo comando*/
+	Sprite *sprites[MAX_SPRITES];  /*!< sprites del mapa*/
 };
 
 /**
    Define the function type for the callbacks
 */
-typedef void (*callback_fn)(Game* game);
+typedef void (*callback_fn)(Game *game);
 
 /**
    List of callbacks for each command in the game
 */
-void game_callbackUnknown(Game * game);
-void game_callbackExit(Game * game);
-void game_callbackPickup(Game * game);
-void game_callbackDrop(Game * game);
-void game_callbackRoll(Game * game);
-void game_callbackMove(Game * game);
-void game_callbackCheck(Game * game);
+void game_callback_unknown(Game *game);
+void game_callback_exit(Game *game);
+void game_callback_pickup(Game *game);
+void game_callback_drop(Game *game);
+void game_callback_roll(Game *game);
+void game_callback_move(Game *game);
+void game_callback_check(Game *game);
+void game_callback_turnOn(Game *game);
+void game_callback_turnOff(Game *game);
+void game_callback_open(Game *game);
 
-static callback_fn game_callback_fn_list[N_CALLBACK]=
-{
-	game_callbackUnknown,
-	game_callbackExit,
-	game_callbackPickup,
-	game_callbackDrop,
-	game_callbackRoll,
-	game_callbackMove,
-	game_callbackCheck
-};
+static callback_fn game_callback_fn_list[N_CALLBACK] =
+    {
+	game_callback_unknown,
+	game_callback_exit,
+	game_callback_pickup,
+	game_callback_drop,
+	game_callback_roll,
+	game_callback_move,
+	game_callback_check,
+	game_callback_turnOn,
+	game_callback_turnOff,
+	game_callback_open};
 
-Game * game_create()
+Game *game_create()
 {
 	int i;
-	Game * game = NULL;
+	Game *game = NULL;
 
-	game = (Game *) calloc(1, sizeof(Game));
-	if(!game)
-	{
-		printf("Calloc didn't work\n");
+	game = (Game *)calloc(1, sizeof(Game));
+	if (!game)
 		return NULL;
-	}
 
 	for (i = 0; i < MAX_SPACES; i++)
 	{
 		game->spaces[i] = NULL;
 	}
 
-	game->player = player_create("player1", NO_ID, NO_ID, 1);
-
-	game->objects[0] = object_create("linterna", (long int) 1);
-	game->objects[1] = object_create("libro", (long int) 2);
-	game->objects[2] = object_create("pocion", (long int) 3);
-	game->objects[3] = object_create("llave", (long int) 4);
-
 	for (i = 0; i < MAX_LINK; i++)
 	{
 		game->links[i] = NULL;
 	}
 
-	game->die = die_ini(666);
-	game_setPlayerLocation(game, NO_ID);
+	for (i = 0; i < MAX_SPRITES; i++)
+	{
+		game->sprites[i] = NULL;
+	}
+
+	game->die = die_ini(DIE_SEED);
+	game_set_player_location(game, NO_ID);
 
 	game->last_cmd = NULL;
+
+	game->player = player_create("player1", NO_ID, NO_ID, PLAYER_ID);
 
 	return game;
 }
 
-STATUS game_createFromFile(Game * game, char * filename)
+STATUS game_create_from_file(Game *game, char *filename)
 {
 	int i;
-	Space * space_act = NULL, * space_next = NULL;
-	Id space_act_id = NO_ID, space_next_id = NO_ID, link_id = NO_ID;
+	Space *space_act = NULL;
+	Id space_act_id = NO_ID, link_id = NO_ID;
+	int direction;
 
-	if(!game || !filename) return ERROR;
+	if (!game || !filename)
+		return ERROR;
 
-	/* Load all data from file */
-	if (game_loadAll(game, filename) == ERROR) return ERROR;
+	/* Load all opened_links from file */
+	if (game_load_spaces(game, filename) == ERROR)
+		return ERROR;
+
+	/* Load all sprites */
+	if (sprite_loader_map(game, "data/map.dat") == ERROR)
+		return ERROR;
 
 	/* Put each link in the corresponding space */
-	for (i=0; i<MAX_LINK; i++)
+	for (i = 0; i < MAX_LINK; i++)
 	{
 		link_id = link_getId(game->links[i]);
 
+		if (link_id == NO_ID)
+			continue;
+
 		space_act_id = link_getSpace1(game->links[i]);
-		space_next_id = link_getSpace2(game->links[i]);
 
-		space_act = game_getSpace(game, space_act_id);
-		space_next = game_getSpace(game, space_next_id);
+		space_act = game_get_space(game, space_act_id);
 
-		/* Este hack para hacer links es basura, ya lo cambiare - Solanav */
-		if (space_act_id == space_next_id - 1) /* North <-> South */
-		{
-			space_setSouth(space_act, link_id);
-		}
-		else if (space_act_id == 8 && space_next_id == 16) /* Bridge */
-		{
-			space_setEast(space_act, link_id);
-			space_setWest(space_next, link_id);
-		}
-		else if (space_act_id < space_next_id) /* Oca */
-		{
-			space_setEast(space_act, link_id);
-		}
-		else if (space_act_id > space_next_id) /* Death */
-		{
-			space_setEast(space_act, link_id);
-			space_setWest(space_act, link_id);
-		}
+		direction = link_getDirection(game_get_link(game, link_id));
+
+		if (direction == NORTH)
+			space_set_north(space_act, link_id);
+		else if (direction == EAST)
+			space_set_east(space_act, link_id);
+		else if (direction == SOUTH)
+			space_set_south(space_act, link_id);
+		else if (direction == WEST)
+			space_set_west(space_act, link_id);
 	}
 
-	game_setPlayerLocation(game, game_getSpaceIdAt(game, 0));
+	game_set_player_location(game, (long int)STARTING_SPACE);
 
-
-	/* DEBUG */
-	for (i=0; i<MAX_SPACES; i++)
-	{
-		space_print(game->spaces[i]);
-	}
-
-	for (i=0; i<MAX_OBJECTS; i++)
-	{
-		printf("Object -> %s [%ld]", object_getName(game->objects[i]), object_getId(game->objects[i]));
-	}
-
-	printf("Player name -> %s\n", player_getName(game->player));
-	printf("Player location -> %ld\n", player_getLocId(game->player));
-	printf("Player id -> %ld\n", player_getId(game->player));
+	update_sprites(game);
 
 	return OK;
 }
 
-STATUS game_destroy(Game * game)
+STATUS game_destroy(Game *game)
 {
 	int i = 0;
-	printf("\nMAX_SPACES -> %d\n", MAX_SPACES);
 
-	for (i = 0; (i <= 26) && game->spaces[i]; i++)
-	{
-		printf("Iteration now on -> %d  \n", i);
-		printf("Going with space -> %p  \n", (void *) game->spaces[i]);
-		printf("Space ID is      -> %ld \n\n", space_getId(game->spaces[i]));
+	for (i = 0; i <= MAX_SPACES && game->spaces[i]; i++)
 		space_destroy(game->spaces[i]);
-	}
 
 	player_destroy(game->player);
 
-	for(i = 0; i<MAX_OBJECTS && game->objects[i]; i++)
-	{
-		printf("Destroying %p with i %d\n",(void *)  game->objects[i], i);
-		printf("\tObject has id %ld\n", object_getId(game->objects[i]));
+	for (i = 0; i < MAX_OBJECTS && game->objects[i]; i++)
 		object_destroy(game->objects[i]);
-	}
 
-	for(i = 0; i<MAX_LINK && game->links[i]; i++)
-	{
+	for (i = 0; i < MAX_LINK && game->links[i]; i++)
 		link_destroy(game->links[i]);
-	}
 
-	die_dieDie(game->die);
+	for (i = 0; i < MAX_SPRITES && game->sprites[i]; i++)
+		sprite_destroy(game->sprites[i]);
+
+	die_die_die(game->die);
 
 	free(game);
 
 	return OK;
 }
 
-Space* game_getSpace(Game * game, Id id)
+Space *game_get_space(Game *game, Id id)
 {
 	int i;
 
-	if (id == NO_ID) return NULL;
+	if (id == NO_ID)
+		return NULL;
 
 	for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
 	{
-		if (id == space_getId(game->spaces[i]))
+		if (id == space_get_id(game->spaces[i]))
 			return game->spaces[i];
 	}
 
 	return NULL;
 }
 
-Player* game_getPlayer(Game * game)
+Player *game_get_player(Game *game)
 {
-	if(!game) return NULL;
+	if (!game)
+		return NULL;
 
 	return game->player;
 }
 
-Object * game_getObject(Game * game, char * object_name)
+Object *game_get_object(Game *game, char *object_name)
 {
 	int i;
 
-	if(!game || !object_name) return NULL;
+	if (!game || !object_name)
+		return NULL;
 
-	for(i=0; i < 4 && game->objects[i]; i++)
+	for (i = 0; i < MAX_OBJECTS && game->objects[i]; i++)
 	{
-		printf("Comparing [%s] with [%s]\n", object_name, object_getName(game->objects[i]));
-		if (strcasecmp(object_name, object_getName(game->objects[i])) ==  0)
+		if (strcasecmp(object_name, object_get_name(game->objects[i])) == 0)
 			return game->objects[i];
 	}
 
 	return NULL;
 }
 
-Object * game_getObjectFromId(Game * game, Id id)
+Object *game_get_object_from_id(Game *game, Id id)
 {
 	int i;
 
-	if (id == NO_ID) return NULL;
+	if (id == NO_ID)
+		return NULL;
 
-	for (i = 0; i < MAX_OBJECTS && game->objects[i] != NULL; i++)
+	for (i = 0; i < MAX_OBJECTS; i++)
 	{
-		if (id == object_getId(game->objects[i]))
+		if (id == object_get_id(game->objects[i]))
 			return game->objects[i];
 	}
 
 	return NULL;
 }
 
-Link * game_getLink(Game * game, Id id)
+Link *game_get_link(Game *game, Id id)
 {
 	int i;
 
-	if(!game || id == NO_ID) return NULL;
+	if (!game || id == NO_ID)
+		return NULL;
 
-	for(i=0; i < MAX_LINK && game->links[i]; i++)
+	for (i = 0; i < MAX_LINK && game->links[i]; i++)
 	{
 		if (id == link_getId(game->links[i]))
 			return game->links[i];
@@ -256,33 +245,34 @@ Link * game_getLink(Game * game, Id id)
 	return NULL;
 }
 
-Id game_getLinkIdAt(Game * game, int pos)
+Id game_get_link_id_at(Game *game, int pos)
 {
-	if(!game || pos == -1) return NO_ID;
+	if (!game || pos == NO_ID)
+		return NO_ID;
 
 	return link_getId(game->links[pos]);
 }
 
-Id game_getPlayerLocation(Game * game)
+Id game_get_player_location(Game *game)
 {
 	return player_getLocId(game->player);
 }
 
-Id game_getObjectLocation(Game * game, Id id)
+Id game_get_object_location(Game *game, Id id)
 {
 	int i, n;
-	Set * objects = NULL;
+	Set *objects = NULL;
 
 	/* Itera por los espacios comprobando si esta el objeto que buscas*/
 	for (i = 0; i < MAX_SPACES; i++)
 	{
-		objects = space_getObjectsId(game->spaces[i]);
-		for(n = 0; set_getId(objects, n) != NO_ID; n++)
+		objects = space_get_objects_id(game->spaces[i]);
+		for (n = 0; set_get_id(objects, n) != NO_ID; n++)
 		{
-			if (set_getId(objects, n) == id)
+			if (set_get_id(objects, n) == id)
 			{
 				set_destroy(objects);
-				return space_getId(game->spaces[i]);
+				return space_get_id(game->spaces[i]);
 			}
 		}
 		set_destroy(objects);
@@ -290,27 +280,31 @@ Id game_getObjectLocation(Game * game, Id id)
 	return NO_ID;
 }
 
-STATUS game_update(Game * game, F_Command * cmd)
+STATUS game_update(Game *game, F_Command *cmd)
 {
-	if(!game || !cmd) return ERROR;
+	if (!game || !cmd)
+		return ERROR;
 
 	game->last_cmd = cmd;
 
 	(*game_callback_fn_list[command_getCmd(cmd)])(game);
+
+	update_sprites(game);
+
 	return OK;
 }
 
-F_Command * game_getLastCommand(Game * game)
+F_Command *game_get_last_command(Game *game)
 {
 	return game->last_cmd;
 }
 
-T_Command game_getLastCommandText(Game * game)
+T_Command game_get_last_command_text(Game *game)
 {
 	return command_getCmd(game->last_cmd);
 }
 
-void game_printData(Game * game)
+void game_print_opened_links(Game *game)
 {
 	int i = 0;
 
@@ -319,213 +313,108 @@ void game_printData(Game * game)
 	printf("=> Spaces: \n");
 	for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
 	{
-	space_print(game->spaces[i]);
+		space_print(game->spaces[i]);
 	}
 
-	/* TODO : lo mismo de graphic engine, hay que hacer print de mas de un ID de objeto ahora uso 1*/
-	printf("=> Object location: %d\n", (int) game_getObjectLocation(game, 1));
-	printf("=> Player location: %d\n", (int) game_getPlayerLocation(game));
+	/* TODO : print more objects*/
+	printf("=> Object location: %d\n", (int)game_get_object_location(game, 1));
+	printf("=> Player location: %d\n", (int)game_get_player_location(game));
 	printf("prompt:> ");
 }
 
-BOOL game_isOver(Game * game)
-{
-	return FALSE;
-}
-
-void game_callbackUnknown(Game * game)
-{
-}
-
-void game_callbackExit(Game * game)
-{
-}
-
-void game_callbackPickup(Game * game)
-{
-	/* TODO : check if the object exists (same for drop) */
-	int i = 0;
-	Id debug = 0;
-
-	Id player_locId = game_getPlayerLocation(game);
-	Id object_id = NO_ID;
-	Space * space_pointer = game_getSpace(game, player_locId);
-	char object[20] = {0};
-
-	strcpy(object, command_getId(game->last_cmd));
-	object_id = object_getId(game_getObject(game, object));
-
-	if (!game) return;
-	if (game_getObjectLocation(game, object_id) == game_getPlayerLocation(game))
-	{
-		player_setObjId(game->player, object_id);
-		space_removeObject(space_pointer, object_id);
-	}
-
-	/* DEBUG : this is to check if it works (spoiler alert: it does)*/
-	printf("ThiS niBBa has the following objects:\n");
-	for (i=1; debug != NO_ID && i<10; i++)
-	{
-		debug = player_getObjId(game->player, i);
-		printf("\tTHIS ONE -> %ld [%d]\n", debug, i);
-	}
-
-	return;
-}
-
-void game_callbackDrop(Game * game)
-{
-	Id player_locId = game_getPlayerLocation(game);
-	Id object_id = NO_ID;
-	Space * space_pointer = game_getSpace(game, player_locId);
-	char object[20] = {0};
-
-	if (!game) return;
-
-	strcpy(object, command_getId(game->last_cmd));
-	object_id = object_getId(game_getObject(game, object));
-
-	if (object_id > MAX_OBJECTS) return;
-
-	space_addObject(space_pointer, object_id);
-	player_removeObjId(game->player, object_id);
-
-	return;
-}
-
-void game_callbackRoll(Game * game)
-{
-	die_roll(game->die);
-	die_print(stdout, game->die);
-	return;
-}
-
-void game_callbackMove(Game * game)
-{
-	Id link_id = NO_ID;
-	Id current_id = NO_ID;
-	Id space_id = NO_ID;
-	char movement[20] = {0};
-
-	space_id = game_getPlayerLocation(game);
-	strcpy(movement, command_getId(game->last_cmd));
-
-	printf("Someone is trying to move...\n\tPlayer loc -> %ld\n\tMovement -> %s\n", space_id, movement);
-
-	if (!game || space_id == NO_ID) return;
-
-	if (strcmp(movement, "north") == 0)
-	{
-		link_id = space_getNorth(game_getSpace(game, space_id));
-		current_id = link_getSpace1(game_getLink(game, link_id));
-	}
-	else if (strcmp(movement, "east") == 0)
-	{
-		link_id = space_getEast(game_getSpace(game, space_id));
-		current_id = link_getSpace2(game_getLink(game, link_id));
-	}
-	else if (strcmp(movement, "south") == 0)
-	{
-		link_id = space_getSouth(game_getSpace(game, space_id));
-		current_id = link_getSpace2(game_getLink(game, link_id));
-	}
-	else if (strcmp(movement, "west") == 0)
-	{
-		link_id = space_getWest(game_getSpace(game, space_id));
-		current_id = link_getSpace1(game_getLink(game, link_id));
-	}
-	else
-	{
-		return;
-	}
-
-	printf("Id of link you are trying to use -> %ld\n", link_id);
-	printf("\tId of actposition -> %ld\n", link_getSpace1(game_getLink(game, link_id)));
-	printf("\tId of destination -> %ld\n", link_getSpace2(game_getLink(game, link_id)));
-
-	if(current_id != NO_ID)
-		game_setPlayerLocation(game, current_id);
-
-	printf("Player's new location -> %ld\n", game_getPlayerLocation(game));
-
-}
-
-void game_callbackCheck(Game * game)
-{
-	char object_description[20] = {0};
-	char object_name[20] = {0};
-
-	char space_description[20] = {0};
-	char space_name[20] = {0};
-
-	if (!game) return;
-
-	/* Clever hack if i say so myself, prob shouldn't be doing it but meh - Solanav */
-	if (strcasecmp(command_getId(game->last_cmd), "s") == 0 || strcasecmp(command_getId(game->last_cmd), "space") == 0)
-	{
-		strcpy(space_name, command_getId(game->last_cmd));
-		strcpy(space_description, space_getDescription(game_getSpace(game, player_getLocId(game->player))));
-
-		command_setId(game->last_cmd, space_description);
-	}
-	else
-	{
-		strcpy(object_name, command_getId(game->last_cmd));
-
-		if (!game_getObject(game, object_name)) return;
-
-		strcpy(object_description, object_getDescription(game_getObject(game, object_name)));
-
-		command_setId(game->last_cmd, object_description);
-	}
-
-	return;
-}
-
-STATUS game_addSpace(Game * game, Space* space)
+STATUS game_add_space(Game *game, Space *space)
 {
 	int i = 0;
 
-	if (space == NULL) return ERROR;
+	if (space == NULL)
+		return ERROR;
 
 	while ((i < MAX_SPACES) && (game->spaces[i] != NULL))
 		i++;
 
-	if (i >= MAX_SPACES) return ERROR;
+	if (i >= MAX_SPACES)
+		return ERROR;
 
 	game->spaces[i] = space;
 
 	return OK;
 }
 
-Id game_getSpaceIdAt(Game * game, int position)
+STATUS game_add_object(Game *game, Object *object)
 {
-	if (position < 0 || position >= MAX_SPACES) return NO_ID;
+	int i = 0;
 
-	return space_getId(game->spaces[position]);
+	if (object == NULL)
+		return ERROR;
+
+	while ((i < MAX_OBJECTS) && (game->objects[i] != NULL))
+		i++;
+
+	if (i >= MAX_OBJECTS)
+		return ERROR;
+
+	game->objects[i] = object;
+
+	return OK;
 }
 
-STATUS game_setPlayerLocation(Game * game, Id id)
+Sprite *game_get_sprite(Game *game, Id id)
 {
-	if (id == NO_ID) return ERROR;
+	int i;
+
+	if (!game || id == NO_ID)
+		return NULL;
+
+	for (i = 0; i < MAX_SPRITES; i++)
+	{
+		if (sprite_getId(game->sprites[i]) == id)
+		{
+			return game->sprites[i];
+		}
+	}
+	return NULL;
+}
+
+STATUS game_add_sprite(Game *game, Sprite *sprite, int i)
+{
+	game->sprites[i] = sprite;
+
+	return OK;
+}
+
+Id game_get_space_id_at(Game *game, int position)
+{
+	if (position < 0 || position >= MAX_SPACES)
+		return NO_ID;
+
+	return space_get_id(game->spaces[position]);
+}
+
+STATUS game_set_player_location(Game *game, Id id)
+{
+	if (id == NO_ID)
+		return ERROR;
 
 	player_setLocId(game->player, id);
 
 	return OK;
 }
 
-STATUS game_setLink(Game * game, Id link_id, Id space_id0, Id space_id1)
+STATUS game_set_link(Game *game, Id link_id, Id space_id0, Id space_id1, int direction, LinkStatus door)
 {
 	int i;
 
-	if (link_id == NO_ID || space_id0 == NO_ID || space_id1 == NO_ID || !game ) return ERROR;
+	if (link_id == NO_ID || space_id0 == NO_ID || space_id1 == NO_ID || !game || direction == -1)
+		return ERROR;
 
+	/* Loop to search for next NO_ID */
 	for (i = 0; i < MAX_LINK; i++)
 	{
-		if (game_getLinkIdAt(game, i) == NO_ID)
+		if (game_get_link_id_at(game, i) == NO_ID)
 		{
 			game->links[i] = link_create(link_id);
 			link_setSpaces(game->links[i], space_id0, space_id1);
+			link_setDirection(game->links[i], direction);
 			return OK;
 		}
 	}
@@ -533,18 +422,19 @@ STATUS game_setLink(Game * game, Id link_id, Id space_id0, Id space_id1)
 	return ERROR;
 }
 
-STATUS game_setObjectLocation(Game * game, Id id, Id obj_id, char * name, char * description)
+STATUS game_set_object_location(Game *game, Id id, Id obj_id, char *name, char *description)
 {
 	int i;
 
-	if (id == NO_ID || !game) return ERROR;
+	if (id == NO_ID || !game)
+		return ERROR;
 
 	for (i = 0; i < MAX_SPACES; i++)
 	{
-		if (space_getId(game->spaces[i]) == id)
+		if (space_get_id(game->spaces[i]) == id)
 		{
-			space_addObject(game->spaces[i], obj_id);
-			object_setDescription(game_getObject(game, name), description);
+			space_add_object(game->spaces[i], obj_id);
+			object_set_description(game_get_object(game, name), description);
 			return OK;
 		}
 	}
@@ -552,26 +442,322 @@ STATUS game_setObjectLocation(Game * game, Id id, Id obj_id, char * name, char *
 	return ERROR;
 }
 
-int game_getLastRoll(Game * game)
+int game_get_last_roll(Game *game)
 {
-	if(!game) return -1;
+	if (!game)
+		return -1;
 
-	return die_getLastRoll(game->die);
+	return die_get_last_roll(game->die);
 }
 
-BOOL game_areSpacesAdjacent(Game * g, Id space1, Id space2)
+BOOL game_areSpacesAdjacent(Game *g, Id space1, Id space2)
 {
-	if(!g || space1 == NO_ID || space2 == NO_ID) return FALSE;
+	if (!g || space1 == NO_ID || space2 == NO_ID)
+		return FALSE;
 
-
-	if(space_getNorth(game_getSpace(g, space2)) == space1)
+	if (space_get_north(game_get_space(g, space2)) == space1)
 		return TRUE;
-	else if(space_getEast(game_getSpace(g, space2)) == space1)
+	else if (space_get_east(game_get_space(g, space2)) == space1)
 		return TRUE;
-	else if(space_getSouth(game_getSpace(g, space2)) == space1)
+	else if (space_get_south(game_get_space(g, space2)) == space1)
 		return TRUE;
-	else if(space_getWest(game_getSpace(g, space2)) == space1)
+	else if (space_get_west(game_get_space(g, space2)) == space1)
 		return TRUE;
 
 	return FALSE;
+}
+
+STATUS update_sprites(Game *game)
+{
+	int i;
+
+	BOOL player_light = FALSE;
+	Space *space = NULL;
+	Player *player = NULL;
+	Object *object = NULL;
+
+	int opened_links_val = 0;
+
+	if (!game)
+		return ERROR;
+
+	space = game_get_space(game, game_get_player_location(game));
+
+	player = game_get_player(game);
+	for (i = 0; i < MAX_INV_SIZE; i++)
+	{
+		object = game_get_object_from_id(game, player_getObjId(player, i));
+		if (object_get_name(object))
+		{
+			printf("\nPlayer object -> %s", object_get_name(object));
+			if (object_get_on(object) == TRUE)
+			{
+				player_light = TRUE;
+				i = MAX_INV_SIZE;
+			}
+		}
+	}
+
+	if (space_get_light(space) == FALSE)
+	{
+		if (player_light == FALSE)
+			space_setCurrentSprite(space, NO_LIGHT_SPRITE);
+		else
+			space_setCurrentSprite(space, opened_links_val);
+	}
+	else
+		space_setCurrentSprite(space, opened_links_val);
+
+	return OK;
+}
+
+BOOL game_is_over(Game *game)
+{
+	return FALSE;
+}
+
+void game_callback_unknown(Game *game)
+{
+}
+
+void game_callback_exit(Game *game)
+{
+}
+
+void game_callback_pickup(Game *game)
+{
+	Id player_locId = game_get_player_location(game);
+	Id object_id = NO_ID;
+	Space *space_pointer = game_get_space(game, player_locId);
+	char object[MAX_STRING] = {0};
+
+	strcpy(object, command_get_id(game->last_cmd));
+	object_id = object_get_id(game_get_object(game, object));
+
+	if (!game)
+		return;
+
+	if (game_get_object_location(game, object_id) == game_get_player_location(game))
+	{
+		if (object_get_mobile(game_get_object_from_id(game, object_id)) == TRUE)
+		{
+			player_setObjId(game->player, object_id);
+			space_remove_object(space_pointer, object_id);
+		}
+		else
+		{
+			command_set_id(game_get_last_command(game), "you can't move that");
+		}
+	}
+
+	return;
+}
+
+void game_callback_drop(Game *game)
+{
+	Id player_locId = game_get_player_location(game);
+	Id object_id = NO_ID;
+	Space *space_pointer = game_get_space(game, player_locId);
+	char object[MAX_STRING] = {0};
+
+	if (!game)
+		return;
+
+	strcpy(object, command_get_id(game->last_cmd));
+	object_id = object_get_id(game_get_object(game, object));
+
+	if (object_id > MAX_OBJECTS)
+		return;
+
+	space_add_object(space_pointer, object_id);
+	player_removeObjId(game->player, object_id);
+
+	return;
+}
+
+void game_callback_roll(Game *game)
+{
+	die_roll(game->die);
+	die_print(stdout, game->die);
+	return;
+}
+
+void game_callback_move(Game *game)
+{
+	Link *link;
+
+	Id link_id = NO_ID;
+	Id next_space_id = NO_ID;
+	Id act_space_id = NO_ID;
+	char direction[MAX_STRING] = {0};
+
+	if (!game)
+		return;
+
+	act_space_id = game_get_player_location(game);
+	strcpy(direction, command_get_id(game->last_cmd));
+
+	printf("Someone is trying to move...\n\tPlayer loc -> %ld\n\tMovement -> %s\n", act_space_id, direction);
+
+	if (!game || act_space_id == NO_ID)
+		return;
+
+	if (strcmp(direction, "north") == 0)
+		link_id = space_get_north(game_get_space(game, act_space_id));
+
+	else if (strcmp(direction, "east") == 0)
+		link_id = space_get_east(game_get_space(game, act_space_id));
+
+	else if (strcmp(direction, "south") == 0)
+		link_id = space_get_south(game_get_space(game, act_space_id));
+
+	else if (strcmp(direction, "west") == 0)
+		link_id = space_get_west(game_get_space(game, act_space_id));
+
+	else
+		return;
+
+	link = game_get_link(game, link_id);
+
+	if (link_getStatus(link) == CLOSED)
+	{
+		command_set_id(game->last_cmd, "thats closed");
+		return;
+	}
+
+	next_space_id = link_getSpace2(link);
+
+	printf("Id of link you are trying to use -> %ld\n", link_id);
+	printf("\tId of actposition -> %ld\n", link_getSpace1(link));
+	printf("\tId of destination -> %ld\n", link_getSpace2(link));
+
+	if (next_space_id != NO_ID)
+		game_set_player_location(game, next_space_id);
+
+	printf("Player's new location -> %ld\n", game_get_player_location(game));
+}
+
+void game_callback_check(Game *game)
+{
+	char object_description[MAX_STRING] = {0};
+	char space_description[MAX_STRING] = {0};
+
+	Space *current_space = game_get_space(game, player_getLocId(game->player));
+	Object *object = NULL;
+
+	if (!game || !current_space)
+		return;
+
+	/* If you are checking your space */
+	if (strcasecmp(command_get_id(game->last_cmd), "s") == 0 || strcasecmp(command_get_id(game->last_cmd), "space") == 0)
+	{
+		if (space_get_light(current_space) == TRUE)
+			strcpy(space_description, space_get_description(current_space));
+		else
+			strcpy(space_description, "you can't see");
+
+		printf("Description -> %s\n", space_description);
+
+		command_set_id(game->last_cmd, space_description);
+	}
+	/* If you are checking an object */
+	else
+	{
+		object = game_get_object(game, command_get_id(game->last_cmd));
+
+		if (object)
+		{
+			if (object_get_moved(object) == FALSE)
+				strcpy(object_description, object_get_description(object));
+			else
+				strcpy(object_description, object_get_description_alternative(object));
+		}
+		else
+		{
+			strcpy(object_description, "no object with that name bruh");
+		}
+
+		command_set_id(game->last_cmd, object_description);
+	}
+
+	return;
+}
+
+void game_callback_turnOn(Game *game)
+{
+	char object_name[MAX_STRING] = {0};
+
+	Object *object = NULL;
+
+	if (!game)
+		return;
+
+	strcpy(object_name, command_get_id(game_get_last_command(game)));
+
+	object = game_get_object(game, object_name);
+
+	object_set_on(object, TRUE);
+}
+
+void game_callback_turnOff(Game *game)
+{
+	char object_name[MAX_STRING] = {0};
+
+	Object *object = NULL;
+
+	if (!game)
+		return;
+
+	strcpy(object_name, command_get_id(game_get_last_command(game)));
+
+	object = game_get_object(game, object_name);
+
+	object_set_on(object, FALSE);
+}
+
+void game_callback_open(Game *game)
+{
+	char packed_string[MAX_STRING] = {0};
+	char unpak_link[MAX_STRING] = {0};
+	char unpak_object[MAX_STRING] = {0};
+
+	Link *link = NULL;
+	Id link_id = NO_ID;
+	Id actpos = NO_ID;
+
+	if (!game)
+		return;
+
+	/* Unpacking with strtok */
+	strcpy(packed_string, command_get_id(game_get_last_command(game)));
+	strcpy(unpak_link, strtok(packed_string, "/"));
+	strcpy(unpak_object, strtok(NULL, "/"));
+
+	printf("Unpak -> [%s] - [%s]", unpak_link, unpak_object);
+
+	actpos = game_get_player_location(game);
+
+	if (strcasecmp(unpak_link, "n") == 0 || strcasecmp(unpak_link, "north") == 0)
+		link_id = space_get_north(game_get_space(game, actpos));
+
+	else if (strcasecmp(unpak_link, "e") == 0 || strcasecmp(unpak_link, "east") == 0)
+		link_id = space_get_east(game_get_space(game, actpos));
+
+	else if (strcasecmp(unpak_link, "s") == 0 || strcasecmp(unpak_link, "south") == 0)
+		link_id = space_get_south(game_get_space(game, actpos));
+
+	else if (strcasecmp(unpak_link, "w") == 0 || strcasecmp(unpak_link, "west") == 0)
+		link_id = space_get_west(game_get_space(game, actpos));
+
+	else
+		return;
+
+	link = game_get_link(game, link_id);
+
+	printf("Next move should be -> %ld\n", link_getSpace2(link));
+	printf("Currently has STATUS -> %d\n", link_getStatus(link));
+
+	link_setStatus(link, OPENED);
+
+	printf("Currently has STATUS -> %d\n", link_getStatus(link));
 }

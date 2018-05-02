@@ -12,18 +12,19 @@ struct _Set
 {
 	/* "top" points to next empty space */
 	Id id_list[MAX_INV_SIZE]; /*!< Array*/
-	int id_total; /*!< Total del array*/
+	int id_total;		  /*!< Total del array*/
 };
 
-Set * set_create(int inv_size)
+Set *set_create(int inv_size)
 {
 	int i;
-	Set * set;
+	Set *set;
 
-	set = (Set *) calloc(1, sizeof(Set));
-	if (!set) return NULL;
+	set = (Set *)calloc(1, sizeof(Set));
+	if (!set)
+		return NULL;
 
-	for (i=0; i<inv_size; i++)
+	for (i = 0; i < inv_size; i++)
 	{
 		set->id_list[i] = NO_ID;
 	}
@@ -33,21 +34,23 @@ Set * set_create(int inv_size)
 	return set;
 }
 
-void set_destroy(Set * set)
+void set_destroy(Set *set)
 {
-	if (!set) return;
+	if (!set)
+		return;
 	free(set);
 
 	return;
 }
 
-STATUS set_add(Set * set, Id id)
+STATUS set_add(Set *set, Id id)
 {
 	int i, done;
 
-	if(!set) return ERROR;
+	if (!set)
+		return ERROR;
 
-	for (i=0, done=0; i<set->id_total && done==0; i++)
+	for (i = 0, done = 0; i < set->id_total && done == 0; i++)
 	{
 		if (set->id_list[i] == NO_ID)
 		{
@@ -59,18 +62,20 @@ STATUS set_add(Set * set, Id id)
 	return OK;
 }
 
-STATUS set_del(Set * set, Id id)
+STATUS set_del(Set *set, Id id)
 {
 	int i;
 
-	if (!set) return ERROR;
+	if (!set)
+		return ERROR;
 
-	for(i=0; i<set->id_total; i++)
+	for (i = 0; i < set->id_total; i++)
 	{
-		if(set->id_list[i] == id)
+		if (set->id_list[i] == id)
 		{
 			set->id_list[i] = NO_ID;
-			if (set_rearrange(set) == ERROR) return ERROR;
+			if (set_rearrange(set) == ERROR)
+				return ERROR;
 			return OK;
 		}
 	}
@@ -78,21 +83,24 @@ STATUS set_del(Set * set, Id id)
 	return ERROR;
 }
 
-Id set_getId(Set * set, int num)
+Id set_get_id(Set *set, int num)
 {
-	if (!set) return NO_ID;
-	if (num > set->id_total) return NO_ID;
+	if (!set)
+		return NO_ID;
+	if (num > set->id_total)
+		return NO_ID;
 
 	return set->id_list[num];
 }
 
-STATUS set_rmAll(Set * set)
+STATUS set_rm_all(Set *set)
 {
-	int i=0;
+	int i = 0;
 
-	if (!set) return ERROR;
+	if (!set)
+		return ERROR;
 
-	for (i=0; i<set->id_total; i++)
+	for (i = 0; i < set->id_total; i++)
 	{
 		set->id_list[i] = NO_ID;
 	}
@@ -100,18 +108,20 @@ STATUS set_rmAll(Set * set)
 	return OK;
 }
 
-Set * set_cpAll(Set * set)
+Set *set_cp_all(Set *set)
 {
 	int i;
-	Set * set_copy;
+	Set *set_copy;
 
-	if (!set) return NULL;
+	if (!set)
+		return NULL;
 
 	set_copy = set_create(set->id_total);
 
-	if(!set_copy) return NULL;
+	if (!set_copy)
+		return NULL;
 
-	for (i=0; i<set->id_total; i++)
+	for (i = 0; i < set->id_total; i++)
 	{
 		set_copy->id_list[i] = set->id_list[i];
 	}
@@ -119,15 +129,16 @@ Set * set_cpAll(Set * set)
 	return set_copy;
 }
 
-STATUS set_rearrange(Set * set)
+STATUS set_rearrange(Set *set)
 {
 	/* Moves all ids to fill empty spaces */
 
-	int i, j, removed_count=0;
+	int i, j, removed_count = 0;
 
-	if (!set) return ERROR;
+	if (!set)
+		return ERROR;
 
-	for (i=0, j=0; i<set->id_total; i++)
+	for (i = 0, j = 0; i < set->id_total; i++)
 	{
 		if (set->id_list[i] != NO_ID)
 		{
@@ -140,7 +151,7 @@ STATUS set_rearrange(Set * set)
 		}
 	}
 
-	for (i=(set->id_total)-1, j=0; j<removed_count; j++, i--)
+	for (i = (set->id_total) - 1, j = 0; j < removed_count; j++, i--)
 	{
 		set->id_list[i] = NO_ID;
 	}
@@ -148,17 +159,18 @@ STATUS set_rearrange(Set * set)
 	return OK;
 }
 
-STATUS set_printDebug(FILE * f, Set * set)
+STATUS set_print_debug(FILE *f, Set *set)
 {
 	int i;
 
-	if (!set) return ERROR;
+	if (!set)
+		return ERROR;
 
 	printf("INV SIZE IS -> %d\n\n", set->id_total);
 
-	for (i=0; i<set->id_total; i++)
+	for (i = 0; i < set->id_total; i++)
 	{
-		fprintf(f, "POSITION > %d || ID > %ld\n", i, set_getId(set, i));
+		fprintf(f, "POSITION > %d || ID > %ld\n", i, set_get_id(set, i));
 	}
 
 	return OK;

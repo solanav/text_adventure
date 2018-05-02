@@ -4,12 +4,13 @@
 	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
 	"configurations": [
+
 		{
 			"name": "(gdb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "/home/solanav/Projects/like_ocas_in_the_rain/game_exec",
-			"args": [],
+			"args": ["data/data2.dat"],
 			"stopAtEntry": false,
 			"cwd": "/home/solanav/Projects/like_ocas_in_the_rain/",
 			"environment": [],

@@ -34,75 +34,75 @@ int main(int argc, char** argv) {
         }
     }
 
-	if (all || test == 1) test1_inventoryCreate();
-    if (all || test == 2) test1_inventorySetIds();
-    if (all || test == 3) test1_inventoryGetIds();
-    if (all || test == 4) test1_inventoryGetIdAt();
-	if (all || test == 5) test1_inventoryAddId();
-	if (all || test == 6) test2_inventoryAddId();
-	if (all || test == 7) test1_inventoryDelId();
-	if (all || test == 8) test2_inventoryDelId();
+	if (all || test == 1) test1_inventory_create();
+    if (all || test == 2) test1_inventory_set_ids();
+    if (all || test == 3) test1_inventory_get_ids();
+    if (all || test == 4) test1_inventory_get_id_at();
+	if (all || test == 5) test1_inventory_add_id();
+	if (all || test == 6) test2_inventory_add_id();
+	if (all || test == 7) test1_inventory_del_id();
+	if (all || test == 8) test2_inventory_del_id();
 
 	PRINT_PASSED_PERCENTAGE;
 
 	return 0;
 }
 
-void test1_inventoryCreate()
+void test1_inventory_create()
 {
 	int i = inventory_create(1) != NULL;
 	PRINT_TEST_RESULT(i);
 }
 
-void test1_inventorySetIds()
+void test1_inventory_set_ids()
 {
 	Inventory *i = inventory_create(1);
 	Set *s = set_create(1);
 	set_add(s, (long int)12);
-	PRINT_TEST_RESULT(inventory_setIds(i, s) == OK);
+	PRINT_TEST_RESULT(inventory_set_ids(i, s) == OK);
 }
 
-void test1_inventory_getIds()
+void test1_inventory_get_ids()
 {
 	Inventory *i = inventory_create(1);
-	inventory_addId(i, (long int) 15);
-	PRINT_TEST_RESULT(inventory_getIds(i) != NULL);
+	inventory_add_id(i, (long int) 15);
+	PRINT_TEST_RESULT(inventory_get_ids(i) != NULL);
 }
 
-void test1_inventory_getIdAt()
+void test1_inventory_get_id_at()
 {
 	Inventory *i = NULL;
-	PRINT_TEST_RESULT(inventory_getIdAt(i, 1) == NO_ID);
+	PRINT_TEST_RESULT(inventory_get_id_at(i, 1) == NO_ID);
 }
 
-void test2_inventory_getIdAt()
+void test2_inventory_get_id_at()
 {
 	Inventory *i = inventory_create(1);
-	inventory_addId(i, (long int)12);
-	PRINT_TEST_RESULT(inventory_getIdAt(i, 1) == 12);
+	inventory_add_id(i, (long int)12);
+	PRINT_TEST_RESULT(inventory_get_id_at(i, 1) == 12);
 }
 
-void test1_inventory_addId()
+void test1_inventory_add_id()
 {
 	Inventory *i = NULL;
-	PRINT_TEST_RESULT(inventory_addId(i, 1) == ERROR);
+	PRINT_TEST_RESULT(inventory_add_id(i, 1) == ERROR);
 }
 
-void test2_inventory_addId()
+void test2_inventory_add_id()
 {
 	Inventory *i = inventory_create(1);
-	PRINT_TEST_RESULT(inventory_addId(i, 2) == OK);
+	PRINT_TEST_RESULT(inventory_add_id(i, 2) == OK);
 }
 
-void test1_inventory_delId()
+void test1_inventory_del_id()
 {
 	Inventory *i = NULL;
-	PRINT_TEST_RESULT(inventory_delId(i, 1) == ERROR);
+	PRINT_TEST_RESULT(inventory_del_id(i, 1) == ERROR);
 }
 
-void test2_inventory_delId()
+void test2_inventory_del_id()
 {
 	Inventory *i = inventory_create(1);
 	inventory_add_id(i, 2);
-	PRINT_TEST_RESULT(inventory_delId(i, 2) == OK);
+	PRINT_TEST_RESULT(inventory_del_id(i, 2) == OK);
 }

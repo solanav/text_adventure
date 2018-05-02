@@ -33,46 +33,46 @@ int main(int argc, char** argv) {
         }
     }
 
-	if (all || test == 1) test1_dieCreate();
-    if (all || test == 2) test1_dieRoll();
-    if (all || test == 3) test2_dieRoll();
-    if (all || test == 4) test1_dieGetLastRoll();
-    if (all || test == 5) test2_dieGetLastRoll();
+	if (all || test == 1) test1_die_create();
+    if (all || test == 2) test1_die_roll();
+    if (all || test == 3) test2_die_roll();
+    if (all || test == 4) test1_die_get_last_roll();
+    if (all || test == 5) test2_die_get_last_roll();
 
 	PRINT_PASSED_PERCENTAGE;
 
 	return 0;
 }
 
-void test1_dieCreate()
+void test1_die_create()
 {
 	int result = die_ini(5) != NULL;
 	PRINT_TEST_RESULT(result);
 }
 
-void test1_dieRoll()
+void test1_die_roll()
 {
 	Die * d = NULL;
 	PRINT_TEST_RESULT(die_roll(d) == ERROR);
 }
 
-void test2_dieRoll()
+void test2_die_roll()
 {
 	Die* d;
 	d = die_ini(66);
 	PRINT_TEST_RESULT(die_roll(d) == OK);
 }
 
-void test1_die_getLastRoll()
+void test1_die_get_last_roll()
 {
 	Die * d = NULL;
-	PRINT_TEST_RESULT(die_getLastRoll(d) == -1);
+	PRINT_TEST_RESULT(die_get_last_roll(d) == -1);
 }
 
-void test2_dieGetLastRoll()
+void test2_die_get_last_roll()
 {
 	Die* d;
 	d = die_ini(66);
 	die_roll(d);
-	PRINT_TEST_RESULT(die_getLastRoll(d) > 0 && die_getLastRoll(d) < 7);
+	PRINT_TEST_RESULT(die_get_last_roll(d) > 0 && die_get_last_roll(d) < 7);
 }

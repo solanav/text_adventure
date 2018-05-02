@@ -1,22 +1,22 @@
 POINTS =================
 
 Space - Guille
-R01 - ND
-R02 - ND
-R03 - ND
+R01 - OK
+R02 - OK
+R03 - OK
 
 Commands - Cata
-R04 - ND
-R07 - ND
-R08 - ND
-R09 - ND
+R04 - OK
+R07 - OK
+R08 - PR
+R09 - OK
 
 Object - Bernardo
-R05 - ND
-R06 - ND
+R05 - OK
+R06 - OK
 
 Data.dat - Solana
-R10 - ND
+R10 - OK
 R11 - ND
 
 Documentation - Bernardo
@@ -44,6 +44,13 @@ HD - Half done
 ND - Not done
 
 NOTAS ==================
+
+- He cambiado el nombre de OPEN a OPENED en los links por que causaba un conflicto con el commando OPEN, hay que revisar que lo haya hecho bien. [Solana]
+- Revisar como pone arriba turnon turnoff y open por si las moscas [Solana]
+- Revisar que todo este inicializado a 0 / NULL o equivalentes [Solana]
+- Control de errores [Solana]
+- Pasar valgrind [Solana]
+- Cambiar direction en la estructura link para que use un enum en vez de int [Solana]
 
 FECHAS =================
 

@@ -2,7 +2,7 @@
  * @brief Defines functions for space manipulation
  *
  * @file command.c
- * @author Catalín Rotaru
+ * @author Catal�n Rotaru
  * @copyright GNU Public License
  */
 
@@ -14,27 +14,37 @@
 #include "../include/space.h"
 #include "../include/set.h"
 
-struct _Space {
-	Id id; /*!< id del espacio*/
-	char name[WORD_SIZE]; /*!< nombre del espacio*/
-	char description[WORD_SIZE]; /*!<  descripcion*/
-	Id linkNorth; /*!< id del link al norte*/
-	Id linkSouth; /*!< id del link al sur*/
-	Id linkEast; /*!< id del link al este*/
-	Id linkWest; /*!< id del link al oeste*/
-	char gdesc[3][21]; /*!< strings para objetos ASCII*/
-	Set * objects; /*!< Set de objetos*/
+struct _Space
+{
+	Id id;			     /*!< id del espacio*/
+	char name[WORD_SIZE];	     /*!< nombre del espacio*/
+	char description[WORD_SIZE]; /*!< descripcion*/
+	Id linkNorth;		     /*!< id del link al norte*/
+	Id linkSouth;		     /*!< id del link al sur*/
+	Id linkEast;		     /*!< id del link al este*/
+	Id linkWest;		     /*!< id del link al oeste*/
+	Id linkUp;		     /*!< id del link hacia arriba*/
+	Id linkDown;		     /*!< id del link hacia abajo*/
+	Id spriteId[17];	     /*!< id del sprite*/
+	int curentSprite;	     /*!< sprite que actual*/
+	char gdesc[3][21];	     /*!< strings para objetos ASCII*/
+	Set *objects;		     /*!< Set de objetos*/
+	BOOL light;		     /*!< Bool que indica si la casilla esta iluminada*/
 };
 
-Space * space_create(Id id)
+Space *space_create(Id id)
 {
-	Space * newSpace = NULL;
+	int i;
 
-	if (id == NO_ID) return NULL;
+	Space *newSpace = NULL;
 
-	newSpace = (Space *) malloc(sizeof (Space));
+	if (id == NO_ID)
+		return NULL;
 
-	if (newSpace == NULL) return NULL;
+	newSpace = (Space *)malloc(sizeof(Space));
+
+	if (newSpace == NULL)
+		return NULL;
 
 	newSpace->id = id;
 
@@ -45,17 +55,24 @@ Space * space_create(Id id)
 	newSpace->linkSouth = NO_ID;
 	newSpace->linkEast = NO_ID;
 	newSpace->linkWest = NO_ID;
+	newSpace->linkUp = NO_ID;
+	newSpace->linkDown = NO_ID;
+
+	for (i = 0; i<=16; i++)
+	{
+		newSpace->spriteId[i] = NO_ID;
+	}
 
 	newSpace->objects = set_create(5);
 
 	return newSpace;
 }
 
-STATUS space_destroy(Space* space)
+STATUS space_destroy(Space *space)
 {
 	if (!space)
 	{
-	return ERROR;
+		return ERROR;
 	}
 
 	set_destroy(space->objects);
@@ -66,238 +83,440 @@ STATUS space_destroy(Space* space)
 	return OK;
 }
 
-STATUS space_setName(Space* space, char* name)
+STATUS space_set_name(Space *space, char *name)
 {
-	if (!space || !name) return ERROR;
+	if (!space || !name)
+		return ERROR;
 
-	if (!strcpy(space->name, name)) return ERROR;
+	if (!strcpy(space->name, name))
+		return ERROR;
 
 	return OK;
 }
 
-STATUS space_setDescription(Space* space, char* description)
+STATUS space_setSprite(Space *space, Id spriteId, int i)
 {
-	if (!space || !description) return ERROR;
+	if (!space)
+		return ERROR;
 
-	if (!strcpy(space->description, description)) return ERROR;
+	space->spriteId[i] = spriteId;
 
 	return OK;
 }
 
-STATUS space_setNorth(Space* space, Id id)
+STATUS space_setCurrentSprite(Space *space, int i)
 {
-  if (!space || id == NO_ID)
-  {
-    return ERROR;
-  }
-  space->linkNorth = id;
-  return OK;
+	if (!space)
+		return ERROR;
+
+	space->curentSprite = i;
+
+	return OK;
 }
 
-STATUS space_setSouth(Space* space, Id id)
+STATUS space_set_description(Space *space, char *description)
 {
-  if (!space || id == NO_ID)
-  {
-    return ERROR;
-  }
-  space->linkSouth = id;
-  return OK;
+	if (!space || !description)
+		return ERROR;
+
+	if (!strcpy(space->description, description))
+		return ERROR;
+
+	return OK;
 }
 
-STATUS space_setEast(Space* space, Id id)
+STATUS space_set_north(Space *space, Id id)
 {
-  if (!space || id == NO_ID)
-  {
-    return ERROR;
-  }
-  space->linkEast = id;
-  return OK;
+	if (!space || id == NO_ID)
+	{
+		return ERROR;
+	}
+	space->linkNorth = id;
+	return OK;
 }
 
-STATUS space_setWest(Space* space, Id id)
+STATUS space_set_south(Space *space, Id id)
 {
-  if (!space || id == NO_ID)
-  {
-    return ERROR;
-  }
-  space->linkWest = id;
-  return OK;
+	if (!space || id == NO_ID)
+	{
+		return ERROR;
+	}
+	space->linkSouth = id;
+	return OK;
 }
 
-STATUS space_addObject(Space* space, Id obj_id)
+STATUS space_set_east(Space *space, Id id)
 {
-  if (!space) return ERROR;
-
-  return set_add(space->objects, obj_id);
+	if (!space || id == NO_ID)
+	{
+		return ERROR;
+	}
+	space->linkEast = id;
+	return OK;
 }
 
-STATUS space_removeObject(Space* space, Id id)
+STATUS space_set_west(Space *space, Id id)
 {
-  if (!space) return ERROR;
-
-  return set_del(space->objects, id);
+	if (!space || id == NO_ID)
+	{
+		return ERROR;
+	}
+	space->linkWest = id;
+	return OK;
 }
 
-const char * space_getName(Space* space)
+STATUS space_set_up(Space *space, Id id)
 {
-  if (!space) return NULL;
+	if (!space || id == NO_ID)
+		return ERROR;
 
-  return space->name;
+	space->linkUp = id;
+
+	return OK;
 }
 
-const char * space_getDescription(Space* space)
+STATUS space_set_down(Space *space, Id id)
 {
-  if (!space) return NULL;
+	if (!space || id == NO_ID)
+		return ERROR;
 
-  return space->description;
+	space->linkDown = id;
+
+	return OK;
 }
 
-Id space_getId(Space* space)
+STATUS space_set_light(Space *space, BOOL light)
 {
-  if (!space) return NO_ID;
+	if (!space)
+		return ERROR;
+	else if (light != TRUE && light != FALSE)
+		return ERROR;
 
-  return space->id;
+	space->light = light;
+
+	return OK;
 }
 
-Id space_getNorth(Space* space)
+BOOL space_get_light(Space *space)
 {
-  if (!space) return NO_ID;
+	if (!space)
+		return FALSE;
 
-  return space->linkNorth;
+	return space->light;
 }
 
-Id space_getSouth(Space* space)
-{
-  if (!space) return NO_ID;
 
-  return space->linkSouth;
+STATUS space_add_object(Space *space, Id obj_id)
+{
+	if (!space)
+		return ERROR;
+
+	return set_add(space->objects, obj_id);
 }
 
-Id space_getEast(Space* space)
+STATUS space_remove_object(Space *space, Id id)
 {
-  if (!space) return NO_ID;
+	if (!space)
+		return ERROR;
 
-  return space->linkEast;
+	return set_del(space->objects, id);
 }
 
-Id space_getWest(Space* space)
+Id space_getSprite(Space *space, int i)
 {
-  if (!space) return NO_ID;
+	if (!space)
+		return ERROR;
 
-  return space->linkWest;
+	return space->spriteId[i];
 }
 
-Set * space_getObjectsId(Space* space)
+int space_getCurentSprite(Space *space)
 {
-  Set * set;
-  int n;
+	if (!space)
+		return ERROR;
 
-  if (!space) return NULL;
-
-  set = set_create(5);
-  if(!set) return NULL;
-
-  for(n=0; set_getId(space->objects, n) != NO_ID; n++)
-  {
-    if(set_add(set, set_getId(space->objects, n)) == ERROR) return NULL;
-  }
-
-  return set;
+	return space->curentSprite;
 }
 
-STATUS space_print(Space* space)
+const char *space_get_name(Space *space)
 {
-  Id idaux = NO_ID;
-  Set * aux;
+	if (!space)
+		return NULL;
 
-  if (!space) return ERROR;
+	return space->name;
+}
 
-  fprintf(stdout, "\n\n--> Space (Id: %ld; Name: %s)\n", space->id, space->name);
+const char *space_get_description(Space *space)
+{
+	if (!space)
+		return NULL;
 
-  idaux = space_getNorth(space);
-  if (NO_ID != idaux)
-    fprintf(stdout, "---> North link: %ld.\n", idaux);
-  else
-    fprintf(stdout, "---> No north link.\n");
+	return space->description;
+}
 
-  idaux = space_getSouth(space);
-  if (NO_ID != idaux)
-    fprintf(stdout, "---> South link: %ld.\n", idaux);
-  else
-    fprintf(stdout, "---> No south link.\n");
+Id space_get_id(Space *space)
+{
+	if (!space)
+		return NO_ID;
 
-  idaux = space_getEast(space);
-  if (NO_ID != idaux)
-    fprintf(stdout, "---> East link: %ld.\n", idaux);
-  else
-    fprintf(stdout, "---> No east link.\n");
+	return space->id;
+}
 
-  idaux = space_getWest(space);
-  if (NO_ID != idaux)
-    fprintf(stdout, "---> West link: %ld.\n", idaux);
-  else
-    fprintf(stdout, "---> No west link.\n");
+Id space_get_north(Space *space)
+{
+	if (!space)
+		return NO_ID;
 
-  if ((aux = space_getObjectsId(space)))
-  {
-    set_printDebug(stdout, space->objects);
+	return space->linkNorth;
+}
+
+Id space_get_south(Space *space)
+{
+	if (!space)
+		return NO_ID;
+
+	return space->linkSouth;
+}
+
+Id space_get_east(Space *space)
+{
+	if (!space)
+		return NO_ID;
+
+	return space->linkEast;
+}
+
+Id space_get_west(Space *space)
+{
+	if (!space)
+		return NO_ID;
+
+	return space->linkWest;
+}
+
+Id space_get_up(Space *space)
+{
+	if (!space)
+		return NO_ID;
+
+	return space->linkUp;
+}
+
+Id space_get_down(Space *space)
+{
+	if (!space)
+		return NO_ID;
+
+	return space->linkDown;
+}
+
+Set *space_get_objects_id(Space *space)
+{
+	Set *set;
+	int n;
+
+	if (!space)
+		return NULL;
+
+	set = set_create(5);
+	if (!set)
+		return NULL;
+
+	for (n = 0; set_get_id(space->objects, n) != NO_ID; n++)
+	{
+		if (set_add(set, set_get_id(space->objects, n)) == ERROR)
+			return NULL;
+	}
+
+	return set;
+}
+STATUS space_light_print(Space *space)
+{
+
+	Id idaux = NO_ID;
+	STATUS status;
+	if (!space)
+		return ERROR;
+
+	if (space->light == TRUE)
+	{
+		status = space_print(space);
+		return status;
+	}
+	else
+	{
+		fprintf(stdout, "\n\n--> Space (Id: %ld; Name: %s)\n", space->id, space->name);
+
+		idaux = space_get_north(space);
+		if (NO_ID != idaux)
+			fprintf(stdout, "---> North link: %ld.\n", idaux);
+		else
+			fprintf(stdout, "---> No north link.\n");
+
+		idaux = space_get_south(space);
+		if (NO_ID != idaux)
+			fprintf(stdout, "---> South link: %ld.\n", idaux);
+		else
+			fprintf(stdout, "---> No south link.\n");
+
+		idaux = space_get_east(space);
+		if (NO_ID != idaux)
+			fprintf(stdout, "---> East link: %ld.\n", idaux);
+		else
+			fprintf(stdout, "---> No east link.\n");
+
+		idaux = space_get_west(space);
+		if (NO_ID != idaux)
+			fprintf(stdout, "---> West link: %ld.\n", idaux);
+		else
+			fprintf(stdout, "---> No west link.\n");
+
+		idaux = space_get_up(space);
+		if (NO_ID != idaux)
+			fprintf(stdout, "---> Up link: %ld.\n", idaux);
+		else
+			fprintf(stdout, "---> No up link.\n");
+
+		idaux = space_get_down(space);
+		if (NO_ID != idaux)
+			fprintf(stdout, "---> Down link: %ld.\n", idaux);
+		else
+			fprintf(stdout, "---> No down link.\n");
+	}
+
+	return OK;
+}
+
+STATUS space_print(Space *space)
+{
+	Id idaux = NO_ID;
+	Set *aux;
+
+	if (!space)
+		return ERROR;
+
+	fprintf(stdout, "\n\n--> Space (Id: %ld; Name: %s)\n", space->id, space->name);
+
+	idaux = space_get_north(space);
+	if (NO_ID != idaux)
+		fprintf(stdout, "---> North link: %ld.\n", idaux);
+	else
+		fprintf(stdout, "---> No north link.\n");
+
+	idaux = space_get_south(space);
+	if (NO_ID != idaux)
+		fprintf(stdout, "---> South link: %ld.\n", idaux);
+	else
+		fprintf(stdout, "---> No south link.\n");
+
+	idaux = space_get_east(space);
+	if (NO_ID != idaux)
+		fprintf(stdout, "---> East link: %ld.\n", idaux);
+	else
+		fprintf(stdout, "---> No east link.\n");
+
+	idaux = space_get_west(space);
+	if (NO_ID != idaux)
+		fprintf(stdout, "---> West link: %ld.\n", idaux);
+	else
+		fprintf(stdout, "---> No west link.\n");
+
+	idaux = space_get_up(space);
+	if (NO_ID != idaux)
+		fprintf(stdout, "---> Up link: %ld.\n", idaux);
+	else
+		fprintf(stdout, "---> No up link.\n");
+
+	idaux = space_get_down(space);
+	if (NO_ID != idaux)
+		fprintf(stdout, "---> Down link: %ld.\n", idaux);
+	else
+		fprintf(stdout, "---> No down link.\n");
+
+	if ((aux = space_get_objects_id(space)))
+	{
+		set_print_debug(stdout, space->objects);
 		set_destroy(aux);
-  }
-  else
-  {
-    fprintf(stdout, "---> No objects in the space.\n");
-  }
+	}
+	else
+	{
+		fprintf(stdout, "---> No objects in the space.\n");
+	}
 
-  return OK;
+	return OK;
 }
 
-STATUS space_setGdesc0(Space* space, char* cadena)
+STATUS space_set_gdesc_0(Space *space, char *cadena)
 {
-  if (!space || !cadena) return ERROR;
+	if (!space || !cadena)
+		return ERROR;
 
-  if (!strcpy(space->gdesc[0], cadena))return ERROR;
-  return OK;
+	if (!strcpy(space->gdesc[0], cadena))
+		return ERROR;
+	return OK;
 }
 
-STATUS space_setGdesc1(Space* space, char* cadena)
+STATUS space_set_gdesc_1(Space *space, char *cadena)
 {
-  if (!space || !cadena) return ERROR;
+	if (!space || !cadena)
+		return ERROR;
 
-  if (!strcpy(space->gdesc[1], cadena)) return ERROR;
-  return OK;
+	if (!strcpy(space->gdesc[1], cadena))
+		return ERROR;
+	return OK;
 }
 
-STATUS space_setGdesc2(Space* space, char* cadena)
+STATUS space_set_gdesc_2(Space *space, char *cadena)
 {
-  if (!space || !cadena) return ERROR;
+	if (!space || !cadena)
+		return ERROR;
 
-  if (!strcpy(space->gdesc[2], cadena)) return ERROR;
+	if (!strcpy(space->gdesc[2], cadena))
+		return ERROR;
 
-  return OK;
+	return OK;
 }
 
-char* space_getGdesc0(Space* space)
+char *space_get_gdesc_0(Space *space)
 {
-  if (space == NULL)
-    return NULL;
+	if (space == NULL)
+		return NULL;
 
-  return space->gdesc[0];
+	return space->gdesc[0];
 }
 
-char* space_getGdesc1(Space* space)
+char *space_get_gdesc_1(Space *space)
 {
-  if (space == NULL)
-    return NULL;
+	if (space == NULL)
+		return NULL;
 
-  return space->gdesc[1];
+	return space->gdesc[1];
 }
 
-char* space_getGdesc2(Space* space)
+char *space_get_gdesc_2(Space *space)
 {
-  if (space == NULL)
-    return NULL;
+	if (space == NULL)
+		return NULL;
 
-  return space->gdesc[2];
+	return space->gdesc[2];
+}
+/*
+char *space_getSprite(Space *space, int line)
+{
+	if (space == NULL)
+		return NULL;
+
+	return space->sprite[line];
 }
 
-/*BOOL space_isLinked(Space*)*/
+STATUS space_setSprite(Space *space, char *sprite_line, int line)
+{
+	if (space == NULL || sprite_line == NULL)
+		return ERROR;
+
+	strcpy(space->sprite[line], sprite_line);
+
+	return OK;
+}
+
+BOOL space_isLinked(Space*)*/
