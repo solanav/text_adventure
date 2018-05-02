@@ -146,7 +146,7 @@ doxygen:
 	doxygen -g doxyconfig && doxygen doxyconfig
 
 clean:
-	rm -rf $(ALL_EXEC)
+	rm -rf $(ALL_EXEC) $(ALL_TEST) $(TESTOBJPATH)*
 
 tar:
 	tar -czf PPROG_2163_I3_G3.tar.gz *
