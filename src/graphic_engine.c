@@ -12,6 +12,7 @@
 #include "../include/screen.h"
 #include "../include/graphic_engine.h"
 #include "../include/set.h"
+#include "../include/dialogue.h"
 
 #define STD_SPACE "             "
 #define STD_SPACE1 "    "
@@ -66,11 +67,6 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 	Id id_act = NO_ID, spriteId = NO_ID;
 
 	char str[255] = {0};
-
-	F_Command *last_cmd = NULL;
-	T_Command last_cmd_text = UNKNOWN;
-
-	extern char *cmd_to_str[];
 
 	Space *space_act = NULL;
 	Sprite *sprite = NULL;
@@ -129,13 +125,13 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 	print_new_line(ge->descript, 1);
 	sprintf(str, " Inventory:");
 	screen_area_puts(ge->descript, str);
-	
+
 	player = game_get_player(game);
 
 	for (i=0; i<MAX_INV_SIZE; i++)
 	{
 		object = game_get_object_from_id(game, player_getObjId(player, i));
-		
+
 		if (object_get_name(object))
 		{
 			printf("PLAYER OBJECT [%d]->[%s]\n", i, object_get_name(object));
@@ -171,18 +167,10 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 	screen_area_puts(ge->help, str);
 
 	/* Command History */
-	last_cmd_text = game_get_last_command_text(game);
-	last_cmd = game_get_last_command(game);
-	sprintf(str, " %s > %s", cmd_to_str[last_cmd_text - NO_CMD], command_get_id(last_cmd));
+	strcpy(str, dialogue_generate(game));
 	screen_area_puts(ge->feedback, str);
 
-	if (last_cmd_text == ROLL)
-	{
-		sprintf(str, "   You rolled: %d", game_get_last_roll(game));
-		screen_area_puts(ge->feedback, str);
-	}
-
-	command_set_id(game_get_last_command(game), "");
+	command_set_id(game_get_last_command(game, 0), "");
 
 	/* Input */
 	screen_paint();

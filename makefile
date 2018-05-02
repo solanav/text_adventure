@@ -23,8 +23,8 @@ DOCPATH = ./doc/
 
 ################ EXEC CREATION
 
-game_exec: game_loop.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o game.o inventory.o sprite_loader.o sprite.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)game_loop.o $(OBJPATH)game_reader.o $(OBJPATH)graphic_engine.o $(OBJPATH)screen.o $(OBJPATH)command.o $(OBJPATH)space.o $(OBJPATH)object.o $(OBJPATH)player.o $(OBJPATH)set.o $(OBJPATH)die.o $(OBJPATH)link.o $(OBJPATH)game.o $(OBJPATH)inventory.o $(OBJPATH)sprite_loader.o $(OBJPATH)sprite.o
+game_exec: game_loop.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o game.o inventory.o sprite_loader.o sprite.o dialogue.o
+	$(CC) $(CFLAGS) -o $@ $(OBJPATH)game_loop.o $(OBJPATH)game_reader.o $(OBJPATH)graphic_engine.o $(OBJPATH)screen.o $(OBJPATH)command.o $(OBJPATH)space.o $(OBJPATH)object.o $(OBJPATH)player.o $(OBJPATH)set.o $(OBJPATH)die.o $(OBJPATH)link.o $(OBJPATH)game.o $(OBJPATH)inventory.o $(OBJPATH)sprite_loader.o $(OBJPATH)sprite.o $(OBJPATH)dialogue.o
 
 ################ TESTS
 
@@ -63,7 +63,7 @@ game_loop.o: $(SRCPATH)game_loop.c $(HDRPATH)graphic_engine.h
 game_reader.o: $(SRCPATH)game_reader.c $(HDRPATH)game.h $(HDRPATH)types.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)game_reader.c -o $(OBJPATH)game_reader.o
 
-graphic_engine.o: $(SRCPATH)graphic_engine.c $(HDRPATH)graphic_engine.h $(HDRPATH)screen.h $(HDRPATH)game.h
+graphic_engine.o: $(SRCPATH)graphic_engine.c $(HDRPATH)graphic_engine.h $(HDRPATH)screen.h $(HDRPATH)game.h $(HDRPATH)dialogue.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)graphic_engine.c -o $(OBJPATH)graphic_engine.o
 
 screen.o: $(SRCPATH)screen.c $(HDRPATH)screen.h
@@ -89,6 +89,9 @@ set.o: $(SRCPATH)set.c $(HDRPATH)set.h $(HDRPATH)types.h $(HDRPATH)game.h
 
 link.o: $(SRCPATH)link.c $(HDRPATH)link.h $(HDRPATH)types.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)link.c -o $(OBJPATH)link.o
+
+dialogue.o: $(SRCPATH)dialogue.c  $(HDRPATH)die.h $(HDRPATH)dialogue.h $(HDRPATH)game.h $(HDRPATH)types.h
+	$(CC) $(CFLAGS) -c $(SRCPATH)dialogue.c -o $(OBJPATH)dialogue.o
 
 inventory.o: $(SRCPATH)inventory.c $(HDRPATH)set.h $(HDRPATH)types.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)inventory.c -o $(OBJPATH)inventory.o
@@ -137,7 +140,7 @@ run_test: all_test
 	./space_test ; ./object_test ; ./die_test ; ./link_test ; ./command_test ; ./inventory_test ; ./player_test ; ./set_test
 
 val:
-	valgrind --leak-check=full ./game_exec data.dat
+	valgrind --leak-check=full ./game_exec data/data2.dat
 
 test_game:
 	./game_exec data.dat < ./log/partida_prueba.oca

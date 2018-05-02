@@ -34,4 +34,18 @@ typedef enum
 	OPENED, CLOSED, NO_LINK
 } LinkStatus;
 
+typedef enum enum_Command {
+	NO_CMD = -1,
+	UNKNOWN,
+	EXIT,
+	PICK_UP,
+	DROP,
+	ROLL,
+	MOVE,
+	CHECK,
+	TURNON,
+	TURNOFF,
+	OPEN
+} T_Command;
+
 #endif

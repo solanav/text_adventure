@@ -14,20 +14,6 @@
 
 #include "../include/types.h"
 
-typedef enum enum_Command {
-	NO_CMD = -1,
-	UNKNOWN,
-	EXIT,
-	PICK_UP,
-	DROP,
-	ROLL,
-	MOVE,
-	CHECK,
-	TURNON,
-	TURNOFF,
-	OPEN
-} T_Command;
-
 typedef struct _F_Command F_Command;
 
 STATUS get_user_input(F_Command *);

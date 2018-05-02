@@ -38,7 +38,7 @@ STATUS die_roll(Die* die)
   if(!die) return ERROR;
   srand(time(NULL));
 
-  die->result = (rand()%6)+1;
+  die->result = (rand()%9)+1;
 
   return OK;
 }

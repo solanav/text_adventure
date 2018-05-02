@@ -53,8 +53,9 @@ STATUS game_set_link(Game *, Id, Id, Id, int, LinkStatus);
 
 STATUS game_load_spaces(Game *, char *);
 
-F_Command *game_get_last_command(Game *);
-T_Command game_get_last_command_text(Game *);
+F_Command *game_get_last_command(Game *, int);
+T_Command game_get_last_command_text(Game *, int);
+char * game_get_last_command_parameters(Game *, int);
 
 BOOL game_areSpacesAdjacent(Game *, Id, Id);
 

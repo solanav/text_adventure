@@ -29,7 +29,7 @@ struct _Game
 	Space *spaces[MAX_SPACES + 1]; /*!< Array de espacios*/
 	Link *links[MAX_LINK];	 /*!< Array de links*/
 	Die *die;		       /*!< Dado */
-	F_Command *last_cmd;	   /*!< ultimo comando*/
+	F_Command *last_cmd[2];	   /*!< ultimos comandos*/
 	Sprite *sprites[MAX_SPRITES];  /*!< sprites del mapa*/
 };
 
@@ -92,7 +92,8 @@ Game *game_create()
 	game->die = die_ini(DIE_SEED);
 	game_set_player_location(game, NO_ID);
 
-	game->last_cmd = NULL;
+	game->last_cmd[0] = NULL;
+	game->last_cmd[1] = NULL;
 
 	game->player = player_create("player1", NO_ID, NO_ID, PLAYER_ID);
 
@@ -285,7 +286,7 @@ STATUS game_update(Game *game, F_Command *cmd)
 	if (!game || !cmd)
 		return ERROR;
 
-	game->last_cmd = cmd;
+	game->last_cmd[0] = cmd;
 
 	(*game_callback_fn_list[command_getCmd(cmd)])(game);
 
@@ -294,14 +295,19 @@ STATUS game_update(Game *game, F_Command *cmd)
 	return OK;
 }
 
-F_Command *game_get_last_command(Game *game)
+F_Command *game_get_last_command(Game *game, int i)
 {
-	return game->last_cmd;
+	return game->last_cmd[i];
 }
 
-T_Command game_get_last_command_text(Game *game)
+T_Command game_get_last_command_text(Game *game, int i)
 {
-	return command_getCmd(game->last_cmd);
+	return command_getCmd(game->last_cmd[i]);
+}
+
+char * game_get_last_command_parameters(Game* game, int i)
+{
+	return command_get_id(game->last_cmd[i]);
 }
 
 void game_print_opened_links(Game *game)
@@ -531,7 +537,7 @@ void game_callback_pickup(Game *game)
 	Space *space_pointer = game_get_space(game, player_locId);
 	char object[MAX_STRING] = {0};
 
-	strcpy(object, command_get_id(game->last_cmd));
+	strcpy(object, command_get_id(game->last_cmd[0]));
 	object_id = object_get_id(game_get_object(game, object));
 
 	if (!game)
@@ -541,12 +547,13 @@ void game_callback_pickup(Game *game)
 	{
 		if (object_get_mobile(game_get_object_from_id(game, object_id)) == TRUE)
 		{
+			sprintf(object, "%sOK", object);
 			player_setObjId(game->player, object_id);
 			space_remove_object(space_pointer, object_id);
 		}
 		else
 		{
-			command_set_id(game_get_last_command(game), "you can't move that");
+			command_set_id(game_get_last_command(game, 0), "you can't move that");
 		}
 	}
 
@@ -563,14 +570,17 @@ void game_callback_drop(Game *game)
 	if (!game)
 		return;
 
-	strcpy(object, command_get_id(game->last_cmd));
+	strcpy(object, command_get_id(game->last_cmd[0]));
 	object_id = object_get_id(game_get_object(game, object));
 
 	if (object_id > MAX_OBJECTS)
 		return;
 
-	space_add_object(space_pointer, object_id);
-	player_removeObjId(game->player, object_id);
+	if(player_removeObjId(game->player, object_id) == OK)
+	{
+		sprintf(object, "%sOK", object);
+		space_add_object(space_pointer, object_id);
+	}
 
 	return;
 }
@@ -595,7 +605,7 @@ void game_callback_move(Game *game)
 		return;
 
 	act_space_id = game_get_player_location(game);
-	strcpy(direction, command_get_id(game->last_cmd));
+	strcpy(direction, command_get_id(game->last_cmd[0]));
 
 	printf("Someone is trying to move...\n\tPlayer loc -> %ld\n\tMovement -> %s\n", act_space_id, direction);
 
@@ -618,10 +628,12 @@ void game_callback_move(Game *game)
 		return;
 
 	link = game_get_link(game, link_id);
+	if(!link) command_set_id(game->last_cmd[0], "no");
+	else command_set_id(game->last_cmd[0], direction);
 
 	if (link_getStatus(link) == CLOSED)
 	{
-		command_set_id(game->last_cmd, "thats closed");
+		command_set_id(game->last_cmd[0], "thats closed");
 		return;
 	}
 
@@ -649,7 +661,7 @@ void game_callback_check(Game *game)
 		return;
 
 	/* If you are checking your space */
-	if (strcasecmp(command_get_id(game->last_cmd), "s") == 0 || strcasecmp(command_get_id(game->last_cmd), "space") == 0)
+	if (strcasecmp(command_get_id(game->last_cmd[0]), "s") == 0 || strcasecmp(command_get_id(game->last_cmd[0]), "space") == 0)
 	{
 		if (space_get_light(current_space) == TRUE)
 			strcpy(space_description, space_get_description(current_space));
@@ -658,12 +670,12 @@ void game_callback_check(Game *game)
 
 		printf("Description -> %s\n", space_description);
 
-		command_set_id(game->last_cmd, space_description);
+		command_set_id(game->last_cmd[0], space_description);
 	}
 	/* If you are checking an object */
 	else
 	{
-		object = game_get_object(game, command_get_id(game->last_cmd));
+		object = game_get_object(game, command_get_id(game->last_cmd[0]));
 
 		if (object)
 		{
@@ -677,7 +689,7 @@ void game_callback_check(Game *game)
 			strcpy(object_description, "no object with that name bruh");
 		}
 
-		command_set_id(game->last_cmd, object_description);
+		command_set_id(game->last_cmd[0], object_description);
 	}
 
 	return;
@@ -692,11 +704,12 @@ void game_callback_turnOn(Game *game)
 	if (!game)
 		return;
 
-	strcpy(object_name, command_get_id(game_get_last_command(game)));
+	strcpy(object_name, command_get_id(game_get_last_command(game, 0)));
 
 	object = game_get_object(game, object_name);
 
-	object_set_on(object, TRUE);
+	if(object_set_on(object, TRUE) == ERROR)
+		command_set_id(game->last_cmd[0], "no");
 }
 
 void game_callback_turnOff(Game *game)
@@ -708,11 +721,12 @@ void game_callback_turnOff(Game *game)
 	if (!game)
 		return;
 
-	strcpy(object_name, command_get_id(game_get_last_command(game)));
+	strcpy(object_name, command_get_id(game_get_last_command(game, 0)));
 
 	object = game_get_object(game, object_name);
 
-	object_set_on(object, FALSE);
+	if(object_set_on(object, FALSE) == ERROR)
+		command_set_id(game->last_cmd[0], "no");
 }
 
 void game_callback_open(Game *game)
@@ -729,7 +743,7 @@ void game_callback_open(Game *game)
 		return;
 
 	/* Unpacking with strtok */
-	strcpy(packed_string, command_get_id(game_get_last_command(game)));
+	strcpy(packed_string, command_get_id(game_get_last_command(game, 0)));
 	strcpy(unpak_link, strtok(packed_string, "/"));
 	strcpy(unpak_object, strtok(NULL, "/"));
 
@@ -749,15 +763,18 @@ void game_callback_open(Game *game)
 	else if (strcasecmp(unpak_link, "w") == 0 || strcasecmp(unpak_link, "west") == 0)
 		link_id = space_get_west(game_get_space(game, actpos));
 
-	else
+	else{
 		return;
+		command_set_id(game->last_cmd[0], "no");
+	}
 
 	link = game_get_link(game, link_id);
 
 	printf("Next move should be -> %ld\n", link_getSpace2(link));
 	printf("Currently has STATUS -> %d\n", link_getStatus(link));
 
-	link_setStatus(link, OPENED);
+	if(link_setStatus(link, OPENED) == ERROR)
+		command_set_id(game->last_cmd[0], "error");
 
 	printf("Currently has STATUS -> %d\n", link_getStatus(link));
 }

@@ -60,13 +60,13 @@ int main(int argc, char *argv[])
 	while ((command_getCmd(command) != EXIT) && !game_is_over(game))
 	{
 		graphic_engine_paint_game(gengine, game);
-		
+
 		if(get_user_input(command)== OK)
 			game_update(game, command);
-	
+
 		if (argc == 4 && strcmp(argv[2], "-l")==0)
 		{
-			fprintf(log, "%s %s\n", cmd_to_str[game_get_last_command_text(game)+1], command_get_id(game_get_last_command(game))); 
+			fprintf(log, "%s %s\n", cmd_to_str[game_get_last_command_text(game, 0)+1], command_get_id(game_get_last_command(game, 0))); 
 		}
 	}
 
