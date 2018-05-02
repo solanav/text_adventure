@@ -2,7 +2,7 @@
  * @brief Functions for the creation of objects
  *
  * @file object.c
- * @author Pablo Sánchez y Guillermo Ríos
+ * @author Pablo Sï¿½nchez y Guillermo Rï¿½os
  * @copyright GNU Public License
  */
 
@@ -33,12 +33,12 @@ Object* object_create(char* name, Id id)
 	obj->id = id;
 	strcpy(obj->name, name);
 
-	object->mobile=FALSE;
-	object->moved=FALSE;
-	object->hidden=FALSE;
-	object->open = NO_ID;
-	object->iluminati = FALSE;
-	object->on = FALSE;
+	obj->mobile=FALSE;
+	obj->moved=FALSE;
+	obj->hidden=FALSE;
+	obj->open = NO_ID;
+	obj->iluminati = FALSE;
+	obj->on = FALSE;
 
 	return obj;
 }
@@ -94,7 +94,7 @@ STATUS object_description_print(Object *obj, FILE *f)
 {
 	if(!obj || !f) return ERROR;
 
-	fprintf(f, "%s", object->description);
+	fprintf(f, "%s", obj->description);
 
 	return OK;
 }
@@ -105,14 +105,14 @@ Id object_get_id(Object* obj)
 
 	return obj->id;
 }
- BOOL * object_get_mobile(Object*)
+ BOOL object_get_mobile(Object* obj)
  {
 	 if(!obj) return FALSE;
 
  	return obj->mobile;
  }
 
- STATUS * object_set_mobile(Object*  obj,BOOL mobile)
+ STATUS object_set_mobile(Object*  obj,BOOL mobile)
  {
 	 if(!obj) return ERROR;
 
@@ -121,14 +121,14 @@ Id object_get_id(Object* obj)
  	return OK;
  }
 
-BOOL * object_get_moved(Object* obj)
+BOOL object_get_moved(Object* obj)
 {
 	if(!obj || obj->mobile==FALSE) return FALSE;
 
    return obj->moved;
 }
 
-STATUS * object_set_moved(Object*  obj, BOOL moved)
+STATUS object_set_moved(Object*  obj, BOOL moved)
 {
 	if(!obj || obj->mobile==FALSE) return ERROR;
 
@@ -137,14 +137,14 @@ STATUS * object_set_moved(Object*  obj, BOOL moved)
    return OK;
 }
 
-BOOL * object_get_hidden(Object* obj)
+BOOL object_get_hidden(Object* obj)
 {
 	if(!obj) return FALSE;
 
    return obj->hidden;
 }
 
- STATUS * object_set_hidden(Object*  obj, BOOL hidden)
+ STATUS object_set_hidden(Object*  obj, BOOL hidden)
  {
 	 if(!obj) return ERROR;
 
@@ -153,7 +153,7 @@ BOOL * object_get_hidden(Object* obj)
  	return OK;
  }
 
-  BOOL * object_get_iluminati(Object* obj)
+  BOOL object_get_iluminati(Object* obj)
   {
 
 	if(!obj) return FALSE;
@@ -161,7 +161,7 @@ BOOL * object_get_hidden(Object* obj)
    return obj->iluminati;
   }
 
- STATUS * object_set_ilumnati(Object*  obj, BOOL iluminati)
+ STATUS object_set_ilumnati(Object*  obj, BOOL iluminati)
  {
 	  if(!obj) return ERROR;
 
@@ -186,14 +186,14 @@ BOOL * object_get_hidden(Object* obj)
 	return OK;
 }
 
-BOOL * object_get_on(Object* obj)
+BOOL object_get_on(Object* obj)
 {
 	if(!obj || obj->iluminati==FALSE) return FALSE;
 
 	return obj->on;
 }
 
-STATUS * object_set_on(Object*  obj, BOOL on)
+STATUS object_set_on(Object*  obj, BOOL on)
 {
 	if(!obj || obj->iluminati==FALSE) return ERROR;
 
@@ -222,7 +222,7 @@ STATUS object_description_al_print(Object *obj, FILE *f)
 {
 	if(!obj || !f) return ERROR;
 
-	fprintf(f, "%s", object->description_al);
+	fprintf(f, "%s", obj->description_al);
 
 	return OK;
 }

@@ -2,7 +2,7 @@
  * @brief Defines functions for space manipulation
  *
  * @file command.c
- * @author Catalín Rotaru
+ * @author Catalï¿½n Rotaru
  * @copyright GNU Public License
  */
 
@@ -25,7 +25,7 @@ struct _Space {
 	Id linkUp; /*!< id del link hacia arriba*/
 	Id linkDown; /*!< id del link hacia abajo*/
 	char gdesc[3][21]; /*!< strings para objetos ASCII*/
-    Set * objects; /*!< Set de objetos*/
+  Set * objects; /*!< Set de objetos*/
 	BOOL light; /* Bool que indica si la casilla esta iluminada*/
 };
 

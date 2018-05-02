@@ -2,7 +2,7 @@
  * @brief Functions for the creation of objects
  *
  * @file object.h
- * @author Guillermo Ríos
+ * @author Guillermo Rï¿½os
  * @copyright GNU Public License
  */
 
@@ -71,7 +71,7 @@
    @brief Imprime la descricion de un objeto
    @param puntero object de tipo Object
    @param puntero FILE
-   @return devuelve OK si se imprimió correctamente o ERROR si no
+   @return devuelve OK si se imprimiï¿½ correctamente o ERROR si no
  */
  STATUS object_description_print(Object *obj, FILE *f);
  /*
@@ -86,7 +86,7 @@
    @param puntero object de tipo Object
    @return TRUE si lo es o FALSE si no o si hube algun error
  */
- BOOL * object_get_mobile(Object* obj);
+ BOOL object_get_mobile(Object* obj);
  /*
    @author Bernardo Zambrano
    @brief modifica el valor movible de los objetos
@@ -94,14 +94,14 @@
    @param bool que se quiere poner
    @return devuelve OK si se ha modificado correctamente o ERROR si no
  */
- STATUS * object_set_mobile(Object*  obj,BOOL mobile);
+ STATUS object_set_mobile(Object*  obj,BOOL mobile);
  /*
    @author Bernardo Zambrano
    @brief Nos dice si el objeto se ha movido
    @param puntero object de tipo Object
    @return TRUE se ha movido o FALSE si no o si hube algun error
  */
- BOOL * object_get_moved(Object* obj);
+ BOOL object_get_moved(Object* obj);
  /*
    @author Bernardo Zambrano
    @brief modifica el campo moved de objeto
@@ -109,7 +109,7 @@
    @param bool que se quiere poner
    @return devuelve OK si se ha modificado correctamente o ERROR si no
  */
- STATUS * object_set_moved(Object*  obj, BOOL moved);
+ STATUS object_set_moved(Object*  obj, BOOL moved);
 
  /*
    @author Bernardo Zambrano
@@ -117,7 +117,7 @@
    @param puntero object de tipo Object
    @return TRUE se esta oculto o FALSE si no o si hube algun error
  */
- BOOL * object_get_hidden(Object* obj);
+ BOOL object_get_hidden(Object* obj);
  /*
    @author Bernardo Zambrano
    @brief modifica el campo hidden de objeto
@@ -125,7 +125,7 @@
    @param bool que se quiere poner
    @return devuelve OK si se ha modificado correctamente o ERROR si no
  */
- STATUS * object_set_hidden(Object*  obj, BOOL hidden);
+ STATUS object_set_hidden(Object*  obj, BOOL hidden);
 
   /*
    @author Bernardo Zambrano
@@ -133,7 +133,7 @@
    @param puntero object de tipo Object
    @return TRUE ilumina o FALSE si no o si hube algun error
  */
- BOOL * object_get_iluminati(Object* obj);
+ BOOL object_get_iluminati(Object* obj);
  /*
    @author Bernardo Zambrano
    @brief modifica el campo iluminati de objeto
@@ -141,7 +141,7 @@
    @param bool que se quiere poner
    @return devuelve OK si se ha modificado correctamente o ERROR si no
  */
- STATUS * object_set_ilumnati(Object*  obj, BOOL iluminati);
+ STATUS object_set_ilumnati(Object*  obj, BOOL iluminati);
 
   /*
     @author Bernardo Zambrano
@@ -165,7 +165,7 @@
   @param puntero object de tipo Object
   @return TRUE ilumina o FALSE si no o si hube algun error
 */
-BOOL * object_get_on(Object* obj);
+BOOL object_get_on(Object* obj);
 /*
   @author Bernardo Zambrano
   @brief modifica el campo "on" de objeto
@@ -173,10 +173,10 @@ BOOL * object_get_on(Object* obj);
   @param bool que se quiere poner
   @return devuelve OK si se ha modificado correctamente o ERROR si no
 */
-STATUS * object_set_on(Object*  obj, BOOL on);
+STATUS object_set_on(Object*  obj, BOOL on);
 
 /*
- @author Guillermo Ríos
+ @author Guillermo Rï¿½os
  @brief Devuelve la descricion de un objeto
  @param puntero object de tipo Object
  @return devuelve object->descript o NULL si algo ha fallado
@@ -184,7 +184,7 @@ STATUS * object_set_on(Object*  obj, BOOL on);
 char * object_get_description_alternative(Object* obj);
 
 /*
- @author Guillermo Ríos
+ @author Guillermo Rï¿½os
  @brief modifica la descricion de un objeto
  @param puntero object de tipo Object
  @param string
@@ -193,11 +193,11 @@ char * object_get_description_alternative(Object* obj);
 STATUS object_set_description_alternative(Object* obj, char* description_al);
 
 /*
-  @author Guillermo Ríos
+  @author Guillermo Rï¿½os
   @brief Imprime la descricion alternativa de un objeto
   @param puntero object de tipo Object
   @param puntero FILE
-  @return devuelve OK si se imprimió correctamente o ERROR si no
+  @return devuelve OK si se imprimiï¿½ correctamente o ERROR si no
 */
 STATUS object_description_al_print(Object *obj, FILE *f);
 
