@@ -17,6 +17,10 @@
 #include "../include/sprite.h"
 
 #define N_CALLBACK 11
+#define PLAYER_ID 1
+#define DIE_SEED 666
+#define STARTING_SPACE 25
+#define NO_LIGHT_SPRITE 16
 
 struct _Game
 {
@@ -85,12 +89,12 @@ Game *game_create()
 		game->sprites[i] = NULL;
 	}
 
-	game->die = die_ini(666);
+	game->die = die_ini(DIE_SEED);
 	game_set_player_location(game, NO_ID);
 
 	game->last_cmd = NULL;
 
-	game->player = player_create("player1", NO_ID, NO_ID, 1);
+	game->player = player_create("player1", NO_ID, NO_ID, PLAYER_ID);
 
 	return game;
 }
@@ -123,7 +127,7 @@ STATUS game_create_from_file(Game *game, char *filename)
 	{
 		link_id = link_getId(game->links[i]);
 
-		if (link_id == -1)
+		if (link_id == NO_ID)
 			continue;
 
 		space_act_id = link_getSpace1(game->links[i]);
@@ -132,17 +136,17 @@ STATUS game_create_from_file(Game *game, char *filename)
 
 		direction = link_getDirection(game_get_link(game, link_id));
 
-		if (direction == 0)
+		if (direction == NORTH)
 			space_set_north(space_act, link_id);
-		else if (direction == 1)
+		else if (direction == EAST)
 			space_set_east(space_act, link_id);
-		else if (direction == 2)
+		else if (direction == SOUTH)
 			space_set_south(space_act, link_id);
-		else if (direction == 3)
+		else if (direction == WEST)
 			space_set_west(space_act, link_id);
 	}
 
-	game_set_player_location(game, (long int)25);
+	game_set_player_location(game, (long int)STARTING_SPACE);
 
 	update_sprites(game);
 
@@ -206,7 +210,7 @@ Object *game_get_object(Game *game, char *object_name)
 	if (!game || !object_name)
 		return NULL;
 
-	for (i = 0; i < 4 && game->objects[i]; i++)
+	for (i = 0; i < MAX_OBJECTS && game->objects[i]; i++)
 	{
 		if (strcasecmp(object_name, object_get_name(game->objects[i])) == 0)
 			return game->objects[i];
@@ -249,7 +253,7 @@ Link *game_get_link(Game *game, Id id)
 
 Id game_get_link_id_at(Game *game, int pos)
 {
-	if (!game || pos == -1)
+	if (!game || pos == NO_ID)
 		return NO_ID;
 
 	return link_getId(game->links[pos]);
@@ -487,12 +491,12 @@ STATUS update_sprites(Game *game)
 
 	if (!game)
 		return ERROR;
-	
+
 	space = game_get_space(game, game_get_player_location(game));
 
 	printf("\nUPDATING SPACE %ld\n", space_get_id(space));
 	player = game_get_player(game);
-	for (i=0; i<MAX_INV_SIZE; i++)
+	for (i = 0; i < MAX_INV_SIZE; i++)
 	{
 		object = game_get_object_from_id(game, player_getObjId(player, i));
 		if (object_get_name(object))
@@ -509,64 +513,12 @@ STATUS update_sprites(Game *game)
 	if (space_get_light(space) == FALSE)
 	{
 		if (player_light == FALSE)
-			space_setCurrentSprite(space, 16);
+			space_setCurrentSprite(space, NO_LIGHT_SPRITE);
 		else
 			space_setCurrentSprite(space, opened_links_val);
 	}
 	else
 		space_setCurrentSprite(space, opened_links_val);
-	
-	/*
-	for (i = 0; i < MAX_SPACES; i++)
-	{
-		opened_links_val = 0;
-
-		space = game->spaces[i];
-		player = game_get_player(game);
-
-		north = game_get_link(game, space_get_north(space));
-		east = game_get_link(game, space_get_east(space));
-		south = game_get_link(game, space_get_south(space));
-		west = game_get_link(game, space_get_west(space));
-
-		if (link_getStatus(north) == OPENED)
-			opened_links_val += 1;
-		if (link_getStatus(east) == OPENED)
-			opened_links_val += 2;
-		if (link_getStatus(south) == OPENED)
-			opened_links_val += 4;
-		if (link_getStatus(west) == OPENED)
-			opened_links_val += 8;
-
-		light = space_get_light(space);
-
-		for (i = 0; i < MAX_INV_SIZE; i++)
-		{
-			object = game_get_object_from_id(game, player_getObjId(player, i));
-			
-			if (object)
-			{
-				if (object_get_iluminati(object) == TRUE)
-				{
-					if (object_get_on(object) == TRUE)
-					{
-						player_light = TRUE;
-						i = MAX_INV_SIZE;
-					}
-				}
-			}
-		}
-
-		if (light == FALSE)
-		{
-			if (player_light == FALSE)
-				space_setCurrentSprite(space, 16);
-			else
-				space_setCurrentSprite(space, opened_links_val);
-		}
-		else
-			space_setCurrentSprite(space, opened_links_val);
-	}*/
 
 	return OK;
 }
@@ -575,10 +527,6 @@ BOOL game_is_over(Game *game)
 {
 	return FALSE;
 }
-
-/* ===========================================================================================================*/
-/* ================================================CALLBACKS==================================================*/
-/* ===========================================================================================================*/
 
 void game_callback_unknown(Game *game)
 {
@@ -596,7 +544,7 @@ void game_callback_pickup(Game *game)
 	Id player_locId = game_get_player_location(game);
 	Id object_id = NO_ID;
 	Space *space_pointer = game_get_space(game, player_locId);
-	char object[20] = {0};
+	char object[] = {0};
 
 	strcpy(object, command_get_id(game->last_cmd));
 	object_id = object_get_id(game_get_object(game, object));
@@ -633,7 +581,7 @@ void game_callback_drop(Game *game)
 	Id player_locId = game_get_player_location(game);
 	Id object_id = NO_ID;
 	Space *space_pointer = game_get_space(game, player_locId);
-	char object[20] = {0};
+	char object[MAX_STRING] = {0};
 
 	if (!game)
 		return;
@@ -664,7 +612,7 @@ void game_callback_move(Game *game)
 	Id link_id = NO_ID;
 	Id next_space_id = NO_ID;
 	Id act_space_id = NO_ID;
-	char direction[20] = {0};
+	char direction[MAX_STRING] = {0};
 
 	if (!game)
 		return;
@@ -714,8 +662,8 @@ void game_callback_move(Game *game)
 
 void game_callback_check(Game *game)
 {
-	char object_description[20] = {0};
-	char space_description[20] = {0};
+	char object_description[MAX_STRING] = {0};
+	char space_description[MAX_STRING] = {0};
 
 	Space *current_space = game_get_space(game, player_getLocId(game->player));
 	Object *object = NULL;
@@ -760,7 +708,7 @@ void game_callback_check(Game *game)
 
 void game_callback_turnOn(Game *game)
 {
-	char object_name[20] = {0};
+	char object_name[MAX_STRING] = {0};
 
 	Object *object = NULL;
 
@@ -776,7 +724,7 @@ void game_callback_turnOn(Game *game)
 
 void game_callback_turnOff(Game *game)
 {
-	char object_name[20] = {0};
+	char object_name[MAX_STRING] = {0};
 
 	Object *object = NULL;
 
@@ -792,9 +740,9 @@ void game_callback_turnOff(Game *game)
 
 void game_callback_open(Game *game)
 {
-	char packed_string[20] = {0};
-	char unpak_link[20] = {0};
-	char unpak_object[20] = {0};
+	char packed_string[MAX_STRING] = {0};
+	char unpak_link[MAX_STRING] = {0};
+	char unpak_object[MAX_STRING] = {0};
 
 	Link *link = NULL;
 	Id link_id = NO_ID;
