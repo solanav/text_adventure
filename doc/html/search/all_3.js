@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['callback_5ffn',['callback_fn',['../game_8c.html#a485d3b7b538a730c89336674828dd340',1,'game.c']]],
+  ['callback_5ffn',['callback_fn',['../game_8c.html#ac54a175bdefaeb274c3515fc6f43dbe5',1,'game.c']]],
   ['check',['CHECK',['../command_8h.html#ace19ba2296a74e4aef53304e0934c50caed65b7dfe470f4e500b15f7074bb7fa2',1,'command.h']]],
   ['closed',['CLOSED',['../types_8h.html#aa60f669816b146d6373c62d9625e52ada929f0327e17604ce9713b2a6117bd603',1,'types.h']]],
   ['cmd_5flenght',['CMD_LENGHT',['../command_8c.html#a2b1bd24d2eddf8081d8c541e4cc4fd4b',1,'command.c']]],
@@ -17,5 +17,6 @@ var searchData=
   ['command_5ftest_2ec',['command_test.c',['../command__test_8c.html',1,'']]],
   ['command_5ftest_2eh',['command_test.h',['../command__test_8h.html',1,'']]],
   ['create_5fobjects_5fstring',['create_objects_string',['../graphic__engine_8h.html#a528b276cbbcb8eb9bb09d20c8ad566b2',1,'create_objects_string(Game *, Id):&#160;graphic_engine.c'],['../graphic__engine_8c.html#a6449b0b5144564df757bab40f013eb9c',1,'create_objects_string(Game *game, Id id):&#160;graphic_engine.c']]],
+  ['curentsprite',['curentSprite',['../struct__Space.html#a36bf40fe118f520ea514bf1a3a106d9f',1,'_Space']]],
   ['cursor',['cursor',['../struct__Area.html#aa042b0549789b75fd133b67ad7d0fd9d',1,'_Area']]]
 ];

@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['id',['id',['../struct__F__Command.html#a138723d3b8278597200ae2ff43d8ef74',1,'_F_Command::id()'],['../struct__Die.html#a0887af562dda760409957f13619d36f1',1,'_Die::id()'],['../struct__Object.html#a3cff7a0e8dc4e9d23895ed9af1b7653a',1,'_Object::id()'],['../struct__Player.html#a60d635cd063816a9c1bd873f4868bb90',1,'_Player::id()'],['../struct__Space.html#a70cb461deb9ac073e401b607339b567f',1,'_Space::id()'],['../types_8h.html#a845e604fb28f7e3d97549da3448149d3',1,'Id():&#160;types.h']]],
+  ['id',['id',['../struct__F__Command.html#a138723d3b8278597200ae2ff43d8ef74',1,'_F_Command::id()'],['../struct__Die.html#a0887af562dda760409957f13619d36f1',1,'_Die::id()'],['../struct__Object.html#a3cff7a0e8dc4e9d23895ed9af1b7653a',1,'_Object::id()'],['../struct__Player.html#a60d635cd063816a9c1bd873f4868bb90',1,'_Player::id()'],['../struct__Space.html#a70cb461deb9ac073e401b607339b567f',1,'_Space::id()'],['../struct__Sprite.html#ade53af91be4735711bed7748f69fbc2a',1,'_Sprite::id()'],['../types_8h.html#a845e604fb28f7e3d97549da3448149d3',1,'Id():&#160;types.h']]],
   ['id_5flist',['id_list',['../struct__Set.html#adde563bd36bf2d00bd5a49b493c4f3bb',1,'_Set']]],
   ['id_5fmax',['id_max',['../struct__Inventory.html#a4b104bc26c8e030cae3032cbe7d940a3',1,'_Inventory']]],
   ['id_5ftotal',['id_total',['../struct__Set.html#afe941cf156f1000d962bff58835ba853',1,'_Set']]],
   ['ids',['ids',['../struct__Inventory.html#a7f6b5d7d1111e7e8f8999c656ae27d0c',1,'_Inventory']]],
+  ['iluminati',['iluminati',['../struct__Object.html#aac8af0a2662396bd255273a3cc8f22d7',1,'_Object']]],
   ['inv',['inv',['../struct__Player.html#aaaeeb03326c37ce62c333c2b94fde23c',1,'_Player']]],
   ['inventory',['Inventory',['../inventory_8h.html#a2253bf64ac4ce6a9c1d6f39c0b0d32a3',1,'inventory.h']]],
   ['inventory_2ec',['inventory.c',['../inventory_8c.html',1,'']]],

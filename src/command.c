@@ -42,7 +42,6 @@ STATUS get_user_input(F_Command *command)
 		/* Check what command the user is giving */
 		if (sscanf(input, "%s\n", string0) != 1)
 		{
-			printf("Invalid input");
 			command_setCmd(command, UNKNOWN);
 			return ERROR;
 		}
@@ -60,7 +59,6 @@ STATUS get_user_input(F_Command *command)
 		/* No command given */
 		if (command_found == 0)
 		{
-			printf("\tNot found the command, returning unknown\n");
 			command_setCmd(command, UNKNOWN);
 		}
 
@@ -70,13 +68,10 @@ STATUS get_user_input(F_Command *command)
 		if (aux_command == PICK_UP || aux_command == DROP)
 		{
 			command_set_id(command, string1);
-			printf("\tCommand is either pick or drop. Setting id to %s.\n", command_get_id(command));
 		}
 
 		if (aux_command == MOVE)
 		{
-			printf("\tCommand is move. Setting id. [%s %s]\n", string0, string1);
-
 			if (strcasecmp(string1, "n") == 0 || strcasecmp(string1, "north") == 0)
 				command_set_id(command, "north");
 			else if (strcasecmp(string1, "e") == 0 || strcasecmp(string1, "east") == 0)
@@ -91,7 +86,6 @@ STATUS get_user_input(F_Command *command)
 
 		if (aux_command == CHECK)
 		{
-			printf("\tCommand is check. Setting id. [%s %s]\n", string0, string1);
 			if (strcasecmp(string1, "space") == 0 || strcasecmp(string1, "s") == 0)
 				command_set_id(command, "space");
 			else
@@ -100,18 +94,14 @@ STATUS get_user_input(F_Command *command)
 
 		if (aux_command == TURNON || aux_command == TURNOFF)
 		{
-			printf("\tCommand is turn. Setting id. [%s %s]\n", string0, string1);
 			command_set_id(command, string1);
 		}
 
 		if (aux_command == OPEN)
 		{
-			printf("\tCommand is open. Setting id. [%s %s]\n", string0, string1);
-
 			/* Format should be "open x with y" */
 			if (sscanf(input, "%s %s %s %s\n", string0, string1, string2, string3) == 4)
 			{
-				printf("\tCommand is open. Setting id. [%s %s %s %s]\n", string0, string1, string2, string3);
 				/* Pack the link (string1) and the object (string3)*/
 				strcat(packed_string, string1);
 				strcat(packed_string, "/");
@@ -124,17 +114,12 @@ STATUS get_user_input(F_Command *command)
 			else
 			{
 				strcpy(packed_string, "N/N");
-				printf("Packed string -> [%s]\n", packed_string);
 				command_setCmd(command, UNKNOWN);
 			}
 		}
 	}
 	else
-	{
-		printf("\tCommand is UNKNOWN -> %d\n", UNKNOWN);
-		
 		command_setCmd(command, UNKNOWN);
-	}
 
 	return OK;
 }
@@ -178,8 +163,6 @@ STATUS command_set_id(F_Command *cmd, char *string)
 		return ERROR;
 
 	strcpy(cmd->id, string);
-
-	printf("Done, id set ok\n");
 
 	return OK;
 }

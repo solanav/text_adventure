@@ -1,6 +1,5 @@
-\hypertarget{object_8h}{\section{object.\+h File Reference}
+\hypertarget{object_8h}{}\section{object.\+h File Reference}
 \label{object_8h}\index{object.\+h@{object.\+h}}
-}
 
 
 Functions for the creation of objects.  
@@ -31,21 +30,53 @@ typedef struct \hyperlink{struct__Object}{\+\_\+\+Object} \hyperlink{object_8h_a
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$ \hyperlink{object_8h_a6c55f8c2541966f6dd3a65c5559633c8}{object\+\_\+create} (char $\ast$name, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
+\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$ \hyperlink{object_8h_aa82aed57fe2cd15cdad97c7d706bf72d}{object\+\_\+create} (char $\ast$name, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id, \hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} mobile, \hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} hidden, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} open, \hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} lights, \hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} on)
 \item 
 void \hyperlink{object_8h_a355e2f55e8467c2cfb2ef6bd5abbabfb}{object\+\_\+destroy} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
 \item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{object_8h_a1f468a3ddebae0cf31431705a824371a}{object\+\_\+set\+\_\+name} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, char $\ast$name)
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8h_a1f468a3ddebae0cf31431705a824371a}{object\+\_\+set\+\_\+name} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, char $\ast$name)
 \item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{object_8h_a82b3e96992079f00a8553edd18777ef9}{object\+\_\+set\+\_\+description} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, char $\ast$descript)
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8h_a82b3e96992079f00a8553edd18777ef9}{object\+\_\+set\+\_\+description} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, char $\ast$descript)
 \item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+U\+S} \hyperlink{object_8h_afcf71b4444a014a542f82c78bc9ee112}{object\+\_\+set\+\_\+id} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8h_afcf71b4444a014a542f82c78bc9ee112}{object\+\_\+set\+\_\+id} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
 \item 
 char $\ast$ \hyperlink{object_8h_ac6f2a9d9a4ed22600839724e8306f750}{object\+\_\+get\+\_\+name} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
 \item 
 char $\ast$ \hyperlink{object_8h_a42dcce5b32474b5d2500329b97913c15}{object\+\_\+get\+\_\+description} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
 \item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8h_ac40dd277ec48ef8b6d9ef5f2a3458c1d}{object\+\_\+description\+\_\+print} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, F\+I\+LE $\ast$f)
+\item 
 \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{object_8h_ac9c3ace11b0440f373c67ccd3801398e}{object\+\_\+get\+\_\+id} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
+\item 
+\hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} \hyperlink{object_8h_ab9282b4ff63acf0dcaf27a3d28d3a688}{object\+\_\+get\+\_\+mobile} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8h_a0aec0c591075ae14b5e939679c2e0c77}{object\+\_\+set\+\_\+mobile} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, \hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} mobile)
+\item 
+\hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} \hyperlink{object_8h_a46c2c0fff2f0dafb286860f05df9c011}{object\+\_\+get\+\_\+moved} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8h_a690183bd5b1a2e379d2278d865db65c9}{object\+\_\+set\+\_\+moved} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, \hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} moved)
+\item 
+\hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} \hyperlink{object_8h_a7d1ff424be4e9977870524af98195d03}{object\+\_\+get\+\_\+hidden} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8h_ab7ad888deffb05c3ea60a3272045d3e7}{object\+\_\+set\+\_\+hidden} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, \hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} hidden)
+\item 
+\hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} \hyperlink{object_8h_aa4487278faa32fe5ef8b460fcd7fb51b}{object\+\_\+get\+\_\+iluminati} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8h_a68bca58bf577e4e6c6d0e730c995f462}{object\+\_\+set\+\_\+ilumnati} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, \hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} iluminati)
+\item 
+\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{object_8h_a12c50791181c563bae6afa6f7c81edb3}{object\+\_\+get\+\_\+open} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8h_a43cfcb9c970d34e8a1063b312fdc9d66}{object\+\_\+set\+\_\+open} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} open)
+\item 
+\hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} \hyperlink{object_8h_a474d1a2f46fd4f9a998df134f2b5366c}{object\+\_\+get\+\_\+on} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8h_af9a46e1a671bf4bbf13520276a4ec941}{object\+\_\+set\+\_\+on} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, \hyperlink{types_8h_a3e5b8192e7d9ffaf3542f1210aec18dd}{B\+O\+OL} on)
+\item 
+char $\ast$ \hyperlink{object_8h_a316c17cfe0a58a3752564561a4a2e5cf}{object\+\_\+get\+\_\+description\+\_\+alternative} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8h_aa3245ab5de79a33e6ab82ca8e4f93764}{object\+\_\+set\+\_\+description\+\_\+alternative} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, char $\ast$description\+\_\+al)
+\item 
+\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{object_8h_a85d8ceacb9b2c4058cc1a1312a830ad9}{object\+\_\+description\+\_\+al\+\_\+print} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, F\+I\+LE $\ast$f)
 \end{DoxyCompactItemize}
 
 
@@ -53,77 +84,203 @@ char $\ast$ \hyperlink{object_8h_a42dcce5b32474b5d2500329b97913c15}{object\+\_\+
 Functions for the creation of objects. 
 
 \begin{DoxyAuthor}{Author}
-Guillermo Ríos 
+Guillermo R�os 
 \end{DoxyAuthor}
 \begin{DoxyCopyright}{Copyright}
-G\+N\+U Public License 
+G\+NU Public License 
 \end{DoxyCopyright}
 
 
 \subsection{Typedef Documentation}
-\hypertarget{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{\index{object.\+h@{object.\+h}!Object@{Object}}
+\index{object.\+h@{object.\+h}!Object@{Object}}
 \index{Object@{Object}!object.\+h@{object.\+h}}
-\subsubsection[{Object}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Object} {\bf Object}}}\label{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}
+\subsubsection[{\texorpdfstring{Object}{Object}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Object} {\bf Object}}\hypertarget{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{}\label{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}
 
 
 \subsection{Function Documentation}
-\hypertarget{object_8h_a6c55f8c2541966f6dd3a65c5559633c8}{\index{object.\+h@{object.\+h}!object\+\_\+create@{object\+\_\+create}}
+\index{object.\+h@{object.\+h}!object\+\_\+create@{object\+\_\+create}}
 \index{object\+\_\+create@{object\+\_\+create}!object.\+h@{object.\+h}}
-\subsubsection[{object\+\_\+create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object}$\ast$ object\+\_\+create (
+\subsubsection[{\texorpdfstring{object\+\_\+create(char $\ast$name, Id id, B\+O\+O\+L mobile, B\+O\+O\+L hidden, Id open, B\+O\+O\+L lights, B\+O\+O\+L on)}{object_create(char *name, Id id, BOOL mobile, BOOL hidden, Id open, BOOL lights, BOOL on)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object}$\ast$ object\+\_\+create (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{name, }
-\item[{{\bf Id}}]{id}
+\item[{{\bf Id}}]{id, }
+\item[{{\bf B\+O\+OL}}]{mobile, }
+\item[{{\bf B\+O\+OL}}]{hidden, }
+\item[{{\bf Id}}]{open, }
+\item[{{\bf B\+O\+OL}}]{lights, }
+\item[{{\bf B\+O\+OL}}]{on}
 \end{DoxyParamCaption}
-)}}\label{object_8h_a6c55f8c2541966f6dd3a65c5559633c8}
-\hypertarget{object_8h_a355e2f55e8467c2cfb2ef6bd5abbabfb}{\index{object.\+h@{object.\+h}!object\+\_\+destroy@{object\+\_\+destroy}}
+)}\hypertarget{object_8h_aa82aed57fe2cd15cdad97c7d706bf72d}{}\label{object_8h_aa82aed57fe2cd15cdad97c7d706bf72d}
+\index{object.\+h@{object.\+h}!object\+\_\+description\+\_\+al\+\_\+print@{object\+\_\+description\+\_\+al\+\_\+print}}
+\index{object\+\_\+description\+\_\+al\+\_\+print@{object\+\_\+description\+\_\+al\+\_\+print}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+description\+\_\+al\+\_\+print(\+Object $\ast$obj, F\+I\+L\+E $\ast$f)}{object_description_al_print(Object *obj, FILE *f)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+description\+\_\+al\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj, }
+\item[{F\+I\+LE $\ast$}]{f}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_a85d8ceacb9b2c4058cc1a1312a830ad9}{}\label{object_8h_a85d8ceacb9b2c4058cc1a1312a830ad9}
+\index{object.\+h@{object.\+h}!object\+\_\+description\+\_\+print@{object\+\_\+description\+\_\+print}}
+\index{object\+\_\+description\+\_\+print@{object\+\_\+description\+\_\+print}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+description\+\_\+print(\+Object $\ast$obj, F\+I\+L\+E $\ast$f)}{object_description_print(Object *obj, FILE *f)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+description\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj, }
+\item[{F\+I\+LE $\ast$}]{f}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_ac40dd277ec48ef8b6d9ef5f2a3458c1d}{}\label{object_8h_ac40dd277ec48ef8b6d9ef5f2a3458c1d}
+\index{object.\+h@{object.\+h}!object\+\_\+destroy@{object\+\_\+destroy}}
 \index{object\+\_\+destroy@{object\+\_\+destroy}!object.\+h@{object.\+h}}
-\subsubsection[{object\+\_\+destroy}]{\setlength{\rightskip}{0pt plus 5cm}void object\+\_\+destroy (
+\subsubsection[{\texorpdfstring{object\+\_\+destroy(\+Object $\ast$obj)}{object_destroy(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}void object\+\_\+destroy (
 \begin{DoxyParamCaption}
 \item[{{\bf Object} $\ast$}]{obj}
 \end{DoxyParamCaption}
-)}}\label{object_8h_a355e2f55e8467c2cfb2ef6bd5abbabfb}
-\hypertarget{object_8h_a42dcce5b32474b5d2500329b97913c15}{\index{object.\+h@{object.\+h}!object\+\_\+get\+\_\+description@{object\+\_\+get\+\_\+description}}
+)}\hypertarget{object_8h_a355e2f55e8467c2cfb2ef6bd5abbabfb}{}\label{object_8h_a355e2f55e8467c2cfb2ef6bd5abbabfb}
+\index{object.\+h@{object.\+h}!object\+\_\+get\+\_\+description@{object\+\_\+get\+\_\+description}}
 \index{object\+\_\+get\+\_\+description@{object\+\_\+get\+\_\+description}!object.\+h@{object.\+h}}
-\subsubsection[{object\+\_\+get\+\_\+description}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ object\+\_\+get\+\_\+description (
+\subsubsection[{\texorpdfstring{object\+\_\+get\+\_\+description(\+Object $\ast$obj)}{object_get_description(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ object\+\_\+get\+\_\+description (
 \begin{DoxyParamCaption}
 \item[{{\bf Object} $\ast$}]{obj}
 \end{DoxyParamCaption}
-)}}\label{object_8h_a42dcce5b32474b5d2500329b97913c15}
-\hypertarget{object_8h_ac9c3ace11b0440f373c67ccd3801398e}{\index{object.\+h@{object.\+h}!object\+\_\+get\+\_\+id@{object\+\_\+get\+\_\+id}}
+)}\hypertarget{object_8h_a42dcce5b32474b5d2500329b97913c15}{}\label{object_8h_a42dcce5b32474b5d2500329b97913c15}
+\index{object.\+h@{object.\+h}!object\+\_\+get\+\_\+description\+\_\+alternative@{object\+\_\+get\+\_\+description\+\_\+alternative}}
+\index{object\+\_\+get\+\_\+description\+\_\+alternative@{object\+\_\+get\+\_\+description\+\_\+alternative}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+get\+\_\+description\+\_\+alternative(\+Object $\ast$obj)}{object_get_description_alternative(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ object\+\_\+get\+\_\+description\+\_\+alternative (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_a316c17cfe0a58a3752564561a4a2e5cf}{}\label{object_8h_a316c17cfe0a58a3752564561a4a2e5cf}
+\index{object.\+h@{object.\+h}!object\+\_\+get\+\_\+hidden@{object\+\_\+get\+\_\+hidden}}
+\index{object\+\_\+get\+\_\+hidden@{object\+\_\+get\+\_\+hidden}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+get\+\_\+hidden(\+Object $\ast$obj)}{object_get_hidden(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} object\+\_\+get\+\_\+hidden (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_a7d1ff424be4e9977870524af98195d03}{}\label{object_8h_a7d1ff424be4e9977870524af98195d03}
+\index{object.\+h@{object.\+h}!object\+\_\+get\+\_\+id@{object\+\_\+get\+\_\+id}}
 \index{object\+\_\+get\+\_\+id@{object\+\_\+get\+\_\+id}!object.\+h@{object.\+h}}
-\subsubsection[{object\+\_\+get\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} object\+\_\+get\+\_\+id (
+\subsubsection[{\texorpdfstring{object\+\_\+get\+\_\+id(\+Object $\ast$obj)}{object_get_id(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} object\+\_\+get\+\_\+id (
 \begin{DoxyParamCaption}
 \item[{{\bf Object} $\ast$}]{obj}
 \end{DoxyParamCaption}
-)}}\label{object_8h_ac9c3ace11b0440f373c67ccd3801398e}
-\hypertarget{object_8h_ac6f2a9d9a4ed22600839724e8306f750}{\index{object.\+h@{object.\+h}!object\+\_\+get\+\_\+name@{object\+\_\+get\+\_\+name}}
+)}\hypertarget{object_8h_ac9c3ace11b0440f373c67ccd3801398e}{}\label{object_8h_ac9c3ace11b0440f373c67ccd3801398e}
+\index{object.\+h@{object.\+h}!object\+\_\+get\+\_\+iluminati@{object\+\_\+get\+\_\+iluminati}}
+\index{object\+\_\+get\+\_\+iluminati@{object\+\_\+get\+\_\+iluminati}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+get\+\_\+iluminati(\+Object $\ast$obj)}{object_get_iluminati(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} object\+\_\+get\+\_\+iluminati (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_aa4487278faa32fe5ef8b460fcd7fb51b}{}\label{object_8h_aa4487278faa32fe5ef8b460fcd7fb51b}
+\index{object.\+h@{object.\+h}!object\+\_\+get\+\_\+mobile@{object\+\_\+get\+\_\+mobile}}
+\index{object\+\_\+get\+\_\+mobile@{object\+\_\+get\+\_\+mobile}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+get\+\_\+mobile(\+Object $\ast$obj)}{object_get_mobile(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} object\+\_\+get\+\_\+mobile (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_ab9282b4ff63acf0dcaf27a3d28d3a688}{}\label{object_8h_ab9282b4ff63acf0dcaf27a3d28d3a688}
+\index{object.\+h@{object.\+h}!object\+\_\+get\+\_\+moved@{object\+\_\+get\+\_\+moved}}
+\index{object\+\_\+get\+\_\+moved@{object\+\_\+get\+\_\+moved}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+get\+\_\+moved(\+Object $\ast$obj)}{object_get_moved(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} object\+\_\+get\+\_\+moved (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_a46c2c0fff2f0dafb286860f05df9c011}{}\label{object_8h_a46c2c0fff2f0dafb286860f05df9c011}
+\index{object.\+h@{object.\+h}!object\+\_\+get\+\_\+name@{object\+\_\+get\+\_\+name}}
 \index{object\+\_\+get\+\_\+name@{object\+\_\+get\+\_\+name}!object.\+h@{object.\+h}}
-\subsubsection[{object\+\_\+get\+\_\+name}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ object\+\_\+get\+\_\+name (
+\subsubsection[{\texorpdfstring{object\+\_\+get\+\_\+name(\+Object $\ast$obj)}{object_get_name(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ object\+\_\+get\+\_\+name (
 \begin{DoxyParamCaption}
 \item[{{\bf Object} $\ast$}]{obj}
 \end{DoxyParamCaption}
-)}}\label{object_8h_ac6f2a9d9a4ed22600839724e8306f750}
-\hypertarget{object_8h_a82b3e96992079f00a8553edd18777ef9}{\index{object.\+h@{object.\+h}!object\+\_\+set\+\_\+description@{object\+\_\+set\+\_\+description}}
+)}\hypertarget{object_8h_ac6f2a9d9a4ed22600839724e8306f750}{}\label{object_8h_ac6f2a9d9a4ed22600839724e8306f750}
+\index{object.\+h@{object.\+h}!object\+\_\+get\+\_\+on@{object\+\_\+get\+\_\+on}}
+\index{object\+\_\+get\+\_\+on@{object\+\_\+get\+\_\+on}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+get\+\_\+on(\+Object $\ast$obj)}{object_get_on(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} object\+\_\+get\+\_\+on (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_a474d1a2f46fd4f9a998df134f2b5366c}{}\label{object_8h_a474d1a2f46fd4f9a998df134f2b5366c}
+\index{object.\+h@{object.\+h}!object\+\_\+get\+\_\+open@{object\+\_\+get\+\_\+open}}
+\index{object\+\_\+get\+\_\+open@{object\+\_\+get\+\_\+open}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+get\+\_\+open(\+Object $\ast$obj)}{object_get_open(Object *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} object\+\_\+get\+\_\+open (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_a12c50791181c563bae6afa6f7c81edb3}{}\label{object_8h_a12c50791181c563bae6afa6f7c81edb3}
+\index{object.\+h@{object.\+h}!object\+\_\+set\+\_\+description@{object\+\_\+set\+\_\+description}}
 \index{object\+\_\+set\+\_\+description@{object\+\_\+set\+\_\+description}!object.\+h@{object.\+h}}
-\subsubsection[{object\+\_\+set\+\_\+description}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} object\+\_\+set\+\_\+description (
+\subsubsection[{\texorpdfstring{object\+\_\+set\+\_\+description(\+Object $\ast$obj, char $\ast$descript)}{object_set_description(Object *obj, char *descript)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+set\+\_\+description (
 \begin{DoxyParamCaption}
 \item[{{\bf Object} $\ast$}]{obj, }
 \item[{char $\ast$}]{descript}
 \end{DoxyParamCaption}
-)}}\label{object_8h_a82b3e96992079f00a8553edd18777ef9}
-\hypertarget{object_8h_afcf71b4444a014a542f82c78bc9ee112}{\index{object.\+h@{object.\+h}!object\+\_\+set\+\_\+id@{object\+\_\+set\+\_\+id}}
+)}\hypertarget{object_8h_a82b3e96992079f00a8553edd18777ef9}{}\label{object_8h_a82b3e96992079f00a8553edd18777ef9}
+\index{object.\+h@{object.\+h}!object\+\_\+set\+\_\+description\+\_\+alternative@{object\+\_\+set\+\_\+description\+\_\+alternative}}
+\index{object\+\_\+set\+\_\+description\+\_\+alternative@{object\+\_\+set\+\_\+description\+\_\+alternative}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+set\+\_\+description\+\_\+alternative(\+Object $\ast$obj, char $\ast$description\+\_\+al)}{object_set_description_alternative(Object *obj, char *description_al)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+set\+\_\+description\+\_\+alternative (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj, }
+\item[{char $\ast$}]{description\+\_\+al}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_aa3245ab5de79a33e6ab82ca8e4f93764}{}\label{object_8h_aa3245ab5de79a33e6ab82ca8e4f93764}
+\index{object.\+h@{object.\+h}!object\+\_\+set\+\_\+hidden@{object\+\_\+set\+\_\+hidden}}
+\index{object\+\_\+set\+\_\+hidden@{object\+\_\+set\+\_\+hidden}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+set\+\_\+hidden(\+Object $\ast$obj, B\+O\+O\+L hidden)}{object_set_hidden(Object *obj, BOOL hidden)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+set\+\_\+hidden (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj, }
+\item[{{\bf B\+O\+OL}}]{hidden}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_ab7ad888deffb05c3ea60a3272045d3e7}{}\label{object_8h_ab7ad888deffb05c3ea60a3272045d3e7}
+\index{object.\+h@{object.\+h}!object\+\_\+set\+\_\+id@{object\+\_\+set\+\_\+id}}
 \index{object\+\_\+set\+\_\+id@{object\+\_\+set\+\_\+id}!object.\+h@{object.\+h}}
-\subsubsection[{object\+\_\+set\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} object\+\_\+set\+\_\+id (
+\subsubsection[{\texorpdfstring{object\+\_\+set\+\_\+id(\+Object $\ast$obj, Id id)}{object_set_id(Object *obj, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+set\+\_\+id (
 \begin{DoxyParamCaption}
 \item[{{\bf Object} $\ast$}]{obj, }
 \item[{{\bf Id}}]{id}
 \end{DoxyParamCaption}
-)}}\label{object_8h_afcf71b4444a014a542f82c78bc9ee112}
-\hypertarget{object_8h_a1f468a3ddebae0cf31431705a824371a}{\index{object.\+h@{object.\+h}!object\+\_\+set\+\_\+name@{object\+\_\+set\+\_\+name}}
+)}\hypertarget{object_8h_afcf71b4444a014a542f82c78bc9ee112}{}\label{object_8h_afcf71b4444a014a542f82c78bc9ee112}
+\index{object.\+h@{object.\+h}!object\+\_\+set\+\_\+ilumnati@{object\+\_\+set\+\_\+ilumnati}}
+\index{object\+\_\+set\+\_\+ilumnati@{object\+\_\+set\+\_\+ilumnati}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+set\+\_\+ilumnati(\+Object $\ast$obj, B\+O\+O\+L iluminati)}{object_set_ilumnati(Object *obj, BOOL iluminati)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+set\+\_\+ilumnati (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj, }
+\item[{{\bf B\+O\+OL}}]{iluminati}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_a68bca58bf577e4e6c6d0e730c995f462}{}\label{object_8h_a68bca58bf577e4e6c6d0e730c995f462}
+\index{object.\+h@{object.\+h}!object\+\_\+set\+\_\+mobile@{object\+\_\+set\+\_\+mobile}}
+\index{object\+\_\+set\+\_\+mobile@{object\+\_\+set\+\_\+mobile}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+set\+\_\+mobile(\+Object $\ast$obj, B\+O\+O\+L mobile)}{object_set_mobile(Object *obj, BOOL mobile)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+set\+\_\+mobile (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj, }
+\item[{{\bf B\+O\+OL}}]{mobile}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_a0aec0c591075ae14b5e939679c2e0c77}{}\label{object_8h_a0aec0c591075ae14b5e939679c2e0c77}
+\index{object.\+h@{object.\+h}!object\+\_\+set\+\_\+moved@{object\+\_\+set\+\_\+moved}}
+\index{object\+\_\+set\+\_\+moved@{object\+\_\+set\+\_\+moved}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+set\+\_\+moved(\+Object $\ast$obj, B\+O\+O\+L moved)}{object_set_moved(Object *obj, BOOL moved)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+set\+\_\+moved (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj, }
+\item[{{\bf B\+O\+OL}}]{moved}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_a690183bd5b1a2e379d2278d865db65c9}{}\label{object_8h_a690183bd5b1a2e379d2278d865db65c9}
+\index{object.\+h@{object.\+h}!object\+\_\+set\+\_\+name@{object\+\_\+set\+\_\+name}}
 \index{object\+\_\+set\+\_\+name@{object\+\_\+set\+\_\+name}!object.\+h@{object.\+h}}
-\subsubsection[{object\+\_\+set\+\_\+name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+U\+S} object\+\_\+set\+\_\+name (
+\subsubsection[{\texorpdfstring{object\+\_\+set\+\_\+name(\+Object $\ast$obj, char $\ast$name)}{object_set_name(Object *obj, char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+set\+\_\+name (
 \begin{DoxyParamCaption}
 \item[{{\bf Object} $\ast$}]{obj, }
 \item[{char $\ast$}]{name}
 \end{DoxyParamCaption}
-)}}\label{object_8h_a1f468a3ddebae0cf31431705a824371a}
+)}\hypertarget{object_8h_a1f468a3ddebae0cf31431705a824371a}{}\label{object_8h_a1f468a3ddebae0cf31431705a824371a}
+\index{object.\+h@{object.\+h}!object\+\_\+set\+\_\+on@{object\+\_\+set\+\_\+on}}
+\index{object\+\_\+set\+\_\+on@{object\+\_\+set\+\_\+on}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+set\+\_\+on(\+Object $\ast$obj, B\+O\+O\+L on)}{object_set_on(Object *obj, BOOL on)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+set\+\_\+on (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj, }
+\item[{{\bf B\+O\+OL}}]{on}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_af9a46e1a671bf4bbf13520276a4ec941}{}\label{object_8h_af9a46e1a671bf4bbf13520276a4ec941}
+\index{object.\+h@{object.\+h}!object\+\_\+set\+\_\+open@{object\+\_\+set\+\_\+open}}
+\index{object\+\_\+set\+\_\+open@{object\+\_\+set\+\_\+open}!object.\+h@{object.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+set\+\_\+open(\+Object $\ast$obj, Id open)}{object_set_open(Object *obj, Id open)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} object\+\_\+set\+\_\+open (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} $\ast$}]{obj, }
+\item[{{\bf Id}}]{open}
+\end{DoxyParamCaption}
+)}\hypertarget{object_8h_a43cfcb9c970d34e8a1063b312fdc9d66}{}\label{object_8h_a43cfcb9c970d34e8a1063b312fdc9d66}

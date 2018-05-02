@@ -13,28 +13,32 @@
 #include "../include/set.h"
 #include "../include/inventory.h"
 
-struct _Player {
-  char name[STDSIZE]; /*!< Nombre del jugador*/
-  Id location_id; /*!< id de donde esta*/
-  Inventory * inv; /*!< inventario del jugador*/
-  Id id; /*!< id del jugador*/
+struct _Player
+{
+	char name[STDSIZE]; /*!< Nombre del jugador*/
+	Id location_id;     /*!< id de donde esta*/
+	Inventory *inv;     /*!< inventario del jugador*/
+	Id id;		    /*!< id del jugador*/
+	BOOL am_I_a_tree;   /*!< eres un arbol*/
 };
 
-Player * player_create(char * name, Id location_id, Id object_id, Id id)
+Player *player_create(char *name, Id location_id, Id object_id, Id id)
 {
 	/**
 	 * Returns null if no name is given to the player
 	 * Returns pointer to the newly created player if ok
 	 *
 	**/
-	Player * new_player;
-	new_player = (Player *) calloc(1, sizeof(Player));
+	Player *new_player;
+	new_player = (Player *)calloc(1, sizeof(Player));
 
-	if (!name) return NULL;
+	if (!name)
+		return NULL;
 
 	strcpy(new_player->name, name);
 	new_player->location_id = location_id;
 	new_player->id = id;
+	new_player->am_I_a_tree = FALSE; /* por ahora... */
 
 	new_player->inv = inventory_create(MAX_INV_SIZE);
 
@@ -43,79 +47,107 @@ Player * player_create(char * name, Id location_id, Id object_id, Id id)
 
 void player_destroy(Player *player)
 {
-  if(!player) return;
+	if (!player)
+		return;
 
-  inventory_destroy(player->inv);
-  free(player);
+	inventory_destroy(player->inv);
+	free(player);
 }
 
-
-STATUS player_setName(Player * player, char * newName)
+STATUS player_setName(Player *player, char *newName)
 {
-	if(!player||!newName) return ERROR;
+	if (!player || !newName)
+		return ERROR;
 
-	if(!strcpy(player->name, newName)) return ERROR;
+	if (!strcpy(player->name, newName))
+		return ERROR;
 
 	return OK;
 }
 
-STATUS player_setLocId(Player * player, Id new_locId)
+STATUS player_setTreeState(Player *player, BOOL newTreeState)
 {
-	if(!player) return ERROR;
+	if (!player)
+		return ERROR;
+
+	player->am_I_a_tree = newTreeState;
+
+	return OK;
+}
+
+STATUS player_setLocId(Player *player, Id new_locId)
+{
+	if (!player)
+		return ERROR;
 
 	player->location_id = new_locId;
 
 	return OK;
 }
 
-STATUS player_setObjId(Player * player, Id new_objId)
+STATUS player_setObjId(Player *player, Id new_objId)
 {
-	if(!player) return ERROR;
+	if (!player)
+		return ERROR;
 
 	inventory_add_id(player->inv, new_objId);
 
 	return OK;
 }
 
-STATUS player_setId(Player * player, Id new_id)
+STATUS player_setId(Player *player, Id new_id)
 {
-	if(!player) return ERROR;
- 	player->id = new_id;
+	if (!player)
+		return ERROR;
+	player->id = new_id;
 
 	return OK;
 }
 
-char * player_getName(Player * player)
+char *player_getName(Player *player)
 {
-	if(!player) return NULL;
+	if (!player)
+		return NULL;
 
 	return player->name;
 }
 
-Id player_getLocId(Player * player)
+Id player_getLocId(Player *player)
 {
-	if(!player) return NO_ID;
+	if (!player)
+		return NO_ID;
 
 	return player->location_id;
 }
 
-Id player_getObjId(Player * player, int num)
+Id player_getObjId(Player *player, int num)
 {
-	if(!player) return NO_ID;
+	if (!player)
+		return NO_ID;
 
 	return inventory_get_id_at(player->inv, num);
 }
 
-Id player_getId(Player * player)
+Id player_getId(Player *player)
 {
-	if(!player) return NO_ID;
+	if (!player)
+		return NO_ID;
 
 	return player->id;
 }
 
-STATUS player_removeObjId(Player * player, Id id)
+BOOL player_getTreeState(Player *player)
 {
-	if (!player) return ERROR;
+	if (!player)
+		return NO_ID;
+
+	return player->am_I_a_tree;
+}
+
+STATUS player_removeObjId(Player *player, Id id)
+{
+	if (!player)
+		return ERROR;
 
 	if(inventory_del_id(player->inv, id) == ERROR)
 		return ERROR;

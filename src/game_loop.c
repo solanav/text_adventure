@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	Game * game = NULL;
 
 	FILE * log = NULL;
-	char log_dir[1024] = "./log/";
+	char log_dir[1024] = "log/";
 	char *cmd_to_str[8] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check"};
 
 	F_Command * command  = command_create();
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 		log = fopen(strcat(log_dir,argv[3]), "w+");
 	}
 
-	/* load */
+	/* load data.dat */
 	if (game_create_from_file(game, argv[1]) == ERROR)
 	{
 		fprintf(stderr, "Error while initializing game.\n");

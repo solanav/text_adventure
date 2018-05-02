@@ -1,9 +1,8 @@
-\hypertarget{graphic__engine_8c}{\section{graphic\+\_\+engine.\+c File Reference}
+\hypertarget{graphic__engine_8c}{}\section{graphic\+\_\+engine.\+c File Reference}
 \label{graphic__engine_8c}\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}}
-}
 
 
-Uses screen.$\ast$ to create the U\+I.  
+Uses screen.$\ast$ to create the UI.  
 
 
 {\ttfamily \#include $<$stdlib.\+h$>$}\\*
@@ -26,7 +25,7 @@ struct \hyperlink{struct__Graphic__engine}{\+\_\+\+Graphic\+\_\+engine}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{graphic__engine_8c_ab4c84d2c2d674e9dde9151e046d28b0c}{S\+T\+D\+\_\+\+S\+P\+A\+C\+E}~\char`\"{}             \char`\"{}
+\#define \hyperlink{graphic__engine_8c_ab4c84d2c2d674e9dde9151e046d28b0c}{S\+T\+D\+\_\+\+S\+P\+A\+CE}~\char`\"{}             \char`\"{}
 \item 
 \#define \hyperlink{graphic__engine_8c_acc83c571bcd187507ef8320e2ece44fc}{S\+T\+D\+\_\+\+S\+P\+A\+C\+E1}~\char`\"{}    \char`\"{}
 \end{DoxyCompactItemize}
@@ -39,8 +38,6 @@ void \hyperlink{graphic__engine_8c_a5a5eac4ef2033c5ad71aa6895f362f79}{graphic\+\
 \item 
 void \hyperlink{graphic__engine_8c_a0e275aa477d5fa59e903da33a2a40a5d}{graphic\+\_\+engine\+\_\+paint\+\_\+game} (\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine} $\ast$ge, \hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
 \item 
-void \hyperlink{graphic__engine_8c_ac177bc9048006537b38b7270cb8926ac}{graphic\+\_\+engine\+\_\+paint\+\_\+space} (\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine} $\ast$ge, \hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, int position\+\_\+of\+\_\+space)
-\item 
 char $\ast$ \hyperlink{graphic__engine_8c_a6449b0b5144564df757bab40f013eb9c}{create\+\_\+objects\+\_\+string} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
 \item 
 void \hyperlink{graphic__engine_8c_aaf562c0477dbea81c74a5a74bc8c4e70}{print\+\_\+new\+\_\+line} (\hyperlink{screen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area} $\ast$area, int number)
@@ -48,70 +45,61 @@ void \hyperlink{graphic__engine_8c_aaf562c0477dbea81c74a5a74bc8c4e70}{print\+\_\
 
 
 \subsection{Detailed Description}
-Uses screen.$\ast$ to create the U\+I. 
+Uses screen.$\ast$ to create the UI. 
 
 \begin{DoxyAuthor}{Author}
 Antonio Solana 
 \end{DoxyAuthor}
 \begin{DoxyCopyright}{Copyright}
-G\+N\+U Public License 
+G\+NU Public License 
 \end{DoxyCopyright}
 
 
 \subsection{Macro Definition Documentation}
-\hypertarget{graphic__engine_8c_ab4c84d2c2d674e9dde9151e046d28b0c}{\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!S\+T\+D\+\_\+\+S\+P\+A\+C\+E@{S\+T\+D\+\_\+\+S\+P\+A\+C\+E}}
-\index{S\+T\+D\+\_\+\+S\+P\+A\+C\+E@{S\+T\+D\+\_\+\+S\+P\+A\+C\+E}!graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}}
-\subsubsection[{S\+T\+D\+\_\+\+S\+P\+A\+C\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+D\+\_\+\+S\+P\+A\+C\+E~\char`\"{}             \char`\"{}}}\label{graphic__engine_8c_ab4c84d2c2d674e9dde9151e046d28b0c}
-\hypertarget{graphic__engine_8c_acc83c571bcd187507ef8320e2ece44fc}{\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!S\+T\+D\+\_\+\+S\+P\+A\+C\+E1@{S\+T\+D\+\_\+\+S\+P\+A\+C\+E1}}
+\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!S\+T\+D\+\_\+\+S\+P\+A\+CE@{S\+T\+D\+\_\+\+S\+P\+A\+CE}}
+\index{S\+T\+D\+\_\+\+S\+P\+A\+CE@{S\+T\+D\+\_\+\+S\+P\+A\+CE}!graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}}
+\subsubsection[{\texorpdfstring{S\+T\+D\+\_\+\+S\+P\+A\+CE}{STD_SPACE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+D\+\_\+\+S\+P\+A\+CE~\char`\"{}             \char`\"{}}\hypertarget{graphic__engine_8c_ab4c84d2c2d674e9dde9151e046d28b0c}{}\label{graphic__engine_8c_ab4c84d2c2d674e9dde9151e046d28b0c}
+\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!S\+T\+D\+\_\+\+S\+P\+A\+C\+E1@{S\+T\+D\+\_\+\+S\+P\+A\+C\+E1}}
 \index{S\+T\+D\+\_\+\+S\+P\+A\+C\+E1@{S\+T\+D\+\_\+\+S\+P\+A\+C\+E1}!graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}}
-\subsubsection[{S\+T\+D\+\_\+\+S\+P\+A\+C\+E1}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+D\+\_\+\+S\+P\+A\+C\+E1~\char`\"{}    \char`\"{}}}\label{graphic__engine_8c_acc83c571bcd187507ef8320e2ece44fc}
+\subsubsection[{\texorpdfstring{S\+T\+D\+\_\+\+S\+P\+A\+C\+E1}{STD_SPACE1}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+D\+\_\+\+S\+P\+A\+C\+E1~\char`\"{}    \char`\"{}}\hypertarget{graphic__engine_8c_acc83c571bcd187507ef8320e2ece44fc}{}\label{graphic__engine_8c_acc83c571bcd187507ef8320e2ece44fc}
 
 
 \subsection{Function Documentation}
-\hypertarget{graphic__engine_8c_a6449b0b5144564df757bab40f013eb9c}{\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!create\+\_\+objects\+\_\+string@{create\+\_\+objects\+\_\+string}}
+\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!create\+\_\+objects\+\_\+string@{create\+\_\+objects\+\_\+string}}
 \index{create\+\_\+objects\+\_\+string@{create\+\_\+objects\+\_\+string}!graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}}
-\subsubsection[{create\+\_\+objects\+\_\+string}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ create\+\_\+objects\+\_\+string (
+\subsubsection[{\texorpdfstring{create\+\_\+objects\+\_\+string(\+Game $\ast$game, Id id)}{create_objects_string(Game *game, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ create\+\_\+objects\+\_\+string (
 \begin{DoxyParamCaption}
 \item[{{\bf Game} $\ast$}]{game, }
 \item[{{\bf Id}}]{id}
 \end{DoxyParamCaption}
-)}}\label{graphic__engine_8c_a6449b0b5144564df757bab40f013eb9c}
-\hypertarget{graphic__engine_8c_a8c3d9abe7282bee1d77d23ea80a4bdec}{\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!graphic\+\_\+engine\+\_\+create@{graphic\+\_\+engine\+\_\+create}}
+)}\hypertarget{graphic__engine_8c_a6449b0b5144564df757bab40f013eb9c}{}\label{graphic__engine_8c_a6449b0b5144564df757bab40f013eb9c}
+\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!graphic\+\_\+engine\+\_\+create@{graphic\+\_\+engine\+\_\+create}}
 \index{graphic\+\_\+engine\+\_\+create@{graphic\+\_\+engine\+\_\+create}!graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}}
-\subsubsection[{graphic\+\_\+engine\+\_\+create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Graphic\+\_\+engine}$\ast$ graphic\+\_\+engine\+\_\+create (
+\subsubsection[{\texorpdfstring{graphic\+\_\+engine\+\_\+create()}{graphic_engine_create()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Graphic\+\_\+engine}$\ast$ graphic\+\_\+engine\+\_\+create (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{graphic__engine_8c_a8c3d9abe7282bee1d77d23ea80a4bdec}
-\hypertarget{graphic__engine_8c_a5a5eac4ef2033c5ad71aa6895f362f79}{\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!graphic\+\_\+engine\+\_\+destroy@{graphic\+\_\+engine\+\_\+destroy}}
+)}\hypertarget{graphic__engine_8c_a8c3d9abe7282bee1d77d23ea80a4bdec}{}\label{graphic__engine_8c_a8c3d9abe7282bee1d77d23ea80a4bdec}
+\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!graphic\+\_\+engine\+\_\+destroy@{graphic\+\_\+engine\+\_\+destroy}}
 \index{graphic\+\_\+engine\+\_\+destroy@{graphic\+\_\+engine\+\_\+destroy}!graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}}
-\subsubsection[{graphic\+\_\+engine\+\_\+destroy}]{\setlength{\rightskip}{0pt plus 5cm}void graphic\+\_\+engine\+\_\+destroy (
+\subsubsection[{\texorpdfstring{graphic\+\_\+engine\+\_\+destroy(\+Graphic\+\_\+engine $\ast$ge)}{graphic_engine_destroy(Graphic_engine *ge)}}]{\setlength{\rightskip}{0pt plus 5cm}void graphic\+\_\+engine\+\_\+destroy (
 \begin{DoxyParamCaption}
 \item[{{\bf Graphic\+\_\+engine} $\ast$}]{ge}
 \end{DoxyParamCaption}
-)}}\label{graphic__engine_8c_a5a5eac4ef2033c5ad71aa6895f362f79}
-\hypertarget{graphic__engine_8c_a0e275aa477d5fa59e903da33a2a40a5d}{\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!graphic\+\_\+engine\+\_\+paint\+\_\+game@{graphic\+\_\+engine\+\_\+paint\+\_\+game}}
+)}\hypertarget{graphic__engine_8c_a5a5eac4ef2033c5ad71aa6895f362f79}{}\label{graphic__engine_8c_a5a5eac4ef2033c5ad71aa6895f362f79}
+\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!graphic\+\_\+engine\+\_\+paint\+\_\+game@{graphic\+\_\+engine\+\_\+paint\+\_\+game}}
 \index{graphic\+\_\+engine\+\_\+paint\+\_\+game@{graphic\+\_\+engine\+\_\+paint\+\_\+game}!graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}}
-\subsubsection[{graphic\+\_\+engine\+\_\+paint\+\_\+game}]{\setlength{\rightskip}{0pt plus 5cm}void graphic\+\_\+engine\+\_\+paint\+\_\+game (
+\subsubsection[{\texorpdfstring{graphic\+\_\+engine\+\_\+paint\+\_\+game(\+Graphic\+\_\+engine $\ast$ge, Game $\ast$game)}{graphic_engine_paint_game(Graphic_engine *ge, Game *game)}}]{\setlength{\rightskip}{0pt plus 5cm}void graphic\+\_\+engine\+\_\+paint\+\_\+game (
 \begin{DoxyParamCaption}
 \item[{{\bf Graphic\+\_\+engine} $\ast$}]{ge, }
 \item[{{\bf Game} $\ast$}]{game}
 \end{DoxyParamCaption}
-)}}\label{graphic__engine_8c_a0e275aa477d5fa59e903da33a2a40a5d}
-\hypertarget{graphic__engine_8c_ac177bc9048006537b38b7270cb8926ac}{\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!graphic\+\_\+engine\+\_\+paint\+\_\+space@{graphic\+\_\+engine\+\_\+paint\+\_\+space}}
-\index{graphic\+\_\+engine\+\_\+paint\+\_\+space@{graphic\+\_\+engine\+\_\+paint\+\_\+space}!graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}}
-\subsubsection[{graphic\+\_\+engine\+\_\+paint\+\_\+space}]{\setlength{\rightskip}{0pt plus 5cm}void graphic\+\_\+engine\+\_\+paint\+\_\+space (
-\begin{DoxyParamCaption}
-\item[{{\bf Graphic\+\_\+engine} $\ast$}]{ge, }
-\item[{{\bf Game} $\ast$}]{game, }
-\item[{int}]{position\+\_\+of\+\_\+space}
-\end{DoxyParamCaption}
-)}}\label{graphic__engine_8c_ac177bc9048006537b38b7270cb8926ac}
-\hypertarget{graphic__engine_8c_aaf562c0477dbea81c74a5a74bc8c4e70}{\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!print\+\_\+new\+\_\+line@{print\+\_\+new\+\_\+line}}
+)}\hypertarget{graphic__engine_8c_a0e275aa477d5fa59e903da33a2a40a5d}{}\label{graphic__engine_8c_a0e275aa477d5fa59e903da33a2a40a5d}
+\index{graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}!print\+\_\+new\+\_\+line@{print\+\_\+new\+\_\+line}}
 \index{print\+\_\+new\+\_\+line@{print\+\_\+new\+\_\+line}!graphic\+\_\+engine.\+c@{graphic\+\_\+engine.\+c}}
-\subsubsection[{print\+\_\+new\+\_\+line}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+new\+\_\+line (
+\subsubsection[{\texorpdfstring{print\+\_\+new\+\_\+line(\+Area $\ast$area, int number)}{print_new_line(Area *area, int number)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+new\+\_\+line (
 \begin{DoxyParamCaption}
 \item[{{\bf Area} $\ast$}]{area, }
 \item[{int}]{number}
 \end{DoxyParamCaption}
-)}}\label{graphic__engine_8c_aaf562c0477dbea81c74a5a74bc8c4e70}
+)}\hypertarget{graphic__engine_8c_aaf562c0477dbea81c74a5a74bc8c4e70}{}\label{graphic__engine_8c_aaf562c0477dbea81c74a5a74bc8c4e70}

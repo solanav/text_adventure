@@ -2,7 +2,7 @@
  * @brief Functions used by graphic_engine.*
  * 
  * @file screen.h
- * @author Profesores Pprog
+ * @author Antonio Solana
  * @copyright GNU Public License
  */
 

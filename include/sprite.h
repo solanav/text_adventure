@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
 #include "types.h"
 
 typedef struct _Sprite Sprite;

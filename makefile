@@ -16,15 +16,15 @@ ALL_TEST=die_test set_test link_test object_test command_test inventory_test pla
 
 SRCPATH = ./src/
 HDRPATH = ./include/
-OBJPATH = ./obj/
+OBJPATH = ./build/
 TESTPATH  = ./test/
-TESTOBJPATH = ./testobj/
+TESTOBJPATH = ./build/
 DOCPATH = ./doc/
 
 ################ EXEC CREATION
 
-game_exec: game_loop.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o game.o inventory.o sprite_loader.o sprite.o dialogue.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)game_loop.o $(OBJPATH)game_reader.o $(OBJPATH)graphic_engine.o $(OBJPATH)screen.o $(OBJPATH)command.o $(OBJPATH)space.o $(OBJPATH)object.o $(OBJPATH)player.o $(OBJPATH)set.o $(OBJPATH)die.o $(OBJPATH)link.o $(OBJPATH)game.o $(OBJPATH)inventory.o $(OBJPATH)sprite_loader.o $(OBJPATH)sprite.o $(OBJPATH)dialogue.o
+game_exec: game_loop.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o game.o inventory.o sprite_loader.o sprite.o game_rules.o dialogue.o
+	$(CC) $(CFLAGS) -o $@ $(OBJPATH)game_loop.o $(OBJPATH)game_reader.o $(OBJPATH)graphic_engine.o $(OBJPATH)screen.o $(OBJPATH)command.o $(OBJPATH)space.o $(OBJPATH)object.o $(OBJPATH)player.o $(OBJPATH)set.o $(OBJPATH)die.o $(OBJPATH)link.o $(OBJPATH)game.o $(OBJPATH)inventory.o $(OBJPATH)sprite_loader.o $(OBJPATH)sprite.o $(OBJPATH)game_rules.o $(OBJPATH)dialogue.o
 
 ################ TESTS
 
@@ -78,7 +78,7 @@ object.o: $(SRCPATH)object.c $(HDRPATH)object.h $(HDRPATH)types.h
 command.o: $(SRCPATH)command.c $(HDRPATH)command.h $(HDRPATH)types.h $(HDRPATH)game.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)command.c -o $(OBJPATH)command.o
 
-game.o: $(SRCPATH)game.c $(HDRPATH)game.h $(HDRPATH)game_reader.h $(HDRPATH)object.h $(HDRPATH)player.h $(HDRPATH)space.h $(HDRPATH)command.h $(HDRPATH)die.h $(HDRPATH)link.h $(HDRPATH)inventory.h
+game.o: $(SRCPATH)game.c $(HDRPATH)game.h $(HDRPATH)game_reader.h $(HDRPATH)object.h $(HDRPATH)player.h $(HDRPATH)space.h $(HDRPATH)command.h $(HDRPATH)die.h $(HDRPATH)link.h $(HDRPATH)inventory.h $(HDRPATH)game_rules.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)game.c -o $(OBJPATH)game.o
 
 die.o: $(SRCPATH)die.c $(HDRPATH)die.h $(HDRPATH)types.h
@@ -101,6 +101,9 @@ sprite_loader.o: $(SRCPATH)sprite_loader.c $(HDRPATH)game.h $(HDRPATH)types.h
 
 sprite.o: $(SRCPATH)sprite.c $(HDRPATH)types.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)sprite.c -o $(OBJPATH)sprite.o
+
+game_rules.o: $(SRCPATH)game_rules.c $(HDRPATH)game_rules.h $(HDRPATH)types.h
+	$(CC) $(CFLAGS) -c $(SRCPATH)game_rules.c -o $(OBJPATH)game_rules.o
 
 ################ OBJECTS FOR TESTS
 
@@ -149,7 +152,7 @@ doxygen:
 	doxygen -g doxyconfig && doxygen doxyconfig
 
 clean:
-	rm -rf $(ALL_EXEC)
+	rm -rf $(ALL_EXEC) $(ALL_TEST) $(TESTOBJPATH)*
 
 tar:
 	tar -czf PPROG_2163_I3_G3.tar.gz *

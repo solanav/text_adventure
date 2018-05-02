@@ -2,7 +2,7 @@
  * @brief It declares the tests for the die module
  *
  * @file die_test.h
- * @author Pablo Sánchez Redondo
+ * @author Pablo Sánchez
  * @copyright GNU Public License
  */
 

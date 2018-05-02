@@ -6,7 +6,10 @@
 		"types.h": "c",
 		"object.h": "c",
 		"screen.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"stdio.h": "c",
+		"link.h": "c",
+		"game_rules.h": "c"
 	},
 	"C_Cpp.intelliSenseEngineFallback": "Disabled"
 }

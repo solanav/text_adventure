@@ -2,7 +2,7 @@
  * @brief Functions for the creation of players
  *
  * @file screen.c
- * @author Profesores Pprog
+ * @author Antonio Solana
  * @copyright GNU Public License
  */
 

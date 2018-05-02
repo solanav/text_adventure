@@ -2,7 +2,7 @@
  * @brief Test low level functions
  *
  * @file test.h
- * @author Profesores Pprog
+ * @author Pablo Sánchez
  * @copyright GNU Public License
  */
 

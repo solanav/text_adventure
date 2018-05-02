@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['print_5fpassed_5fpercentage',['PRINT_PASSED_PERCENTAGE',['../test_8h.html#a4a5b9a0026e80b1cfbfbbc3fa700ed31',1,'test.h']]],
-  ['print_5ftest_5fresult',['PRINT_TEST_RESULT',['../test_8h.html#a6c00863b1d44e38839b1f4b49d04f403',1,'test.h']]],
-  ['prompt',['PROMPT',['../screen_8c.html#accdbea14ea06c15e271784368bd993e8',1,'screen.c']]]
+  ['n_5fcallback',['N_CALLBACK',['../game_8c.html#a8366e5ad74afbbea0cd0a414770c304a',1,'game.c']]],
+  ['n_5fcmd',['N_CMD',['../command_8c.html#ae180fe89f0ae48ce5c80ffaa18de9271',1,'command.c']]],
+  ['no_5fid',['NO_ID',['../types_8h.html#a642e16f35aa1e585c25e405ede76e115',1,'types.h']]],
+  ['no_5flight_5fsprite',['NO_LIGHT_SPRITE',['../game_8c.html#ada4716d8f8fffcc46671d7adff1821ca',1,'game.c']]]
 ];

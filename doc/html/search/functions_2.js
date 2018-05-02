@@ -1,13 +1,18 @@
 var searchData=
 [
+  ['game_5fadd_5fobject',['game_add_object',['../game_8h.html#a9597a8e456aa74db536e87d56f56c3b4',1,'game_add_object(Game *game, Object *object):&#160;game.c'],['../game_8c.html#a9597a8e456aa74db536e87d56f56c3b4',1,'game_add_object(Game *game, Object *object):&#160;game.c']]],
   ['game_5fadd_5fspace',['game_add_space',['../game_8h.html#a90f0011dd654de9aaef8f42db4d66294',1,'game_add_space(Game *, Space *):&#160;game.c'],['../game_8c.html#ae5ad86de0a92d9eccb234948458da7f1',1,'game_add_space(Game *game, Space *space):&#160;game.c']]],
+  ['game_5fadd_5fsprite',['game_add_sprite',['../game_8h.html#a6d15a79e9e897cd449f9e1c675f826d9',1,'game_add_sprite(Game *game, Sprite *sprite, int i):&#160;game.c'],['../game_8c.html#a6d15a79e9e897cd449f9e1c675f826d9',1,'game_add_sprite(Game *game, Sprite *sprite, int i):&#160;game.c']]],
   ['game_5farespacesadjacent',['game_areSpacesAdjacent',['../game_8h.html#acd0fd8275546d3a7e24f92609f0b520b',1,'game_areSpacesAdjacent(Game *, Id, Id):&#160;game.c'],['../game_8c.html#af1e5cb66149225a040415851cd7ad523',1,'game_areSpacesAdjacent(Game *g, Id space1, Id space2):&#160;game.c']]],
   ['game_5fcallback_5fcheck',['game_callback_check',['../game_8c.html#a83bb67a81f8905d8aebdc441fd23325b',1,'game.c']]],
   ['game_5fcallback_5fdrop',['game_callback_drop',['../game_8c.html#a424d0c659a926b0588a4287ea82552b6',1,'game.c']]],
   ['game_5fcallback_5fexit',['game_callback_exit',['../game_8c.html#acc98d79a418d2093fc3224b5c02e5418',1,'game.c']]],
   ['game_5fcallback_5fmove',['game_callback_move',['../game_8c.html#a7525cbe807f8d1c3b698afcb75903903',1,'game.c']]],
+  ['game_5fcallback_5fopen',['game_callback_open',['../game_8c.html#a22818455cb229176b145ea56485e7751',1,'game.c']]],
   ['game_5fcallback_5fpickup',['game_callback_pickup',['../game_8c.html#a63b864e2b87c09dc2a61a55c7f26db44',1,'game.c']]],
   ['game_5fcallback_5froll',['game_callback_roll',['../game_8c.html#a4929c380e741fce955cb09ad3058e6d7',1,'game.c']]],
+  ['game_5fcallback_5fturnoff',['game_callback_turnOff',['../game_8c.html#a1eabe97556a2040652c3c00254edb492',1,'game.c']]],
+  ['game_5fcallback_5fturnon',['game_callback_turnOn',['../game_8c.html#a237d569f6f570c52c2f35982c1f58ddd',1,'game.c']]],
   ['game_5fcallback_5funknown',['game_callback_unknown',['../game_8c.html#ac8ed327ed13f97dcb778d0293f14d8bb',1,'game.c']]],
   ['game_5fcreate',['game_create',['../game_8h.html#a1cdbe3f06b9bf49eb5e334a22ad3b2b9',1,'game_create():&#160;game.c'],['../game_8c.html#a1cdbe3f06b9bf49eb5e334a22ad3b2b9',1,'game_create():&#160;game.c']]],
   ['game_5fcreate_5ffrom_5ffile',['game_create_from_file',['../game_8h.html#ac71aabb865eeae55f8a4c928291bd1ce',1,'game_create_from_file(Game *, char *):&#160;game.c'],['../game_8c.html#afc77f90739be0fd45b7f5616e543bfae',1,'game_create_from_file(Game *game, char *filename):&#160;game.c']]],
@@ -24,12 +29,14 @@ var searchData=
   ['game_5fget_5fplayer_5flocation',['game_get_player_location',['../game_8h.html#a3ec8c180129ac5bc010633935eae15e0',1,'game_get_player_location(Game *):&#160;game.c'],['../game_8c.html#ac6a628f2106f81c37d0e83c67920615f',1,'game_get_player_location(Game *game):&#160;game.c']]],
   ['game_5fget_5fspace',['game_get_space',['../game_8h.html#ae1d10bd1ed43729955208069ec433bde',1,'game_get_space(Game *, Id):&#160;game.c'],['../game_8c.html#a69d94da9d27b542d3ebdeb8b60f1f2dc',1,'game_get_space(Game *game, Id id):&#160;game.c']]],
   ['game_5fget_5fspace_5fid_5fat',['game_get_space_id_at',['../game_8h.html#a8c98fdefb1568b21168d3809048d8639',1,'game_get_space_id_at(Game *, int):&#160;game.c'],['../game_8c.html#ad2dfd865e2bd2c545a15d33f4d1cf3ae',1,'game_get_space_id_at(Game *game, int position):&#160;game.c']]],
+  ['game_5fget_5fsprite',['game_get_sprite',['../game_8h.html#a46dafe90b177af0f04a411472893edd3',1,'game_get_sprite(Game *game, Id id):&#160;game.c'],['../game_8c.html#a46dafe90b177af0f04a411472893edd3',1,'game_get_sprite(Game *game, Id id):&#160;game.c']]],
   ['game_5fis_5fover',['game_is_over',['../game_8h.html#a48225cf8a94551e4748e50d76e7017c3',1,'game_is_over(Game *):&#160;game.c'],['../game_8c.html#aa6efe0650af110bbd84e742cc8046d93',1,'game_is_over(Game *game):&#160;game.c']]],
   ['game_5fload_5flinks',['game_load_links',['../game__reader_8h.html#aab4103cf97109ac921f358858ca2684d',1,'game_reader.h']]],
   ['game_5fload_5fspaces',['game_load_spaces',['../game_8h.html#a0588760911fdc6ca82b9c6afc38d013d',1,'game_load_spaces(Game *, char *):&#160;game_reader.c'],['../game__reader_8h.html#a0d01072a28b01545d36240cb8bd9d4f8',1,'game_load_spaces(Game *game, char *filename):&#160;game_reader.c'],['../game__reader_8c.html#a0d01072a28b01545d36240cb8bd9d4f8',1,'game_load_spaces(Game *game, char *filename):&#160;game_reader.c']]],
-  ['game_5fprint_5fdata',['game_print_data',['../game_8h.html#ad379d0f940eb8020d7fbc6d805c307f9',1,'game_print_data(Game *):&#160;game.c'],['../game_8c.html#a33a5ed8937423f8c012df3cedad4fa4c',1,'game_print_data(Game *game):&#160;game.c']]],
+  ['game_5fprint_5fdata',['game_print_data',['../game_8h.html#ad379d0f940eb8020d7fbc6d805c307f9',1,'game.h']]],
+  ['game_5fprint_5fopened_5flinks',['game_print_opened_links',['../game_8c.html#ab97d4976fa9cc520f216848186c0c7e0',1,'game.c']]],
   ['game_5fprint_5fscreen',['game_print_screen',['../game_8h.html#a01c6cecfe9a41048b160a72884584334',1,'game.h']]],
-  ['game_5fset_5flink',['game_set_link',['../game_8h.html#a3e0cc4c4634b371a657ba3e05e3acd53',1,'game_set_link(Game *, Id, Id, Id):&#160;game.c'],['../game_8c.html#ac78e92998818d2b2029ba60077be8f3f',1,'game_set_link(Game *game, Id link_id, Id space_id0, Id space_id1):&#160;game.c']]],
+  ['game_5fset_5flink',['game_set_link',['../game_8h.html#af1140dadd8ebdf66bde07ecc498fc853',1,'game_set_link(Game *, Id, Id, Id, int, LinkStatus):&#160;game.c'],['../game_8c.html#a4b9506fda0ea05cb59910e41376cbf02',1,'game_set_link(Game *game, Id link_id, Id space_id0, Id space_id1, int direction, LinkStatus door):&#160;game.c']]],
   ['game_5fset_5fobject_5flocation',['game_set_object_location',['../game_8h.html#aafe9680f4a67272aa1ae30f07e21521a',1,'game_set_object_location(Game *, Id, Id, char *, char *):&#160;game.c'],['../game_8c.html#a75a0a6b7a241f91e60c61ea8deb65e1d',1,'game_set_object_location(Game *game, Id id, Id obj_id, char *name, char *description):&#160;game.c']]],
   ['game_5fset_5fplayer_5flocation',['game_set_player_location',['../game_8h.html#a0dd90f6a5aa3dcaf2a0bc30da1b82c37',1,'game_set_player_location(Game *, Id):&#160;game.c'],['../game_8c.html#a492ca9fb594442dc43fc7d18a3820426',1,'game_set_player_location(Game *game, Id id):&#160;game.c']]],
   ['game_5fupdate',['game_update',['../game_8h.html#af5ba9499feb011d90270ca563f346df1',1,'game_update(Game *, F_Command *):&#160;game.c'],['../game_8c.html#abdff7789be1e3a7202ac0a6a8ab7cd41',1,'game_update(Game *game, F_Command *cmd):&#160;game.c']]],
@@ -37,5 +44,5 @@ var searchData=
   ['graphic_5fengine_5fcreate',['graphic_engine_create',['../graphic__engine_8h.html#a8c3d9abe7282bee1d77d23ea80a4bdec',1,'graphic_engine_create():&#160;graphic_engine.c'],['../graphic__engine_8c.html#a8c3d9abe7282bee1d77d23ea80a4bdec',1,'graphic_engine_create():&#160;graphic_engine.c']]],
   ['graphic_5fengine_5fdestroy',['graphic_engine_destroy',['../graphic__engine_8h.html#a5813ddf7561256cb841f3f62dd41c9c4',1,'graphic_engine_destroy(Graphic_engine *):&#160;graphic_engine.c'],['../graphic__engine_8c.html#a5a5eac4ef2033c5ad71aa6895f362f79',1,'graphic_engine_destroy(Graphic_engine *ge):&#160;graphic_engine.c']]],
   ['graphic_5fengine_5fpaint_5fgame',['graphic_engine_paint_game',['../graphic__engine_8h.html#a778819bf85643975da17ff84752495a3',1,'graphic_engine_paint_game(Graphic_engine *, Game *):&#160;graphic_engine.c'],['../graphic__engine_8c.html#a0e275aa477d5fa59e903da33a2a40a5d',1,'graphic_engine_paint_game(Graphic_engine *ge, Game *game):&#160;graphic_engine.c']]],
-  ['graphic_5fengine_5fpaint_5fspace',['graphic_engine_paint_space',['../graphic__engine_8h.html#a95c59d3256c61b3c76bf6228e4976924',1,'graphic_engine_paint_space(Graphic_engine *, Game *, int):&#160;graphic_engine.c'],['../graphic__engine_8c.html#ac177bc9048006537b38b7270cb8926ac',1,'graphic_engine_paint_space(Graphic_engine *ge, Game *game, int position_of_space):&#160;graphic_engine.c']]]
+  ['graphic_5fengine_5fpaint_5fspace',['graphic_engine_paint_space',['../graphic__engine_8h.html#a95c59d3256c61b3c76bf6228e4976924',1,'graphic_engine.h']]]
 ];
