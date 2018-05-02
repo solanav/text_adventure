@@ -178,8 +178,8 @@ STATUS game_save_player(Game* game, FILE * f)
 	if(!inv) return ERROR;
 	fwrite(&inv, inventory_size(), 1, f);
 	set = inventory_get_ids(inv);
-	if(!set) return ERROR;
-	fwrite(&set, set_size(), 1, f);
+	/*if(!set) return ERROR;
+	fwrite(&set, set_size(), 1, f);*/
 
 	return OK;
 }
@@ -196,11 +196,11 @@ STATUS game_save_spaces(Game* game, FILE * f)
 	}
 	fwrite(&i, sizeof(int), 1, f);
 
-	for(i=0; game_get_space_id_at(game, i) != NO_ID || i<MAX_SPACES; i++){
+	for(i=0; i>=0; i--){
 		spc = game_get_space(game, game_get_space_id_at(game, i));
 		fwrite(&spc, space_size(), 1, f);
 		set = space_get_objects_id(spc);
-		fwrite(&set, set_size(), 1 , f);
+		/*fwrite(&set, set_size(), 1 , f);*/
 	}
 
 	return OK;
@@ -217,7 +217,7 @@ STATUS game_save_objects(Game * game, FILE * f)
 	}
 	fwrite(&i, sizeof(int), 1, f);
 
-	for(i=0; game_get_object_id_at(game, i) || i<MAX_OBJECTS; i++){
+	for(i=0; i>=0 ; i--){
 		obj = game_get_object_from_id(game, game_get_object_id_at(game, i));
 		fwrite(&obj, object_size(), 1, f);
 
@@ -237,7 +237,7 @@ STATUS game_save_links(Game * game, FILE * f)
 	}
 	fwrite(&i, sizeof(int), 1, f);
 
-	for(i=0; game_get_link_id_at(game, i) || i<MAX_LINK; i++){
+	for(i=0; i>=0 ; i--){
 		lnk = game_get_link(game, game_get_link_id_at(game, i));
 		fwrite(&lnk, link_size(), 1, f);
 	}
@@ -266,7 +266,7 @@ STATUS game_save(Game * game, char * filename)
 
 	if(!game || !filename) return ERROR;
 
-	sprintf(string, "/saves/%s.sv", filename);
+	sprintf(string, "saves/%s.sv", filename);
 
 	save = fopen(string, "wb");
 	if(!save) return ERROR;
@@ -307,7 +307,7 @@ STATUS game_load_saved_game(Game * game, char * filename)
 
 	if(!game || !filename) return ERROR;
 
-	sprintf(string, "/saves/%s.sv", filename);
+	sprintf(string, "saves/%s.sv", filename);
 
 	save = fopen(string, "rb");
 	if(!save) return ERROR;
@@ -315,9 +315,9 @@ STATUS game_load_saved_game(Game * game, char * filename)
 	fread(&game, game_size(), 1, save);
 	fread(&ply, player_size(), 1, save);
 	fread(&inv, inventory_size(), 1, save);
-	fread(&set, set_size(), 1, save);
+	/*fread(&set, set_size(), 1, save);
 
-	inventory_set_ids(inv, set);
+	inventory_set_ids(inv, set);*/
 	player_setInventory(ply, inv);
 	game_set_player(game, ply);
 
@@ -331,8 +331,8 @@ STATUS game_load_saved_game(Game * game, char * filename)
 	fread(&i, sizeof(int), 1, save);
 	while( i >= 0){
 		fread(&spc, space_size(), 1, save);
-		fread(&set, set_size(), 1 ,save);
-		space_set_objects_id(spc, set);
+		/*fread(&set, set_size(), 1 ,save);
+		space_set_objects_id(spc, set);*/
 		game_add_space(game, spc);
 	}
 

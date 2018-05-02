@@ -59,7 +59,7 @@ Set * inventory_get_ids(Inventory *inv)
 {
 	if(!inv) return NULL;
 
-	return inv->ids;
+	return set_cp_all(inv->ids);
 }
 
 Id inventory_get_id_at(Inventory *inv, int num)
