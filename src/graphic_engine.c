@@ -66,7 +66,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 	int i;
 	Id id_act = NO_ID, spriteId = NO_ID;
 
-	char str[255] = {0};
+	char * str = calloc(255, sizeof(char));
 
 	Space *space_act = NULL;
 	Sprite *sprite = NULL;
@@ -134,7 +134,6 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
 		if (object_get_name(object))
 		{
-			printf("PLAYER OBJECT [%d]->[%s]\n", i, object_get_name(object));
 			if (object_get_iluminati(object) == FALSE)
 				sprintf(str, "      - %s", object_get_name(object));
 			else
@@ -167,38 +166,16 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 	screen_area_puts(ge->help, str);
 
 	/* Command History */
-	strcpy(str, dialogue_generate(game));
+	free(str);
+	str = dialogue_generate(game);
 	screen_area_puts(ge->feedback, str);
+	free(str);
 
 	command_set_id(game_get_last_command(game, 0), "");
 
 	/* Input */
 	screen_paint();
 	printf("prompt:> ");
-}
-
-char *create_objects_string(Game *game, Id id)
-{
-	int i, j;
-	char *obj = (char *)calloc(20, sizeof(char *));
-
-	for (i = 1, j = 0; i < 5; i++)
-	{
-		if (game_get_object_location(game, i) == id)
-		{
-			obj[j] = 'o';
-			obj[j + 1] = 48 + i;
-			j = j + 2;
-		}
-		else
-		{
-			obj[j] = ' ';
-			obj[j + 1] = ' ';
-			j = j + 2;
-		}
-	}
-
-	return obj;
 }
 
 void print_new_line(Area *area, int number)

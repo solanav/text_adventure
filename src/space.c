@@ -312,23 +312,9 @@ Id space_get_down(Space *space)
 
 Set *space_get_objects_id(Space *space)
 {
-	Set *set;
-	int n;
+	if(!space) return NULL;
 
-	if (!space)
-		return NULL;
-
-	set = set_create(5);
-	if (!set)
-		return NULL;
-
-	for (n = 0; set_get_id(space->objects, n) != NO_ID; n++)
-	{
-		if (set_add(set, set_get_id(space->objects, n)) == ERROR)
-			return NULL;
-	}
-
-	return set;
+	return space->objects;
 }
 STATUS space_light_print(Space *space)
 {

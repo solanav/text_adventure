@@ -24,6 +24,7 @@ char * dialogue_generate(Game * game)
 			{
 				strcpy(dialogue, "You are sure you lived this before, weird");
 			}
+			die_die_die(die);
 			return dialogue;
 		case UNKNOWN:
 			strcpy(dialogue, "Are you even trying?");
@@ -36,6 +37,7 @@ char * dialogue_generate(Game * game)
 				else
 					strcpy(dialogue, "This does not seem right, again");
 			}
+			die_die_die(die);
 			return dialogue;
 		case PICK_UP:
 			if(strcmp("you can't move that", game_get_last_command_parameters(game, 0)) == 0)
@@ -51,12 +53,15 @@ char * dialogue_generate(Game * game)
 				sprintf(dialogue, "You pick %s up and put it in your bag", aux);
 			else
 				strcpy(dialogue, "Are you sure about that");
+			die_die_die(die);
 			return dialogue;
 		case DROP:
-			if(sscanf(game_get_last_command_parameters(game, 0), "%sOK", aux) != 0)
+			strcpy(aux, game_get_last_command_parameters(game, 0));
+			if(strcmp(aux, "no") != 0)
 				sprintf(dialogue, "You pick %s up and put it on the ground, you won't miss it", aux);
 			else
 				strcpy(dialogue, "You look in your bag but you do not find it");
+			die_die_die(die);
 			return dialogue;
 		case ROLL:
 			if(game_get_last_roll(game) == 1)
@@ -70,13 +75,14 @@ char * dialogue_generate(Game * game)
 			else if(game_get_last_roll(game) == 5)
 				strcpy(dialogue, "5. Wrath");
 			else if(game_get_last_roll(game) == 6)
-				strcpy(dialogue, "6, Heresy");
+				strcpy(dialogue, "6. Heresy");
 			else if(game_get_last_roll(game) == 7)
 				strcpy(dialogue, "7. Violence");
 			else if(game_get_last_roll(game) == 8)
 				strcpy(dialogue, "8. Fraud");
 			else
 				strcpy(dialogue, "9. Treachery");
+			die_die_die(die);
 			return dialogue;
 		case MOVE:
 			strcpy(aux, game_get_last_command_parameters(game, 0));
@@ -92,9 +98,11 @@ char * dialogue_generate(Game * game)
 				strcpy(dialogue, "Hmmm, you probably need a key");
 			else
 				strcpy(dialogue, "I'm pretty sure that's a wall");
+			die_die_die(die);
 			return dialogue;
 		case CHECK:
 			strcpy(dialogue, game_get_last_command_parameters(game, 0));
+			die_die_die(die);
 			return dialogue;
 		case TURNON:
 			strcpy(aux, game_get_last_command_parameters(game, 0));
@@ -109,6 +117,7 @@ char * dialogue_generate(Game * game)
 			}
 			else
 				strcpy(dialogue, "It gives some light, might be useful");
+			die_die_die(die);
 			return dialogue;
 		case TURNOFF:
 			strcpy(aux, game_get_last_command_parameters(game, 0));
@@ -123,6 +132,7 @@ char * dialogue_generate(Game * game)
 			}
 			else
 				strcpy(dialogue, "Who turned off the lights? It was you");
+			die_die_die(die);
 			return dialogue;
 		case OPEN:
 			strcpy(aux, game_get_last_command_parameters(game, 0));
@@ -136,9 +146,11 @@ char * dialogue_generate(Game * game)
 			}
 			else
 				strcpy(dialogue, "A loud creek is heard, and the gate opens");
+			die_die_die(die);
 			return dialogue;
 		default:
 			strcpy(dialogue, "How?");
+			die_die_die(die);
 			return dialogue;
 	}
 }

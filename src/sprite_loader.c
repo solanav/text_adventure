@@ -96,6 +96,7 @@ STATUS sprite_loader_map(Game *game, char *filename)
 		}
 	}
 
+	sprite_destroy(sprite);
 	fclose(file);
 
 	return OK;

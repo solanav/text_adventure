@@ -143,7 +143,7 @@ run_test: all_test
 	./space_test ; ./object_test ; ./die_test ; ./link_test ; ./command_test ; ./inventory_test ; ./player_test ; ./set_test
 
 val:
-	valgrind --leak-check=full ./game_exec data/data2.dat
+	valgrind -v --leak-check=full ./game_exec data/data2.dat
 
 test_game:
 	./game_exec data.dat < ./log/partida_prueba.oca

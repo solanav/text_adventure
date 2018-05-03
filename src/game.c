@@ -277,11 +277,9 @@ Id game_get_object_location(Game *game, Id id)
 		{
 			if (set_get_id(objects, n) == id)
 			{
-				set_destroy(objects);
 				return space_get_id(game->spaces[i]);
 			}
 		}
-		set_destroy(objects);
 	}
 	return NO_ID;
 }
@@ -291,6 +289,7 @@ STATUS game_update(Game *game, F_Command *cmd)
 	if (!game || !cmd)
 		return ERROR;
 
+	game->last_cmd[1] = game->last_cmd[0];
 	game->last_cmd[0] = cmd;
 
 	(*game_callback_fn_list[command_getCmd(cmd)])(game);
@@ -637,8 +636,12 @@ void game_callback_drop(Game *game)
 
 	if(player_removeObjId(game->player, object_id) == OK)
 	{
-		sprintf(object, "%sOK", object);
+		command_set_id(game->last_cmd[0], object);
 		space_add_object(space_pointer, object_id);
+	}
+	else
+	{
+		command_set_id(game->last_cmd[0], "no");
 	}
 
 	return;
