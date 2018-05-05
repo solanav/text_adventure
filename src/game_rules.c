@@ -33,12 +33,12 @@ void rules_destroy(Rule_Data *rule_data)
 		free(rule_data);
 }
 
-STATUS rules_moveCount(Rule_Data *rule_data)
+STATUS rules_setMoveCount(Rule_Data *rule_data, int count)
 {
 	if (!rule_data)
 		return ERROR;
 
-	rule_data->move_count += 1;
+	rule_data->move_count = count;
 	return OK;
 }
 

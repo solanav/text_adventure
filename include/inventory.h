@@ -24,6 +24,7 @@ Id inventory_get_id_at(Inventory *inv, int num);
 
 STATUS inventory_add_id(Inventory *inv, Id id);
 STATUS inventory_del_id(Inventory *inv, Id id);
+BOOL inventory_checkById(Inventory *inv, Id id);
 
 void inventory_print(Inventory *);
 

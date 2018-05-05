@@ -22,6 +22,7 @@
 #define STARTING_SPACE 25
 #define NO_LIGHT_SPRITE 16
 #define MOVES_TO_START_RULES 10
+#define FURNANCE_ID 21
 
 struct _Game
 {
@@ -527,6 +528,7 @@ STATUS update_rules(Game *game, Rule_Data *rule_data)
 	Player *player = NULL;
 	Die *die = NULL;
 	Space *space = NULL;
+	Inventory *inventory = NULL;
 
 	if (!game || !rule_data)
 		return ERROR;
@@ -534,14 +536,15 @@ STATUS update_rules(Game *game, Rule_Data *rule_data)
 	player = game_get_player(game);
 	die = game_get_die(game);
 	space = game_get_space(game, game_get_player_location(game));
+	inventory = player_getInventory(player);
 
 	die_roll(die);
 	rules_setDieVal(rule_data, die_get_last_roll(die));
 
 	if (game_get_last_command_text(game, 0) == MOVE)
-		rules_moveCount(rule_data);
+		rules_setMoveCount(rule_data, rules_getMoveCount(rule_data) + 1);
 
-	if (game_get_last_command_text(game, 0) == ROLL)
+	if (rules_getMoveCount(rule_data) == MOVES_TO_START_RULES)
 	{
 		if (rules_getDieVal(rule_data) == NO_RULES)
 		{
@@ -549,14 +552,17 @@ STATUS update_rules(Game *game, Rule_Data *rule_data)
 		}
 		else if (rules_getDieVal(rule_data) == NO_LIGHT)
 		{
+			/* Turn off the lights */
 			space_set_light(space, FALSE);
 		}
 		else if (rules_getDieVal(rule_data) == GO_START)
 		{
+			/* You get sent to the starting point */
 			game_set_player_location(game, STARTING_SPACE);
 		}
 		else if (rules_getDieVal(rule_data) == NO_TORCH)
 		{
+			/* Remove torch from inventory */
 			player_removeObjId(player, 1);
 		}
 		else if (rules_getDieVal(rule_data) == BECOME_TREE)
@@ -566,10 +572,17 @@ STATUS update_rules(Game *game, Rule_Data *rule_data)
 		}
 		else if (rules_getDieVal(rule_data) == GO_RAND)
 		{
+			/* Move to a semi-random position */
 			die_roll(die);
 			player_setLocId(player, die_get_last_roll(die));
 		}
 
+		rules_setMoveCount(rule_data, 0);
+	}
+
+	if (game_get_player_location(game) == FURNANCE_ID)
+	{
+		if ()
 	}
 
 	return OK;

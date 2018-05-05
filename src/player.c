@@ -45,6 +45,14 @@ Player *player_create(char *name, Id location_id, Id object_id, Id id)
 	return new_player;
 }
 
+Inventory *player_getInventory(Player *player)
+{
+	if (!player)
+		return NULL;
+
+	return player->inv;
+}
+
 void player_destroy(Player *player)
 {
 	if (!player)
