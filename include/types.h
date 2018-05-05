@@ -13,7 +13,7 @@
 #define NO_ID -1
 #define STDSIZE 1024
 #define MAX_SPRITES 1000
-#define MAX_STRING 20
+#define MAX_STRING 1024
 
 typedef long Id;
 
