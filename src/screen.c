@@ -84,11 +84,11 @@ void screen_paint()
 			{
 				if (dest[i] == BG_CHAR)
 				{
-					printf("\033[0;35;45m%c\033[0m", dest[i]); /* fg:blue(34);bg:blue(44) */
+					printf("\033[0;35;45m%c\033[0m", dest[i]); /* Original values: fg:blue(34);bg:blue(44) */
 				}
 				else
 				{
-					printf("\033[0;30;46m%c\033[0m", dest[i]); /* fg:black(30);bg:white(47)*/
+					printf("\033[0;30;46m%c\033[0m", dest[i]); /* Original values: fg:black(30);bg:white(47)*/
 				}
 			}
 			printf("\n");

@@ -23,7 +23,19 @@ typedef enum enum_Rules {
 
 typedef struct _Rule_Data Rule_Data;
 
+/**
+*	@author Antonio Solana
+*	@brief Creates the rules structure
+*	@return Rules_Data
+*	@exception Broken calloc
+*/
 Rule_Data *rules_create();
+
+/**
+*	@author Antonio Solana
+*	@brief Destroys the rules structure given
+*	@param Rule_Data*
+*/
 void rules_destroy(Rule_Data *);
 
 STATUS rules_moveCount(Rule_Data *rule_data);

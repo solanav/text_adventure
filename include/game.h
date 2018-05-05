@@ -23,19 +23,72 @@
 
 typedef struct _Game Game;
 
+/**
+*	@brief Creates the game structure and sets all values to NULL
+*	@return Game*
+*	@exception Broken calloc
+*/
 Game *game_create();
+
+/**
+*	@brief Sets parameters of the game reading the file given
+*	@param Game*
+*	@param char* filename
+*	@return STATUS OK or ERROR
+*	@exception No game
+*/
 STATUS game_create_from_file(Game *, char *);
 
+/**
+*	@brief Calls the required callback from the last command given
+*	@param Game*
+*	@param F_Command*
+*	@return STATUS OK or ERROR
+*	@exception  No game or command
+*/
 STATUS game_update(Game *, F_Command *);
+
+/**
+*	@brief Frees the game structure and everything in it
+*	@param Game*
+*	@return STATUS OK or ERROR
+*/
 STATUS game_destroy(Game *);
 
+/**
+*	@brief Returns TRUE if the game is over
+*	@param Game*
+*	@return BOOL TRUE or FALSE
+*/
 BOOL game_is_over(Game *);
 
+/**
+*	@brief Prints the actual state of the game in console
+*	@param Game*
+*	@exception No game
+*/
 void game_print_screen(Game *);
+
 void game_print_data(Game *);
 
+/**
+*	@brief Gets a Space in the game
+*	@param Game*
+*	@param Id of the space
+*	@return Space*
+*	@exception No game or Space with Id given does not exist
+*/
 Space *game_get_space(Game *, Id);
+
+/**
+*	@brief Gets the player stored in the game
+*	@param Game*
+*	@return Player*
+*	@exception No game
+*/
 Player *game_get_player(Game *);
+
+
 Die *game_get_die(Game *game);
 Object *game_get_object(Game *, char *);
 Object *game_get_object_from_id(Game *game, Id id);

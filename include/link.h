@@ -15,7 +15,7 @@
 
 typedef struct _Link Link;
 
-/*
+/**
 *	@author: Pablo Sánchez
 *	@brief: Allocs memory for one link
 *	@param: Null
@@ -23,7 +23,7 @@ typedef struct _Link Link;
 */
 Link *link_create(Id);
 
-/*
+/**
 *	@author: Pablo Sánchez
 *	@brief: Frees the Link
 *	@param: *Link
@@ -31,7 +31,7 @@ Link *link_create(Id);
 */
 void link_destroy(Link *);
 
-/*
+/**
 *	@author: Pablo Sánchez
 *	@brief: Changes the link id to the given one
 *	@param: *Link Id
@@ -39,7 +39,7 @@ void link_destroy(Link *);
 */
 STATUS link_setId(Link *, Id);
 
-/*
+/**
 *	@author: Pablo Sánchez
 *	@brief: Changes the Link status to OPENED or CLOSED
 *	@param: *Link LinkStatus
@@ -47,7 +47,7 @@ STATUS link_setId(Link *, Id);
 */
 STATUS link_setStatus(Link *, LinkStatus);
 
-/*
+/**
 *	@author: Pablo Sánchez
 *	@brief: Sets the spaces the link is joining
 *	@param: *Link two spaces ids
@@ -55,7 +55,7 @@ STATUS link_setStatus(Link *, LinkStatus);
 */
 STATUS link_setSpaces(Link *, Id, Id);
 
-/*
+/**
 *	@author: Pablo Sánchez
 *	@brief: Gets the links id
 *	@param: *Link
@@ -63,7 +63,7 @@ STATUS link_setSpaces(Link *, Id, Id);
 */
 Id link_getId(Link *);
 
-/*
+/**
 *	@author: Pablo Sánchez
 *	@brief: Gets the first Space of the link
 *	@param: *Link
@@ -71,7 +71,7 @@ Id link_getId(Link *);
 */
 Id link_getSpace1(Link *);
 
-/*
+/**
 *	@author: Pablo Sánchez
 *	@brief: Gets the second Space of the link
 *	@param: *Link
@@ -79,7 +79,7 @@ Id link_getSpace1(Link *);
 */
 Id link_getSpace2(Link *);
 
-/*
+/**
 *	@author: Pablo Sánchez
 *	@brief: Gets the status the given link is in
 *	@param: *Link
@@ -87,7 +87,7 @@ Id link_getSpace2(Link *);
 */
 LinkStatus link_getStatus(Link *);
 
-/*
+/**
 *	@author: Pablo Sánchez
 *	@brief: Gets the other space the link is connecting
 *	@param: *Link space_id
@@ -95,7 +95,7 @@ LinkStatus link_getStatus(Link *);
 */
 Id link_getDestination(Link *, Id);
 
-/*
+/**
 *	@author: Antonio Solana
 *	@brief: Gets the direction of the link (relative to space1)
 *	@param: *Link space_id
@@ -103,7 +103,7 @@ Id link_getDestination(Link *, Id);
 */
 Id link_getDirection(Link *);
 
-/*
+/**
 *	@author: Antonio Solana
 *	@brief: Sets the direction of the link (relative to space1)
 *	@param: *Link space_id
@@ -112,7 +112,7 @@ Id link_getDirection(Link *);
 */
 STATUS link_setDirection(Link *, int);
 
-/*
+/**
 *	@author: Pablo Sánchez
 *	@brief: [DEBUG ONLY] prints the given link in stdout
 *	@param: *Link
