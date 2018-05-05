@@ -14,6 +14,14 @@
 
 #include "types.h"
 
+#define OBJID_TORCH 1
+#define OBJID_KEY1 2
+#define OBJID_KEY2 3
+#define OBJID_KEY3 4
+#define OBJID_KEY4 5
+#define OBJID_KEY5 6
+#define OBJID_MASTERKEY 21
+
 /*
 *	@param un campo de identificacion id
 *	@param nombre del objeto name

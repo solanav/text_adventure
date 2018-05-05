@@ -6,14 +6,14 @@
  * @copyright GNU Public License
  */
 
- #ifndef SET_H
- #define SET_H
+#ifndef SET_H
+#define SET_H
 
- #include <stdio.h>
- #include <stdlib.h>
- #include "types.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "types.h"
 
- #define MAX_INV_SIZE 1024
+#define MAX_INV_SIZE 1024
 
  typedef struct _Set Set;
 /**
@@ -84,6 +84,6 @@ STATUS set_del(Set *, Id);
  *  @param1 el set, un lugar donde imprimir (debe estar abierto)
  *	@return OK o ERROR
  */
- STATUS set_print_debug(FILE *, Set *);
+STATUS set_print_debug(FILE *, Set *);
 
- #endif
+#endif

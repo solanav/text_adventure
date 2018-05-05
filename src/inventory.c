@@ -110,6 +110,22 @@ STATUS inventory_del_id(Inventory *inv, Id id)
 	return OK;
 }
 
+BOOL inventory_checkById(Inventory *inv, Id id)
+{
+	int i;
+	
+	if (!inv || id == NO_ID)
+		return FALSE;
+
+	for (i = 0; i < MAX_INV_SIZE; i++)
+	{
+		if (inventory_get_id_at(inv, i) == id)
+			return TRUE;
+	}
+
+	return FALSE;
+}
+
 void inventory_print(Inventory *inv)
 {
 	set_print_debug(stdin, inv->ids);

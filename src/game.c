@@ -19,9 +19,10 @@
 #define N_CALLBACK 11
 #define PLAYER_ID 1
 #define DIE_SEED 666
-#define STARTING_SPACE 25
+#define STARTING_SPACE 62
 #define NO_LIGHT_SPRITE 16
 #define MOVES_TO_START_RULES 10
+#define FURNANCE_ID 21
 
 struct _Game
 {
@@ -93,6 +94,8 @@ Game *game_create()
 
 	game->player = player_create("player1", NO_ID, NO_ID, PLAYER_ID);
 	game->rule_data = rules_create();
+
+	inventory_add_id(player_getInventory(game->player), OBJID_MASTERKEY);
 
 	return game;
 }
@@ -424,8 +427,14 @@ STATUS game_set_link(Game *game, Id link_id, Id space_id0, Id space_id1, int dir
 		if (game_get_link_id_at(game, i) == NO_ID)
 		{
 			game->links[i] = link_create(link_id);
+			link_setId(game->links[i], link_id);
 			link_setSpaces(game->links[i], space_id0, space_id1);
 			link_setDirection(game->links[i], direction);
+			link_setStatus(game->links[i], door);
+
+			printf("Saving link %d with door %d\n", i, door);
+			link_print(game->links[i]);
+
 			return OK;
 		}
 	}
@@ -527,6 +536,9 @@ STATUS update_rules(Game *game, Rule_Data *rule_data)
 	Player *player = NULL;
 	Die *die = NULL;
 	Space *space = NULL;
+	Inventory *inventory = NULL;
+
+	BOOL key1 = FALSE, key2 = FALSE, key3 = FALSE, key4 = FALSE, key5 = FALSE;
 
 	if (!game || !rule_data)
 		return ERROR;
@@ -534,18 +546,19 @@ STATUS update_rules(Game *game, Rule_Data *rule_data)
 	player = game_get_player(game);
 	die = game_get_die(game);
 	space = game_get_space(game, game_get_player_location(game));
+	inventory = player_getInventory(player);
 
 	die_roll(die);
 	rules_setDieVal(rule_data, die_get_last_roll(die));
 
 	if (game_get_last_command_text(game, 0) == MOVE)
-		rules_moveCount(rule_data);
+		rules_setMoveCount(rule_data, rules_getMoveCount(rule_data) + 1);
 
-	if (game_get_last_command_text(game, 0) == ROLL)
+	if (rules_getMoveCount(rule_data) == MOVES_TO_START_RULES)
 	{
 		if (rules_getDieVal(rule_data) == NO_RULES)
 		{
-			/* NO RULES */
+			/* NO RULE */
 		}
 		else if (rules_getDieVal(rule_data) == NO_LIGHT)
 		{
@@ -557,11 +570,10 @@ STATUS update_rules(Game *game, Rule_Data *rule_data)
 		}
 		else if (rules_getDieVal(rule_data) == NO_TORCH)
 		{
-			player_removeObjId(player, 1);
+			player_removeObjId(player, OBJID_TORCH);
 		}
 		else if (rules_getDieVal(rule_data) == BECOME_TREE)
 		{
-			/* Malas noticias, eres un arbol */
 			player_setTreeState(player, TRUE);
 		}
 		else if (rules_getDieVal(rule_data) == GO_RAND)
@@ -570,6 +582,33 @@ STATUS update_rules(Game *game, Rule_Data *rule_data)
 			player_setLocId(player, die_get_last_roll(die));
 		}
 
+		rules_setMoveCount(rule_data, 0);
+	}
+
+	if (game_get_player_location(game) == FURNANCE_ID)
+	{
+		if (inventory_checkById(inventory, OBJID_KEY1) == TRUE)
+			key1 = TRUE;
+		if (inventory_checkById(inventory, OBJID_KEY2) == TRUE)
+			key2 = TRUE;
+		if (inventory_checkById(inventory, OBJID_KEY3) == TRUE)
+			key3 = TRUE;
+		if (inventory_checkById(inventory, OBJID_KEY4) == TRUE)
+			key4 = TRUE;
+		if (inventory_checkById(inventory, OBJID_KEY5) == TRUE)
+			key5 = TRUE;
+
+		if (key1 == TRUE && key2 == TRUE && key3 == TRUE && key4 == TRUE && key5 == TRUE)
+		{
+			player_removeObjId(player, OBJID_KEY1);
+			player_removeObjId(player, OBJID_KEY2);
+			player_removeObjId(player, OBJID_KEY3);
+			player_removeObjId(player, OBJID_KEY4);
+			player_removeObjId(player, OBJID_KEY5);
+
+			player_setObjId(player, OBJID_MASTERKEY);
+		}
+			
 	}
 
 	return OK;
@@ -690,8 +729,13 @@ void game_callback_move(Game *game)
 		return;
 
 	link = game_get_link(game, link_id);
-	if(!link) command_set_id(game->last_cmd[0], "no");
-	else command_set_id(game->last_cmd[0], direction);
+
+	printf("Link id -> %ld {%s}\n with door -> %d", link_id, direction, link_getStatus(link));
+
+	if(!link)
+		command_set_id(game->last_cmd[0], "no");
+	else
+		command_set_id(game->last_cmd[0], direction);
 
 	if (link_getStatus(link) == CLOSED)
 	{
@@ -823,18 +867,31 @@ void game_callback_open(Game *game)
 	else if (strcasecmp(unpak_link, "w") == 0 || strcasecmp(unpak_link, "west") == 0)
 		link_id = space_get_west(game_get_space(game, actpos));
 
-	else{
+	else
+	{
 		return;
-		command_set_id(game->last_cmd[0], "no");
 	}
 
 	link = game_get_link(game, link_id);
 
+	printf("Using link -> %ld\n", link_id);
 	printf("Next move should be -> %ld\n", link_getSpace2(link));
-	printf("Currently has STATUS -> %d\n", link_getStatus(link));
+	printf("Currently has STATUS b -> %d\n", link_getStatus(link));
 
-	if(link_setStatus(link, OPENED) == ERROR)
-		command_set_id(game->last_cmd[0], "error");
-
-	printf("Currently has STATUS -> %d\n", link_getStatus(link));
+	if (inventory_checkById(player_getInventory(game_get_player(game)), OBJID_MASTERKEY) == TRUE)
+	{
+		if (strcasecmp(unpak_object, "masterkey") == 0)
+		{
+			if(link_setStatus(link, OPENED) == ERROR)
+			{
+				command_set_id(game->last_cmd[0], "error");
+			}
+		}
+		else
+		{
+			command_set_id(game->last_cmd[0], "error");
+		}
+	}
+		
+	printf("Currently has STATUS a -> %d\n", link_getStatus(link));
 }

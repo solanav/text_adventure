@@ -132,12 +132,13 @@ STATUS link_print(Link *link)
 		return ERROR;
 
 	printf("Link id: %ld\n", link->linkId);
-	printf("First space id: %ld\n", link->linkspace1);
-	printf("Second space id: %ld\n", link->linkspace2);
+	printf("\tFirst space id: %ld\n", link->linkspace1);
+	printf("\tSecond space id: %ld\n", link->linkspace2);
+
 	if (link->door == OPENED)
-		printf("Link status: OPENED");
+		printf("\tLink status: OPENED\n");
 	if (link->door == CLOSED)
-		printf("Link status: CLOSED");
+		printf("\tLink status: CLOSED\n");
 
 	return OK;
 }

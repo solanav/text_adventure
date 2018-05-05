@@ -38,7 +38,7 @@ Rule_Data *rules_create();
 */
 void rules_destroy(Rule_Data *);
 
-STATUS rules_moveCount(Rule_Data *rule_data);
+STATUS rules_setMoveCount(Rule_Data *rule_data, int count);
 STATUS rules_setDieVal(Rule_Data *rule_data, short dieval);
 int rules_getDieVal(Rule_Data *rule_data);
 int rules_getMoveCount(Rule_Data *rule_data);

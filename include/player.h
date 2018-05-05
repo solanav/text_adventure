@@ -11,7 +11,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "types.h"
+#include "../include/types.h"
+#include "../include/inventory.h"
 
 typedef struct _Player Player;
 /**
@@ -122,5 +123,12 @@ STATUS player_setTreeState(Player *player, BOOL newTreeState);
 *	@return estado
 */
 BOOL player_getTreeState(Player *player);
+/**
+*	@author Antonio Solana
+*	@brief Returns player inventory
+*	@param el jugador
+*	@return inventory
+*/
+Inventory *player_getInventory(Player *player);
 
 #endif
