@@ -20,37 +20,38 @@ OBJPATH = ./build/
 TESTPATH  = ./test/
 TESTOBJPATH = ./build/
 DOCPATH = ./doc/
+BINPATH = ./bin/
 
 ################ EXEC CREATION
 
 game_exec: game_loop.o game_reader.o graphic_engine.o screen.o command.o space.o object.o player.o set.o die.o link.o game.o inventory.o sprite_loader.o sprite.o game_rules.o dialogue.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)game_loop.o $(OBJPATH)game_reader.o $(OBJPATH)graphic_engine.o $(OBJPATH)screen.o $(OBJPATH)command.o $(OBJPATH)space.o $(OBJPATH)object.o $(OBJPATH)player.o $(OBJPATH)set.o $(OBJPATH)die.o $(OBJPATH)link.o $(OBJPATH)game.o $(OBJPATH)inventory.o $(OBJPATH)sprite_loader.o $(OBJPATH)sprite.o $(OBJPATH)game_rules.o $(OBJPATH)dialogue.o
+	$(CC) $(CFLAGS) -o $(BINPATH)game_exec $(OBJPATH)game_loop.o $(OBJPATH)game_reader.o $(OBJPATH)graphic_engine.o $(OBJPATH)screen.o $(OBJPATH)command.o $(OBJPATH)space.o $(OBJPATH)object.o $(OBJPATH)player.o $(OBJPATH)set.o $(OBJPATH)die.o $(OBJPATH)link.o $(OBJPATH)game.o $(OBJPATH)inventory.o $(OBJPATH)sprite_loader.o $(OBJPATH)sprite.o $(OBJPATH)game_rules.o $(OBJPATH)dialogue.o
 
 ################ TESTS
 
 space_test: space.o set.o space_test.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)space.o $(OBJPATH)set.o $(TESTOBJPATH)space_test.o
+	$(CC) $(CFLAGS) -o $(BINPATH)space_test $(OBJPATH)space.o $(OBJPATH)set.o $(TESTOBJPATH)space_test.o
 
 object_test: object.o object_test.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)object.o $(TESTOBJPATH)object_test.o
+	$(CC) $(CFLAGS) -o $(BINPATH)object_test $(OBJPATH)object.o $(TESTOBJPATH)object_test.o
 
 link_test: link.o link_test.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)link.o $(TESTOBJPATH)link_test.o
+	$(CC) $(CFLAGS) -o $(BINPATH)link_test $(OBJPATH)link.o $(TESTOBJPATH)link_test.o
 
 die_test: die_test.o die.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)die.o $(TESTOBJPATH)die_test.o
+	$(CC) $(CFLAGS) -o $(BINPATH)die_test $(OBJPATH)die.o $(TESTOBJPATH)die_test.o
 
 command_test: command_test.o command.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)command.o $(TESTOBJPATH)command_test.o
+	$(CC) $(CFLAGS) -o $(BINPATH)command_test $(OBJPATH)command.o $(TESTOBJPATH)command_test.o
 
 inventory_test: inventory_test.o inventory.o set.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)inventory.o $(OBJPATH)set.o $(TESTOBJPATH)inventory_test.o
+	$(CC) $(CFLAGS) -o $(BINPATH)inventory_test $(OBJPATH)inventory.o $(OBJPATH)set.o $(TESTOBJPATH)inventory_test.o
 
 player_test: player_test.o player.o inventory.o set.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)player.o $(OBJPATH)inventory.o $(OBJPATH)set.o $(TESTOBJPATH)player_test.o
+	$(CC) $(CFLAGS) -o $(BINPATH)player_test $(OBJPATH)player.o $(OBJPATH)inventory.o $(OBJPATH)set.o $(TESTOBJPATH)player_test.o
 
 set_test: set_test.o set.o
-	$(CC) $(CFLAGS) -o $@ $(OBJPATH)set.o $(TESTOBJPATH)set_test.o
+	$(CC) $(CFLAGS) -o $(BINPATH)set_test $(OBJPATH)set.o $(TESTOBJPATH)set_test.o
 
 ################ OBJECT CREATION
 
@@ -140,13 +141,13 @@ all_test: clean $(ALL_TEST)
 ################ OTHER COMMANDS
 
 run_test: all_test
-	./space_test ; ./object_test ; ./die_test ; ./link_test ; ./command_test ; ./inventory_test ; ./player_test ; ./set_test
+	$(BINPATH)space_test ; $(BINPATH)object_test ; $(BINPATH)die_test ; $(BINPATH)link_test ; $(BINPATH)command_test ; $(BINPATH)inventory_test ; $(BINPATH)player_test ; $(BINPATH)set_test
 
 val:
-	valgrind -v --leak-check=full ./game_exec data/data2.dat
+	valgrind -v --leak-check=full $(BINPATH)game_exec data/data.dat
 
 test_game:
-	./game_exec data.dat < ./log/partida_prueba.oca
+	$(BINPATH)game_exec data/data.dat < ./log/partida_prueba.oca
 
 doxygen:
 	doxygen -g doxyconfig && doxygen doxyconfig

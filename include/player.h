@@ -11,7 +11,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "types.h"
+#include "../include/types.h"
+#include "../include/inventory.h"
 
 typedef struct _Player Player;
 /**

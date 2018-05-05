@@ -9,7 +9,8 @@
 		"stdlib.h": "c",
 		"stdio.h": "c",
 		"link.h": "c",
-		"game_rules.h": "c"
+		"game_rules.h": "c",
+		"string.h": "c"
 	},
 	"C_Cpp.intelliSenseEngineFallback": "Disabled"
 }
