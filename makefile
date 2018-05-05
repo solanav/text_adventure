@@ -147,7 +147,7 @@ val:
 	valgrind -v --leak-check=full $(BINPATH)game_exec data/data.dat
 
 test_game:
-	./game_exec data.dat < ./log/partida_prueba.oca
+	$(BINPATH)game_exec data/data.dat < ./log/partida_prueba.oca
 
 doxygen:
 	doxygen -g doxyconfig && doxygen doxyconfig
