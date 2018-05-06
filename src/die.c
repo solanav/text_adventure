@@ -64,3 +64,10 @@ short int die_get_last_roll(Die *die)
 
 	return die->result;
 }
+
+int die_getRandomNumber(Die * die)
+{
+	/* No es un magic number es un ~ m a g i c ~ number */
+	/* (∩｀-´)⊃━☆ﾟ.*･｡ﾟ */
+	return 11;
+}

@@ -19,7 +19,7 @@
 #define N_CALLBACK 11
 #define PLAYER_ID 1
 #define DIE_SEED 666
-#define STARTING_SPACE 62
+#define STARTING_SPACE 25
 #define NO_LIGHT_SPRITE 16
 #define MOVES_TO_START_RULES 10
 #define FURNANCE_ID 21
@@ -94,8 +94,6 @@ Game *game_create()
 
 	game->player = player_create("player1", NO_ID, NO_ID, PLAYER_ID);
 	game->rule_data = rules_create();
-
-	inventory_add_id(player_getInventory(game->player), OBJID_MASTERKEY);
 
 	return game;
 }
@@ -509,7 +507,6 @@ STATUS update_sprites(Game *game)
 		object = game_get_object_from_id(game, player_getObjId(player, i));
 		if (object_get_name(object))
 		{
-			printf("\nPlayer object -> %s", object_get_name(object));
 			if (object_get_on(object) == TRUE)
 			{
 				player_light = TRUE;
@@ -562,8 +559,11 @@ STATUS update_rules(Game *game, Rule_Data *rule_data)
 	if (game_get_last_command_text(game, 0) == MOVE)
 		rules_setMoveCount(rule_data, rules_getMoveCount(rule_data) + 1);
 
-	if (rules_getMoveCount(rule_data) == MOVES_TO_START_RULES)
+	if (rules_getMoveCount(rule_data) >= MOVES_TO_START_RULES)
 	{
+		printf("RULE -> %d\n", rules_getDieVal(rule_data));
+		player_setTreeState(player, FALSE);
+
 		if (rules_getDieVal(rule_data) == NO_RULES)
 		{
 			/* NO RULE */
@@ -586,8 +586,11 @@ STATUS update_rules(Game *game, Rule_Data *rule_data)
 		}
 		else if (rules_getDieVal(rule_data) == GO_RAND)
 		{
-			die_roll(die);
-			player_setLocId(player, die_get_last_roll(die));
+			player_setLocId(player, die_getRandomNumber(die));
+		}
+		else /* execute GIVE_OBJ */
+		{
+			player_setObjId(player, die_getRandomNumber(die));
 		}
 
 		rules_setMoveCount(rule_data, 0);
@@ -737,8 +740,6 @@ void game_callback_move(Game *game)
 		return;
 
 	link = game_get_link(game, link_id);
-
-	printf("Link id -> %ld {%s}\n with door -> %d", link_id, direction, link_getStatus(link));
 
 	if(!link)
 		command_set_id(game->last_cmd[0], "no");

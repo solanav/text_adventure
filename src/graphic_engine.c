@@ -39,7 +39,7 @@ Graphic_engine *graphic_engine_create()
 
 	ge->map = screen_area_init(1, 1, 38, 16);
 	ge->descript = screen_area_init(40, 1, 34, 16);
-	ge->banner = screen_area_init(1, 18, 23, 1);
+	ge->banner = screen_area_init(1, 18, 30, 1);
 	ge->help = screen_area_init(1, 19, 73, 3);
 	ge->feedback = screen_area_init(1, 23, 73, 5);
 
@@ -154,15 +154,15 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 	*/
 
 	/* Banner */
-	screen_area_puts(ge->banner, " The game of the Goose ");
+	screen_area_puts(ge->banner, " The Shadow of the Gooselosus ");
 
 	/* Help */
 	screen_area_clear(ge->help);
 	sprintf(str, " The commands you can use are:");
 	screen_area_puts(ge->help, str);
-	sprintf(str, " Move or m <North (n), East (e), South (s), West (w)>");
+	sprintf(str, " Move (m) <North (n), East (e), South (s), West (w)>");
 	screen_area_puts(ge->help, str);
-	sprintf(str, " Pickup or u <Id>, Drop or d <Id>, Exit or e");
+	sprintf(str, " Pickup (u) <Id>, Drop (d) <Id>, Exit (e)");
 	screen_area_puts(ge->help, str);
 
 	/* Command History */

@@ -57,4 +57,12 @@ short int die_get_last_roll(Die*);
  */
  STATUS die_print(FILE* , Die* );
 
+/**
+ * 	@author Antonio Solana
+ *	@brief devuelve un numero COMPLETAMENTE aleatorio
+ *	@param1 Die*die, el dado que desea imprimir.
+ *	@return numero al azar
+ */
+int die_getRandomNumber(Die *);
+
  #endif

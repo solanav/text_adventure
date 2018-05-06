@@ -96,6 +96,8 @@ char * dialogue_generate(Game * game)
 				strcpy(dialogue, "Lets go south this time");
 			else if(strcmp(aux, "thats closed") == 0)
 				strcpy(dialogue, "Hmmm, you probably need a key");
+			else if(strcmp(aux, "you are a tree :^)") == 0)
+				strcpy(dialogue, "You became a tree... (ya dun goofed, restart game)");
 			else
 				strcpy(dialogue, "I'm pretty sure that's a wall");
 			die_die_die(die);

@@ -18,7 +18,7 @@ typedef enum enum_Rules {
 	NO_TORCH,
 	BECOME_TREE,
 	GO_RAND,
-	HIDE_ALL
+	GIVE_OBJ
 } Rules;
 
 typedef struct _Rule_Data Rule_Data;
