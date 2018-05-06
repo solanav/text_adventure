@@ -5,6 +5,5 @@ var searchData=
   ['id_5fmax',['id_max',['../struct__Inventory.html#a4b104bc26c8e030cae3032cbe7d940a3',1,'_Inventory']]],
   ['id_5ftotal',['id_total',['../struct__Set.html#afe941cf156f1000d962bff58835ba853',1,'_Set']]],
   ['ids',['ids',['../struct__Inventory.html#a7f6b5d7d1111e7e8f8999c656ae27d0c',1,'_Inventory']]],
-  ['iluminati',['iluminati',['../struct__Object.html#aac8af0a2662396bd255273a3cc8f22d7',1,'_Object']]],
   ['inv',['inv',['../struct__Player.html#aaaeeb03326c37ce62c333c2b94fde23c',1,'_Player']]]
 ];

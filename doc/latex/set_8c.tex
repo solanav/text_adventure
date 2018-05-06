@@ -1,16 +1,16 @@
-\hypertarget{set_8c}{}\section{set.\+c File Reference}
-\label{set_8c}\index{set.\+c@{set.\+c}}
+\hypertarget{set_8c}{}\section{src/set.c File Reference}
+\label{set_8c}\index{src/set.\+c@{src/set.\+c}}
 
 
 Low level stack and queue functions.  
 
 
-{\ttfamily \#include \char`\"{}../include/set.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/set.\+h\char`\"{}}\newline
 Include dependency graph for set.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=259pt]{set_8c__incl}
+\includegraphics[width=260pt]{set_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Classes}
@@ -21,24 +21,24 @@ struct \hyperlink{struct__Set}{\+\_\+\+Set}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$ \hyperlink{set_8c_a34f3d3777fcb7f8b54b948527d4173b6}{set\+\_\+create} (int inv\+\_\+size)
-\item 
-void \hyperlink{set_8c_a9d762a027f1c3bcdd22f70ee9093a7dd}{set\+\_\+destroy} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set)
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{set_8c_a214235069ee276ad9bceb2c66e56bfe1}{set\+\_\+add} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{set_8c_a766d123b18af5298d23b51bc1ed433e6}{set\+\_\+del} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
-\item 
-\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{set_8c_ad882445dee89c289e8bcd971a56c2e55}{set\+\_\+get\+\_\+id} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set, int num)
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{set_8c_aaa637b4dc68713c2e2c16ecda284d0aa}{set\+\_\+rm\+\_\+all} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set)
-\item 
-\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$ \hyperlink{set_8c_a8c1e1a34c5ab002443fda6efa9ba156f}{set\+\_\+cp\+\_\+all} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set)
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{set_8c_a3ca7b2e04938630d7fd087975f15c162}{set\+\_\+rearrange} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set)
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{set_8c_ad26e71cbaea293d805f96d0644bcf80f}{set\+\_\+print\+\_\+debug} (F\+I\+LE $\ast$f, \hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set)
-\end{DoxyCompactItemize}
+\hyperlink{struct__Set}{Set} $\ast$ \hyperlink{set_8c_a34f3d3777fcb7f8b54b948527d4173b6}{set\+\_\+create} (int inv\+\_\+size)
+\begin{DoxyCompactList}\small\item\em esta funcion se encarga de crear el conjunto reservando memoria para el mismo. \end{DoxyCompactList}\item 
+void \hyperlink{set_8c_a9d762a027f1c3bcdd22f70ee9093a7dd}{set\+\_\+destroy} (\hyperlink{struct__Set}{Set} $\ast$set)
+\begin{DoxyCompactList}\small\item\em esta funcion se encarga de destruir el conjunto. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{set_8c_a214235069ee276ad9bceb2c66e56bfe1}{set\+\_\+add} (\hyperlink{struct__Set}{Set} $\ast$set, Id id)
+\begin{DoxyCompactList}\small\item\em esta funcion se encarga de añadir un elemento al conjunto. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{set_8c_a766d123b18af5298d23b51bc1ed433e6}{set\+\_\+del} (\hyperlink{struct__Set}{Set} $\ast$set, Id id)
+\begin{DoxyCompactList}\small\item\em esta funcion se encarga de añadir un elemento al conjunto. \end{DoxyCompactList}\item 
+Id \hyperlink{set_8c_ad882445dee89c289e8bcd971a56c2e55}{set\+\_\+get\+\_\+id} (\hyperlink{struct__Set}{Set} $\ast$set, int num)
+\begin{DoxyCompactList}\small\item\em esta funcion se encarga de obtener el id de un conjunto. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{set_8c_aaa637b4dc68713c2e2c16ecda284d0aa}{set\+\_\+rm\+\_\+all} (\hyperlink{struct__Set}{Set} $\ast$set)
+\begin{DoxyCompactList}\small\item\em esta funcion se encarga de vaciar el set, sin destruirlo \end{DoxyCompactList}\item 
+\hyperlink{struct__Set}{Set} $\ast$ \hyperlink{set_8c_a8c1e1a34c5ab002443fda6efa9ba156f}{set\+\_\+cp\+\_\+all} (\hyperlink{struct__Set}{Set} $\ast$set)
+\begin{DoxyCompactList}\small\item\em copia el set \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{set_8c_a3ca7b2e04938630d7fd087975f15c162}{set\+\_\+rearrange} (\hyperlink{struct__Set}{Set} $\ast$set)
+\begin{DoxyCompactList}\small\item\em limpia el set para que no haya espacios vacíos entre los llenos \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{set_8c_ad26e71cbaea293d805f96d0644bcf80f}{set\+\_\+print\+\_\+debug} (F\+I\+LE $\ast$f, \hyperlink{struct__Set}{Set} $\ast$set)
+\begin{DoxyCompactList}\small\item\em \mbox{[}D\+E\+B\+UG O\+N\+LY\mbox{]} imprime el set dado en el file dado \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -53,70 +53,150 @@ G\+NU Public License
 
 
 \subsection{Function Documentation}
+\mbox{\Hypertarget{set_8c_a214235069ee276ad9bceb2c66e56bfe1}\label{set_8c_a214235069ee276ad9bceb2c66e56bfe1}} 
 \index{set.\+c@{set.\+c}!set\+\_\+add@{set\+\_\+add}}
 \index{set\+\_\+add@{set\+\_\+add}!set.\+c@{set.\+c}}
-\subsubsection[{\texorpdfstring{set\+\_\+add(\+Set $\ast$set, Id id)}{set_add(Set *set, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} set\+\_\+add (
-\begin{DoxyParamCaption}
-\item[{{\bf Set} $\ast$}]{set, }
-\item[{{\bf Id}}]{id}
-\end{DoxyParamCaption}
-)}\hypertarget{set_8c_a214235069ee276ad9bceb2c66e56bfe1}{}\label{set_8c_a214235069ee276ad9bceb2c66e56bfe1}
+\subsubsection{\texorpdfstring{set\+\_\+add()}{set\_add()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US set\+\_\+add (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Set}{Set} $\ast$}]{,  }\item[{Id}]{ }\end{DoxyParamCaption})}
+
+
+
+esta funcion se encarga de añadir un elemento al conjunto. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em el} & conjunto donde se desea añadir el elemento. \\
+\hline
+{\em el} & id del elemento. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{set_8c_a8c1e1a34c5ab002443fda6efa9ba156f}\label{set_8c_a8c1e1a34c5ab002443fda6efa9ba156f}} 
 \index{set.\+c@{set.\+c}!set\+\_\+cp\+\_\+all@{set\+\_\+cp\+\_\+all}}
 \index{set\+\_\+cp\+\_\+all@{set\+\_\+cp\+\_\+all}!set.\+c@{set.\+c}}
-\subsubsection[{\texorpdfstring{set\+\_\+cp\+\_\+all(\+Set $\ast$set)}{set_cp_all(Set *set)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Set}$\ast$ set\+\_\+cp\+\_\+all (
-\begin{DoxyParamCaption}
-\item[{{\bf Set} $\ast$}]{set}
-\end{DoxyParamCaption}
-)}\hypertarget{set_8c_a8c1e1a34c5ab002443fda6efa9ba156f}{}\label{set_8c_a8c1e1a34c5ab002443fda6efa9ba156f}
+\subsubsection{\texorpdfstring{set\+\_\+cp\+\_\+all()}{set\_cp\_all()}}
+{\footnotesize\ttfamily \hyperlink{struct__Set}{Set}$\ast$ set\+\_\+cp\+\_\+all (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Set}{Set} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+copia el set 
+
+\begin{DoxyAuthor}{Author}
+Antonio Solana  el set 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+copia del set 
+\end{DoxyReturn}
+\mbox{\Hypertarget{set_8c_a34f3d3777fcb7f8b54b948527d4173b6}\label{set_8c_a34f3d3777fcb7f8b54b948527d4173b6}} 
 \index{set.\+c@{set.\+c}!set\+\_\+create@{set\+\_\+create}}
 \index{set\+\_\+create@{set\+\_\+create}!set.\+c@{set.\+c}}
-\subsubsection[{\texorpdfstring{set\+\_\+create(int inv\+\_\+size)}{set_create(int inv_size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Set}$\ast$ set\+\_\+create (
-\begin{DoxyParamCaption}
-\item[{int}]{inv\+\_\+size}
-\end{DoxyParamCaption}
-)}\hypertarget{set_8c_a34f3d3777fcb7f8b54b948527d4173b6}{}\label{set_8c_a34f3d3777fcb7f8b54b948527d4173b6}
+\subsubsection{\texorpdfstring{set\+\_\+create()}{set\_create()}}
+{\footnotesize\ttfamily \hyperlink{struct__Set}{Set}$\ast$ set\+\_\+create (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})}
+
+
+
+esta funcion se encarga de crear el conjunto reservando memoria para el mismo. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+newset, el inventario creado, o N\+U\+LL si algo no ha salido como esperaba. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{set_8c_a766d123b18af5298d23b51bc1ed433e6}\label{set_8c_a766d123b18af5298d23b51bc1ed433e6}} 
 \index{set.\+c@{set.\+c}!set\+\_\+del@{set\+\_\+del}}
 \index{set\+\_\+del@{set\+\_\+del}!set.\+c@{set.\+c}}
-\subsubsection[{\texorpdfstring{set\+\_\+del(\+Set $\ast$set, Id id)}{set_del(Set *set, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} set\+\_\+del (
-\begin{DoxyParamCaption}
-\item[{{\bf Set} $\ast$}]{set, }
-\item[{{\bf Id}}]{id}
-\end{DoxyParamCaption}
-)}\hypertarget{set_8c_a766d123b18af5298d23b51bc1ed433e6}{}\label{set_8c_a766d123b18af5298d23b51bc1ed433e6}
+\subsubsection{\texorpdfstring{set\+\_\+del()}{set\_del()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US set\+\_\+del (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Set}{Set} $\ast$}]{,  }\item[{Id}]{ }\end{DoxyParamCaption})}
+
+
+
+esta funcion se encarga de añadir un elemento al conjunto. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez  el conjunto donde se desea añadir el elemento.  el id del elemento. 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{set_8c_a9d762a027f1c3bcdd22f70ee9093a7dd}\label{set_8c_a9d762a027f1c3bcdd22f70ee9093a7dd}} 
 \index{set.\+c@{set.\+c}!set\+\_\+destroy@{set\+\_\+destroy}}
 \index{set\+\_\+destroy@{set\+\_\+destroy}!set.\+c@{set.\+c}}
-\subsubsection[{\texorpdfstring{set\+\_\+destroy(\+Set $\ast$set)}{set_destroy(Set *set)}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+destroy (
-\begin{DoxyParamCaption}
-\item[{{\bf Set} $\ast$}]{set}
-\end{DoxyParamCaption}
-)}\hypertarget{set_8c_a9d762a027f1c3bcdd22f70ee9093a7dd}{}\label{set_8c_a9d762a027f1c3bcdd22f70ee9093a7dd}
+\subsubsection{\texorpdfstring{set\+\_\+destroy()}{set\_destroy()}}
+{\footnotesize\ttfamily void set\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Set}{Set} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+esta funcion se encarga de destruir el conjunto. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em el} & conjunto a destruir. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{set_8c_ad882445dee89c289e8bcd971a56c2e55}\label{set_8c_ad882445dee89c289e8bcd971a56c2e55}} 
 \index{set.\+c@{set.\+c}!set\+\_\+get\+\_\+id@{set\+\_\+get\+\_\+id}}
 \index{set\+\_\+get\+\_\+id@{set\+\_\+get\+\_\+id}!set.\+c@{set.\+c}}
-\subsubsection[{\texorpdfstring{set\+\_\+get\+\_\+id(\+Set $\ast$set, int num)}{set_get_id(Set *set, int num)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} set\+\_\+get\+\_\+id (
-\begin{DoxyParamCaption}
-\item[{{\bf Set} $\ast$}]{set, }
-\item[{int}]{num}
-\end{DoxyParamCaption}
-)}\hypertarget{set_8c_ad882445dee89c289e8bcd971a56c2e55}{}\label{set_8c_ad882445dee89c289e8bcd971a56c2e55}
+\subsubsection{\texorpdfstring{set\+\_\+get\+\_\+id()}{set\_get\_id()}}
+{\footnotesize\ttfamily Id set\+\_\+get\+\_\+id (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Set}{Set} $\ast$}]{,  }\item[{int}]{ }\end{DoxyParamCaption})}
+
+
+
+esta funcion se encarga de obtener el id de un conjunto. 
+
+\begin{DoxyAuthor}{Author}
+Antonio Solana  el conjunto del cual se desea obtener la id 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+devuelve el id del conjunto. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{set_8c_ad26e71cbaea293d805f96d0644bcf80f}\label{set_8c_ad26e71cbaea293d805f96d0644bcf80f}} 
 \index{set.\+c@{set.\+c}!set\+\_\+print\+\_\+debug@{set\+\_\+print\+\_\+debug}}
 \index{set\+\_\+print\+\_\+debug@{set\+\_\+print\+\_\+debug}!set.\+c@{set.\+c}}
-\subsubsection[{\texorpdfstring{set\+\_\+print\+\_\+debug(\+F\+I\+L\+E $\ast$f, Set $\ast$set)}{set_print_debug(FILE *f, Set *set)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} set\+\_\+print\+\_\+debug (
-\begin{DoxyParamCaption}
-\item[{F\+I\+LE $\ast$}]{f, }
-\item[{{\bf Set} $\ast$}]{set}
-\end{DoxyParamCaption}
-)}\hypertarget{set_8c_ad26e71cbaea293d805f96d0644bcf80f}{}\label{set_8c_ad26e71cbaea293d805f96d0644bcf80f}
+\subsubsection{\texorpdfstring{set\+\_\+print\+\_\+debug()}{set\_print\_debug()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US set\+\_\+print\+\_\+debug (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{,  }\item[{\hyperlink{struct__Set}{Set} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{[}D\+E\+B\+UG O\+N\+LY\mbox{]} imprime el set dado en el file dado 
+
+\begin{DoxyAuthor}{Author}
+Antonio Solana  el set, un lugar donde imprimir (debe estar abierto) 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+OK o E\+R\+R\+OR 
+\end{DoxyReturn}
+\mbox{\Hypertarget{set_8c_a3ca7b2e04938630d7fd087975f15c162}\label{set_8c_a3ca7b2e04938630d7fd087975f15c162}} 
 \index{set.\+c@{set.\+c}!set\+\_\+rearrange@{set\+\_\+rearrange}}
 \index{set\+\_\+rearrange@{set\+\_\+rearrange}!set.\+c@{set.\+c}}
-\subsubsection[{\texorpdfstring{set\+\_\+rearrange(\+Set $\ast$set)}{set_rearrange(Set *set)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} set\+\_\+rearrange (
-\begin{DoxyParamCaption}
-\item[{{\bf Set} $\ast$}]{set}
-\end{DoxyParamCaption}
-)}\hypertarget{set_8c_a3ca7b2e04938630d7fd087975f15c162}{}\label{set_8c_a3ca7b2e04938630d7fd087975f15c162}
+\subsubsection{\texorpdfstring{set\+\_\+rearrange()}{set\_rearrange()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US set\+\_\+rearrange (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Set}{Set} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+limpia el set para que no haya espacios vacíos entre los llenos 
+
+\begin{DoxyAuthor}{Author}
+Antonio Solana  el set 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+OK o E\+R\+R\+OR 
+\end{DoxyReturn}
+\mbox{\Hypertarget{set_8c_aaa637b4dc68713c2e2c16ecda284d0aa}\label{set_8c_aaa637b4dc68713c2e2c16ecda284d0aa}} 
 \index{set.\+c@{set.\+c}!set\+\_\+rm\+\_\+all@{set\+\_\+rm\+\_\+all}}
 \index{set\+\_\+rm\+\_\+all@{set\+\_\+rm\+\_\+all}!set.\+c@{set.\+c}}
-\subsubsection[{\texorpdfstring{set\+\_\+rm\+\_\+all(\+Set $\ast$set)}{set_rm_all(Set *set)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} set\+\_\+rm\+\_\+all (
-\begin{DoxyParamCaption}
-\item[{{\bf Set} $\ast$}]{set}
-\end{DoxyParamCaption}
-)}\hypertarget{set_8c_aaa637b4dc68713c2e2c16ecda284d0aa}{}\label{set_8c_aaa637b4dc68713c2e2c16ecda284d0aa}
+\subsubsection{\texorpdfstring{set\+\_\+rm\+\_\+all()}{set\_rm\_all()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US set\+\_\+rm\+\_\+all (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Set}{Set} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+esta funcion se encarga de vaciar el set, sin destruirlo 
+
+\begin{DoxyAuthor}{Author}
+Antonio Solana  el set 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+OK o E\+R\+R\+OR 
+\end{DoxyReturn}

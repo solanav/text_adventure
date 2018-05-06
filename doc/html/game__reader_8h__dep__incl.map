@@ -1,4 +1,4 @@
-<map id="game_reader.h" name="game_reader.h">
-<area shape="rect" id="node2" href="$game_8c.html" title="It implements the game interface and all the associated callbacks for each command. " alt="" coords="5,80,69,107"/>
-<area shape="rect" id="node3" href="$game__reader_8c.html" title="Reads data for the game from files. " alt="" coords="94,80,201,107"/>
+<map id="include/game_reader.h" name="include/game_reader.h">
+<area shape="rect" id="node2" href="$game_8c.html" title="It implements the game interface and all the associated callbacks for each command. " alt="" coords="5,80,92,107"/>
+<area shape="rect" id="node3" href="$game__reader_8c.html" title="Reads data for the game from files. " alt="" coords="117,80,247,107"/>
 </map>

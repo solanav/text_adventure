@@ -12,46 +12,75 @@ Collaboration diagram for \+\_\+\+Game\+:\nopagebreak
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$ \hyperlink{struct__Game_a31406605782d71ec00c4bf258ea76267}{player}
+\hyperlink{struct__Player}{Player} $\ast$ \hyperlink{struct__Game_a31406605782d71ec00c4bf258ea76267}{player}
 \item 
-\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$ \hyperlink{struct__Game_ad45bf5645a26e546d0060a2e61f9cf81}{objects} \mbox{[}\hyperlink{game_8h_acdc7844fbd4d45737d4aa56834d37829}{M\+A\+X\+\_\+\+O\+B\+J\+E\+C\+TS}\mbox{]}
+\hyperlink{struct__Object}{Object} $\ast$ \hyperlink{struct__Game_ad45bf5645a26e546d0060a2e61f9cf81}{objects} \mbox{[}M\+A\+X\+\_\+\+O\+B\+J\+E\+C\+TS\mbox{]}
 \item 
-\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space} $\ast$ \hyperlink{struct__Game_ab4180417d9148f8abb2233ca6c4ecfe5}{spaces} \mbox{[}\hyperlink{space_8h_a5f54fd55f983a2e33ce076cd9f587e82}{M\+A\+X\+\_\+\+S\+P\+A\+C\+ES}+1\mbox{]}
+\hyperlink{struct__Space}{Space} $\ast$ \hyperlink{struct__Game_ab4180417d9148f8abb2233ca6c4ecfe5}{spaces} \mbox{[}M\+A\+X\+\_\+\+S\+P\+A\+C\+ES+1\mbox{]}
 \item 
-\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$ \hyperlink{struct__Game_aa4ff88aaf2a54616e5863609effad94e}{links} \mbox{[}\hyperlink{link_8h_abfa744c8ca5b46f7f2a10aea53a4ec59}{M\+A\+X\+\_\+\+L\+I\+NK}\mbox{]}
+\hyperlink{struct__Link}{Link} $\ast$ \hyperlink{struct__Game_aa4ff88aaf2a54616e5863609effad94e}{links} \mbox{[}M\+A\+X\+\_\+\+L\+I\+NK\mbox{]}
 \item 
 \hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$ \hyperlink{struct__Game_a0d6009b5dcb080489c192a9198fa7d46}{die}
 \item 
-\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$ \hyperlink{struct__Game_a6dd34045346b3ea8dd1a4e3f08ab71c5}{last\+\_\+cmd}
+\hyperlink{struct__F__Command}{F\+\_\+\+Command} $\ast$ \hyperlink{struct__Game_a60dec64e55c5cf61b0711a11a62d18c2}{last\+\_\+cmd} \mbox{[}2\mbox{]}
 \item 
-\hyperlink{sprite_8h_a4dac9894071cab0926c0b91f2fe6e9cf}{Sprite} $\ast$ \hyperlink{struct__Game_a457e4328c3dfd137ba4407ad8e041cf2}{sprites} \mbox{[}\hyperlink{types_8h_aeb21c7ac080eea985b7701df626d9cf4}{M\+A\+X\+\_\+\+S\+P\+R\+I\+T\+ES}\mbox{]}
+\hyperlink{struct__Sprite}{Sprite} $\ast$ \hyperlink{struct__Game_a457e4328c3dfd137ba4407ad8e041cf2}{sprites} \mbox{[}M\+A\+X\+\_\+\+S\+P\+R\+I\+T\+ES\mbox{]}
+\item 
+\hyperlink{struct__Rule__Data}{Rule\+\_\+\+Data} $\ast$ \hyperlink{struct__Game_a2e88124c71d697f962654f2518a62109}{rule\+\_\+data}
 \end{DoxyCompactItemize}
 
 
 \subsection{Member Data Documentation}
+\mbox{\Hypertarget{struct__Game_a0d6009b5dcb080489c192a9198fa7d46}\label{struct__Game_a0d6009b5dcb080489c192a9198fa7d46}} 
 \index{\+\_\+\+Game@{\+\_\+\+Game}!die@{die}}
 \index{die@{die}!\+\_\+\+Game@{\+\_\+\+Game}}
-\subsubsection[{\texorpdfstring{die}{die}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Die}$\ast$ \+\_\+\+Game\+::die}\hypertarget{struct__Game_a0d6009b5dcb080489c192a9198fa7d46}{}\label{struct__Game_a0d6009b5dcb080489c192a9198fa7d46}
-Dado \index{\+\_\+\+Game@{\+\_\+\+Game}!last\+\_\+cmd@{last\+\_\+cmd}}
+\subsubsection{\texorpdfstring{die}{die}}
+{\footnotesize\ttfamily \hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die}$\ast$ \+\_\+\+Game\+::die}
+
+Dado \mbox{\Hypertarget{struct__Game_a60dec64e55c5cf61b0711a11a62d18c2}\label{struct__Game_a60dec64e55c5cf61b0711a11a62d18c2}} 
+\index{\+\_\+\+Game@{\+\_\+\+Game}!last\+\_\+cmd@{last\+\_\+cmd}}
 \index{last\+\_\+cmd@{last\+\_\+cmd}!\+\_\+\+Game@{\+\_\+\+Game}}
-\subsubsection[{\texorpdfstring{last\+\_\+cmd}{last_cmd}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+\_\+\+Command}$\ast$ \+\_\+\+Game\+::last\+\_\+cmd}\hypertarget{struct__Game_a6dd34045346b3ea8dd1a4e3f08ab71c5}{}\label{struct__Game_a6dd34045346b3ea8dd1a4e3f08ab71c5}
-ultimo comando \index{\+\_\+\+Game@{\+\_\+\+Game}!links@{links}}
+\subsubsection{\texorpdfstring{last\+\_\+cmd}{last\_cmd}}
+{\footnotesize\ttfamily \hyperlink{struct__F__Command}{F\+\_\+\+Command}$\ast$ \+\_\+\+Game\+::last\+\_\+cmd\mbox{[}2\mbox{]}}
+
+ultimos comandos \mbox{\Hypertarget{struct__Game_aa4ff88aaf2a54616e5863609effad94e}\label{struct__Game_aa4ff88aaf2a54616e5863609effad94e}} 
+\index{\+\_\+\+Game@{\+\_\+\+Game}!links@{links}}
 \index{links@{links}!\+\_\+\+Game@{\+\_\+\+Game}}
-\subsubsection[{\texorpdfstring{links}{links}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Link}$\ast$ \+\_\+\+Game\+::links\mbox{[}{\bf M\+A\+X\+\_\+\+L\+I\+NK}\mbox{]}}\hypertarget{struct__Game_aa4ff88aaf2a54616e5863609effad94e}{}\label{struct__Game_aa4ff88aaf2a54616e5863609effad94e}
-Array de links \index{\+\_\+\+Game@{\+\_\+\+Game}!objects@{objects}}
+\subsubsection{\texorpdfstring{links}{links}}
+{\footnotesize\ttfamily \hyperlink{struct__Link}{Link}$\ast$ \+\_\+\+Game\+::links\mbox{[}M\+A\+X\+\_\+\+L\+I\+NK\mbox{]}}
+
+Array de links \mbox{\Hypertarget{struct__Game_ad45bf5645a26e546d0060a2e61f9cf81}\label{struct__Game_ad45bf5645a26e546d0060a2e61f9cf81}} 
+\index{\+\_\+\+Game@{\+\_\+\+Game}!objects@{objects}}
 \index{objects@{objects}!\+\_\+\+Game@{\+\_\+\+Game}}
-\subsubsection[{\texorpdfstring{objects}{objects}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object}$\ast$ \+\_\+\+Game\+::objects\mbox{[}{\bf M\+A\+X\+\_\+\+O\+B\+J\+E\+C\+TS}\mbox{]}}\hypertarget{struct__Game_ad45bf5645a26e546d0060a2e61f9cf81}{}\label{struct__Game_ad45bf5645a26e546d0060a2e61f9cf81}
-Array de objetos \index{\+\_\+\+Game@{\+\_\+\+Game}!player@{player}}
+\subsubsection{\texorpdfstring{objects}{objects}}
+{\footnotesize\ttfamily \hyperlink{struct__Object}{Object}$\ast$ \+\_\+\+Game\+::objects\mbox{[}M\+A\+X\+\_\+\+O\+B\+J\+E\+C\+TS\mbox{]}}
+
+Array de objetos \mbox{\Hypertarget{struct__Game_a31406605782d71ec00c4bf258ea76267}\label{struct__Game_a31406605782d71ec00c4bf258ea76267}} 
+\index{\+\_\+\+Game@{\+\_\+\+Game}!player@{player}}
 \index{player@{player}!\+\_\+\+Game@{\+\_\+\+Game}}
-\subsubsection[{\texorpdfstring{player}{player}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player}$\ast$ \+\_\+\+Game\+::player}\hypertarget{struct__Game_a31406605782d71ec00c4bf258ea76267}{}\label{struct__Game_a31406605782d71ec00c4bf258ea76267}
-Jugador \index{\+\_\+\+Game@{\+\_\+\+Game}!spaces@{spaces}}
+\subsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily \hyperlink{struct__Player}{Player}$\ast$ \+\_\+\+Game\+::player}
+
+Jugador \mbox{\Hypertarget{struct__Game_a2e88124c71d697f962654f2518a62109}\label{struct__Game_a2e88124c71d697f962654f2518a62109}} 
+\index{\+\_\+\+Game@{\+\_\+\+Game}!rule\+\_\+data@{rule\+\_\+data}}
+\index{rule\+\_\+data@{rule\+\_\+data}!\+\_\+\+Game@{\+\_\+\+Game}}
+\subsubsection{\texorpdfstring{rule\+\_\+data}{rule\_data}}
+{\footnotesize\ttfamily \hyperlink{struct__Rule__Data}{Rule\+\_\+\+Data}$\ast$ \+\_\+\+Game\+::rule\+\_\+data}
+
+datos para su uso en game\+\_\+rules \mbox{\Hypertarget{struct__Game_ab4180417d9148f8abb2233ca6c4ecfe5}\label{struct__Game_ab4180417d9148f8abb2233ca6c4ecfe5}} 
+\index{\+\_\+\+Game@{\+\_\+\+Game}!spaces@{spaces}}
 \index{spaces@{spaces}!\+\_\+\+Game@{\+\_\+\+Game}}
-\subsubsection[{\texorpdfstring{spaces}{spaces}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Space}$\ast$ \+\_\+\+Game\+::spaces\mbox{[}{\bf M\+A\+X\+\_\+\+S\+P\+A\+C\+ES}+1\mbox{]}}\hypertarget{struct__Game_ab4180417d9148f8abb2233ca6c4ecfe5}{}\label{struct__Game_ab4180417d9148f8abb2233ca6c4ecfe5}
-Array de espacios \index{\+\_\+\+Game@{\+\_\+\+Game}!sprites@{sprites}}
+\subsubsection{\texorpdfstring{spaces}{spaces}}
+{\footnotesize\ttfamily \hyperlink{struct__Space}{Space}$\ast$ \+\_\+\+Game\+::spaces\mbox{[}M\+A\+X\+\_\+\+S\+P\+A\+C\+ES+1\mbox{]}}
+
+Array de espacios \mbox{\Hypertarget{struct__Game_a457e4328c3dfd137ba4407ad8e041cf2}\label{struct__Game_a457e4328c3dfd137ba4407ad8e041cf2}} 
+\index{\+\_\+\+Game@{\+\_\+\+Game}!sprites@{sprites}}
 \index{sprites@{sprites}!\+\_\+\+Game@{\+\_\+\+Game}}
-\subsubsection[{\texorpdfstring{sprites}{sprites}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sprite}$\ast$ \+\_\+\+Game\+::sprites\mbox{[}{\bf M\+A\+X\+\_\+\+S\+P\+R\+I\+T\+ES}\mbox{]}}\hypertarget{struct__Game_a457e4328c3dfd137ba4407ad8e041cf2}{}\label{struct__Game_a457e4328c3dfd137ba4407ad8e041cf2}
+\subsubsection{\texorpdfstring{sprites}{sprites}}
+{\footnotesize\ttfamily \hyperlink{struct__Sprite}{Sprite}$\ast$ \+\_\+\+Game\+::sprites\mbox{[}M\+A\+X\+\_\+\+S\+P\+R\+I\+T\+ES\mbox{]}}
+
 sprites del mapa 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\hyperlink{game_8c}{game.\+c}\end{DoxyCompactItemize}
+src/\hyperlink{game_8c}{game.\+c}\end{DoxyCompactItemize}

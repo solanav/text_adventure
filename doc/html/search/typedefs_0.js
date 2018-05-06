@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['area',['Area',['../screen_8h.html#acfdfc42f6522d75fa3c16713afde8127',1,'screen.h']]]
+  ['die',['Die',['../die_8h.html#a892f0b0bf81d69a1f7a14ea238e36dd3',1,'die.h']]]
 ];

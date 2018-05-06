@@ -1,11 +1,11 @@
-\hypertarget{link_8h}{}\section{link.\+h File Reference}
-\label{link_8h}\index{link.\+h@{link.\+h}}
+\hypertarget{link_8h}{}\section{include/link.h File Reference}
+\label{link_8h}\index{include/link.\+h@{include/link.\+h}}
 
 
 Creates the links between spaces.  
 
 
-{\ttfamily \#include \char`\"{}../include/types.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/types.\+h\char`\"{}}\newline
 Include dependency graph for link.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -23,42 +23,44 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{link_8h_abfa744c8ca5b46f7f2a10aea53a4ec59}{M\+A\+X\+\_\+\+L\+I\+NK}~1024
+\mbox{\Hypertarget{link_8h_abfa744c8ca5b46f7f2a10aea53a4ec59}\label{link_8h_abfa744c8ca5b46f7f2a10aea53a4ec59}} 
+\#define {\bfseries M\+A\+X\+\_\+\+L\+I\+NK}~1024
 \end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct \hyperlink{struct__Link}{\+\_\+\+Link} \hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link}
+\mbox{\Hypertarget{link_8h_ae3b299941e67be6971bfd64a25505eff}\label{link_8h_ae3b299941e67be6971bfd64a25505eff}} 
+typedef struct \hyperlink{struct__Link}{\+\_\+\+Link} {\bfseries Link}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$ \hyperlink{link_8h_ae5986501818a720e4295dc5e634d27f1}{link\+\_\+create} (\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id})
-\item 
-void \hyperlink{link_8h_a5f40c4fc6fc5696e5f3804bb13c51a0c}{link\+\_\+destroy} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$)
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{link_8h_a65bee083bee28569baff6efad72c81a3}{link\+\_\+set\+Id} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id})
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{link_8h_af481cf004c290c67dc9a0139aa6c60b2}{link\+\_\+set\+Status} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$, \hyperlink{types_8h_aa60f669816b146d6373c62d9625e52ad}{Link\+Status})
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{link_8h_a3f3b6315bed2368de838d51fdfaa08ef}{link\+\_\+set\+Spaces} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id})
-\item 
-\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{link_8h_a43b6a8f4f10bb2fc930e9de2060ebf3e}{link\+\_\+get\+Id} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$)
-\item 
-\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{link_8h_ab95e9a5a2fa2204af5b78d51ee6919bb}{link\+\_\+get\+Space1} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$)
-\item 
-\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{link_8h_a29c6680a2a8fdb3afaa7948a4a4f7149}{link\+\_\+get\+Space2} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$)
-\item 
-\hyperlink{types_8h_aa60f669816b146d6373c62d9625e52ad}{Link\+Status} \hyperlink{link_8h_a72e2c52d52a3d5ba04b816eff098b951}{link\+\_\+get\+Status} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$)
-\item 
-\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{link_8h_a9ce2a73023de210561730e4494ad8734}{link\+\_\+get\+Destination} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id})
-\item 
-\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{link_8h_a4eebbdc0a5ac479d126a57e9fef5d9a0}{link\+\_\+get\+Direction} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$)
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{link_8h_a63f1bdc28126b1923590fe67ec93ab4a}{link\+\_\+set\+Direction} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$, int)
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{link_8h_aeabb8b5956d460d0e246d5917478877a}{link\+\_\+print} (\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$)
-\end{DoxyCompactItemize}
+\hyperlink{struct__Link}{Link} $\ast$ \hyperlink{link_8h_ae5986501818a720e4295dc5e634d27f1}{link\+\_\+create} (Id)
+\begin{DoxyCompactList}\small\item\em \+: Allocs memory for one link \end{DoxyCompactList}\item 
+void \hyperlink{link_8h_a5f40c4fc6fc5696e5f3804bb13c51a0c}{link\+\_\+destroy} (\hyperlink{struct__Link}{Link} $\ast$)
+\begin{DoxyCompactList}\small\item\em \+: Frees the Link \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{link_8h_a65bee083bee28569baff6efad72c81a3}{link\+\_\+set\+Id} (\hyperlink{struct__Link}{Link} $\ast$, Id)
+\begin{DoxyCompactList}\small\item\em \+: Changes the link id to the given one \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{link_8h_af481cf004c290c67dc9a0139aa6c60b2}{link\+\_\+set\+Status} (\hyperlink{struct__Link}{Link} $\ast$, Link\+Status)
+\begin{DoxyCompactList}\small\item\em \+: Changes the Link status to O\+P\+E\+N\+ED or C\+L\+O\+S\+ED \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{link_8h_a3f3b6315bed2368de838d51fdfaa08ef}{link\+\_\+set\+Spaces} (\hyperlink{struct__Link}{Link} $\ast$, Id, Id)
+\begin{DoxyCompactList}\small\item\em \+: Sets the spaces the link is joining \end{DoxyCompactList}\item 
+Id \hyperlink{link_8h_a43b6a8f4f10bb2fc930e9de2060ebf3e}{link\+\_\+get\+Id} (\hyperlink{struct__Link}{Link} $\ast$)
+\begin{DoxyCompactList}\small\item\em \+: Gets the links id \end{DoxyCompactList}\item 
+Id \hyperlink{link_8h_ab95e9a5a2fa2204af5b78d51ee6919bb}{link\+\_\+get\+Space1} (\hyperlink{struct__Link}{Link} $\ast$)
+\begin{DoxyCompactList}\small\item\em \+: Gets the first Space of the link \end{DoxyCompactList}\item 
+Id \hyperlink{link_8h_a29c6680a2a8fdb3afaa7948a4a4f7149}{link\+\_\+get\+Space2} (\hyperlink{struct__Link}{Link} $\ast$)
+\begin{DoxyCompactList}\small\item\em \+: Gets the second Space of the link \end{DoxyCompactList}\item 
+Link\+Status \hyperlink{link_8h_a72e2c52d52a3d5ba04b816eff098b951}{link\+\_\+get\+Status} (\hyperlink{struct__Link}{Link} $\ast$)
+\begin{DoxyCompactList}\small\item\em \+: Gets the status the given link is in \end{DoxyCompactList}\item 
+Id \hyperlink{link_8h_a9ce2a73023de210561730e4494ad8734}{link\+\_\+get\+Destination} (\hyperlink{struct__Link}{Link} $\ast$, Id)
+\begin{DoxyCompactList}\small\item\em \+: Gets the other space the link is connecting \end{DoxyCompactList}\item 
+Id \hyperlink{link_8h_a4eebbdc0a5ac479d126a57e9fef5d9a0}{link\+\_\+get\+Direction} (\hyperlink{struct__Link}{Link} $\ast$)
+\begin{DoxyCompactList}\small\item\em \+: Gets the direction of the link (relative to space1) \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{link_8h_a63f1bdc28126b1923590fe67ec93ab4a}{link\+\_\+set\+Direction} (\hyperlink{struct__Link}{Link} $\ast$, int)
+\begin{DoxyCompactList}\small\item\em \+: Sets the direction of the link (relative to space1) \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{link_8h_aeabb8b5956d460d0e246d5917478877a}{link\+\_\+print} (\hyperlink{struct__Link}{Link} $\ast$)
+\begin{DoxyCompactList}\small\item\em \+: \mbox{[}D\+E\+B\+UG O\+N\+LY\mbox{]} prints the given link in stdout \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -72,113 +74,238 @@ G\+NU Public License
 \end{DoxyCopyright}
 
 
-\subsection{Macro Definition Documentation}
-\index{link.\+h@{link.\+h}!M\+A\+X\+\_\+\+L\+I\+NK@{M\+A\+X\+\_\+\+L\+I\+NK}}
-\index{M\+A\+X\+\_\+\+L\+I\+NK@{M\+A\+X\+\_\+\+L\+I\+NK}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{M\+A\+X\+\_\+\+L\+I\+NK}{MAX_LINK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+L\+I\+NK~1024}\hypertarget{link_8h_abfa744c8ca5b46f7f2a10aea53a4ec59}{}\label{link_8h_abfa744c8ca5b46f7f2a10aea53a4ec59}
-
-
-\subsection{Typedef Documentation}
-\index{link.\+h@{link.\+h}!Link@{Link}}
-\index{Link@{Link}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{Link}{Link}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Link} {\bf Link}}\hypertarget{link_8h_ae3b299941e67be6971bfd64a25505eff}{}\label{link_8h_ae3b299941e67be6971bfd64a25505eff}
-
-
 \subsection{Function Documentation}
+\mbox{\Hypertarget{link_8h_ae5986501818a720e4295dc5e634d27f1}\label{link_8h_ae5986501818a720e4295dc5e634d27f1}} 
 \index{link.\+h@{link.\+h}!link\+\_\+create@{link\+\_\+create}}
 \index{link\+\_\+create@{link\+\_\+create}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{link\+\_\+create(\+Id)}{link_create(Id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Link}$\ast$ link\+\_\+create (
-\begin{DoxyParamCaption}
-\item[{{\bf Id}}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{link_8h_ae5986501818a720e4295dc5e634d27f1}{}\label{link_8h_ae5986501818a720e4295dc5e634d27f1}
+\subsubsection{\texorpdfstring{link\+\_\+create()}{link\_create()}}
+{\footnotesize\ttfamily \hyperlink{struct__Link}{Link}$\ast$ link\+\_\+create (\begin{DoxyParamCaption}\item[{Id}]{ }\end{DoxyParamCaption})}
+
+
+
+\+: Allocs memory for one link 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{link_8h_a5f40c4fc6fc5696e5f3804bb13c51a0c}\label{link_8h_a5f40c4fc6fc5696e5f3804bb13c51a0c}} 
 \index{link.\+h@{link.\+h}!link\+\_\+destroy@{link\+\_\+destroy}}
 \index{link\+\_\+destroy@{link\+\_\+destroy}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{link\+\_\+destroy(\+Link $\ast$)}{link_destroy(Link *)}}]{\setlength{\rightskip}{0pt plus 5cm}void link\+\_\+destroy (
-\begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{link_8h_a5f40c4fc6fc5696e5f3804bb13c51a0c}{}\label{link_8h_a5f40c4fc6fc5696e5f3804bb13c51a0c}
+\subsubsection{\texorpdfstring{link\+\_\+destroy()}{link\_destroy()}}
+{\footnotesize\ttfamily void link\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Link}{Link} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+\+: Frees the Link 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{link_8h_a9ce2a73023de210561730e4494ad8734}\label{link_8h_a9ce2a73023de210561730e4494ad8734}} 
 \index{link.\+h@{link.\+h}!link\+\_\+get\+Destination@{link\+\_\+get\+Destination}}
 \index{link\+\_\+get\+Destination@{link\+\_\+get\+Destination}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{link\+\_\+get\+Destination(\+Link $\ast$, Id)}{link_getDestination(Link *, Id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} link\+\_\+get\+Destination (
-\begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{, }
-\item[{{\bf Id}}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{link_8h_a9ce2a73023de210561730e4494ad8734}{}\label{link_8h_a9ce2a73023de210561730e4494ad8734}
+\subsubsection{\texorpdfstring{link\+\_\+get\+Destination()}{link\_getDestination()}}
+{\footnotesize\ttfamily Id link\+\_\+get\+Destination (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Link}{Link} $\ast$}]{,  }\item[{Id}]{ }\end{DoxyParamCaption})}
+
+
+
+\+: Gets the other space the link is connecting 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{link_8h_a4eebbdc0a5ac479d126a57e9fef5d9a0}\label{link_8h_a4eebbdc0a5ac479d126a57e9fef5d9a0}} 
 \index{link.\+h@{link.\+h}!link\+\_\+get\+Direction@{link\+\_\+get\+Direction}}
 \index{link\+\_\+get\+Direction@{link\+\_\+get\+Direction}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{link\+\_\+get\+Direction(\+Link $\ast$)}{link_getDirection(Link *)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} link\+\_\+get\+Direction (
-\begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{link_8h_a4eebbdc0a5ac479d126a57e9fef5d9a0}{}\label{link_8h_a4eebbdc0a5ac479d126a57e9fef5d9a0}
+\subsubsection{\texorpdfstring{link\+\_\+get\+Direction()}{link\_getDirection()}}
+{\footnotesize\ttfamily Id link\+\_\+get\+Direction (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Link}{Link} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+\+: Gets the direction of the link (relative to space1) 
+
+\begin{DoxyAuthor}{Author}
+\+: Antonio Solana 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{link_8h_a43b6a8f4f10bb2fc930e9de2060ebf3e}\label{link_8h_a43b6a8f4f10bb2fc930e9de2060ebf3e}} 
 \index{link.\+h@{link.\+h}!link\+\_\+get\+Id@{link\+\_\+get\+Id}}
 \index{link\+\_\+get\+Id@{link\+\_\+get\+Id}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{link\+\_\+get\+Id(\+Link $\ast$)}{link_getId(Link *)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} link\+\_\+get\+Id (
-\begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{link_8h_a43b6a8f4f10bb2fc930e9de2060ebf3e}{}\label{link_8h_a43b6a8f4f10bb2fc930e9de2060ebf3e}
+\subsubsection{\texorpdfstring{link\+\_\+get\+Id()}{link\_getId()}}
+{\footnotesize\ttfamily Id link\+\_\+get\+Id (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Link}{Link} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+\+: Gets the links id 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{link_8h_ab95e9a5a2fa2204af5b78d51ee6919bb}\label{link_8h_ab95e9a5a2fa2204af5b78d51ee6919bb}} 
 \index{link.\+h@{link.\+h}!link\+\_\+get\+Space1@{link\+\_\+get\+Space1}}
 \index{link\+\_\+get\+Space1@{link\+\_\+get\+Space1}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{link\+\_\+get\+Space1(\+Link $\ast$)}{link_getSpace1(Link *)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} link\+\_\+get\+Space1 (
-\begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{link_8h_ab95e9a5a2fa2204af5b78d51ee6919bb}{}\label{link_8h_ab95e9a5a2fa2204af5b78d51ee6919bb}
+\subsubsection{\texorpdfstring{link\+\_\+get\+Space1()}{link\_getSpace1()}}
+{\footnotesize\ttfamily Id link\+\_\+get\+Space1 (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Link}{Link} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+\+: Gets the first Space of the link 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{link_8h_a29c6680a2a8fdb3afaa7948a4a4f7149}\label{link_8h_a29c6680a2a8fdb3afaa7948a4a4f7149}} 
 \index{link.\+h@{link.\+h}!link\+\_\+get\+Space2@{link\+\_\+get\+Space2}}
 \index{link\+\_\+get\+Space2@{link\+\_\+get\+Space2}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{link\+\_\+get\+Space2(\+Link $\ast$)}{link_getSpace2(Link *)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} link\+\_\+get\+Space2 (
-\begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{link_8h_a29c6680a2a8fdb3afaa7948a4a4f7149}{}\label{link_8h_a29c6680a2a8fdb3afaa7948a4a4f7149}
+\subsubsection{\texorpdfstring{link\+\_\+get\+Space2()}{link\_getSpace2()}}
+{\footnotesize\ttfamily Id link\+\_\+get\+Space2 (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Link}{Link} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+\+: Gets the second Space of the link 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{link_8h_a72e2c52d52a3d5ba04b816eff098b951}\label{link_8h_a72e2c52d52a3d5ba04b816eff098b951}} 
 \index{link.\+h@{link.\+h}!link\+\_\+get\+Status@{link\+\_\+get\+Status}}
 \index{link\+\_\+get\+Status@{link\+\_\+get\+Status}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{link\+\_\+get\+Status(\+Link $\ast$)}{link_getStatus(Link *)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Link\+Status} link\+\_\+get\+Status (
-\begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{link_8h_a72e2c52d52a3d5ba04b816eff098b951}{}\label{link_8h_a72e2c52d52a3d5ba04b816eff098b951}
+\subsubsection{\texorpdfstring{link\+\_\+get\+Status()}{link\_getStatus()}}
+{\footnotesize\ttfamily Link\+Status link\+\_\+get\+Status (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Link}{Link} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+\+: Gets the status the given link is in 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{link_8h_aeabb8b5956d460d0e246d5917478877a}\label{link_8h_aeabb8b5956d460d0e246d5917478877a}} 
 \index{link.\+h@{link.\+h}!link\+\_\+print@{link\+\_\+print}}
 \index{link\+\_\+print@{link\+\_\+print}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{link\+\_\+print(\+Link $\ast$)}{link_print(Link *)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} link\+\_\+print (
-\begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{link_8h_aeabb8b5956d460d0e246d5917478877a}{}\label{link_8h_aeabb8b5956d460d0e246d5917478877a}
+\subsubsection{\texorpdfstring{link\+\_\+print()}{link\_print()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US link\+\_\+print (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Link}{Link} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+\+: \mbox{[}D\+E\+B\+UG O\+N\+LY\mbox{]} prints the given link in stdout 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{link_8h_a63f1bdc28126b1923590fe67ec93ab4a}\label{link_8h_a63f1bdc28126b1923590fe67ec93ab4a}} 
 \index{link.\+h@{link.\+h}!link\+\_\+set\+Direction@{link\+\_\+set\+Direction}}
 \index{link\+\_\+set\+Direction@{link\+\_\+set\+Direction}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{link\+\_\+set\+Direction(\+Link $\ast$, int)}{link_setDirection(Link *, int)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} link\+\_\+set\+Direction (
-\begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{, }
-\item[{int}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{link_8h_a63f1bdc28126b1923590fe67ec93ab4a}{}\label{link_8h_a63f1bdc28126b1923590fe67ec93ab4a}
+\subsubsection{\texorpdfstring{link\+\_\+set\+Direction()}{link\_setDirection()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US link\+\_\+set\+Direction (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Link}{Link} $\ast$}]{,  }\item[{int}]{ }\end{DoxyParamCaption})}
+
+
+
+\+: Sets the direction of the link (relative to space1) 
+
+\begin{DoxyAuthor}{Author}
+\+: Antonio Solana 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{link_8h_a65bee083bee28569baff6efad72c81a3}\label{link_8h_a65bee083bee28569baff6efad72c81a3}} 
 \index{link.\+h@{link.\+h}!link\+\_\+set\+Id@{link\+\_\+set\+Id}}
 \index{link\+\_\+set\+Id@{link\+\_\+set\+Id}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{link\+\_\+set\+Id(\+Link $\ast$, Id)}{link_setId(Link *, Id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} link\+\_\+set\+Id (
-\begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{, }
-\item[{{\bf Id}}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{link_8h_a65bee083bee28569baff6efad72c81a3}{}\label{link_8h_a65bee083bee28569baff6efad72c81a3}
+\subsubsection{\texorpdfstring{link\+\_\+set\+Id()}{link\_setId()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US link\+\_\+set\+Id (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Link}{Link} $\ast$}]{,  }\item[{Id}]{ }\end{DoxyParamCaption})}
+
+
+
+\+: Changes the link id to the given one 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{link_8h_a3f3b6315bed2368de838d51fdfaa08ef}\label{link_8h_a3f3b6315bed2368de838d51fdfaa08ef}} 
 \index{link.\+h@{link.\+h}!link\+\_\+set\+Spaces@{link\+\_\+set\+Spaces}}
 \index{link\+\_\+set\+Spaces@{link\+\_\+set\+Spaces}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{link\+\_\+set\+Spaces(\+Link $\ast$, Id, Id)}{link_setSpaces(Link *, Id, Id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} link\+\_\+set\+Spaces (
-\begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{, }
-\item[{{\bf Id}}]{, }
-\item[{{\bf Id}}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{link_8h_a3f3b6315bed2368de838d51fdfaa08ef}{}\label{link_8h_a3f3b6315bed2368de838d51fdfaa08ef}
+\subsubsection{\texorpdfstring{link\+\_\+set\+Spaces()}{link\_setSpaces()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US link\+\_\+set\+Spaces (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Link}{Link} $\ast$}]{,  }\item[{Id}]{,  }\item[{Id}]{ }\end{DoxyParamCaption})}
+
+
+
+\+: Sets the spaces the link is joining 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{link_8h_af481cf004c290c67dc9a0139aa6c60b2}\label{link_8h_af481cf004c290c67dc9a0139aa6c60b2}} 
 \index{link.\+h@{link.\+h}!link\+\_\+set\+Status@{link\+\_\+set\+Status}}
 \index{link\+\_\+set\+Status@{link\+\_\+set\+Status}!link.\+h@{link.\+h}}
-\subsubsection[{\texorpdfstring{link\+\_\+set\+Status(\+Link $\ast$, Link\+Status)}{link_setStatus(Link *, LinkStatus)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} link\+\_\+set\+Status (
-\begin{DoxyParamCaption}
-\item[{{\bf Link} $\ast$}]{, }
-\item[{{\bf Link\+Status}}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{link_8h_af481cf004c290c67dc9a0139aa6c60b2}{}\label{link_8h_af481cf004c290c67dc9a0139aa6c60b2}
+\subsubsection{\texorpdfstring{link\+\_\+set\+Status()}{link\_setStatus()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US link\+\_\+set\+Status (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Link}{Link} $\ast$}]{,  }\item[{Link\+Status}]{ }\end{DoxyParamCaption})}
+
+
+
+\+: Changes the Link status to O\+P\+E\+N\+ED or C\+L\+O\+S\+ED 
+
+\begin{DoxyAuthor}{Author}
+\+: Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}

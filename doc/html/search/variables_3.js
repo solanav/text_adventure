@@ -5,6 +5,7 @@ var searchData=
   ['description',['description',['../struct__Object.html#a4797c28bbea5a64792ec85433ee7215e',1,'_Object::description()'],['../struct__Space.html#a2a50aacb78d1d0f65f5b14f94ed81d80',1,'_Space::description()']]],
   ['description_5fal',['description_al',['../struct__Object.html#ac438e34e4ae95415af05464dd0db29b8',1,'_Object']]],
   ['die',['die',['../struct__Game.html#a0d6009b5dcb080489c192a9198fa7d46',1,'_Game']]],
+  ['die_5fval',['die_val',['../struct__Rule__Data.html#a2120d4ccd8394d1c824d39efd12b5b3d',1,'_Rule_Data']]],
   ['direction',['direction',['../struct__Link.html#a112e92df8f8eae3055ab45793ed4a660',1,'_Link']]],
   ['door',['door',['../struct__Link.html#ab4d6f65f126e9a41440828d2317b7a79',1,'_Link']]]
 ];

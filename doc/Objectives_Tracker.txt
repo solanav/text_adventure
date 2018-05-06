@@ -8,7 +8,7 @@ R03 - OK
 Commands - Cata
 R04 - OK
 R07 - OK
-R08 - PR
+R08 - OK
 R09 - OK
 
 Object - Bernardo
@@ -17,7 +17,7 @@ R06 - OK
 
 Data.dat - Solana
 R10 - OK
-R11 - ND
+R11 - OK
 
 Documentation - Bernardo
 R12 - ND
@@ -27,13 +27,13 @@ R13 - ND
 R14 - ND
 
 Dialog - Pablo
-R15 - ND
+R15 - OK
 
 Game Rules - Solana
-R16 - ND
+R16 - OK
 
 Manteinance - Solana
-R17 - ND
+R17 - HD
 
 INFO ===================
 

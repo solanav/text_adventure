@@ -1,33 +1,31 @@
-<map id="types.h" name="types.h">
-<area shape="rect" id="node2" href="$command_8h.html" title="Commands and user input. " alt="" coords="1605,80,1696,107"/>
-<area shape="rect" id="node4" href="$game__reader_8h.html" title="Reads data for the game from files. " alt="" coords="953,304,1060,331"/>
-<area shape="rect" id="node12" href="$die_8h.html" title="It declares the die module. " alt="" coords="1033,80,1084,107"/>
-<area shape="rect" id="node15" href="$space_8h.html" title="Defines functions for space manipulation. " alt="" coords="871,155,939,181"/>
-<area shape="rect" id="node16" href="$space_8c.html" title="space.c" alt="" coords="962,229,1029,256"/>
-<area shape="rect" id="node18" href="$object_8h.html" title="Functions for the creation of objects. " alt="" coords="371,80,439,107"/>
-<area shape="rect" id="node22" href="$set_8h.html" title="Low level stack and queue functions. " alt="" coords="692,80,743,107"/>
-<area shape="rect" id="node23" href="$inventory_8h.html" title="Module for player&#39;s inventory. " alt="" coords="429,155,515,181"/>
-<area shape="rect" id="node28" href="$player_8h.html" title="Functions for the creation of players. " alt="" coords="19,155,87,181"/>
-<area shape="rect" id="node30" href="$link_8h.html" title="Creates the links between spaces. " alt="" coords="1327,80,1380,107"/>
-<area shape="rect" id="node3" href="$game_8h.html" title="Main function. " alt="" coords="873,229,937,256"/>
-<area shape="rect" id="node10" href="$command_8c.html" title="Commands and user input. " alt="" coords="1631,155,1721,181"/>
-<area shape="rect" id="node11" href="$command__test_8c.html" title="command_test.c" alt="" coords="1746,155,1864,181"/>
-<area shape="rect" id="node5" href="$game_8c.html" title="It implements the game interface and all the associated callbacks for each command. " alt="" coords="873,379,937,405"/>
-<area shape="rect" id="node7" href="$graphic__engine_8h.html" title="Uses screen.* to create the UI. " alt="" coords="724,304,844,331"/>
-<area shape="rect" id="node6" href="$game__reader_8c.html" title="Reads data for the game from files. " alt="" coords="962,379,1069,405"/>
-<area shape="rect" id="node8" href="$game__loop_8c.html" title="Main loop. " alt="" coords="736,379,832,405"/>
-<area shape="rect" id="node9" href="$graphic__engine_8c.html" title="Uses screen.* to create the UI. " alt="" coords="560,379,680,405"/>
-<area shape="rect" id="node13" href="$die_8c.html" title="It declares the die module. " alt="" coords="1065,155,1116,181"/>
-<area shape="rect" id="node14" href="$die__test_8c.html" title="die_test.c" alt="" coords="1141,155,1219,181"/>
-<area shape="rect" id="node17" href="$space__test_8c.html" title="It tests space module. " alt="" coords="751,229,848,256"/>
-<area shape="rect" id="node19" href="$object_8c.html" title="Functions for the creation of objects. " alt="" coords="285,155,352,181"/>
-<area shape="rect" id="node20" href="$player_8c.html" title="Functions for the creation of players. " alt="" coords="230,229,297,256"/>
-<area shape="rect" id="node21" href="$object__test_8c.html" title="object_test.c" alt="" coords="111,155,208,181"/>
-<area shape="rect" id="node25" href="$inventory__test_8c.html" title="inventory_test.c" alt="" coords="452,229,567,256"/>
-<area shape="rect" id="node26" href="$set_8c.html" title="Low level stack and queue functions. " alt="" coords="692,155,743,181"/>
-<area shape="rect" id="node27" href="$set__test_8c.html" title="set_test.c" alt="" coords="767,155,845,181"/>
-<area shape="rect" id="node24" href="$inventory_8c.html" title="Module for player&#39;s inventory. " alt="" coords="341,229,427,256"/>
-<area shape="rect" id="node29" href="$player__test_8c.html" title="player_test.c" alt="" coords="5,229,101,256"/>
-<area shape="rect" id="node31" href="$link_8c.html" title="Creates the links between spaces. " alt="" coords="1452,155,1505,181"/>
-<area shape="rect" id="node32" href="$link__test_8c.html" title="link_test.c" alt="" coords="1345,155,1427,181"/>
+<map id="include/types.h" name="include/types.h">
+<area shape="rect" id="node2" href="$command_8h.html" title="Commands and user input. " alt="" coords="913,80,1048,107"/>
+<area shape="rect" id="node4" href="$game__reader_8h.html" title="Reads data for the game from files. " alt="" coords="849,379,1002,405"/>
+<area shape="rect" id="node10" href="$sprite__loader_8h.html" title="Reads the sprites from a file. " alt="" coords="1327,379,1479,405"/>
+<area shape="rect" id="node13" href="$die_8h.html" title="It declares the die module. " alt="" coords="766,80,861,107"/>
+<area shape="rect" id="node15" href="$space_8h.html" title="Defines functions for space manipulation. " alt="" coords="424,155,537,181"/>
+<area shape="rect" id="node17" href="$object_8h.html" title="Functions for the creation of objects. " alt="" coords="569,80,682,107"/>
+<area shape="rect" id="node20" href="$set_8h.html" title="Low level stack and queue functions. " alt="" coords="131,80,227,107"/>
+<area shape="rect" id="node21" href="$inventory_8h.html" title="Module for player&#39;s inventory. " alt="" coords="206,155,336,181"/>
+<area shape="rect" id="node22" href="$player_8h.html" title="Functions for the creation of players. " alt="" coords="329,229,442,256"/>
+<area shape="rect" id="node25" href="$link_8h.html" title="Creates the links between spaces. " alt="" coords="1075,80,1174,107"/>
+<area shape="rect" id="node27" href="$sprite_8h.html" title="It declares the sprite module. " alt="" coords="1312,229,1422,256"/>
+<area shape="rect" id="node29" href="$game__rules_8h.html" title="Defines input independent actions. " alt="" coords="1201,80,1346,107"/>
+<area shape="rect" id="node3" href="$game_8h.html" title="Main function. " alt="" coords="870,304,981,331"/>
+<area shape="rect" id="node12" href="$command_8c.html" title="Commands and user input. " alt="" coords="924,155,1036,181"/>
+<area shape="rect" id="node5" href="$game_8c.html" title="It implements the game interface and all the associated callbacks for each command. " alt="" coords="1056,453,1142,480"/>
+<area shape="rect" id="node7" href="$graphic__engine_8h.html" title="Uses screen.* to create the UI. " alt="" coords="523,379,688,405"/>
+<area shape="rect" id="node6" href="$game__reader_8c.html" title="Reads data for the game from files. " alt="" coords="860,453,991,480"/>
+<area shape="rect" id="node8" href="$game__loop_8c.html" title="Main loop. " alt="" coords="546,453,665,480"/>
+<area shape="rect" id="node9" href="$graphic__engine_8c.html" title="Uses screen.* to create the UI. " alt="" coords="109,453,252,480"/>
+<area shape="rect" id="node11" href="$sprite__loader_8c.html" title="Reads the sprites from a file. " alt="" coords="1338,453,1468,480"/>
+<area shape="rect" id="node14" href="$die_8c.html" title="It declares the die module. " alt="" coords="778,155,850,181"/>
+<area shape="rect" id="node16" href="$space__test_8c.html" title="It tests space module. " alt="" coords="467,229,590,256"/>
+<area shape="rect" id="node18" href="$object_8c.html" title="Functions for the creation of objects. " alt="" coords="663,155,754,181"/>
+<area shape="rect" id="node19" href="$player_8c.html" title="Functions for the creation of players. " alt="" coords="218,304,308,331"/>
+<area shape="rect" id="node24" href="$set_8c.html" title="Low level stack and queue functions. " alt="" coords="44,155,117,181"/>
+<area shape="rect" id="node23" href="$inventory_8c.html" title="Module for player&#39;s inventory. " alt="" coords="145,229,253,256"/>
+<area shape="rect" id="node26" href="$link_8c.html" title="Creates the links between spaces. " alt="" coords="1162,155,1236,181"/>
+<area shape="rect" id="node28" href="$sprite_8c.html" title="It declares the sprite module. " alt="" coords="1165,304,1252,331"/>
+<area shape="rect" id="node30" href="$game__rules_8c.html" title="Defines input independent actions. " alt="" coords="1311,155,1434,181"/>
 </map>

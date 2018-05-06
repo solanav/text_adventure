@@ -1,7 +1,7 @@
-<map id="player.c" name="player.c">
-<area shape="rect" id="node3" href="$player_8h.html" title="Functions for the creation of players. " alt="" coords="155,155,280,181"/>
-<area shape="rect" id="node7" href="$object_8h.html" title="Functions for the creation of objects. " alt="" coords="5,155,131,181"/>
-<area shape="rect" id="node8" href="$set_8h.html" title="Low level stack and queue functions. " alt="" coords="305,155,412,181"/>
-<area shape="rect" id="node9" href="$inventory_8h.html" title="Module for player&#39;s inventory. " alt="" coords="306,80,448,107"/>
-<area shape="rect" id="node6" href="$types_8h.html" title="Global typedefs. " alt="" coords="313,229,377,256"/>
+<map id="src/player.c" name="src/player.c">
+<area shape="rect" id="node3" href="$player_8h.html" title="Functions for the creation of players. " alt="" coords="223,80,349,107"/>
+<area shape="rect" id="node7" href="$inventory_8h.html" title="Module for player&#39;s inventory. " alt="" coords="5,155,148,181"/>
+<area shape="rect" id="node8" href="$set_8h.html" title="Low level stack and queue functions. " alt="" coords="91,229,199,256"/>
+<area shape="rect" id="node9" href="$object_8h.html" title="Functions for the creation of objects. " alt="" coords="325,229,450,256"/>
+<area shape="rect" id="node6" href="$types_8h.html" title="Global typedefs. " alt="" coords="97,304,219,331"/>
 </map>

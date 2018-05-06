@@ -1,16 +1,16 @@
-\hypertarget{die_8c}{}\section{die.\+c File Reference}
-\label{die_8c}\index{die.\+c@{die.\+c}}
+\hypertarget{die_8c}{}\section{src/die.c File Reference}
+\label{die_8c}\index{src/die.\+c@{src/die.\+c}}
 
 
 It declares the die module.  
 
 
-{\ttfamily \#include \char`\"{}../include/die.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/die.\+h\char`\"{}}\newline
 Include dependency graph for die.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=321pt]{die_8c__incl}
+\includegraphics[width=322pt]{die_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Classes}
@@ -21,23 +21,23 @@ struct \hyperlink{struct__Die}{\+\_\+\+Die}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$ \hyperlink{die_8c_ad5714ba396ffc8c964b7be67240508b2}{die\+\_\+ini} (\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
+\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$ \hyperlink{die_8c_ad5714ba396ffc8c964b7be67240508b2}{die\+\_\+ini} (Id id)
 \begin{DoxyCompactList}\small\item\em esta funcion se encarga de crear el dado reservando memoria para el mismo. \end{DoxyCompactList}\item 
 void \hyperlink{die_8c_aa8e971f9b27132eda0d1e8177adc7ed5}{die\+\_\+die\+\_\+die} (\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$die)
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{die_8c_afafc56aafeb40dbf889c421cace3d919}{die\+\_\+roll} (\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$die)
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{die_8c_a4ba0de5e507530e14302ac5096d7df56}{die\+\_\+print} (F\+I\+LE $\ast$f, \hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$die)
-\item 
+\begin{DoxyCompactList}\small\item\em Destruye el dado recibido. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{die_8c_afafc56aafeb40dbf889c421cace3d919}{die\+\_\+roll} (\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$die)
+\begin{DoxyCompactList}\small\item\em esta funcion se encarga de llamar a la funcion aleatorio() para simular la tirada del dado y devolver el numero elegido \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{die_8c_a4ba0de5e507530e14302ac5096d7df56}{die\+\_\+print} (F\+I\+LE $\ast$f, \hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$die)
+\begin{DoxyCompactList}\small\item\em esta funcion se encarga de imprimir el contenido del dado \end{DoxyCompactList}\item 
 short int \hyperlink{die_8c_a734148bcd7a5fc018966fa3b7909ac4a}{die\+\_\+get\+\_\+last\+\_\+roll} (\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$die)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em consigue el valor de la ultima tirada \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 It declares the die module. 
 
 \begin{DoxyAuthor}{Author}
-Pablo Sánchez Redondo 
+Pablo Sánchez 
 \end{DoxyAuthor}
 \begin{DoxyCopyright}{Copyright}
 G\+NU Public License 
@@ -45,27 +45,46 @@ G\+NU Public License
 
 
 \subsection{Function Documentation}
+\mbox{\Hypertarget{die_8c_aa8e971f9b27132eda0d1e8177adc7ed5}\label{die_8c_aa8e971f9b27132eda0d1e8177adc7ed5}} 
 \index{die.\+c@{die.\+c}!die\+\_\+die\+\_\+die@{die\+\_\+die\+\_\+die}}
 \index{die\+\_\+die\+\_\+die@{die\+\_\+die\+\_\+die}!die.\+c@{die.\+c}}
-\subsubsection[{\texorpdfstring{die\+\_\+die\+\_\+die(\+Die $\ast$die)}{die_die_die(Die *die)}}]{\setlength{\rightskip}{0pt plus 5cm}void die\+\_\+die\+\_\+die (
-\begin{DoxyParamCaption}
-\item[{{\bf Die} $\ast$}]{die}
-\end{DoxyParamCaption}
-)}\hypertarget{die_8c_aa8e971f9b27132eda0d1e8177adc7ed5}{}\label{die_8c_aa8e971f9b27132eda0d1e8177adc7ed5}
+\subsubsection{\texorpdfstring{die\+\_\+die\+\_\+die()}{die\_die\_die()}}
+{\footnotesize\ttfamily void die\+\_\+die\+\_\+die (\begin{DoxyParamCaption}\item[{\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+Destruye el dado recibido. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$\+Die} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{die_8c_a734148bcd7a5fc018966fa3b7909ac4a}\label{die_8c_a734148bcd7a5fc018966fa3b7909ac4a}} 
 \index{die.\+c@{die.\+c}!die\+\_\+get\+\_\+last\+\_\+roll@{die\+\_\+get\+\_\+last\+\_\+roll}}
 \index{die\+\_\+get\+\_\+last\+\_\+roll@{die\+\_\+get\+\_\+last\+\_\+roll}!die.\+c@{die.\+c}}
-\subsubsection[{\texorpdfstring{die\+\_\+get\+\_\+last\+\_\+roll(\+Die $\ast$die)}{die_get_last_roll(Die *die)}}]{\setlength{\rightskip}{0pt plus 5cm}short int die\+\_\+get\+\_\+last\+\_\+roll (
-\begin{DoxyParamCaption}
-\item[{{\bf Die} $\ast$}]{die}
-\end{DoxyParamCaption}
-)}\hypertarget{die_8c_a734148bcd7a5fc018966fa3b7909ac4a}{}\label{die_8c_a734148bcd7a5fc018966fa3b7909ac4a}
+\subsubsection{\texorpdfstring{die\+\_\+get\+\_\+last\+\_\+roll()}{die\_get\_last\_roll()}}
+{\footnotesize\ttfamily short int die\+\_\+get\+\_\+last\+\_\+roll (\begin{DoxyParamCaption}\item[{\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+consigue el valor de la ultima tirada 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez  Die$\ast$ 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+short int la ultima tirada 
+\end{DoxyReturn}
+\mbox{\Hypertarget{die_8c_ad5714ba396ffc8c964b7be67240508b2}\label{die_8c_ad5714ba396ffc8c964b7be67240508b2}} 
 \index{die.\+c@{die.\+c}!die\+\_\+ini@{die\+\_\+ini}}
 \index{die\+\_\+ini@{die\+\_\+ini}!die.\+c@{die.\+c}}
-\subsubsection[{\texorpdfstring{die\+\_\+ini(\+Id id)}{die_ini(Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Die}$\ast$ die\+\_\+ini (
-\begin{DoxyParamCaption}
-\item[{{\bf Id}}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{die_8c_ad5714ba396ffc8c964b7be67240508b2}{}\label{die_8c_ad5714ba396ffc8c964b7be67240508b2}
+\subsubsection{\texorpdfstring{die\+\_\+ini()}{die\_ini()}}
+{\footnotesize\ttfamily \hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die}$\ast$ die\+\_\+ini (\begin{DoxyParamCaption}\item[{Id}]{ }\end{DoxyParamCaption})}
+
 
 
 esta funcion se encarga de crear el dado reservando memoria para el mismo. 
@@ -76,18 +95,35 @@ Pablo Sánchez  ID, el id del dado.
 \begin{DoxyReturn}{Returns}
 newdie, el dado creado, o N\+U\+LL si algo no ha salido como esperaba. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{die_8c_a4ba0de5e507530e14302ac5096d7df56}\label{die_8c_a4ba0de5e507530e14302ac5096d7df56}} 
 \index{die.\+c@{die.\+c}!die\+\_\+print@{die\+\_\+print}}
 \index{die\+\_\+print@{die\+\_\+print}!die.\+c@{die.\+c}}
-\subsubsection[{\texorpdfstring{die\+\_\+print(\+F\+I\+L\+E $\ast$f, Die $\ast$die)}{die_print(FILE *f, Die *die)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} die\+\_\+print (
-\begin{DoxyParamCaption}
-\item[{F\+I\+LE $\ast$}]{f, }
-\item[{{\bf Die} $\ast$}]{die}
-\end{DoxyParamCaption}
-)}\hypertarget{die_8c_a4ba0de5e507530e14302ac5096d7df56}{}\label{die_8c_a4ba0de5e507530e14302ac5096d7df56}
+\subsubsection{\texorpdfstring{die\+\_\+print()}{die\_print()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US die\+\_\+print (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{,  }\item[{\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+esta funcion se encarga de imprimir el contenido del dado 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez  Die$\ast$die, el dado que desea imprimir. 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+E\+R\+R\+OR si algo no ha salido como se esperaba. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{die_8c_afafc56aafeb40dbf889c421cace3d919}\label{die_8c_afafc56aafeb40dbf889c421cace3d919}} 
 \index{die.\+c@{die.\+c}!die\+\_\+roll@{die\+\_\+roll}}
 \index{die\+\_\+roll@{die\+\_\+roll}!die.\+c@{die.\+c}}
-\subsubsection[{\texorpdfstring{die\+\_\+roll(\+Die $\ast$die)}{die_roll(Die *die)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} die\+\_\+roll (
-\begin{DoxyParamCaption}
-\item[{{\bf Die} $\ast$}]{die}
-\end{DoxyParamCaption}
-)}\hypertarget{die_8c_afafc56aafeb40dbf889c421cace3d919}{}\label{die_8c_afafc56aafeb40dbf889c421cace3d919}
+\subsubsection{\texorpdfstring{die\+\_\+roll()}{die\_roll()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US die\+\_\+roll (\begin{DoxyParamCaption}\item[{\hyperlink{die_8h_a892f0b0bf81d69a1f7a14ea238e36dd3}{Die} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+esta funcion se encarga de llamar a la funcion aleatorio() para simular la tirada del dado y devolver el numero elegido 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+Die=$>$ult\+\_\+tirada si ha salido correctamente o E\+R\+R\+OR si no. 
+\end{DoxyReturn}

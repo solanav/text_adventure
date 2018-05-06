@@ -1,10 +1,3 @@
-<map id="test.h" name="test.h">
-<area shape="rect" id="node2" href="$command__test_8c.html" title="command_test.c" alt="" coords="5,80,123,107"/>
-<area shape="rect" id="node3" href="$die__test_8c.html" title="die_test.c" alt="" coords="147,80,225,107"/>
-<area shape="rect" id="node4" href="$inventory__test_8c.html" title="inventory_test.c" alt="" coords="251,80,365,107"/>
-<area shape="rect" id="node5" href="$link__test_8c.html" title="link_test.c" alt="" coords="389,80,471,107"/>
-<area shape="rect" id="node6" href="$object__test_8c.html" title="object_test.c" alt="" coords="497,80,593,107"/>
-<area shape="rect" id="node7" href="$player__test_8c.html" title="player_test.c" alt="" coords="618,80,715,107"/>
-<area shape="rect" id="node8" href="$set__test_8c.html" title="set_test.c" alt="" coords="740,80,819,107"/>
-<area shape="rect" id="node9" href="$space__test_8c.html" title="It tests space module. " alt="" coords="845,80,941,107"/>
+<map id="include/test.h" name="include/test.h">
+<area shape="rect" id="node2" href="$space__test_8c.html" title="It tests space module. " alt="" coords="5,80,128,107"/>
 </map>

@@ -1,4 +1,4 @@
-<map id="command.c" name="command.c">
+<map id="src/command.c" name="src/command.c">
 <area shape="rect" id="node4" href="$command_8h.html" title="Commands and user input. " alt="" coords="187,80,333,107"/>
 <area shape="rect" id="node7" href="$types_8h.html" title="Global typedefs. " alt="" coords="316,155,439,181"/>
 </map>

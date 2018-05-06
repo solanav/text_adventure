@@ -1,12 +1,12 @@
-\hypertarget{game__reader_8h}{}\section{game\+\_\+reader.\+h File Reference}
-\label{game__reader_8h}\index{game\+\_\+reader.\+h@{game\+\_\+reader.\+h}}
+\hypertarget{game__reader_8h}{}\section{include/game\+\_\+reader.h File Reference}
+\label{game__reader_8h}\index{include/game\+\_\+reader.\+h@{include/game\+\_\+reader.\+h}}
 
 
 Reads data for the game from files.  
 
 
-{\ttfamily \#include \char`\"{}../include/types.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}../include/game.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/game.\+h\char`\"{}}\newline
 Include dependency graph for game\+\_\+reader.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -18,16 +18,16 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=227pt]{game__reader_8h__dep__incl}
+\includegraphics[width=262pt]{game__reader_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{game__reader_8h_a0d01072a28b01545d36240cb8bd9d4f8}{game\+\_\+load\+\_\+spaces} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, char $\ast$filename)
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{game__reader_8h_aab4103cf97109ac921f358858ca2684d}{game\+\_\+load\+\_\+links} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, char $\ast$filename)
-\end{DoxyCompactItemize}
+S\+T\+A\+T\+US \hyperlink{game__reader_8h_a0d01072a28b01545d36240cb8bd9d4f8}{game\+\_\+load\+\_\+spaces} (\hyperlink{struct__Game}{Game} $\ast$game, char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Loads the game from a file. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{game__reader_8h_aab4103cf97109ac921f358858ca2684d}{game\+\_\+load\+\_\+links} (\hyperlink{struct__Game}{Game} $\ast$game, char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Loads links from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -42,19 +42,59 @@ G\+NU Public License
 
 
 \subsection{Function Documentation}
+\mbox{\Hypertarget{game__reader_8h_aab4103cf97109ac921f358858ca2684d}\label{game__reader_8h_aab4103cf97109ac921f358858ca2684d}} 
 \index{game\+\_\+reader.\+h@{game\+\_\+reader.\+h}!game\+\_\+load\+\_\+links@{game\+\_\+load\+\_\+links}}
 \index{game\+\_\+load\+\_\+links@{game\+\_\+load\+\_\+links}!game\+\_\+reader.\+h@{game\+\_\+reader.\+h}}
-\subsubsection[{\texorpdfstring{game\+\_\+load\+\_\+links(\+Game $\ast$game, char $\ast$filename)}{game_load_links(Game *game, char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} game\+\_\+load\+\_\+links (
-\begin{DoxyParamCaption}
-\item[{{\bf Game} $\ast$}]{game, }
-\item[{char $\ast$}]{filename}
-\end{DoxyParamCaption}
-)}\hypertarget{game__reader_8h_aab4103cf97109ac921f358858ca2684d}{}\label{game__reader_8h_aab4103cf97109ac921f358858ca2684d}
+\subsubsection{\texorpdfstring{game\+\_\+load\+\_\+links()}{game\_load\_links()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+load\+\_\+links (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Game}{Game} $\ast$}]{game,  }\item[{char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads links from a file. 
+
+\begin{DoxyAuthor}{Author}
+Antonio Solana 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em Game$\ast$} & \\
+\hline
+{\em char$\ast$} & filename \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+US OK or E\+R\+R\+OR 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & game or error at open \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{game__reader_8h_a0d01072a28b01545d36240cb8bd9d4f8}\label{game__reader_8h_a0d01072a28b01545d36240cb8bd9d4f8}} 
 \index{game\+\_\+reader.\+h@{game\+\_\+reader.\+h}!game\+\_\+load\+\_\+spaces@{game\+\_\+load\+\_\+spaces}}
 \index{game\+\_\+load\+\_\+spaces@{game\+\_\+load\+\_\+spaces}!game\+\_\+reader.\+h@{game\+\_\+reader.\+h}}
-\subsubsection[{\texorpdfstring{game\+\_\+load\+\_\+spaces(\+Game $\ast$game, char $\ast$filename)}{game_load_spaces(Game *game, char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} game\+\_\+load\+\_\+spaces (
-\begin{DoxyParamCaption}
-\item[{{\bf Game} $\ast$}]{game, }
-\item[{char $\ast$}]{filename}
-\end{DoxyParamCaption}
-)}\hypertarget{game__reader_8h_a0d01072a28b01545d36240cb8bd9d4f8}{}\label{game__reader_8h_a0d01072a28b01545d36240cb8bd9d4f8}
+\subsubsection{\texorpdfstring{game\+\_\+load\+\_\+spaces()}{game\_load\_spaces()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+load\+\_\+spaces (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Game}{Game} $\ast$}]{game,  }\item[{char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads the game from a file. 
+
+\begin{DoxyAuthor}{Author}
+Catalín Rotaru 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em Game$\ast$} & \\
+\hline
+{\em char$\ast$} & filename \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+US OK or E\+R\+R\+OR 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & game or error when opening \\
+\hline
+\end{DoxyExceptions}

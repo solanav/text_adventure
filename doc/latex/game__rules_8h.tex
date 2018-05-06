@@ -1,10 +1,118 @@
-\hypertarget{game__rules_8h}{}\section{game\+\_\+rules.\+h File Reference}
-\label{game__rules_8h}\index{game\+\_\+rules.\+h@{game\+\_\+rules.\+h}}
-{\ttfamily \#include \char`\"{}../include/game.\+h\char`\"{}}\\*
+\hypertarget{game__rules_8h}{}\section{include/game\+\_\+rules.h File Reference}
+\label{game__rules_8h}\index{include/game\+\_\+rules.\+h@{include/game\+\_\+rules.\+h}}
+
+
+Defines input independent actions.  
+
+
+{\ttfamily \#include \char`\"{}../include/types.\+h\char`\"{}}\newline
 Include dependency graph for game\+\_\+rules.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{game__rules_8h__incl}
+\includegraphics[width=189pt]{game__rules_8h__incl}
 \end{center}
 \end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__rules_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{game__rules_8h_a47319ae4d2cc42513d51c4ede480f91c}\label{game__rules_8h_a47319ae4d2cc42513d51c4ede480f91c}} 
+typedef enum enum\+\_\+\+Rules {\bfseries Rules}
+\item 
+\mbox{\Hypertarget{game__rules_8h_a20d631d93c311ea7d71ceeb04f92811f}\label{game__rules_8h_a20d631d93c311ea7d71ceeb04f92811f}} 
+typedef struct \hyperlink{struct__Rule__Data}{\+\_\+\+Rule\+\_\+\+Data} {\bfseries Rule\+\_\+\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{game__rules_8h_af65db71933f393ce1a8b0c0269987bd4}\label{game__rules_8h_af65db71933f393ce1a8b0c0269987bd4}} 
+enum {\bfseries enum\+\_\+\+Rules} \{ \newline
+{\bfseries N\+O\+\_\+\+R\+U\+L\+ES}, 
+{\bfseries N\+O\+\_\+\+L\+I\+G\+HT}, 
+{\bfseries G\+O\+\_\+\+S\+T\+A\+RT}, 
+{\bfseries N\+O\+\_\+\+T\+O\+R\+CH}, 
+\newline
+{\bfseries B\+E\+C\+O\+M\+E\+\_\+\+T\+R\+EE}, 
+{\bfseries G\+O\+\_\+\+R\+A\+ND}, 
+{\bfseries H\+I\+D\+E\+\_\+\+A\+LL}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct__Rule__Data}{Rule\+\_\+\+Data} $\ast$ \hyperlink{game__rules_8h_aa59378583b5e1e7926b7a6aacad11069}{rules\+\_\+create} ()
+\begin{DoxyCompactList}\small\item\em Creates the rules structure. \end{DoxyCompactList}\item 
+void \hyperlink{game__rules_8h_a498223ea63d43e9866d2aef4276ade80}{rules\+\_\+destroy} (\hyperlink{struct__Rule__Data}{Rule\+\_\+\+Data} $\ast$)
+\begin{DoxyCompactList}\small\item\em Destroys the rules structure given. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{game__rules_8h_aee8008b425a58b5ef035ebb8d9bc72c7}\label{game__rules_8h_aee8008b425a58b5ef035ebb8d9bc72c7}} 
+S\+T\+A\+T\+US {\bfseries rules\+\_\+set\+Move\+Count} (\hyperlink{struct__Rule__Data}{Rule\+\_\+\+Data} $\ast$rule\+\_\+data, int count)
+\item 
+\mbox{\Hypertarget{game__rules_8h_a99cc10362492baed421118910e43c3ae}\label{game__rules_8h_a99cc10362492baed421118910e43c3ae}} 
+S\+T\+A\+T\+US {\bfseries rules\+\_\+set\+Die\+Val} (\hyperlink{struct__Rule__Data}{Rule\+\_\+\+Data} $\ast$rule\+\_\+data, short dieval)
+\item 
+\mbox{\Hypertarget{game__rules_8h_a7f2de2d6c25cda7f08ab2eb584a37584}\label{game__rules_8h_a7f2de2d6c25cda7f08ab2eb584a37584}} 
+int {\bfseries rules\+\_\+get\+Die\+Val} (\hyperlink{struct__Rule__Data}{Rule\+\_\+\+Data} $\ast$rule\+\_\+data)
+\item 
+\mbox{\Hypertarget{game__rules_8h_aa5818bb2870fb414d05e656f4342fe62}\label{game__rules_8h_aa5818bb2870fb414d05e656f4342fe62}} 
+int {\bfseries rules\+\_\+get\+Move\+Count} (\hyperlink{struct__Rule__Data}{Rule\+\_\+\+Data} $\ast$rule\+\_\+data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines input independent actions. 
+
+\begin{DoxyAuthor}{Author}
+Antonio Solana 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{game__rules_8h_aa59378583b5e1e7926b7a6aacad11069}\label{game__rules_8h_aa59378583b5e1e7926b7a6aacad11069}} 
+\index{game\+\_\+rules.\+h@{game\+\_\+rules.\+h}!rules\+\_\+create@{rules\+\_\+create}}
+\index{rules\+\_\+create@{rules\+\_\+create}!game\+\_\+rules.\+h@{game\+\_\+rules.\+h}}
+\subsubsection{\texorpdfstring{rules\+\_\+create()}{rules\_create()}}
+{\footnotesize\ttfamily \hyperlink{struct__Rule__Data}{Rule\+\_\+\+Data}$\ast$ rules\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates the rules structure. 
+
+\begin{DoxyAuthor}{Author}
+Antonio Solana 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+Rules\+\_\+\+Data 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Broken} & calloc \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{game__rules_8h_a498223ea63d43e9866d2aef4276ade80}\label{game__rules_8h_a498223ea63d43e9866d2aef4276ade80}} 
+\index{game\+\_\+rules.\+h@{game\+\_\+rules.\+h}!rules\+\_\+destroy@{rules\+\_\+destroy}}
+\index{rules\+\_\+destroy@{rules\+\_\+destroy}!game\+\_\+rules.\+h@{game\+\_\+rules.\+h}}
+\subsubsection{\texorpdfstring{rules\+\_\+destroy()}{rules\_destroy()}}
+{\footnotesize\ttfamily void rules\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Rule__Data}{Rule\+\_\+\+Data} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the rules structure given. 
+
+\begin{DoxyAuthor}{Author}
+Antonio Solana 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em Rule\+\_\+\+Data$\ast$} & \\
+\hline
+\end{DoxyParams}

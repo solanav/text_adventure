@@ -1,4 +1,4 @@
-<map id="inventory.h" name="inventory.h">
+<map id="include/inventory.h" name="include/inventory.h">
 <area shape="rect" id="node2" href="$types_8h.html" title="Global typedefs. " alt="" coords="5,155,128,181"/>
-<area shape="rect" id="node3" href="$set_8h.html" title="Low level stack and queue functions. " alt="" coords="122,80,229,107"/>
+<area shape="rect" id="node3" href="$set_8h.html" title="Low level stack and queue functions. " alt="" coords="122,80,230,107"/>
 </map>

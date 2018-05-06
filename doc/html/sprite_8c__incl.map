@@ -1,4 +1,4 @@
-<map id="sprite.c" name="sprite.c">
+<map id="src/sprite.c" name="src/sprite.c">
 <area shape="rect" id="node2" href="$sprite_8h.html" title="It declares the sprite module. " alt="" coords="151,80,273,107"/>
 <area shape="rect" id="node7" href="$types_8h.html" title="Global typedefs. " alt="" coords="353,155,418,181"/>
 </map>

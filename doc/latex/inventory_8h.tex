@@ -1,12 +1,12 @@
-\hypertarget{inventory_8h}{}\section{inventory.\+h File Reference}
-\label{inventory_8h}\index{inventory.\+h@{inventory.\+h}}
+\hypertarget{inventory_8h}{}\section{include/inventory.h File Reference}
+\label{inventory_8h}\index{include/inventory.\+h@{include/inventory.\+h}}
 
 
 Module for player\textquotesingle{}s inventory.  
 
 
-{\ttfamily \#include \char`\"{}../include/types.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}../include/set.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/set.\+h\char`\"{}}\newline
 Include dependency graph for inventory.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -24,26 +24,38 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct \hyperlink{struct__Inventory}{\+\_\+\+Inventory} \hyperlink{inventory_8h_a2253bf64ac4ce6a9c1d6f39c0b0d32a3}{Inventory}
+\mbox{\Hypertarget{inventory_8h_a2253bf64ac4ce6a9c1d6f39c0b0d32a3}\label{inventory_8h_a2253bf64ac4ce6a9c1d6f39c0b0d32a3}} 
+typedef struct \hyperlink{struct__Inventory}{\+\_\+\+Inventory} {\bfseries Inventory}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{inventory_8h_a2253bf64ac4ce6a9c1d6f39c0b0d32a3}{Inventory} $\ast$ \hyperlink{inventory_8h_abf1d0e2a115cdef773abf556b3e0947d}{inventory\+\_\+create} (int)
+\mbox{\Hypertarget{inventory_8h_abf1d0e2a115cdef773abf556b3e0947d}\label{inventory_8h_abf1d0e2a115cdef773abf556b3e0947d}} 
+\hyperlink{struct__Inventory}{Inventory} $\ast$ {\bfseries inventory\+\_\+create} (int)
 \item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{inventory_8h_a670571ee9591b73ca5dfbc0b79b45882}{inventory\+\_\+destroy} (\hyperlink{inventory_8h_a2253bf64ac4ce6a9c1d6f39c0b0d32a3}{Inventory} $\ast$inv)
+\mbox{\Hypertarget{inventory_8h_a670571ee9591b73ca5dfbc0b79b45882}\label{inventory_8h_a670571ee9591b73ca5dfbc0b79b45882}} 
+S\+T\+A\+T\+US {\bfseries inventory\+\_\+destroy} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv)
 \item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{inventory_8h_a59ec97ad901a2a8cf48726bf13ee1cbb}{inventory\+\_\+set\+\_\+ids} (\hyperlink{inventory_8h_a2253bf64ac4ce6a9c1d6f39c0b0d32a3}{Inventory} $\ast$inv, \hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$ids)
+\mbox{\Hypertarget{inventory_8h_a59ec97ad901a2a8cf48726bf13ee1cbb}\label{inventory_8h_a59ec97ad901a2a8cf48726bf13ee1cbb}} 
+S\+T\+A\+T\+US {\bfseries inventory\+\_\+set\+\_\+ids} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv, \hyperlink{struct__Set}{Set} $\ast$ids)
 \item 
-\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$ \hyperlink{inventory_8h_a03ccfae62fdba0dee0ae413a640702ce}{inventory\+\_\+get\+\_\+ids} (\hyperlink{inventory_8h_a2253bf64ac4ce6a9c1d6f39c0b0d32a3}{Inventory} $\ast$inv)
+\mbox{\Hypertarget{inventory_8h_a03ccfae62fdba0dee0ae413a640702ce}\label{inventory_8h_a03ccfae62fdba0dee0ae413a640702ce}} 
+\hyperlink{struct__Set}{Set} $\ast$ {\bfseries inventory\+\_\+get\+\_\+ids} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv)
 \item 
-\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} \hyperlink{inventory_8h_a324cb915fad6eecab9d8494bf149af10}{inventory\+\_\+get\+\_\+id\+\_\+at} (\hyperlink{inventory_8h_a2253bf64ac4ce6a9c1d6f39c0b0d32a3}{Inventory} $\ast$inv, int num)
+\mbox{\Hypertarget{inventory_8h_a324cb915fad6eecab9d8494bf149af10}\label{inventory_8h_a324cb915fad6eecab9d8494bf149af10}} 
+Id {\bfseries inventory\+\_\+get\+\_\+id\+\_\+at} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv, int num)
 \item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{inventory_8h_a91549cebec2fd5c6f3ec0c7d6448dc31}{inventory\+\_\+add\+\_\+id} (\hyperlink{inventory_8h_a2253bf64ac4ce6a9c1d6f39c0b0d32a3}{Inventory} $\ast$inv, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
+\mbox{\Hypertarget{inventory_8h_a91549cebec2fd5c6f3ec0c7d6448dc31}\label{inventory_8h_a91549cebec2fd5c6f3ec0c7d6448dc31}} 
+S\+T\+A\+T\+US {\bfseries inventory\+\_\+add\+\_\+id} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv, Id id)
 \item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{inventory_8h_abfdd9b2876ee540ae426bfb5b200bf3c}{inventory\+\_\+del\+\_\+id} (\hyperlink{inventory_8h_a2253bf64ac4ce6a9c1d6f39c0b0d32a3}{Inventory} $\ast$inv, \hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id} id)
+\mbox{\Hypertarget{inventory_8h_abfdd9b2876ee540ae426bfb5b200bf3c}\label{inventory_8h_abfdd9b2876ee540ae426bfb5b200bf3c}} 
+S\+T\+A\+T\+US {\bfseries inventory\+\_\+del\+\_\+id} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv, Id id)
 \item 
-void \hyperlink{inventory_8h_a0fc60a571887434cedb4f8b6d1ff69eb}{inventory\+\_\+print} (\hyperlink{inventory_8h_a2253bf64ac4ce6a9c1d6f39c0b0d32a3}{Inventory} $\ast$)
+\mbox{\Hypertarget{inventory_8h_a218a121e24cda7abcb77ee745b7d713b}\label{inventory_8h_a218a121e24cda7abcb77ee745b7d713b}} 
+B\+O\+OL {\bfseries inventory\+\_\+check\+By\+Id} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv, Id id)
+\item 
+\mbox{\Hypertarget{inventory_8h_a0fc60a571887434cedb4f8b6d1ff69eb}\label{inventory_8h_a0fc60a571887434cedb4f8b6d1ff69eb}} 
+void {\bfseries inventory\+\_\+print} (\hyperlink{struct__Inventory}{Inventory} $\ast$)
 \end{DoxyCompactItemize}
 
 
@@ -56,72 +68,3 @@ Guillermo Ríos
 \begin{DoxyCopyright}{Copyright}
 G\+NU Public License 
 \end{DoxyCopyright}
-
-
-\subsection{Typedef Documentation}
-\index{inventory.\+h@{inventory.\+h}!Inventory@{Inventory}}
-\index{Inventory@{Inventory}!inventory.\+h@{inventory.\+h}}
-\subsubsection[{\texorpdfstring{Inventory}{Inventory}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Inventory} {\bf Inventory}}\hypertarget{inventory_8h_a2253bf64ac4ce6a9c1d6f39c0b0d32a3}{}\label{inventory_8h_a2253bf64ac4ce6a9c1d6f39c0b0d32a3}
-
-
-\subsection{Function Documentation}
-\index{inventory.\+h@{inventory.\+h}!inventory\+\_\+add\+\_\+id@{inventory\+\_\+add\+\_\+id}}
-\index{inventory\+\_\+add\+\_\+id@{inventory\+\_\+add\+\_\+id}!inventory.\+h@{inventory.\+h}}
-\subsubsection[{\texorpdfstring{inventory\+\_\+add\+\_\+id(\+Inventory $\ast$inv, Id id)}{inventory_add_id(Inventory *inv, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} inventory\+\_\+add\+\_\+id (
-\begin{DoxyParamCaption}
-\item[{{\bf Inventory} $\ast$}]{inv, }
-\item[{{\bf Id}}]{id}
-\end{DoxyParamCaption}
-)}\hypertarget{inventory_8h_a91549cebec2fd5c6f3ec0c7d6448dc31}{}\label{inventory_8h_a91549cebec2fd5c6f3ec0c7d6448dc31}
-\index{inventory.\+h@{inventory.\+h}!inventory\+\_\+create@{inventory\+\_\+create}}
-\index{inventory\+\_\+create@{inventory\+\_\+create}!inventory.\+h@{inventory.\+h}}
-\subsubsection[{\texorpdfstring{inventory\+\_\+create(int)}{inventory_create(int)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Inventory}$\ast$ inventory\+\_\+create (
-\begin{DoxyParamCaption}
-\item[{int}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{inventory_8h_abf1d0e2a115cdef773abf556b3e0947d}{}\label{inventory_8h_abf1d0e2a115cdef773abf556b3e0947d}
-\index{inventory.\+h@{inventory.\+h}!inventory\+\_\+del\+\_\+id@{inventory\+\_\+del\+\_\+id}}
-\index{inventory\+\_\+del\+\_\+id@{inventory\+\_\+del\+\_\+id}!inventory.\+h@{inventory.\+h}}
-\subsubsection[{\texorpdfstring{inventory\+\_\+del\+\_\+id(\+Inventory $\ast$inv, Id id)}{inventory_del_id(Inventory *inv, Id id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} inventory\+\_\+del\+\_\+id (
-\begin{DoxyParamCaption}
-\item[{{\bf Inventory} $\ast$}]{inv, }
-\item[{{\bf Id}}]{id}
-\end{DoxyParamCaption}
-)}\hypertarget{inventory_8h_abfdd9b2876ee540ae426bfb5b200bf3c}{}\label{inventory_8h_abfdd9b2876ee540ae426bfb5b200bf3c}
-\index{inventory.\+h@{inventory.\+h}!inventory\+\_\+destroy@{inventory\+\_\+destroy}}
-\index{inventory\+\_\+destroy@{inventory\+\_\+destroy}!inventory.\+h@{inventory.\+h}}
-\subsubsection[{\texorpdfstring{inventory\+\_\+destroy(\+Inventory $\ast$inv)}{inventory_destroy(Inventory *inv)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} inventory\+\_\+destroy (
-\begin{DoxyParamCaption}
-\item[{{\bf Inventory} $\ast$}]{inv}
-\end{DoxyParamCaption}
-)}\hypertarget{inventory_8h_a670571ee9591b73ca5dfbc0b79b45882}{}\label{inventory_8h_a670571ee9591b73ca5dfbc0b79b45882}
-\index{inventory.\+h@{inventory.\+h}!inventory\+\_\+get\+\_\+id\+\_\+at@{inventory\+\_\+get\+\_\+id\+\_\+at}}
-\index{inventory\+\_\+get\+\_\+id\+\_\+at@{inventory\+\_\+get\+\_\+id\+\_\+at}!inventory.\+h@{inventory.\+h}}
-\subsubsection[{\texorpdfstring{inventory\+\_\+get\+\_\+id\+\_\+at(\+Inventory $\ast$inv, int num)}{inventory_get_id_at(Inventory *inv, int num)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Id} inventory\+\_\+get\+\_\+id\+\_\+at (
-\begin{DoxyParamCaption}
-\item[{{\bf Inventory} $\ast$}]{inv, }
-\item[{int}]{num}
-\end{DoxyParamCaption}
-)}\hypertarget{inventory_8h_a324cb915fad6eecab9d8494bf149af10}{}\label{inventory_8h_a324cb915fad6eecab9d8494bf149af10}
-\index{inventory.\+h@{inventory.\+h}!inventory\+\_\+get\+\_\+ids@{inventory\+\_\+get\+\_\+ids}}
-\index{inventory\+\_\+get\+\_\+ids@{inventory\+\_\+get\+\_\+ids}!inventory.\+h@{inventory.\+h}}
-\subsubsection[{\texorpdfstring{inventory\+\_\+get\+\_\+ids(\+Inventory $\ast$inv)}{inventory_get_ids(Inventory *inv)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Set}$\ast$ inventory\+\_\+get\+\_\+ids (
-\begin{DoxyParamCaption}
-\item[{{\bf Inventory} $\ast$}]{inv}
-\end{DoxyParamCaption}
-)}\hypertarget{inventory_8h_a03ccfae62fdba0dee0ae413a640702ce}{}\label{inventory_8h_a03ccfae62fdba0dee0ae413a640702ce}
-\index{inventory.\+h@{inventory.\+h}!inventory\+\_\+print@{inventory\+\_\+print}}
-\index{inventory\+\_\+print@{inventory\+\_\+print}!inventory.\+h@{inventory.\+h}}
-\subsubsection[{\texorpdfstring{inventory\+\_\+print(\+Inventory $\ast$)}{inventory_print(Inventory *)}}]{\setlength{\rightskip}{0pt plus 5cm}void inventory\+\_\+print (
-\begin{DoxyParamCaption}
-\item[{{\bf Inventory} $\ast$}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{inventory_8h_a0fc60a571887434cedb4f8b6d1ff69eb}{}\label{inventory_8h_a0fc60a571887434cedb4f8b6d1ff69eb}
-\index{inventory.\+h@{inventory.\+h}!inventory\+\_\+set\+\_\+ids@{inventory\+\_\+set\+\_\+ids}}
-\index{inventory\+\_\+set\+\_\+ids@{inventory\+\_\+set\+\_\+ids}!inventory.\+h@{inventory.\+h}}
-\subsubsection[{\texorpdfstring{inventory\+\_\+set\+\_\+ids(\+Inventory $\ast$inv, Set $\ast$ids)}{inventory_set_ids(Inventory *inv, Set *ids)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} inventory\+\_\+set\+\_\+ids (
-\begin{DoxyParamCaption}
-\item[{{\bf Inventory} $\ast$}]{inv, }
-\item[{{\bf Set} $\ast$}]{ids}
-\end{DoxyParamCaption}
-)}\hypertarget{inventory_8h_a59ec97ad901a2a8cf48726bf13ee1cbb}{}\label{inventory_8h_a59ec97ad901a2a8cf48726bf13ee1cbb}

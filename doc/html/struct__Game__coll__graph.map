@@ -1,10 +1,12 @@
 <map id="_Game" name="_Game">
-<area shape="rect" id="node2" href="$struct__F__Command.html" title="_F_Command" alt="" coords="5,197,109,224"/>
-<area shape="rect" id="node3" href="$struct__Link.html" title="_Link" alt="" coords="133,197,187,224"/>
-<area shape="rect" id="node4" href="$struct__Die.html" title="_Die" alt="" coords="211,197,260,224"/>
-<area shape="rect" id="node5" href="$struct__Space.html" title="_Space" alt="" coords="288,147,355,173"/>
-<area shape="rect" id="node6" href="$struct__Set.html" title="_Set" alt="" coords="338,5,387,32"/>
-<area shape="rect" id="node9" href="$struct__Inventory.html" title="_Inventory" alt="" coords="363,96,444,123"/>
-<area shape="rect" id="node7" href="$struct__Object.html" title="_Object" alt="" coords="471,197,537,224"/>
-<area shape="rect" id="node8" href="$struct__Player.html" title="_Player" alt="" coords="380,197,447,224"/>
+<area shape="rect" id="node2" href="$struct__Sprite.html" title="_Sprite" alt="" coords="5,196,68,223"/>
+<area shape="rect" id="node3" href="$struct__F__Command.html" title="_F_Command" alt="" coords="93,196,197,223"/>
+<area shape="rect" id="node4" href="$struct__Link.html" title="_Link" alt="" coords="221,196,274,223"/>
+<area shape="rect" id="node5" href="$struct__Die.html" title="_Die" alt="" coords="299,196,348,223"/>
+<area shape="rect" id="node6" href="$struct__Space.html" title="_Space" alt="" coords="370,145,437,172"/>
+<area shape="rect" id="node7" href="$struct__Set.html" title="_Set" alt="" coords="429,5,479,32"/>
+<area shape="rect" id="node11" href="$struct__Inventory.html" title="_Inventory" alt="" coords="455,95,538,121"/>
+<area shape="rect" id="node8" href="$struct__Object.html" title="_Object" alt="" coords="558,196,625,223"/>
+<area shape="rect" id="node9" href="$struct__Rule__Data.html" title="_Rule_Data" alt="" coords="649,196,739,223"/>
+<area shape="rect" id="node10" href="$struct__Player.html" title="_Player" alt="" coords="467,196,534,223"/>
 </map>

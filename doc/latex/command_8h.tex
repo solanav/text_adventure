@@ -1,18 +1,18 @@
-\hypertarget{command_8h}{}\section{command.\+h File Reference}
-\label{command_8h}\index{command.\+h@{command.\+h}}
+\hypertarget{command_8h}{}\section{include/command.h File Reference}
+\label{command_8h}\index{include/command.\+h@{include/command.\+h}}
 
 
 Commands and user input.  
 
 
-{\ttfamily \#include $<$string.\+h$>$}\\*
-{\ttfamily \#include $<$stdlib.\+h$>$}\\*
-{\ttfamily \#include \char`\"{}../include/types.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/types.\+h\char`\"{}}\newline
 Include dependency graph for command.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=305pt]{command_8h__incl}
+\includegraphics[width=306pt]{command_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:\nopagebreak
@@ -25,46 +25,26 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef enum \hyperlink{command_8h_ace19ba2296a74e4aef53304e0934c50c}{enum\+\_\+\+Command} \hyperlink{command_8h_a0473597db8c45c0289b6b8e2f8abbe32}{T\+\_\+\+Command}
-\item 
-typedef struct \hyperlink{struct__F__Command}{\+\_\+\+F\+\_\+\+Command} \hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command}
-\end{DoxyCompactItemize}
-\subsection*{Enumerations}
-\begin{DoxyCompactItemize}
-\item 
-enum \hyperlink{command_8h_ace19ba2296a74e4aef53304e0934c50c}{enum\+\_\+\+Command} \{ \\*
-\hyperlink{command_8h_ace19ba2296a74e4aef53304e0934c50ca785693a1d550a18688638e9124af41d0}{N\+O\+\_\+\+C\+MD} = -\/1, 
-\hyperlink{command_8h_ace19ba2296a74e4aef53304e0934c50ca6ce26a62afab55d7606ad4e92428b30c}{U\+N\+K\+N\+O\+WN}, 
-\hyperlink{command_8h_ace19ba2296a74e4aef53304e0934c50ca7a10b5d68d31711288e1fe0fa17dbf4f}{E\+X\+IT}, 
-\hyperlink{command_8h_ace19ba2296a74e4aef53304e0934c50cad31ed39ff45507ad55033d5f1ab7da5c}{P\+I\+C\+K\+\_\+\+UP}, 
-\\*
-\hyperlink{command_8h_ace19ba2296a74e4aef53304e0934c50ca8b0b0025af76a3d8f0b7b1d4758e51a6}{D\+R\+OP}, 
-\hyperlink{command_8h_ace19ba2296a74e4aef53304e0934c50ca2eeb9fef8a6a516fa6437a44a6efbd52}{R\+O\+LL}, 
-\hyperlink{command_8h_ace19ba2296a74e4aef53304e0934c50caed3ef32890b6da0919b57254c5206c62}{M\+O\+VE}, 
-\hyperlink{command_8h_ace19ba2296a74e4aef53304e0934c50caed65b7dfe470f4e500b15f7074bb7fa2}{C\+H\+E\+CK}, 
-\\*
-\hyperlink{command_8h_ace19ba2296a74e4aef53304e0934c50ca141759a3bd88e1f969f53ce070705fcd}{T\+U\+R\+N\+ON}, 
-\hyperlink{command_8h_ace19ba2296a74e4aef53304e0934c50ca564ee0e901bafdd34855cf0ad96ef60c}{T\+U\+R\+N\+O\+FF}, 
-\hyperlink{command_8h_ace19ba2296a74e4aef53304e0934c50ca0e0143636c29971736eab47415868eae}{O\+P\+EN}
- \}
+\mbox{\Hypertarget{command_8h_a76085817cb558dc3640088040ba47898}\label{command_8h_a76085817cb558dc3640088040ba47898}} 
+typedef struct \hyperlink{struct__F__Command}{\+\_\+\+F\+\_\+\+Command} {\bfseries F\+\_\+\+Command}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{command_8h_a8fe217a61bb0d6679328c34b28d8b70c}{get\+\_\+user\+\_\+input} (\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$)
-\item 
-\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$ \hyperlink{command_8h_ae66916e90ab149b0bb6222b1ce60f09b}{command\+\_\+create} ()
-\item 
-void \hyperlink{command_8h_a292bd392485c899b8844fc9fd4d7d196}{command\+\_\+free} (\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$)
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{command_8h_a1ec245b7e5700a1ac35b126f31e85671}{command\+\_\+set\+Cmd} (\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$, \hyperlink{command_8h_a0473597db8c45c0289b6b8e2f8abbe32}{T\+\_\+\+Command})
-\item 
-\hyperlink{command_8h_a0473597db8c45c0289b6b8e2f8abbe32}{T\+\_\+\+Command} \hyperlink{command_8h_a15281f4ecc9fab8fb9fc55273d08742d}{command\+\_\+get\+Cmd} (\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$)
-\item 
-\hyperlink{types_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US} \hyperlink{command_8h_aaebe404b08dba170b2ec66c5e79ec265}{command\+\_\+set\+\_\+id} (\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$, char $\ast$)
-\item 
-char $\ast$ \hyperlink{command_8h_a371627a62bc8e098547786e2c60d6e94}{command\+\_\+get\+\_\+id} (\hyperlink{command_8h_a76085817cb558dc3640088040ba47898}{F\+\_\+\+Command} $\ast$)
-\end{DoxyCompactItemize}
+S\+T\+A\+T\+US \hyperlink{command_8h_a8fe217a61bb0d6679328c34b28d8b70c}{get\+\_\+user\+\_\+input} (\hyperlink{struct__F__Command}{F\+\_\+\+Command} $\ast$)
+\begin{DoxyCompactList}\small\item\em Stores the input given into a command. \end{DoxyCompactList}\item 
+\hyperlink{struct__F__Command}{F\+\_\+\+Command} $\ast$ \hyperlink{command_8h_ae66916e90ab149b0bb6222b1ce60f09b}{command\+\_\+create} ()
+\begin{DoxyCompactList}\small\item\em Creates a new F\+\_\+\+Command structure. \end{DoxyCompactList}\item 
+void \hyperlink{command_8h_a292bd392485c899b8844fc9fd4d7d196}{command\+\_\+free} (\hyperlink{struct__F__Command}{F\+\_\+\+Command} $\ast$)
+\begin{DoxyCompactList}\small\item\em Frees the F\+\_\+\+Command structure. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{command_8h_a1ec245b7e5700a1ac35b126f31e85671}{command\+\_\+set\+Cmd} (\hyperlink{struct__F__Command}{F\+\_\+\+Command} $\ast$, T\+\_\+\+Command)
+\begin{DoxyCompactList}\small\item\em Sets the T\+\_\+\+Command to the one given. \end{DoxyCompactList}\item 
+T\+\_\+\+Command \hyperlink{command_8h_a15281f4ecc9fab8fb9fc55273d08742d}{command\+\_\+get\+Cmd} (\hyperlink{struct__F__Command}{F\+\_\+\+Command} $\ast$)
+\begin{DoxyCompactList}\small\item\em Gets the T\+\_\+\+Command stored in the F\+\_\+command. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{command_8h_aaebe404b08dba170b2ec66c5e79ec265}{command\+\_\+set\+\_\+id} (\hyperlink{struct__F__Command}{F\+\_\+\+Command} $\ast$, char $\ast$)
+\begin{DoxyCompactList}\small\item\em Sets the parameters of the command given. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{command_8h_a371627a62bc8e098547786e2c60d6e94}{command\+\_\+get\+\_\+id} (\hyperlink{struct__F__Command}{F\+\_\+\+Command} $\ast$)
+\begin{DoxyCompactList}\small\item\em Gets the parameters stored in the F\+\_\+\+Command. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -78,97 +58,172 @@ G\+NU Public License
 \end{DoxyCopyright}
 
 
-\subsection{Typedef Documentation}
-\index{command.\+h@{command.\+h}!F\+\_\+\+Command@{F\+\_\+\+Command}}
-\index{F\+\_\+\+Command@{F\+\_\+\+Command}!command.\+h@{command.\+h}}
-\subsubsection[{\texorpdfstring{F\+\_\+\+Command}{F_Command}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+F\+\_\+\+Command} {\bf F\+\_\+\+Command}}\hypertarget{command_8h_a76085817cb558dc3640088040ba47898}{}\label{command_8h_a76085817cb558dc3640088040ba47898}
-\index{command.\+h@{command.\+h}!T\+\_\+\+Command@{T\+\_\+\+Command}}
-\index{T\+\_\+\+Command@{T\+\_\+\+Command}!command.\+h@{command.\+h}}
-\subsubsection[{\texorpdfstring{T\+\_\+\+Command}{T_Command}}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf enum\+\_\+\+Command}  {\bf T\+\_\+\+Command}}\hypertarget{command_8h_a0473597db8c45c0289b6b8e2f8abbe32}{}\label{command_8h_a0473597db8c45c0289b6b8e2f8abbe32}
-
-
-\subsection{Enumeration Type Documentation}
-\index{command.\+h@{command.\+h}!enum\+\_\+\+Command@{enum\+\_\+\+Command}}
-\index{enum\+\_\+\+Command@{enum\+\_\+\+Command}!command.\+h@{command.\+h}}
-\subsubsection[{\texorpdfstring{enum\+\_\+\+Command}{enum_Command}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf enum\+\_\+\+Command}}\hypertarget{command_8h_ace19ba2296a74e4aef53304e0934c50c}{}\label{command_8h_ace19ba2296a74e4aef53304e0934c50c}
-\begin{Desc}
-\item[Enumerator]\par
-\begin{description}
-\index{N\+O\+\_\+\+C\+MD@{N\+O\+\_\+\+C\+MD}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!N\+O\+\_\+\+C\+MD@{N\+O\+\_\+\+C\+MD}}\item[{\em 
-N\+O\+\_\+\+C\+MD\hypertarget{command_8h_ace19ba2296a74e4aef53304e0934c50ca785693a1d550a18688638e9124af41d0}{}\label{command_8h_ace19ba2296a74e4aef53304e0934c50ca785693a1d550a18688638e9124af41d0}
-}]\index{U\+N\+K\+N\+O\+WN@{U\+N\+K\+N\+O\+WN}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!U\+N\+K\+N\+O\+WN@{U\+N\+K\+N\+O\+WN}}\item[{\em 
-U\+N\+K\+N\+O\+WN\hypertarget{command_8h_ace19ba2296a74e4aef53304e0934c50ca6ce26a62afab55d7606ad4e92428b30c}{}\label{command_8h_ace19ba2296a74e4aef53304e0934c50ca6ce26a62afab55d7606ad4e92428b30c}
-}]\index{E\+X\+IT@{E\+X\+IT}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!E\+X\+IT@{E\+X\+IT}}\item[{\em 
-E\+X\+IT\hypertarget{command_8h_ace19ba2296a74e4aef53304e0934c50ca7a10b5d68d31711288e1fe0fa17dbf4f}{}\label{command_8h_ace19ba2296a74e4aef53304e0934c50ca7a10b5d68d31711288e1fe0fa17dbf4f}
-}]\index{P\+I\+C\+K\+\_\+\+UP@{P\+I\+C\+K\+\_\+\+UP}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!P\+I\+C\+K\+\_\+\+UP@{P\+I\+C\+K\+\_\+\+UP}}\item[{\em 
-P\+I\+C\+K\+\_\+\+UP\hypertarget{command_8h_ace19ba2296a74e4aef53304e0934c50cad31ed39ff45507ad55033d5f1ab7da5c}{}\label{command_8h_ace19ba2296a74e4aef53304e0934c50cad31ed39ff45507ad55033d5f1ab7da5c}
-}]\index{D\+R\+OP@{D\+R\+OP}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!D\+R\+OP@{D\+R\+OP}}\item[{\em 
-D\+R\+OP\hypertarget{command_8h_ace19ba2296a74e4aef53304e0934c50ca8b0b0025af76a3d8f0b7b1d4758e51a6}{}\label{command_8h_ace19ba2296a74e4aef53304e0934c50ca8b0b0025af76a3d8f0b7b1d4758e51a6}
-}]\index{R\+O\+LL@{R\+O\+LL}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!R\+O\+LL@{R\+O\+LL}}\item[{\em 
-R\+O\+LL\hypertarget{command_8h_ace19ba2296a74e4aef53304e0934c50ca2eeb9fef8a6a516fa6437a44a6efbd52}{}\label{command_8h_ace19ba2296a74e4aef53304e0934c50ca2eeb9fef8a6a516fa6437a44a6efbd52}
-}]\index{M\+O\+VE@{M\+O\+VE}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!M\+O\+VE@{M\+O\+VE}}\item[{\em 
-M\+O\+VE\hypertarget{command_8h_ace19ba2296a74e4aef53304e0934c50caed3ef32890b6da0919b57254c5206c62}{}\label{command_8h_ace19ba2296a74e4aef53304e0934c50caed3ef32890b6da0919b57254c5206c62}
-}]\index{C\+H\+E\+CK@{C\+H\+E\+CK}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!C\+H\+E\+CK@{C\+H\+E\+CK}}\item[{\em 
-C\+H\+E\+CK\hypertarget{command_8h_ace19ba2296a74e4aef53304e0934c50caed65b7dfe470f4e500b15f7074bb7fa2}{}\label{command_8h_ace19ba2296a74e4aef53304e0934c50caed65b7dfe470f4e500b15f7074bb7fa2}
-}]\index{T\+U\+R\+N\+ON@{T\+U\+R\+N\+ON}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!T\+U\+R\+N\+ON@{T\+U\+R\+N\+ON}}\item[{\em 
-T\+U\+R\+N\+ON\hypertarget{command_8h_ace19ba2296a74e4aef53304e0934c50ca141759a3bd88e1f969f53ce070705fcd}{}\label{command_8h_ace19ba2296a74e4aef53304e0934c50ca141759a3bd88e1f969f53ce070705fcd}
-}]\index{T\+U\+R\+N\+O\+FF@{T\+U\+R\+N\+O\+FF}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!T\+U\+R\+N\+O\+FF@{T\+U\+R\+N\+O\+FF}}\item[{\em 
-T\+U\+R\+N\+O\+FF\hypertarget{command_8h_ace19ba2296a74e4aef53304e0934c50ca564ee0e901bafdd34855cf0ad96ef60c}{}\label{command_8h_ace19ba2296a74e4aef53304e0934c50ca564ee0e901bafdd34855cf0ad96ef60c}
-}]\index{O\+P\+EN@{O\+P\+EN}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!O\+P\+EN@{O\+P\+EN}}\item[{\em 
-O\+P\+EN\hypertarget{command_8h_ace19ba2296a74e4aef53304e0934c50ca0e0143636c29971736eab47415868eae}{}\label{command_8h_ace19ba2296a74e4aef53304e0934c50ca0e0143636c29971736eab47415868eae}
-}]\end{description}
-\end{Desc}
-
-
 \subsection{Function Documentation}
+\mbox{\Hypertarget{command_8h_ae66916e90ab149b0bb6222b1ce60f09b}\label{command_8h_ae66916e90ab149b0bb6222b1ce60f09b}} 
 \index{command.\+h@{command.\+h}!command\+\_\+create@{command\+\_\+create}}
 \index{command\+\_\+create@{command\+\_\+create}!command.\+h@{command.\+h}}
-\subsubsection[{\texorpdfstring{command\+\_\+create()}{command_create()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+\_\+\+Command}$\ast$ command\+\_\+create (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{command_8h_ae66916e90ab149b0bb6222b1ce60f09b}{}\label{command_8h_ae66916e90ab149b0bb6222b1ce60f09b}
+\subsubsection{\texorpdfstring{command\+\_\+create()}{command\_create()}}
+{\footnotesize\ttfamily \hyperlink{struct__F__Command}{F\+\_\+\+Command}$\ast$ command\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a new F\+\_\+\+Command structure. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+F\+\_\+\+Command$\ast$ new 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Broken} & calloc \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{command_8h_a292bd392485c899b8844fc9fd4d7d196}\label{command_8h_a292bd392485c899b8844fc9fd4d7d196}} 
 \index{command.\+h@{command.\+h}!command\+\_\+free@{command\+\_\+free}}
 \index{command\+\_\+free@{command\+\_\+free}!command.\+h@{command.\+h}}
-\subsubsection[{\texorpdfstring{command\+\_\+free(\+F\+\_\+\+Command $\ast$)}{command_free(F_Command *)}}]{\setlength{\rightskip}{0pt plus 5cm}void command\+\_\+free (
-\begin{DoxyParamCaption}
-\item[{{\bf F\+\_\+\+Command} $\ast$}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{command_8h_a292bd392485c899b8844fc9fd4d7d196}{}\label{command_8h_a292bd392485c899b8844fc9fd4d7d196}
+\subsubsection{\texorpdfstring{command\+\_\+free()}{command\_free()}}
+{\footnotesize\ttfamily void command\+\_\+free (\begin{DoxyParamCaption}\item[{\hyperlink{struct__F__Command}{F\+\_\+\+Command} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+Frees the F\+\_\+\+Command structure. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em F\+\_\+\+Command} & to free \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{command_8h_a371627a62bc8e098547786e2c60d6e94}\label{command_8h_a371627a62bc8e098547786e2c60d6e94}} 
 \index{command.\+h@{command.\+h}!command\+\_\+get\+\_\+id@{command\+\_\+get\+\_\+id}}
 \index{command\+\_\+get\+\_\+id@{command\+\_\+get\+\_\+id}!command.\+h@{command.\+h}}
-\subsubsection[{\texorpdfstring{command\+\_\+get\+\_\+id(\+F\+\_\+\+Command $\ast$)}{command_get_id(F_Command *)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ command\+\_\+get\+\_\+id (
-\begin{DoxyParamCaption}
-\item[{{\bf F\+\_\+\+Command} $\ast$}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{command_8h_a371627a62bc8e098547786e2c60d6e94}{}\label{command_8h_a371627a62bc8e098547786e2c60d6e94}
+\subsubsection{\texorpdfstring{command\+\_\+get\+\_\+id()}{command\_get\_id()}}
+{\footnotesize\ttfamily char$\ast$ command\+\_\+get\+\_\+id (\begin{DoxyParamCaption}\item[{\hyperlink{struct__F__Command}{F\+\_\+\+Command} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets the parameters stored in the F\+\_\+\+Command. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em F\+\_\+\+Command$\ast$} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ parameters 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & F\+\_\+\+Command or value N\+U\+LL \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{command_8h_a15281f4ecc9fab8fb9fc55273d08742d}\label{command_8h_a15281f4ecc9fab8fb9fc55273d08742d}} 
 \index{command.\+h@{command.\+h}!command\+\_\+get\+Cmd@{command\+\_\+get\+Cmd}}
 \index{command\+\_\+get\+Cmd@{command\+\_\+get\+Cmd}!command.\+h@{command.\+h}}
-\subsubsection[{\texorpdfstring{command\+\_\+get\+Cmd(\+F\+\_\+\+Command $\ast$)}{command_getCmd(F_Command *)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\+\_\+\+Command} command\+\_\+get\+Cmd (
-\begin{DoxyParamCaption}
-\item[{{\bf F\+\_\+\+Command} $\ast$}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{command_8h_a15281f4ecc9fab8fb9fc55273d08742d}{}\label{command_8h_a15281f4ecc9fab8fb9fc55273d08742d}
+\subsubsection{\texorpdfstring{command\+\_\+get\+Cmd()}{command\_getCmd()}}
+{\footnotesize\ttfamily T\+\_\+\+Command command\+\_\+get\+Cmd (\begin{DoxyParamCaption}\item[{\hyperlink{struct__F__Command}{F\+\_\+\+Command} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets the T\+\_\+\+Command stored in the F\+\_\+command. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em F\+\_\+\+Command$\ast$} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\+\_\+\+Command 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & F\+\_\+\+Command or value N\+U\+LL \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{command_8h_aaebe404b08dba170b2ec66c5e79ec265}\label{command_8h_aaebe404b08dba170b2ec66c5e79ec265}} 
 \index{command.\+h@{command.\+h}!command\+\_\+set\+\_\+id@{command\+\_\+set\+\_\+id}}
 \index{command\+\_\+set\+\_\+id@{command\+\_\+set\+\_\+id}!command.\+h@{command.\+h}}
-\subsubsection[{\texorpdfstring{command\+\_\+set\+\_\+id(\+F\+\_\+\+Command $\ast$, char $\ast$)}{command_set_id(F_Command *, char *)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} command\+\_\+set\+\_\+id (
-\begin{DoxyParamCaption}
-\item[{{\bf F\+\_\+\+Command} $\ast$}]{, }
-\item[{char $\ast$}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{command_8h_aaebe404b08dba170b2ec66c5e79ec265}{}\label{command_8h_aaebe404b08dba170b2ec66c5e79ec265}
+\subsubsection{\texorpdfstring{command\+\_\+set\+\_\+id()}{command\_set\_id()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US command\+\_\+set\+\_\+id (\begin{DoxyParamCaption}\item[{\hyperlink{struct__F__Command}{F\+\_\+\+Command} $\ast$}]{,  }\item[{char $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+Sets the parameters of the command given. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em F\+\_\+\+Command$\ast$} & \\
+\hline
+{\em char$\ast$} & parameters \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+US OK or E\+R\+R\+OR 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em NO} & F\+\_\+\+Command or value N\+U\+LL \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{command_8h_a1ec245b7e5700a1ac35b126f31e85671}\label{command_8h_a1ec245b7e5700a1ac35b126f31e85671}} 
 \index{command.\+h@{command.\+h}!command\+\_\+set\+Cmd@{command\+\_\+set\+Cmd}}
 \index{command\+\_\+set\+Cmd@{command\+\_\+set\+Cmd}!command.\+h@{command.\+h}}
-\subsubsection[{\texorpdfstring{command\+\_\+set\+Cmd(\+F\+\_\+\+Command $\ast$, T\+\_\+\+Command)}{command_setCmd(F_Command *, T_Command)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} command\+\_\+set\+Cmd (
-\begin{DoxyParamCaption}
-\item[{{\bf F\+\_\+\+Command} $\ast$}]{, }
-\item[{{\bf T\+\_\+\+Command}}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{command_8h_a1ec245b7e5700a1ac35b126f31e85671}{}\label{command_8h_a1ec245b7e5700a1ac35b126f31e85671}
+\subsubsection{\texorpdfstring{command\+\_\+set\+Cmd()}{command\_setCmd()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US command\+\_\+set\+Cmd (\begin{DoxyParamCaption}\item[{\hyperlink{struct__F__Command}{F\+\_\+\+Command} $\ast$}]{,  }\item[{T\+\_\+\+Command}]{ }\end{DoxyParamCaption})}
+
+
+
+Sets the T\+\_\+\+Command to the one given. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Sánchez 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em F\+\_\+\+Command} & $\ast$ \\
+\hline
+{\em T\+\_\+\+Command} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+US OK or E\+R\+R\+OR 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & F\+\_\+\+Command or value N\+U\+LL \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{command_8h_a8fe217a61bb0d6679328c34b28d8b70c}\label{command_8h_a8fe217a61bb0d6679328c34b28d8b70c}} 
 \index{command.\+h@{command.\+h}!get\+\_\+user\+\_\+input@{get\+\_\+user\+\_\+input}}
 \index{get\+\_\+user\+\_\+input@{get\+\_\+user\+\_\+input}!command.\+h@{command.\+h}}
-\subsubsection[{\texorpdfstring{get\+\_\+user\+\_\+input(\+F\+\_\+\+Command $\ast$)}{get_user_input(F_Command *)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+A\+T\+US} get\+\_\+user\+\_\+input (
-\begin{DoxyParamCaption}
-\item[{{\bf F\+\_\+\+Command} $\ast$}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{command_8h_a8fe217a61bb0d6679328c34b28d8b70c}{}\label{command_8h_a8fe217a61bb0d6679328c34b28d8b70c}
+\subsubsection{\texorpdfstring{get\+\_\+user\+\_\+input()}{get\_user\_input()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US get\+\_\+user\+\_\+input (\begin{DoxyParamCaption}\item[{\hyperlink{struct__F__Command}{F\+\_\+\+Command} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+Stores the input given into a command. 
+
+\begin{DoxyAuthor}{Author}
+Antonio Solana 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em F\+\_\+\+Command$\ast$} & where the command is stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+US OK or E\+R\+R\+OR 
+\end{DoxyReturn}
