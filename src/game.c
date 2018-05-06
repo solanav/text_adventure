@@ -526,7 +526,15 @@ STATUS update_sprites(Game *game)
 			space_setCurrentSprite(space, opened_links_val);
 	}
 	else
+	{
 		space_setCurrentSprite(space, opened_links_val);
+	}
+
+	/* If space 62 (cave entrance) has its door open, change sprite to the open door one */
+	if (link_getStatus(game_get_link(game, space_get_south(game_get_space(game, 62)))) == OPENED)
+	{
+		space_setCurrentSprite(game_get_space(game, 62), 1);
+	}
 
 	return OK;
 }

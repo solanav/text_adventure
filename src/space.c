@@ -26,7 +26,7 @@ struct _Space
 	Id linkUp;		     /*!< id del link hacia arriba*/
 	Id linkDown;		     /*!< id del link hacia abajo*/
 	Id spriteId[17];	     /*!< id del sprite*/
-	int curentSprite;	     /*!< sprite que actual*/
+	int curentSprite;	     /*!< sprite actual*/
 	char gdesc[3][21];	     /*!< strings para objetos ASCII*/
 	Set *objects;		     /*!< Set de objetos*/
 	BOOL light;		     /*!< Bool que indica si la casilla esta iluminada*/
