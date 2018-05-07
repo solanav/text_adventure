@@ -16,34 +16,50 @@
  *      la prueba indicada
  *
  */
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
 
-    int test = 0;
-    int all = 1;
+	int test = 0;
+	int all = 1;
 
-    if (argc < 2) {
-        printf("Running all test for module Object:\n");
-    } else {
-        test = atoi(argv[1]);
-        all = 0;
-        printf("Running test %d:\t", test);
-	if (test < 1 || test > MAX_TESTS) {
-	  printf("Error: unknown test %d\n", test);
-	  exit(EXIT_SUCCESS);
-        }
-    }
+	if (argc < 2)
+	{
+		printf("Running all test for module Object:\n");
+	}
+	else
+	{
+		test = atoi(argv[1]);
+		all = 0;
+		printf("Running test %d:\t", test);
+		if (test < 1 || test > MAX_TESTS)
+		{
+			printf("Error: unknown test %d\n", test);
+			exit(EXIT_SUCCESS);
+		}
+	}
 
-	if (all || test == 1) test1_object_create();
-    if (all || test == 2) test2_object_create();
-    if (all || test == 3) test1_object_set_name();
-    if (all || test == 4) test2_object_set_name();
-    if (all || test == 5) test1_object_set_id();
-    if (all || test == 6) test2_object_set_id();
-    if (all || test == 7) test1_object_set_description();
-    if (all || test == 8) test2_object_set_description();
-    if (all || test == 9) test1_object_get_name();
-    if (all || test == 10) test1_object_get_description();
-	if (all || test == 11) test1_object_get_id();
+	if (all || test == 1)
+		test1_object_create();
+	if (all || test == 2)
+		test2_object_create();
+	if (all || test == 3)
+		test1_object_set_name();
+	if (all || test == 4)
+		test2_object_set_name();
+	if (all || test == 5)
+		test1_object_set_id();
+	if (all || test == 6)
+		test2_object_set_id();
+	if (all || test == 7)
+		test1_object_set_description();
+	if (all || test == 8)
+		test2_object_set_description();
+	if (all || test == 9)
+		test1_object_get_name();
+	if (all || test == 10)
+		test1_object_get_description();
+	if (all || test == 11)
+		test1_object_get_id();
 
 	PRINT_PASSED_PERCENTAGE;
 
@@ -66,7 +82,7 @@ void test2_object_create()
 void test1_object_set_name()
 {
 	Object *s = NULL;
-    PRINT_TEST_RESULT(object_set_name(s, "hola") == ERROR);
+	PRINT_TEST_RESULT(object_set_name(s, "hola") == ERROR);
 }
 
 void test2_object_set_name()
@@ -78,7 +94,7 @@ void test2_object_set_name()
 void test1_object_set_id()
 {
 	Object *s = NULL;
-    PRINT_TEST_RESULT(object_set_id(s, 5) == ERROR);
+	PRINT_TEST_RESULT(object_set_id(s, 5) == ERROR);
 }
 
 void test2_object_set_id()
@@ -90,7 +106,7 @@ void test2_object_set_id()
 void test1_object_set_description()
 {
 	Object *s = NULL;
-    PRINT_TEST_RESULT(object_set_description(s, "End this") == ERROR);
+	PRINT_TEST_RESULT(object_set_description(s, "End this") == ERROR);
 }
 
 void test2_object_set_description()

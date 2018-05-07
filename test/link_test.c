@@ -8,7 +8,7 @@
 #define MAX_TESTS 14
 
 /**
- * @brief Funcion principal de pruebas para el modulo Space.
+ * @brief Funcion principal de pruebas para el modulo Link.
  *
  * Dos modos de ejecucion:
  *   1.-Si se ejecuta sin parametros se ejecutan todas las pruebas
@@ -16,36 +16,54 @@
  *      la prueba indicada
  *
  */
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
 
-    int test = 0;
-    int all = 1;
+	int test = 0;
+	int all = 1;
 
-    if (argc < 2) {
-        printf("Running all test for module Link:\n");
-    } else {
-        test = atoi(argv[1]);
-        all = 0;
-        printf("Running test %d:\t", test);
-	if (test < 1 || test > MAX_TESTS) {
-	  printf("Error: unknown test %d\n", test);
-	  exit(EXIT_SUCCESS);
-        }
-    }
+	if (argc < 2)
+	{
+		printf("Running all test for module Link:\n");
+	}
+	else
+	{
+		test = atoi(argv[1]);
+		all = 0;
+		printf("Running test %d:\t", test);
+		if (test < 1 || test > MAX_TESTS)
+		{
+			printf("Error: unknown test %d\n", test);
+			exit(EXIT_SUCCESS);
+		}
+	}
 
-	if (all || test == 1) test1_link_create();
-    if (all || test == 2) test2_link_create();
-    if (all || test == 3) test1_link_set_id();
-    if (all || test == 4) test2_link_set_id();
-    if (all || test == 5) test1_link_set_status();
-    if (all || test == 6) test2_link_set_status();
-    if (all || test == 7) test1_link_set_spaces();
-    if (all || test == 8) test2_link_set_spaces();
-    if (all || test == 9) test1_link_get_id();
-    if (all || test == 10) test1_link_get_space1();
-	if (all || test == 11) test1_link_get_space2();
-	if (all || test == 12) test1_link_get_status();
-	if (all || test == 13) test1_link_get_destination();
+	if (all || test == 1)
+		test1_link_create();
+	if (all || test == 2)
+		test2_link_create();
+	if (all || test == 3)
+		test1_link_set_id();
+	if (all || test == 4)
+		test2_link_set_id();
+	if (all || test == 5)
+		test1_link_set_status();
+	if (all || test == 6)
+		test2_link_set_status();
+	if (all || test == 7)
+		test1_link_set_spaces();
+	if (all || test == 8)
+		test2_link_set_spaces();
+	if (all || test == 9)
+		test1_link_get_id();
+	if (all || test == 10)
+		test1_link_get_space1();
+	if (all || test == 11)
+		test1_link_get_space2();
+	if (all || test == 12)
+		test1_link_get_status();
+	if (all || test == 13)
+		test1_link_get_destination();
 
 	PRINT_PASSED_PERCENTAGE;
 
@@ -67,7 +85,7 @@ void test2_link_create()
 void test1_link_set_id()
 {
 	Link *s = NULL;
-    PRINT_TEST_RESULT(link_setId(s, 5) == ERROR);
+	PRINT_TEST_RESULT(link_setId(s, 5) == ERROR);
 }
 
 void test2_link_set_id()
@@ -79,7 +97,7 @@ void test2_link_set_id()
 void test1_link_set_status()
 {
 	Link *s = NULL;
-    PRINT_TEST_RESULT(link_setStatus(s, OPENED) == ERROR);
+	PRINT_TEST_RESULT(link_setStatus(s, OPENED) == ERROR);
 }
 
 void test2_link_set_status()
@@ -91,7 +109,7 @@ void test2_link_set_status()
 void test1_link_set_spaces()
 {
 	Link *s = NULL;
-    PRINT_TEST_RESULT(link_setSpaces(s, 1, 2) == ERROR);
+	PRINT_TEST_RESULT(link_setSpaces(s, 1, 2) == ERROR);
 }
 
 void test2_link_set_spaces()

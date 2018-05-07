@@ -2,7 +2,7 @@
  * @brief It declares the tests for the link module
  *
  * @file link_test.h
- * @author Pablo Sánchez Redondo
+ * @author Pablo Sánchez
  * @copyright GNU Public License
  */
 

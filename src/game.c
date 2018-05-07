@@ -430,9 +430,6 @@ STATUS game_set_link(Game *game, Id link_id, Id space_id0, Id space_id1, int dir
 			link_setDirection(game->links[i], direction);
 			link_setStatus(game->links[i], door);
 
-			printf("Saving link %d with door %d\n", i, door);
-			link_print(game->links[i]);
-
 			return OK;
 		}
 	}

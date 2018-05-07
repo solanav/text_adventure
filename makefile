@@ -10,7 +10,7 @@ m="Automatic Commit"
 ################ FILES
 
 ALL_EXEC=game_exec player_test space_test die_test set_test link_test object_test command_test inventory_test
-ALL_TEST=die_test set_test link_test object_test command_test inventory_test player_test space_test
+ALL_TEST=die_test set_test link_test object_test command_test inventory_test player_test space_test sprite_test
 
 ################ PATHS
 
@@ -52,6 +52,9 @@ player_test: player_test.o player.o inventory.o set.o
 
 set_test: set_test.o set.o
 	$(CC) $(CFLAGS) -o $(BINPATH)set_test $(OBJPATH)set.o $(TESTOBJPATH)set_test.o
+
+sprite_test: sprite.o sprite_test.o
+	$(CC) $(CFLAGS) -o $(BINPATH)sprite_test $(OBJPATH)sprite.o $(TESTOBJPATH)sprite_test.o
 
 ################ OBJECT CREATION
 
@@ -132,6 +135,9 @@ player_test.o: $(TESTPATH)player_test.c $(HDRPATH)player.h $(HDRPATH)player_test
 set_test.o: $(TESTPATH)set_test.c $(HDRPATH)set.h $(HDRPATH)test.h $(HDRPATH)set_test.h
 	$(CC) $(CFLAGS) -c $(TESTPATH)set_test.c -o $(TESTOBJPATH)set_test.o
 
+sprite_test.o: $(TESTPATH)sprite_test.c $(HDRPATH)sprite.h $(HDRPATH)test.h $(HDRPATH)sprite_test.h
+	$(CC) $(CFLAGS) -c $(TESTPATH)sprite_test.c -o $(TESTOBJPATH)sprite_test.o
+
 ################ ALL
 
 all: clean $(ALL_EXEC)
@@ -141,7 +147,7 @@ all_test: clean $(ALL_TEST)
 ################ OTHER COMMANDS
 
 run_test: all_test
-	$(BINPATH)space_test ; $(BINPATH)object_test ; $(BINPATH)die_test ; $(BINPATH)link_test ; $(BINPATH)command_test ; $(BINPATH)inventory_test ; $(BINPATH)player_test ; $(BINPATH)set_test
+	$(BINPATH)space_test ; $(BINPATH)object_test ; $(BINPATH)die_test ; $(BINPATH)link_test ; $(BINPATH)command_test ; $(BINPATH)inventory_test ; $(BINPATH)player_test ; $(BINPATH)set_test ; $(BINPATH)sprite_test
 
 val:
 	valgrind -v --leak-check=full $(BINPATH)game_exec data/data.dat

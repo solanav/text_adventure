@@ -16,38 +16,58 @@
  *      la prueba indicada
  *
  */
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
 
-    int test = 0;
-    int all = 1;
+	int test = 0;
+	int all = 1;
 
-    if (argc < 2) {
-        printf("Running all test for module Player:\n");
-    } else {
-        test = atoi(argv[1]);
-        all = 0;
-        printf("Running test %d:\t", test);
-	if (test < 1 || test > MAX_TESTS) {
-	  printf("Error: unknown test %d\n", test);
-	  exit(EXIT_SUCCESS);
-        }
-    }
+	if (argc < 2)
+	{
+		printf("Running all test for module Player:\n");
+	}
+	else
+	{
+		test = atoi(argv[1]);
+		all = 0;
+		printf("Running test %d:\t", test);
+		if (test < 1 || test > MAX_TESTS)
+		{
+			printf("Error: unknown test %d\n", test);
+			exit(EXIT_SUCCESS);
+		}
+	}
 
-	if (all || test == 1) test1_player_create();
-    if (all || test == 2) test1_player_set_name();
-    if (all || test == 3) test2_player_set_name();
-    if (all || test == 4) test1_player_set_LocId();
-    if (all || test == 5) test2_player_set_LocId();
-    if (all || test == 6) test1_player_set_ObjId();
-    if (all || test == 7) test2_player_set_ObjId();
-    if (all || test == 8) test1_player_set_id();
-    if (all || test == 9) test2_player_set_id();
-    if (all || test == 10) test1_player_get_name();
-	if (all || test == 11) test1_player_get_LocId();
-	if (all || test == 12) test1_player_get_ObjId();
-	if (all || test == 13) test1_player_get_id();
-	if (all || test == 14) test1_player_remove_object_id();
-	if (all || test == 15) test2_player_remove_object_id();
+	if (all || test == 1)
+		test1_player_create();
+	if (all || test == 2)
+		test1_player_set_name();
+	if (all || test == 3)
+		test2_player_set_name();
+	if (all || test == 4)
+		test1_player_set_LocId();
+	if (all || test == 5)
+		test2_player_set_LocId();
+	if (all || test == 6)
+		test1_player_set_ObjId();
+	if (all || test == 7)
+		test2_player_set_ObjId();
+	if (all || test == 8)
+		test1_player_set_id();
+	if (all || test == 9)
+		test2_player_set_id();
+	if (all || test == 10)
+		test1_player_get_name();
+	if (all || test == 11)
+		test1_player_get_LocId();
+	if (all || test == 12)
+		test1_player_get_ObjId();
+	if (all || test == 13)
+		test1_player_get_id();
+	if (all || test == 14)
+		test1_player_remove_object_id();
+	if (all || test == 15)
+		test2_player_remove_object_id();
 
 	PRINT_PASSED_PERCENTAGE;
 
@@ -142,5 +162,6 @@ void test1_player_remove_object_id()
 void test2_player_remove_object_id()
 {
 	Player *p = player_create("I", 1, 1, 1);
+	inventory_add_id(player_getInventory(p), 1);
 	PRINT_TEST_RESULT(player_removeObjId(p, 1) == OK);
 }

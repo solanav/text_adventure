@@ -16,30 +16,42 @@
  *      la prueba indicada
  *
  */
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
 
-    int test = 0;
-    int all = 1;
+	int test = 0;
+	int all = 1;
 
-    if (argc < 2) {
-        printf("Running all test for module Command:\n");
-    } else {
-        test = atoi(argv[1]);
-        all = 0;
-        printf("Running test %d:\t", test);
-	if (test < 1 || test > MAX_TESTS) {
-	  printf("Error: unknown test %d\n", test);
-	  exit(EXIT_SUCCESS);
-        }
-    }
+	if (argc < 2)
+	{
+		printf("Running all test for module Command:\n");
+	}
+	else
+	{
+		test = atoi(argv[1]);
+		all = 0;
+		printf("Running test %d:\t", test);
+		if (test < 1 || test > MAX_TESTS)
+		{
+			printf("Error: unknown test %d\n", test);
+			exit(EXIT_SUCCESS);
+		}
+	}
 
-	if (all || test == 1) test1_command_create();
-    if (all || test == 2) test1_command_set_cmd();
-    if (all || test == 3) test2_command_set_cmd();
-    if (all || test == 4) test1_command_get_cmd();
-    if (all || test == 5) test1_command_set_id();
-    if (all || test == 6) test2_command_set_id();
-    if (all || test == 7) test1_command_get_id();
+	if (all || test == 1)
+		test1_command_create();
+	if (all || test == 2)
+		test1_command_set_cmd();
+	if (all || test == 3)
+		test2_command_set_cmd();
+	if (all || test == 4)
+		test1_command_get_cmd();
+	if (all || test == 5)
+		test1_command_set_id();
+	if (all || test == 6)
+		test2_command_set_id();
+	if (all || test == 7)
+		test1_command_get_id();
 
 	PRINT_PASSED_PERCENTAGE;
 
