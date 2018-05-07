@@ -21,7 +21,7 @@
 #define DIE_SEED 666
 #define STARTING_SPACE 25
 #define NO_LIGHT_SPRITE 16
-#define MOVES_TO_START_RULES 10
+#define MOVES_TO_START_RULES 1000
 #define FURNANCE_ID 21
 
 struct _Game
