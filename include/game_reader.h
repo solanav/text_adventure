@@ -12,16 +12,6 @@
 #include "../include/types.h"
 #include "../include/game.h"
 
-/**
-*	@author Catalín Rotaru
-*	@brief Loads the game from a file
-*	@param Game*
-*	@param char* filename
-*	@return STATUS OK or ERROR
-*	@exception No game or error when opening
-*/
-STATUS game_load_spaces(Game* game, char* filename);
-
 STATUS game_save(Game *, char *);
 
 STATUS game_load(Game *, char *);

@@ -152,10 +152,10 @@ char * dialogue_generate(Game * game)
 			return dialogue;
 		case SAVE:
 			strcpy(aux, game_get_last_command_parameters(game, 0));
-			if(strcmp(aux, "error") == 0)
-				strcpy(dialogue, "Something didn't go as planned");
-			else
+			if(strcmp(aux, "nice") == 0)
 				strcpy(dialogue, "You feel relieved");
+			else
+				strcpy(dialogue, "Something didn't go as planned");
 			die_die_die(die);
 			return dialogue;
 		case LOAD:

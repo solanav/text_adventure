@@ -114,7 +114,7 @@ STATUS game_create_from_file(Game *game, char *filename)
 		return ERROR;
 
 	/* Load all opened_links from file */
-	if (game_load_spaces(game, filename) == ERROR)
+	if (game_load(game, filename) == ERROR)
 		return ERROR;
 
 	/* Load all sprites */
@@ -932,7 +932,7 @@ void game_callback_save(Game * game)
 void game_callback_load(Game * game)
 {
 	if(!game || command_get_id(game->last_cmd[0]) == NULL) return;
-
+	
 	if(game_load(game, command_get_id(game->last_cmd[0])) == ERROR)
 		command_set_id(game->last_cmd[0], "error");
 	else
