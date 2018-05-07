@@ -65,6 +65,14 @@ Id link_getId(Link *);
 
 /**
 *	@author: Pablo Sánchez
+*	@brief: Gets the links name
+*	@param: *Link
+*	@return: link->name
+*/
+char * link_getName(Link *);
+
+/**
+*	@author: Pablo Sánchez
 *	@brief: Gets the first Space of the link
 *	@param: *Link
 *	@return: link->space1

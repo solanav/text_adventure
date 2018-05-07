@@ -16,7 +16,7 @@
 #include "../include/sprite_loader.h"
 #include "../include/sprite.h"
 
-#define N_CALLBACK 11
+#define N_CALLBACK 13
 #define PLAYER_ID 1
 #define DIE_SEED 666
 #define STARTING_SPACE 25
@@ -48,6 +48,8 @@ void game_callback_check(Game *game);
 void game_callback_turnOn(Game *game);
 void game_callback_turnOff(Game *game);
 void game_callback_open(Game *game);
+void game_callback_save(Game *game);
+void game_callback_load(Game *game);
 
 static callback_fn game_callback_fn_list[N_CALLBACK] =
     {
@@ -60,7 +62,10 @@ static callback_fn game_callback_fn_list[N_CALLBACK] =
 	game_callback_check,
 	game_callback_turnOn,
 	game_callback_turnOff,
-	game_callback_open};
+	game_callback_open,
+	game_callback_save,
+	game_callback_load
+};
 
 Game *game_create()
 {
@@ -402,6 +407,14 @@ Id game_get_space_id_at(Game *game, int position)
 	return space_get_id(game->spaces[position]);
 }
 
+Id game_get_object_id_at(Game * game, int position)
+{
+	if (position < 0 || position >= MAX_OBJECTS)
+		return NO_ID;
+
+	return object_get_id(game->objects[position]);
+}
+
 STATUS game_set_player_location(Game *game, Id id)
 {
 	if (id == NO_ID)
@@ -619,7 +632,7 @@ STATUS update_rules(Game *game, Rule_Data *rule_data)
 
 			player_setObjId(player, OBJID_MASTERKEY);
 		}
-			
+
 	}
 
 	return OK;
@@ -658,6 +671,7 @@ void game_callback_pickup(Game *game)
 			sprintf(object, "%sOK", object);
 			player_setObjId(game->player, object_id);
 			space_remove_object(space_pointer, object_id);
+			game_set_object_location(game, (long int)-1, object_id, object_get_name(game_get_object(game, object)), object_get_description(game_get_object(game, object)));
 		}
 		else
 		{
@@ -687,7 +701,7 @@ void game_callback_drop(Game *game)
 	if(player_removeObjId(game->player, object_id) == OK)
 	{
 		command_set_id(game->last_cmd[0], object);
-		space_add_object(space_pointer, object_id);
+		game_set_object_location(game, space_get_id(space_pointer), object_id, object_get_name(game_get_object(game, object)), object_get_description(game_get_object(game, object)));
 	}
 	else
 	{
@@ -901,6 +915,26 @@ void game_callback_open(Game *game)
 			command_set_id(game->last_cmd[0], "error");
 		}
 	}
-		
+
 	printf("Currently has STATUS a -> %d\n", link_getStatus(link));
+}
+
+void game_callback_save(Game * game)
+{
+	if(!game || command_get_id(game->last_cmd[0]) == NULL) return;
+
+	if(game_save(game, command_get_id(game->last_cmd[0])) == ERROR)
+		command_set_id(game->last_cmd[0], "error");
+	else
+		command_set_id(game->last_cmd[0], "nice");
+}
+
+void game_callback_load(Game * game)
+{
+	if(!game || command_get_id(game->last_cmd[0]) == NULL) return;
+
+	if(game_load(game, command_get_id(game->last_cmd[0])) == ERROR)
+		command_set_id(game->last_cmd[0], "error");
+	else
+		command_set_id(game->last_cmd[0], "nice");
 }

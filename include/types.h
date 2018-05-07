@@ -45,7 +45,9 @@ typedef enum enum_Command {
 	CHECK,
 	TURNON,
 	TURNOFF,
-	OPEN
+	OPEN,
+	SAVE,
+	LOAD
 } T_Command;
 
 #endif

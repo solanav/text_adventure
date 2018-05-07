@@ -150,6 +150,22 @@ char * dialogue_generate(Game * game)
 				strcpy(dialogue, "A loud creek is heard, and the gate opens");
 			die_die_die(die);
 			return dialogue;
+		case SAVE:
+			strcpy(aux, game_get_last_command_parameters(game, 0));
+			if(strcmp(aux, "error") == 0)
+				strcpy(dialogue, "Something didn't go as planned");
+			else
+				strcpy(dialogue, "You feel relieved");
+			die_die_die(die);
+			return dialogue;
+		case LOAD:
+			strcpy(aux, game_get_last_command_parameters(game, 0));
+			if(strcmp(aux, "error") == 0)
+				strcpy(dialogue, "This didn't work");
+			else
+				strcpy(dialogue, "Back in time it is");
+			die_die_die(die);
+			return dialogue;
 		default:
 			strcpy(dialogue, "How?");
 			die_die_die(die);

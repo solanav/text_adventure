@@ -12,7 +12,7 @@
 #include "../include/command.h"
 
 #define CMD_LENGHT 30
-#define N_CMD 11
+#define N_CMD 13
 
 struct _F_Command
 {
@@ -20,8 +20,8 @@ struct _F_Command
 	char id[CMD_LENGHT]; /*!< Id*/
 };
 
-char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check", "Turnon", "Turnoff", "Open"};
-char *short_cmd_to_str[N_CMD] = {"", "", "e", "p", "d", "r", "m", "c", "to", "tf", "o"};
+char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Pickup", "Drop", "Roll", "Move", "Check", "Turnon", "Turnoff", "Open", "Save", "Load"};
+char *short_cmd_to_str[N_CMD] = {"", "", "e", "p", "d", "r", "m", "c", "to", "tf", "o", "s", "l"};
 
 STATUS get_user_input(F_Command *command)
 {
@@ -65,7 +65,7 @@ STATUS get_user_input(F_Command *command)
 		sscanf(input, "%s %s\n", string0, string1);
 		aux_command = command_getCmd(command);
 
-		if (aux_command == PICK_UP || aux_command == DROP)
+		if (aux_command == PICK_UP || aux_command == DROP || aux_command == SAVE || aux_command == LOAD)
 		{
 			command_set_id(command, string1);
 		}
